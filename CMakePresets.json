@@ -1,0 +1,42 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}"
+        },
+        {
+            "name": "INTERCOM[Debug]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "INTERCOM[Release]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "INTERCOM[SimTests]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERCOM_BUILD_TESTS": "ON"
+            }
+        },
+        {
+            "name": "INTERCOM[SimTestsSanitize]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERCOM_BUILD_TESTS": "ON",
+                "INTERCOM_SANITIZERS": "ON"
+            }
+        }
+    ]
+}

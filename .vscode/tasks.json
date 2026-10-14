@@ -1,0 +1,164 @@
+{
+  // intercom tasks. Task menu: Ctrl+Shift+B (no default build task, so VS Code
+  // shows the list) or Terminal > Run Task...
+  // Works on Windows, Linux and macOS ("windows" blocks override the defaults).
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}"
+  },
+  "tasks": [
+    // ======================================================================
+    // Library build (CMakePresets.json)
+    // ======================================================================
+    {
+      "label": "Library: Configure (Debug)",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "INTERCOM[Debug]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Library: Build (Debug)",
+      "group": "build",
+      "detail": "Static library with debug information (template configuration)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[Debug]"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Library: Configure (Release)",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "INTERCOM[Release]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Library: Build (Release)",
+      "group": "build",
+      "detail": "Size-optimized static library (libintercom.a, template configuration)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[Release]"],
+      "dependsOn": ["Library: Configure (Release)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Library: Clean all builds",
+      "group": "build",
+      "detail": "Remove the build folder of every preset",
+      "type": "process",
+      "command": "cmake",
+      "args": ["-E", "rm", "-rf", "build"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Simulation tests
+    // ======================================================================
+    {
+      "label": "Tests: Configure simulation tests",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "INTERCOM[SimTests]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Build simulation tests",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[SimTests]"],
+      "dependsOn": ["Tests: Configure simulation tests"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Tests: Run simulation (default seed)",
+      "group": "build",
+      "detail": "Bus simulator through CTest",
+      "type": "process",
+      "command": "ctest",
+      "args": ["--test-dir", "build/INTERCOM[SimTests]", "-L", "sim", "--output-on-failure"],
+      "dependsOn": ["Tests: Build simulation tests"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Run simulation (many seeds)",
+      "group": "build",
+      "detail": "tests/run_seeds on N seeds, prints only failing ones",
+      "type": "process",
+      "command": "sh",
+      "args": ["tests/run_seeds.sh", "build/INTERCOM[SimTests]", "${input:seedCount}"],
+      "windows": {
+        "command": "powershell",
+        "args": [
+          "-NoProfile", "-ExecutionPolicy", "Bypass",
+          "-File", "tests/run_seeds.ps1",
+          "-BuildDir", "build/INTERCOM[SimTests]",
+          "-Count", "${input:seedCount}"
+        ]
+      },
+      "dependsOn": ["Tests: Build simulation tests"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Static analysis (targets exist when the tools are installed)
+    // ======================================================================
+    {
+      "label": "Analysis: Cppcheck",
+      "group": "build",
+      "detail": "Target 'cppcheck-analyze' (report in build/INTERCOM[Debug]/cppcheck.txt)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[Debug]", "--target", "cppcheck-analyze"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Analysis: MISRA C:2012",
+      "group": "build",
+      "detail": "Target 'misra-analyze' (report in build/INTERCOM[Debug]/misra.txt)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[Debug]", "--target", "misra-analyze"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Analysis: CodeQL",
+      "group": "build",
+      "detail": "Target 'codeql-analyze' (SARIF in build/INTERCOM[Debug]/codeql-report.sarif)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/INTERCOM[Debug]", "--target", "codeql-analyze"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": []
+    }
+  ],
+
+  "inputs": [
+    {
+      "id": "seedCount",
+      "type": "promptString",
+      "description": "Number of simulation seeds",
+      "default": "100"
+    }
+  ]
+}

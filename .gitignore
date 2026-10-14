@@ -1,0 +1,21 @@
+#******************************************************************************
+# intercom: deterministic master/slave messaging over a single-wire UART
+#
+# Description: Files and directories ignored by Git.
+#*****************************************************************************
+
+# The build directory is ignored to prevent committing build artifacts
+build/
+out/
+cmake-build-*/
+*.o
+*.a
+
+# Cppcheck dump files (left behind if misra-analyze is interrupted)
+*.dump
+*.ctu-info
+
+# IDE files (.vscode/tasks.json is shared, local settings are not)
+.idea/
+.vscode/*
+!.vscode/tasks.json
