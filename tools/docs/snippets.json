@@ -1,0 +1,26 @@
+{
+  "stubs": "tools/docs/snippet_stubs.h",
+  "include": [".", "inc"],
+  "variants": [
+    [{"file": "config/baton_user_config_template.h", "as": "baton_user_config.h"}],
+    ["examples/config"]
+  ],
+  "fragment_marker": "#define BATON_STATE_LIST",
+  "optional": [
+    {
+      "name": "node",
+      "pattern": "^\\s*(static\\s+)?struct baton_node node\\b",
+      "code": "struct baton_node node;"
+    },
+    {
+      "name": "uart_write",
+      "pattern": "^(static\\s+)?int uart_write\\(",
+      "code": "static int uart_write(void* context, const uint8_t* data, size_t length)\n{ (void) context; return board_uart_write(data, length); }"
+    },
+    {
+      "name": "on_message",
+      "pattern": "^(static\\s+)?void on_message\\(",
+      "code": "static void on_message(void* context, uint8_t src, uint8_t msg_id, const uint8_t* data, uint8_t length)\n{ (void) context; (void) src; (void) msg_id; (void) data; (void) length; }"
+    }
+  ]
+}

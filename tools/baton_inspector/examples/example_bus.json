@@ -1,0 +1,62 @@
+{
+  "name": "Baton-C example bus",
+  "native": {
+    "user_config": "../../../examples/config/baton_user_config.h"
+  },
+  "bus": {
+    "baudrate": 9600,
+    "master": "0x01",
+    "slaves": ["0x11", "0x12"],
+    "node_names": {"0x01": "Master", "0x11": "Output board", "0x12": "Panel"},
+    "slot_time_ms": 250,
+    "ack_timeout_ms": 20,
+    "max_retries": 1,
+    "tx_gap_ms": 2,
+    "inter_byte_timeout_ms": 5,
+    "cycle_period_ms": 0,
+    "event_ttl_ms": 5000,
+    "rx_echo": true
+  },
+  "timing": {
+    "tolerance_ms": 3,
+    "rules": {
+      "slot_max_ms": null,
+      "ack_max_ms": null,
+      "cycle_max_ms": null,
+      "cycle_min_ms": null,
+      "unanswered_polls": 3
+    }
+  },
+  "messages": {
+    "NODE_STATUS": {
+      "fields": [{"name": "uptime", "type": "u32", "unit": "s"}]
+    },
+    "CMD_SET_OUTPUT": {
+      "fields": [
+        {"name": "output", "type": "u8"},
+        {"name": "value", "type": "u8", "enum": {"0": "off", "1": "on"}}
+      ]
+    },
+    "OUTPUT_REPORT": {
+      "fields": [
+        {"name": "output", "type": "u8"},
+        {"name": "value", "type": "u8", "enum": {"0": "off", "1": "on"}}
+      ]
+    }
+  },
+  "simulation": {
+    "speed": 1.0,
+    "noise": 0.0,
+    "dead": [],
+    "tx_delay_ms": {},
+    "slaves": {
+      "0x11": {
+        "auto_reply": [{"on": "CMD_SET_OUTPUT", "send": "OUTPUT_REPORT", "copy": true, "priority": "high"}],
+        "publish": [{"state": "NODE_STATUS", "period_ms": 1000, "fields": {"uptime": "$uptime_s"}}]
+      },
+      "0x12": {
+        "publish": [{"state": "NODE_STATUS", "period_ms": 1000, "offset_ms": 500, "fields": {"uptime": "$uptime_s"}}]
+      }
+    }
+  }
+}

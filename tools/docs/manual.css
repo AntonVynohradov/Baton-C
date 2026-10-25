@@ -171,13 +171,17 @@ h1.front {
 
 /* ------------------------------------------------------------------ cover */
 
+/* Same palette as the website hero (extra.css: --sfs-bg, --sfs-accent ...) */
 section.cover {
   page: cover;
+  position: relative;
   height: 297mm;
   box-sizing: border-box;
   padding: 26mm 22mm 20mm;
-  color: #ffffff;
-  background: linear-gradient(160deg, #0b2545 0%, #13315c 60%, #0f5d73 100%);
+  color: #e6edf7;
+  background:
+    radial-gradient(ellipse 70% 45% at 70% 68%, rgba(26, 111, 224, 0.30), transparent 70%),
+    linear-gradient(180deg, #050b16 0%, #061020 55%, #071122 100%);
 }
 
 .cover-top {
@@ -196,7 +200,7 @@ section.imprint .imprint-brand {
   width: 60mm;
   margin: 0 0 6mm;
   padding: 2mm 4mm;
-  background: #0b2545;
+  background: #071122;
   border-radius: 2mm;
 }
 
@@ -207,47 +211,85 @@ section.imprint .imprint-brand img {
   border: none;
 }
 
+.cover-eyebrow {
+  margin-top: 22mm;
+  font-size: 10.5pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2f8cff;
+}
+
 .cover-title {
-  margin-top: 26mm;
-  font-size: 54pt;
+  margin-top: 4mm;
+  font-size: 58pt;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1;
+  color: #ffffff;
 }
 
 .cover-subtitle {
   margin-top: 5mm;
   font-size: 17pt;
-  color: #d7e4f5;
+  color: #9aabc4;
+}
+
+/* Accent rule with a dot, like the line under the website hero title */
+.cover-rule {
+  position: relative;
+  width: 44mm;
+  height: 0.6mm;
+  margin-top: 9mm;
+  background: linear-gradient(90deg, #2f8cff, rgba(47, 140, 255, 0.15));
+}
+
+.cover-rule::after {
+  content: "";
+  position: absolute;
+  left: 18mm;
+  top: -1mm;
+  width: 2.6mm;
+  height: 2.6mm;
+  border-radius: 50%;
+  background: #2f8cff;
 }
 
 .cover-kind {
-  margin-top: 10mm;
+  margin-top: 9mm;
   display: inline-block;
   padding: 2mm 5mm;
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #0b2545;
-  background: #5fd3de;
-  border-radius: 2mm;
+  color: #e6edf7;
+  background: rgba(47, 140, 255, 0.14);
+  border: 0.35mm solid #2f8cff;
+  border-radius: 1.5mm;
 }
 
-.cover-art {
-  display: block;
-  width: 100%;
-  margin-top: 22mm;
-  border-radius: 3mm;
+/* More specific than the generic img[src$=".svg"] rule, which adds a frame */
+section.cover img.cover-art {
+  position: absolute;
+  right: 4mm;
+  bottom: 30mm;
+  width: 150mm;
+  margin: 0;
+  border: none;
+  border-radius: 0;
 }
 
 .cover-meta {
   position: absolute;
   bottom: 20mm;
   left: 22mm;
+  right: 22mm;
+  padding-top: 4mm;
   font-size: 10pt;
   line-height: 1.6;
-  color: #d7e4f5;
+  color: #9aabc4;
+  border-top: 0.3mm solid #15294a;
 }
 
 /* ------------------------------------------------------------------ imprint and contents */

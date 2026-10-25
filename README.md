@@ -1,6 +1,12 @@
 <p align="center">
-  <a href="https://antonvynohradov.github.io/baton-c/"><b>Documentation</b></a> ·
-  <a href="https://antonvynohradov.github.io/baton-c/downloads/Baton-C_User_Manual.pdf"><b>PDF user manual</b></a> ·
+  <a href="https://antonvynohradov.github.io/Baton-C/">
+    <img src="docs/assets/images/readme-banner.svg" alt="Baton-C: one wire, many MCUs, no lost messages — no heap, no RTOS, MISRA C:2012, 100 % coverage" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://antonvynohradov.github.io/Baton-C/"><b>Documentation</b></a> ·
+  <a href="https://antonvynohradov.github.io/Baton-C/downloads/Baton-C_User_Manual.pdf"><b>PDF user manual</b></a> ·
   <a href="https://github.com/AntonVynohradov/Baton-C/releases"><b>Releases</b></a> ·
   <a href="CHANGELOG.md"><b>Changelog</b></a>
 </p>
@@ -10,7 +16,8 @@
 [![Build Static Library](https://github.com/AntonVynohradov/Baton-C/actions/workflows/build-static-lib.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/build-static-lib.yml)
 [![Google Unit Tests](https://github.com/AntonVynohradov/Baton-C/actions/workflows/google-unit-tests.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/google-unit-tests.yml)
 [![Static Analysis](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml)
-[![Documentation](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml)
+[![Build and Deploy Documentation](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml)
+[![Baton Inspector](https://github.com/AntonVynohradov/Baton-C/actions/workflows/baton-inspector.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/baton-inspector.yml)
 
 ## Overview
 
@@ -24,11 +31,11 @@ developed for embedded systems that must comply with **MISRA C:2012**.
 
 ### Project Status
 
-🚧 **Prepared for release 1.0.0** — see [CHANGELOG.md](CHANGELOG.md).
+✅ **Release 1.0.0** — stable public API and wire format; see [CHANGELOG.md](CHANGELOG.md).
 
 The library, its unit tests (100 % of lines and branches of `src/`), the bus simulation,
-the Python twin with the C/Python cross-check, the examples and the documentation are
-complete. The Cppcheck MISRA C:2012 addon reports no violations; the deviations are
+the Python twin with the C/Python cross-check, the examples, Baton Inspector and the
+documentation are complete. The Cppcheck MISRA C:2012 addon reports no violations; the deviations are
 documented in [docs/misra.md](docs/misra.md). **It has not yet been tested on hardware**
 — see [Hardware bring-up](docs/integration.md#hardware-bring-up).
 
@@ -52,7 +59,7 @@ SYNC | DST | SRC | CTRL | LEN | PAYLOAD[LEN] | CRC16 (big endian)
 
 ## Objectives
 
-### 🎯 Primary goals
+### 🎯 Primary Goals
 
 - **Determinism:** one transmitter at a time, bounded slot and cycle, no function blocks.
 - **Embedded-first:** C11, no heap, no RTOS, no global state, no clock reads; 1696 B of RAM
@@ -68,6 +75,7 @@ SYNC | DST | SRC | CTRL | LEN | PAYLOAD[LEN] | CRC16 (big endian)
 
 - [x] Codec, link, event queue, node layer with master and slave state machines
 - [x] Unit tests, bus simulation, Python twin, examples, documentation, CI
+- [x] Baton Inspector: diagnostic GUI and Python API for automated tests
 - [ ] Bring-up on hardware (STM32 single-wire UART, RS-485)
 - [ ] Compile and run the Zephyr example on a board
 - [ ] Test on 8/16-bit MCUs (AVR, MSP430): warnings, atomicity of the 32-bit state masks
@@ -94,7 +102,7 @@ cmake --build "build/BATON[Debug]" --target misra-analyze
 tests/run_seeds.sh "build/BATON[UnitTests]" 100      # bus simulation on 100 seeds
 ```
 
-### Configuration options
+### Configuration Options
 
 | Option | Default | Description |
 | --- | --- | --- |
@@ -117,7 +125,7 @@ target_link_libraries(app PRIVATE baton)
 Copy `config/baton_user_config_template.h` as `baton_user_config.h` and define the message
 lists — the same on every node of the bus.
 
-### Quick start
+### Quick Start Example
 
 ```c
 #include "baton.h"
@@ -170,26 +178,46 @@ Baton-C/
 │   ├── config/              configuration of the tests and of the analysis
 │   └── run_seeds.sh|.ps1    simulation on many seeds
 ├── examples/                bare_metal, host_serial, zephyr, shared config
-├── tools/docs/              diagrams, PDF manual, stack analysis, snippet check
-├── docs/                    MkDocs sources
+├── tools/
+│   ├── baton_inspector/     Baton Inspector: GUI, Python test API, native bridge, tests
+│   └── docs/                diagrams, PDF manual, stack analysis, snippet check
+├── docs/                    MkDocs sources (website and PDF manual)
+├── overrides/               landing page and header templates
 ├── cmake/                   version, unit_tests, integration_tests, misra_check
-├── .github/workflows/       CI
+├── .github/                 CI workflows, pull request template, review guidelines
+├── .vscode/                 build, test, analysis, tool and documentation tasks
+├── .agents/skills/baton-c/  project rules for coding agents (.claude/skills: Claude Code)
 ├── baton.cmake              library target
-└── CMakeLists.txt, CMakePresets.json, mkdocs.yml
+└── CMakeLists.txt, CMakePresets.json, mkdocs.yml, requirements-dev.txt
 ```
 
 ## Tools
 
 | Tool | Purpose |
 | --- | --- |
+| `tools/baton_inspector` | Baton Inspector: diagnostic GUI and Python API for automated tests (master, monitor, simulation; sequence diagram with timing; timing rules; JSON Lines logs) |
 | `tools/docs/diagrams.py` | Generates the SVG diagrams of the documentation |
 | `tools/docs/build_manual.py` | Builds the PDF user manual |
 | `tools/docs/stack_usage.py` | Worst-case stack per function from GCC call graphs |
 | `tools/docs/check_snippets.py` | Compiles every C snippet of the documentation |
 
+## Releases & Versioning
+
+Versions follow [Semantic Versioning](https://semver.org/): the public API (`baton.h` and
+`inc/`) and the wire format stay compatible within a major version. CMake takes the
+version from the `vX.Y.Z` Git tag and passes it as `BATON_VERSION_MAJOR`,
+`BATON_VERSION_MINOR`, `BATON_VERSION_PATCH` and the string `BATON_VERSION`; `baton.h`
+has the same fallbacks for builds without CMake.
+
+Pushing a `vX.Y.Z` tag runs the [Release workflow](.github/workflows/release.yml): it
+checks that the tag matches `baton.h`, `cmake/version.cmake` and `CHANGELOG.md`, runs
+every quality gate (unit tests with the coverage gate, integration tests, MISRA,
+examples) and publishes the static library with its headers, the MISRA report and the
+PDF user manual as a GitHub Release.
+
 ## Documentation
 
-- Website: <https://antonvynohradov.github.io/baton-c/>
+- Website: <https://antonvynohradov.github.io/Baton-C/>
 - PDF user manual: published with the website and attached to every release
 
 ```bash
@@ -206,13 +234,6 @@ python tools/docs/build_manual.py        # PDF into build/manual/
 - GitHub: [github.com/AntonVynohradov](https://github.com/AntonVynohradov)
 - LinkedIn: [linkedin.com/in/vynohradov](https://www.linkedin.com/in/vynohradov)
 - E-mail: [avynohradov@systemfromscratch.com](mailto:avynohradov@systemfromscratch.com)
-
-## Releases & Versioning
-
-The project follows [Semantic Versioning](https://semver.org/). The version comes from the
-`vX.Y.Z` Git tag (`cmake/version.cmake`), with fallbacks in `baton.h`. A tag starts the
-*Release* workflow: version check, every quality gate, the static library package, the
-MISRA report and the PDF manual as release assets.
 
 ## Contributing
 

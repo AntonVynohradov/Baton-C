@@ -1,108 +1,412 @@
 {
-  // Baton-C tasks: build, tests, analysis and documentation.
-  // Task menu: Ctrl+Shift+B (no default build task, so VS Code shows the list).
-  // Python tasks use the project virtual environment in .venv.
+  // Baton-C tasks. Task menu: Ctrl+Shift+B (no default build task, so VS Code
+  // shows the list) or Terminal > Run Task...
+  // Python tasks use the project virtual environment in .venv; run
+  // "Python: Setup venv" once before the Inspector, test and documentation tasks.
+  // Works on Windows, Linux and macOS ("windows" blocks override the defaults).
   "version": "2.0.0",
   "options": {
     "cwd": "${workspaceFolder}"
   },
   "tasks": [
+    // ======================================================================
+    // Python virtual environment
+    // ======================================================================
     {
-      "label": "Build: Debug",
-      "group": "build",
-      "detail": "Static library, Debug preset",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]'",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Build: Release",
-      "group": "build",
-      "detail": "Static library, Release preset",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[Release]' && cmake --build 'build/BATON[Release]'",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Test: Unit tests + coverage",
-      "group": "build",
-      "detail": "GoogleTest and the bus simulation; fails below 100 % line or branch coverage",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[UnitTests]' && cmake --build 'build/BATON[UnitTests]' --target coverage",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Test: Simulation, 100 seeds",
-      "group": "build",
-      "detail": "Bus simulation runner on 100 seeds",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[UnitTests]' && cmake --build 'build/BATON[UnitTests]' --target baton_sim && sh tests/run_seeds.sh 'build/BATON[UnitTests]' 100",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Test: Integration (pytest)",
-      "group": "build",
-      "detail": "Python twin and the C/Python cross-check",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[IntegrationTests]' && cmake --build 'build/BATON[IntegrationTests]' --target integration_tests",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Test: Examples",
-      "group": "build",
-      "detail": "Build the examples and run the bare-metal simulation",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[Examples]' && cmake --build 'build/BATON[Examples]' && ctest --test-dir 'build/BATON[Examples]' -L example --output-on-failure",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Analysis: MISRA C:2012",
-      "group": "build",
-      "detail": "Cppcheck MISRA addon; fails on any violation",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]' --target misra-analyze",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Analysis: Cppcheck",
-      "group": "build",
-      "detail": "Cppcheck, all checks",
-      "type": "shell",
-      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]' --target cppcheck-analyze",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Docs: Check C snippets",
-      "group": "build",
-      "detail": "Compile every C snippet of docs/",
-      "type": "shell",
-      "command": "python tools/docs/check_snippets.py",
-      "problemMatcher": ["$gcc"]
-    },
-    {
-      "label": "Python: Setup venv",
-      "group": "build",
-      "detail": "Create .venv and install requirements-dev.txt",
-      "type": "shell",
-      "command": "python3 -m venv .venv && .venv/bin/python -m pip install --upgrade -r requirements-dev.txt",
+      "label": "Python: Create venv",
+      "hide": true,
+      "detail": "Create the .venv virtual environment",
+      "type": "process",
+      "command": "python3",
+      "args": ["-m", "venv", ".venv"],
       "windows": {
-        "command": "py -3 -m venv .venv; .venv\\Scripts\\python.exe -m pip install --upgrade -r requirements-dev.txt"
+        "command": "py",
+        "args": ["-3", "-m", "venv", ".venv"]
       },
       "problemMatcher": []
     },
     {
-      "label": "Docs: Serve on localhost",
-      "group": "build",
-      "detail": "mkdocs serve with live reload; opens the browser",
+      "label": "Python: Install requirements",
+      "hide": true,
+      "detail": "pip install -r requirements-dev.txt (Inspector, pytest, MkDocs)",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
-      "args": ["-m", "mkdocs", "serve", "--dev-addr", "127.0.0.1:8000", "--open"],
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["-m", "pip", "install", "--upgrade", "-r", "requirements-dev.txt"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Python: Setup venv",
+      "group": "build",
+      "detail": "Create .venv and install all development requirements",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Python: Create venv", "Python: Install requirements"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Python: Delete venv",
+      "group": "build",
+      "detail": "Remove the .venv folder",
+      "type": "process",
+      "command": "cmake",
+      "args": ["-E", "rm", "-rf", ".venv"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Baton Inspector (tools/baton_inspector)
+    // ======================================================================
+    {
+      "label": "Inspector: Run (Simulation)",
+      "group": "build",
+      "detail": "Start Baton Inspector on the simulated example bus (builds the native bridge on first use)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": [
+        "tools/baton_inspector/baton_inspector.py",
+        "--config", "${input:busDefinition}",
+        "--mode", "simulation",
+        "--start"
+      ],
+      "presentation": { "reveal": "silent", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: Run (Master, serial port)",
+      "group": "build",
+      "detail": "Start Baton Inspector as the master of a real bus",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "tools/baton_inspector/baton_inspector.py",
+        "--config", "${input:busDefinition}",
+        "--mode", "master",
+        "--port", "${input:serialPortPosix}",
+        "--start"
+      ],
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "args": [
+          "tools/baton_inspector/baton_inspector.py",
+          "--config", "${input:busDefinition}",
+          "--mode", "master",
+          "--port", "${input:serialPortWindows}",
+          "--start"
+        ]
+      },
+      "presentation": { "reveal": "silent", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: Run (Monitor, serial port)",
+      "group": "build",
+      "detail": "Start Baton Inspector as a passive monitor of a real bus",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "tools/baton_inspector/baton_inspector.py",
+        "--config", "${input:busDefinition}",
+        "--mode", "monitor",
+        "--port", "${input:serialPortPosix}",
+        "--start"
+      ],
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "args": [
+          "tools/baton_inspector/baton_inspector.py",
+          "--config", "${input:busDefinition}",
+          "--mode", "monitor",
+          "--port", "${input:serialPortWindows}",
+          "--start"
+        ]
+      },
+      "presentation": { "reveal": "silent", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: Attach to a test session",
+      "group": "build",
+      "detail": "Show the live feed of a test that called Session.serve_live(port)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["tools/baton_inspector/baton_inspector.py", "--attach", "${input:livePort}"],
+      "presentation": { "reveal": "silent", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: Run (choose in app)",
+      "group": "build",
+      "detail": "Start Baton Inspector without a session; pick mode, bus definition and port in the window",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["tools/baton_inspector/baton_inspector.py"],
+      "presentation": { "reveal": "silent", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: List serial ports",
+      "group": "build",
+      "detail": "Print the serial ports pyserial can see",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["-m", "serial.tools.list_ports", "-v"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Inspector: Clean native bridge",
+      "group": "build",
+      "detail": "Remove tools/baton_inspector/build (the bridges are rebuilt on demand)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["-E", "rm", "-rf", "tools/baton_inspector/build"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Library build (CMakePresets.json)
+    // ======================================================================
+    {
+      "label": "Library: Configure (Debug)",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "BATON[Debug]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Library: Build (Debug)",
+      "group": "build",
+      "detail": "Static library with debug information",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[Debug]"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Library: Configure (Release)",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "BATON[Release]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Library: Build (Release)",
+      "group": "build",
+      "detail": "Optimized static library (libbaton.a)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[Release]"],
+      "dependsOn": ["Library: Configure (Release)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Library: Clean all builds",
+      "group": "build",
+      "detail": "Remove the build folder of every preset",
+      "type": "process",
+      "command": "cmake",
+      "args": ["-E", "rm", "-rf", "build"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Tests
+    // ======================================================================
+    {
+      "label": "Tests: Configure unit tests",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "BATON[UnitTests]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Build unit tests",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[UnitTests]"],
+      "dependsOn": ["Tests: Configure unit tests"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Tests: Run unit tests",
+      "group": "build",
+      "detail": "GoogleTest suite (with the bus simulation scenarios) through CTest",
+      "type": "process",
+      "command": "ctest",
+      "args": ["--test-dir", "build/BATON[UnitTests]", "-L", "unit", "--output-on-failure"],
+      "dependsOn": ["Tests: Build unit tests"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Coverage report",
+      "group": "build",
+      "detail": "Unit tests + gcovr report (target 'coverage'); fails below 100 % lines or branches",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[UnitTests]", "--target", "coverage"],
+      "dependsOn": ["Tests: Configure unit tests"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Build simulation runner",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[UnitTests]", "--target", "baton_sim"],
+      "dependsOn": ["Tests: Configure unit tests"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Tests: Bus simulation (100 seeds)",
+      "group": "build",
+      "detail": "baton_sim on 100 seeds; prints only the failing ones",
+      "type": "process",
+      "command": "sh",
+      "args": ["tests/run_seeds.sh", "build/BATON[UnitTests]", "100"],
+      "windows": {
+        "command": "powershell",
+        "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "tests/run_seeds.ps1",
+                 "-BuildDir", "build/BATON[UnitTests]", "-Count", "100"]
+      },
+      "dependsOn": ["Tests: Build simulation runner"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Run integration tests",
+      "group": "build",
+      "detail": "pytest suite (Python codec and C/Python cross-check), uses .venv",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["-m", "pytest", "tests/integration", "-v", "-p", "no:cacheprovider"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Configure examples",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--preset", "BATON[Examples]"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Build examples",
+      "hide": true,
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[Examples]"],
+      "dependsOn": ["Tests: Configure examples"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Tests: Run examples",
+      "group": "build",
+      "detail": "Build the examples and run the bare-metal slave on the simulated bus",
+      "type": "process",
+      "command": "ctest",
+      "args": ["--test-dir", "build/BATON[Examples]", "-L", "example", "--output-on-failure"],
+      "dependsOn": ["Tests: Build examples"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Tests: Baton Inspector",
+      "group": "build",
+      "detail": "Tests of Baton Inspector and the example system test suite (simulation), uses .venv",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["-m", "pytest", "tools/baton_inspector/tests", "tools/baton_inspector/examples",
+               "-v", "-p", "no:cacheprovider"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Static analysis (targets exist when the tools are installed)
+    // ======================================================================
+    {
+      "label": "Analysis: Cppcheck",
+      "group": "build",
+      "detail": "Target 'cppcheck-analyze' (report in build/BATON[Debug]/cppcheck.txt)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[Debug]", "--target", "cppcheck-analyze"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": "absolute"
+      }
+    },
+    {
+      "label": "Analysis: MISRA C:2012",
+      "group": "build",
+      "detail": "Target 'misra-analyze' (report in build/BATON[Debug]/misra.txt)",
+      "type": "process",
+      "command": "cmake",
+      "args": ["--build", "build/BATON[Debug]", "--target", "misra-analyze"],
+      "dependsOn": ["Library: Configure (Debug)"],
+      "problemMatcher": []
+    },
+
+    // ======================================================================
+    // Documentation (MkDocs + mkdoxy, needs Doxygen in PATH)
+    // ======================================================================
+    {
+      "label": "Docs: Serve on localhost",
+      "group": "build",
+      "detail": "mkdocs serve on http://127.0.0.1:8000 with live reload; opens the browser",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["-m", "mkdocs", "serve", "--dev-addr", "127.0.0.1:${input:docsPort}", "--open"],
       "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
       "problemMatcher": {
         "owner": "mkdocs",
         "pattern": { "regexp": "^(ERROR|WARNING)\\s+-\\s+(.*)$", "severity": 1, "message": 2 },
-        "background": { "activesBegin": true, "beginsPattern": "Building documentation", "endsPattern": "Serving on" }
+        "background": {
+          "activesBegin": true,
+          "beginsPattern": "Building documentation",
+          "endsPattern": "Serving on"
+        }
       }
     },
     {
@@ -111,17 +415,21 @@
       "detail": "mkdocs build into site/",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
       "args": ["-m", "mkdocs", "build", "--clean"],
       "problemMatcher": []
     },
     {
       "label": "Docs: Build PDF manual",
       "group": "build",
-      "detail": "Print-ready A4 user manual into build/manual/; needs WeasyPrint and Pango",
+      "detail": "Print-ready A4 user manual (cover, contents, page numbers) into build/manual/; needs WeasyPrint and Pango",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
       "args": ["tools/docs/build_manual.py"],
       "problemMatcher": []
     },
@@ -131,9 +439,56 @@
       "detail": "Regenerate the SVG diagrams in docs/assets/images from tools/docs/diagrams.py",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
       "args": ["tools/docs/diagrams.py"],
       "problemMatcher": []
+    },
+    {
+      "label": "Docs: Check C snippets",
+      "group": "build",
+      "detail": "Compile every C code block of docs/*.md against the library (needs gcc)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+      },
+      "args": ["tools/docs/check_snippets.py"],
+      "problemMatcher": []
+    }
+  ],
+
+  "inputs": [
+    {
+      "id": "busDefinition",
+      "type": "promptString",
+      "description": "Bus definition (JSON) of the system",
+      "default": "tools/baton_inspector/examples/example_bus.json"
+    },
+    {
+      "id": "serialPortWindows",
+      "type": "promptString",
+      "description": "Serial port (COM3) or pyserial URL (socket://host:port)",
+      "default": "COM3"
+    },
+    {
+      "id": "serialPortPosix",
+      "type": "promptString",
+      "description": "Serial port (/dev/ttyUSB0, /dev/ttyACM0) or pyserial URL",
+      "default": "/dev/ttyUSB0"
+    },
+    {
+      "id": "livePort",
+      "type": "promptString",
+      "description": "Live port of the test session (Session.serve_live / BATON_LIVE_PORT)",
+      "default": "47555"
+    },
+    {
+      "id": "docsPort",
+      "type": "promptString",
+      "description": "Local documentation port",
+      "default": "8000"
     }
   ]
 }

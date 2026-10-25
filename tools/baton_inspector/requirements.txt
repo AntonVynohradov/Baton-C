@@ -1,0 +1,4 @@
+# Baton Inspector
+# GUI (batoninspector.gui); the Python API for tests needs only pyserial (serial modes)
+PySide6>=6.6
+pyserial>=3.5

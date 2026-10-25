@@ -6,7 +6,7 @@ site_description: >-
   systems: exactly-once events, latest-value states, no heap, no RTOS, MISRA C:2012,
   100 % test coverage.
 site_author: Anton Vynohradov
-site_url: https://antonvynohradov.github.io/baton-c/
+site_url: https://antonvynohradov.github.io/Baton-C/
 repo_url: https://github.com/AntonVynohradov/Baton-C
 repo_name: AntonVynohradov/Baton-C
 edit_uri: ""
@@ -28,6 +28,7 @@ nav:
   - Integration:
       - Integration Guide: integration.md
       - Examples: examples.md
+      - Baton Inspector: inspector.md
   - Reference:
       - API Reference: api.md
       - Doxygen:
@@ -83,6 +84,8 @@ theme:
 
 extra:
   generator: false
+  # Header download button (overrides/partials/header.html); the PDF is built by CI
+  manual_pdf: downloads/Baton-C_User_Manual.pdf
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/AntonVynohradov
@@ -157,7 +160,7 @@ extra:
         - {icon: layers, title: Node, link and codec, text: "Master and slave state machines, reliable events and states on top of a byte-level link and a frame codec.", tags: [baton_node, baton_link, baton_protocol], link: architecture/}
         - {icon: plug, title: Any UART wiring, text: "Single wire with echo check, open drain or RS-485: one non-blocking write function and one interrupt call.", tags: [UART, RS-485], link: integration/}
         - {icon: brackets, title: Working examples, text: "A bare-metal slave that runs as a test on a simulated bus, a PC serial master and a Zephyr slave.", tags: [Bare metal, Zephyr, Host], link: examples/}
-        - {icon: monitor, title: Bus simulation, text: "Up to 7 nodes on a simulated wire at the real byte time, with noise and a dead node, run on 100 seeds.", tags: [GoogleTest, Seeds], link: guide/}
+        - {icon: monitor, title: Baton Inspector, text: "A GUI and Python API: master, monitor or simulation, live sequence diagram with timing, timing rules, field decoding and session logs for automated tests.", tags: [GUI, pytest, JSON Lines], link: inspector/}
         - {icon: document, title: Complete documentation, text: "Protocol specification, guides, measured footprint and stack, API reference and a printable manual.", tags: [API, Guides, PDF], link: protocol/}
         - {icon: check, title: Quality gates in CI, text: "100 % line and branch coverage, a C/Python cross-check, MISRA C:2012 and format checks on every pull request.", tags: [GoogleTest, pytest, Coverage], link: misra/}
     stats:                                   # measured values only
@@ -185,7 +188,8 @@ extra:
     version_header: baton.h
     version_macro: BATON_VERSION
     output: build/manual/Baton-C_User_Manual_v{version}.pdf
-    cover_image: assets/images/bus-topology.svg
+    eyebrow: Open-source embedded library
+    cover_image: assets/images/hero-3d.svg
     appendices: [changelog.md, LICENSE.md]
     unnumbered: [about.md]
     web_only: [index.md, reference/]

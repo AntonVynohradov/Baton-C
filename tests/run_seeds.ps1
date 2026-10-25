@@ -21,10 +21,28 @@ if (-not $exe) {
     exit 2
 }
 
+# Start the runner through .NET: '& $exe' treats the brackets of preset folders such as
+# build/BATON[UnitTests] as a wildcard pattern and does not find the program.
+$exePath = (Get-Item -LiteralPath $exe).FullName
+
+function Invoke-Simulation([int]$Seed) {
+    $info = New-Object System.Diagnostics.ProcessStartInfo
+    $info.FileName = $exePath
+    $info.Arguments = "$Seed"
+    $info.UseShellExecute = $false
+    $info.RedirectStandardOutput = $true
+    $info.RedirectStandardError = $true
+    $process = [System.Diagnostics.Process]::Start($info)
+    $stdout = $process.StandardOutput.ReadToEndAsync()
+    $stderr = $process.StandardError.ReadToEndAsync()
+    $process.WaitForExit()
+    return $stdout.Result + $stderr.Result
+}
+
 $fails = 0
 for ($i = 1; $i -le $Count; $i++) {
     $seed = $i * 7919
-    $out = & $exe $seed 2>&1 | Out-String
+    $out = Invoke-Simulation $seed
     if ($out -notmatch "ALL TESTS PASSED") {
         $fails++
         Write-Host "=== seed $seed ==="

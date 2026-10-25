@@ -19,7 +19,7 @@
 # Last Updated: October 2026
 # SPDX-License-Identifier: Apache-2.0
 #
-# Inputs (-D): CPPCHECK, PYTHON, MISRA_SCRIPT, SOURCE_DIR, CONFIG_DIR, OUTPUT, RULE_TEXTS (optional),
+# Inputs (-D): CPPCHECK, PYTHON, MISRA_SCRIPT, SOURCE_DIR, OUTPUT, CONFIG_DIR and RULE_TEXTS (optional),
 #              FAIL_ON_VIOLATION (optional, ON makes any violation a build error)
 #
 ################################################################################
@@ -29,6 +29,12 @@
 # ==============================================================================
 
 file(GLOB MISRA_SOURCES ${SOURCE_DIR}/src/*.c)
+
+# Optional folder with the configuration header the sources include
+set(MISRA_CONFIG_INCLUDE)
+if(CONFIG_DIR)
+    set(MISRA_CONFIG_INCLUDE -I ${CONFIG_DIR})
+endif()
 
 # ==============================================================================
 # DUMP
@@ -44,7 +50,7 @@ execute_process(
             --suppress=missingIncludeSystem
             -I ${SOURCE_DIR}
             -I ${SOURCE_DIR}/inc
-            -I ${CONFIG_DIR}
+            ${MISRA_CONFIG_INCLUDE}
             ${MISRA_SOURCES}
     RESULT_VARIABLE MISRA_DUMP_RESULT
     OUTPUT_QUIET

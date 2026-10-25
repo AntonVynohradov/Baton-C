@@ -91,8 +91,10 @@ include(baton)
 # ==============================================================================
 
 if(BATON_UNIT_TESTS)
-    # GTest integration, test discovery, the coverage target and the bus simulation runner
+    # GTest integration, test discovery and the coverage target
     include(unit_tests)
+    # Bus simulation runner for many seeds (library-specific)
+    include(sim_tests)
 endif()
 
 # ==============================================================================
@@ -148,10 +150,10 @@ if(CPPCHECK_EXECUTABLE)
                 --suppress=checkersReport
                 -I ${CMAKE_SOURCE_DIR}
                 -I ${CMAKE_SOURCE_DIR}/inc
-                -I ${CMAKE_SOURCE_DIR}/tests/config
+                -I ${CMAKE_SOURCE_DIR}/tests/config   # baton_user_config.h of the analysis
                 ${CPPCHECK_EXCLUDES}
                 --output-file=${CMAKE_BINARY_DIR}/cppcheck.txt
-                ${CMAKE_SOURCE_DIR}/src
+                ${CMAKE_SOURCE_DIR}
         COMMAND ${CMAKE_COMMAND} -E cat ${CMAKE_BINARY_DIR}/cppcheck.txt
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         COMMENT "Running Cppcheck static analysis..."

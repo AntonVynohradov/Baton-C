@@ -29,7 +29,8 @@ tests/integration/          pytest + Python twin (baton/protocol.py), cross-chec
 tests/config/               konfiguracja testów i analizy
 tests/run_seeds.sh|.ps1     symulacja na wielu seedach
 examples/                   bare_metal (test w CI na symulowanej magistrali), host_serial (master na porcie PC), zephyr (niekompilowany)
-tools/docs/                 diagrams.py, build_manual.py (PDF), stack_usage.py, check_snippets.py, svgkit.py
+tools/baton_inspector/      Baton Inspector: GUI (PySide6) + API do testów (batoninspector), mostek natywny, testy, przykłady
+tools/docs/                 diagrams.py, hero.py (hero strony/README/PDF), build_manual.py (PDF), stack_usage.py, check_snippets.py, svgkit.py
 docs/ + mkdocs.yml + overrides/   strona MkDocs Material w stylu SystemFromScratch®, źródło PDF
 cmake/                      version (tag vX.Y.Z), unit_tests, integration_tests, misra_check
 baton.cmake                 target `baton` (include() w projekcie aplikacji, BATON_CONFIG_DIR)
@@ -65,6 +66,7 @@ Lokalnie (Windows): pytest, mkdocs i WeasyPrint są w `py -3.14`; MinGW nie ma A
 - **Testy:** 132 testy GoogleTest (w tym 8 scenariuszy symulacji), 100% linii (1053) i gałęzi (601) `src/`; symulacja 100/100 seedów; 11 testów pytest (cross-check 300 ramek); przykład bare-metal przechodzi.
 - **Analiza:** MISRA 0 naruszeń (Cppcheck 2.16.2), 4 odstępstwa (DEV-01..04, X-macro tłumione komentarzami); Cppcheck 0 uwag.
 - **Rozmiar:** 6620 B kodu (Cortex-M4 `-Os`, GCC 15.2), 1696 B RAM na węzeł (szablon), stos `baton_node_process()` 280 B (`-Os`).
+- **Baton Inspector:** tryby master / monitor / symulacja (tryb slave świadomie pominięty — decyzja użytkownika), 42 testy narzędzia + 7 przykładowych testów systemowych; dokładność czasu na USB-UART ok. 1–2 ms (tolerancja 3 ms).
 - **Brak testów na sprzęcie.** Przykład Zephyr i porty STM32 w skillu nie były kompilowane.
 - Repozytorium git ma tylko commit początkowy (`intercom`); zmiany Baton-C nie są jeszcze zacommitowane.
 

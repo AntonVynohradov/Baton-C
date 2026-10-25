@@ -90,5 +90,6 @@ complete programs for bare metal, Zephyr and a PC serial port.
 | Add messages, change sizes or contribute | [Extending the Library](extending.md) |
 | Look up the bytes on the wire | [Protocol](protocol.md) |
 | Connect it to a UART, an RTOS or a build system | [Integration Guide](integration.md) |
+| Watch, measure or test a bus | [Baton Inspector](inspector.md) |
 | Look up a function | [API Reference](api.md) |
-| Read everything offline or print it | [PDF user manual](https://antonvynohradov.github.io/baton-c/downloads/Baton-C_User_Manual.pdf) |
+| Read everything offline or print it | [PDF user manual](https://antonvynohradov.github.io/Baton-C/downloads/Baton-C_User_Manual.pdf) |

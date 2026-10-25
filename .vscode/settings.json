@@ -1,0 +1,41 @@
+{
+  "// Auto Snippet Configuration": "Automatically insert file headers and templates using Gruntfuggly",
+  "// Note": "Pattern matching configuration - snippet names must match exactly in snippet files",
+  "autoSnippet.snippets": [
+    {
+      "pattern": "**/*.h",
+      "snippet": "baton_header"
+    },
+    {
+      "pattern": "**/*.c",
+      "snippet": "baton_source"
+    },
+    {
+      "pattern": "**/gtest_*.cpp",
+      "snippet": "baton_gtest"
+    },
+    {
+      "pattern": "**/*.cmake",
+      "snippet": "baton_cmake"
+    }
+  ],
+  "// C/C++ Intellisense": "Configure C code analysis",
+  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}",
+    "${workspaceFolder}/inc",
+    "${workspaceFolder}/tests/config"
+  ],
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "editor.formatOnSave": true,
+  "editor.trimWhitespaceOnDelete": true,
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.cmake": "cmake"
+  }
+}

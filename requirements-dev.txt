@@ -1,7 +1,10 @@
-# Python packages for development: integration tests, documentation, PDF manual.
+# Python packages for development: Baton Inspector, integration tests, documentation, PDF manual.
 # Install into the project virtual environment (VS Code task "Python: Setup venv"):
 #   python -m pip install -r requirements-dev.txt
 # Documentation also needs Doxygen in PATH (used by mkdoxy).
+
+# Baton Inspector (tools/baton_inspector): GUI and serial modes
+-r tools/baton_inspector/requirements.txt
 
 # Integration tests (tests/integration)
 pytest>=7.0

@@ -35,8 +35,10 @@ jobs:
       - name: Build PDF manual
         run: |
           # Published with the site as /downloads/Baton-C_User_Manual.pdf
-          python tools/docs/build_manual.py --output docs/downloads/Baton-C_User_Manual.pdf      
+          python tools/docs/build_manual.py --output docs/downloads/Baton-C_User_Manual.pdf
 
+      # actions/checkout leaves an HTTPS remote authenticated with GITHUB_TOKEN
+      # (contents: write), so gh-deploy can push to gh-pages without a deploy key.
       - name: Configure git
         run: |
           git config --global user.name "github-actions[bot]"

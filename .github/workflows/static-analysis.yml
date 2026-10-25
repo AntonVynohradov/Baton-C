@@ -39,7 +39,7 @@ jobs:
             --suppress=missingIncludeSystem --suppress=unusedFunction \
             -I . -I inc -I tests/config \
             "${excludes[@]}" \
-            --xml --xml-version=2 src 2> cppcheck-report/cppcheck.xml
+            --xml --xml-version=2 . 2> cppcheck-report/cppcheck.xml
           cppcheck-htmlreport --file=cppcheck-report/cppcheck.xml \
             --report-dir=cppcheck-report/html --source-dir=.
 

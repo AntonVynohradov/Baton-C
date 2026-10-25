@@ -7,7 +7,9 @@ All notable changes to Baton-C are listed here. The format follows
 
 ## [Unreleased]
 
-First public version, prepared for the release 1.0.0. Baton-C continues the internal
+## [1.0.0] - 2026-10-25
+
+First public release. Baton-C continues the internal
 `intercom` library (C99, single static instance, `Intercom_*` API) under a new name,
 API and repository layout; the wire format and the delivery rules are unchanged.
 
@@ -30,6 +32,11 @@ API and repository layout; the wire format and the delivery rules are unchanged.
   measured memory, code size and stack, API reference, MISRA C:2012 page, and a printable
   PDF user manual; generated diagrams (`tools/docs/diagrams.py`) and a stack analysis
   script (`tools/docs/stack_usage.py`).
+- Baton Inspector (`tools/baton_inspector`): diagnostic GUI (PySide6) and headless Python API
+  for automated tests. Master, passive monitor and simulation modes on the real library
+  (native bridge built per `baton_user_config.h`), live UML sequence diagram with frame
+  timing, slot/ACK/cycle measurement and timing and bus-usage rules, JSON field layouts,
+  JSON Lines session logs, live feed for watching a test from the GUI, example pytest suite.
 - CI workflows: build, unit tests with the coverage gate, integration tests, static
   analysis (Cppcheck, MISRA, CodeQL), format check, static library, documentation, SBOM
   and release.
@@ -50,4 +57,5 @@ API and repository layout; the wire format and the delivery rules are unchanged.
 - Code size 6620 B and 280 B of worst-case stack on Cortex-M4 (`-Os`), 1696 B of RAM per
   node with the configuration template.
 
-[Unreleased]: https://github.com/AntonVynohradov/Baton-C/commits/main
+[Unreleased]: https://github.com/AntonVynohradov/Baton-C/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/AntonVynohradov/Baton-C/releases/tag/v1.0.0

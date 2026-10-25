@@ -1,35 +1,39 @@
 #******************************************************************************
-# Baton-C: deterministic master/slave messaging over a single-wire UART
+# Baton-C: Deterministic Master/Slave Messaging over a Single-Wire UART
 #
+# Project:     Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART
 # Description: Files and directories ignored by Git.
+#
+# Author:      Anton Vynohradov
+# Email:       avynohradov@systemfromscratch.com
+#
+# License:     Apache License 2.0
+# Copyright (c) 2026 Anton Vynohradov
+#
+# SPDX-License-Identifier: Apache-2.0
 #*****************************************************************************
 
 # The build directory is ignored to prevent committing build artifacts
 build/
 out/
-cmake-build-*/
-*.o
-*.a
 
 # Cppcheck dump files (left behind if misra-analyze is interrupted)
 *.dump
 *.ctu-info
 
-# IDE files (.vscode/tasks.json is shared, local settings are not)
-.idea/
-.vscode/*
-!.vscode/tasks.json
+# The PyTest cache, Python bytecode cache and virtual environments
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
 
-# Documentation output (site, PDF built by CI into docs/downloads/)
+# MkDocs output and the PDF manual copied into the site by CI
 site/
 docs/downloads/
 
-# Python
-__pycache__/
-*.pyc
-.venv/
-.pytest_cache/
+# Backup repository of the personal Claude skills (moved to its own GitHub repository)
+sfs-claude-skills/
 
-# Coverage data
-*.gcda
-*.gcno
+# Baton-C: Baton Inspector native bridge builds and test results
+tools/baton_inspector/build/
+test-results/

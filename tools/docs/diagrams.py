@@ -21,12 +21,14 @@ layers from inc/, state machines from src/baton_node.c. Preview each one as PNG
 from __future__ import annotations
 
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from svgkit import (BLUE, GREEN, GREY, LIGHT, LINE, NAVY, ORANGE, RED, TEAL, WHITE,  # noqa: E402
-                    Svg, hero_scene)
+                    Svg)
+from hero import baton_hero  # noqa: E402
 
 OUT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
                                     "docs", "assets", "images"))
@@ -355,11 +357,59 @@ def state_machines() -> None:
     s.save(OUT + "/state-machines.svg")
 
 
+def readme_banner() -> None:
+    """README banner: the website hero (text + hero-3d.svg) on its own dark background,
+    so it reads the same on GitHub's light and dark themes."""
+    w, h = 1280, 520
+    font = "Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
+    with open(os.path.join(OUT, "hero-3d.svg"), encoding="utf-8") as f:
+        hero = f.read()
+    # Nest the hero scene as an inner <svg> fitted into the right part of the banner
+    size = re.search(r'width="(\d+)" height="(\d+)"', hero)
+    box_x, box_y, box_w, box_h = 610, 20, 650, 480
+    scale = min(box_w / int(size.group(1)), box_h / int(size.group(2)))
+    hw, hh = int(size.group(1)) * scale, int(size.group(2)) * scale
+    hero = hero.replace(size.group(0), f'x="{box_x + (box_w - hw) / 2:.0f}" '
+                        f'y="{box_y + (box_h - hh) / 2:.0f}" width="{hw:.0f}" height="{hh:.0f}"', 1)
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" '
+        f'height="{h}" role="img" aria-label="Baton-C: one wire, many MCUs, no lost messages">',
+        "<title>Baton-C: one wire, many MCUs, no lost messages</title>",
+        '<defs><radialGradient id="bannerGlow" cx="72%" cy="62%" r="55%">'
+        '<stop offset="0" stop-color="#1a6fe0" stop-opacity="0.32"/>'
+        '<stop offset="1" stop-color="#1a6fe0" stop-opacity="0"/></radialGradient>'
+        '<linearGradient id="bannerBg" x1="0" y1="0" x2="0" y2="1">'
+        '<stop offset="0" stop-color="#050b16"/><stop offset="1" stop-color="#071122"/>'
+        '</linearGradient></defs>',
+        f'<rect width="{w}" height="{h}" rx="18" fill="url(#bannerBg)"/>',
+        f'<rect width="{w}" height="{h}" rx="18" fill="url(#bannerGlow)"/>',
+        f'<rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="18" fill="none" '
+        f'stroke="#15294a"/>',
+        f'<text x="64" y="118" font-family="{font}" font-size="17" font-weight="700" '
+        f'letter-spacing="3" fill="#2f8cff">OPEN-SOURCE EMBEDDED LIBRARY</text>',
+    ]
+    for y, line, color in ((196, "ONE WIRE,", "#e6edf7"), (264, "MANY MCUS,", "#e6edf7"),
+                           (332, "NO LOST MESSAGES", "#2f8cff")):
+        parts.append(f'<text x="60" y="{y}" font-family="{font}" font-size="54" '
+                     f'font-weight="800" fill="{color}">{line}</text>')
+    parts += [
+        '<rect x="64" y="368" width="150" height="3" rx="1.5" fill="#2f8cff" opacity="0.5"/>',
+        '<circle cx="128" cy="369.5" r="5" fill="#2f8cff"/>',
+        f'<text x="64" y="420" font-family="{font}" font-size="19" fill="#9aabc4">'
+        "No heap · No RTOS · MISRA C:2012 · 100 % coverage</text>",
+        hero,
+        "</svg>",
+    ]
+    path = os.path.join(OUT, "readme-banner.svg")
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(parts) + "\n")
+    print("wrote", os.path.relpath(path))
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    hero_scene(os.path.join(OUT, "hero-3d.svg"), chip_label="Baton-C",
-               chip_sub="single-wire UART bus", transceiver="UART 1-wire",
-               devices=["0x11", "0x12", "0x13"], device_style="module")
+    baton_hero(os.path.join(OUT, "hero-3d.svg"))
+    readme_banner()
     frame_structure()
     payloads()
     architecture()

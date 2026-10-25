@@ -25,7 +25,7 @@ The manual has a cover, an imprint, a table of contents with page numbers,
 numbered chapters, appendices, running headers, page numbers and PDF bookmarks.
 Everything project-specific comes from mkdocs.yml -> extra.manual:
 
-    title, subtitle, version_header, version_macro, output, cover_image,
+    title, subtitle, eyebrow, version_header, version_macro, output, cover_image,
     appendices, unnumbered, web_only, keywords, vendor_trademarks
 
 It is rendered with WeasyPrint, which needs the Pango library.
@@ -265,6 +265,8 @@ def front_matter(manual: dict, version: str, date: str, site_url: str, repo_url:
     subtitle = html.escape(manual.get("subtitle", ""))
     cover = manual.get("cover_image", "")
     cover_img = f'<img class="cover-art" src="{cover}" alt="">' if cover else ""
+    eyebrow = html.escape(manual.get("eyebrow", ""))
+    eyebrow_div = f'<div class="cover-eyebrow">{eyebrow}</div>' if eyebrow else ""
     vendor = manual.get("vendor_trademarks", "")
     vendor_p = (f"<p>{html.escape(vendor)} All other trademarks are the property of their "
                 f"respective owners.</p>") if vendor else ""
@@ -275,8 +277,10 @@ def front_matter(manual: dict, version: str, date: str, site_url: str, repo_url:
   <div class="cover-top">
     <img class="cover-logo" src="{BRAND_LOGO}" alt="{COMPANY}">
   </div>
+  {eyebrow_div}
   <div class="cover-title">{title}</div>
   <div class="cover-subtitle">{subtitle}</div>
+  <div class="cover-rule"></div>
   <div class="cover-kind">User Manual</div>
   {cover_img}
   <div class="cover-meta">

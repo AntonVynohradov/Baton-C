@@ -20,9 +20,9 @@
 Compile every file of src/ with -fstack-usage -fcallgraph-info=su into one
 directory, then:
 
-    python tools/docs/stack_usage.py <dir-with-.ci-files> [--markdown]
+    python tools/docs/stack_usage.py <dir-with-.ci-files> [--markdown] [--prefix lib_]
 
-Prints, for each public function, the worst-case stack in bytes and the call
+Prints, for each public function (prefix: the name of <lib>.cmake), the worst-case stack in bytes and the call
 chain that needs it. Calls through function pointers (the write function,
 the critical section hooks and the application callbacks) and compiler
 builtins (memcpy, memset, memmove) are not included: add the stack of the
@@ -78,13 +78,21 @@ def short(name: str) -> str:
     return name.split(":")[-1].split(".")[0]
 
 
+def default_prefix() -> str:
+    """Symbol prefix of the library: the name of the <lib>.cmake file at the repository root."""
+    root = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    names = sorted(f[:-6] for f in os.listdir(root) if f.endswith(".cmake"))
+    return names[0] + "_" if names else ""
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print(__doc__)
         return 2
     stack, calls, kinds = load(sys.argv[1])
     markdown = "--markdown" in sys.argv[2:]
-    public = sorted(n for n in stack if n.startswith("baton_"))
+    prefix = sys.argv[sys.argv.index("--prefix") + 1] if "--prefix" in sys.argv else default_prefix()
+    public = sorted(n for n in stack if n.startswith(prefix))
     dynamic = [n for n, k in kinds.items() if k != "static"]
     if dynamic:
         print("warning: not static:", ", ".join(dynamic))

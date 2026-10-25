@@ -32,6 +32,15 @@
   border-bottom: 1px solid var(--sfs-border);
 }
 
+/* SystemFromScratch® logo (wide, with transparent margins): use the full header height */
+.md-header__button.md-logo {
+  padding: 0.1rem 0.2rem;
+}
+
+.md-header__button.md-logo img {
+  height: 2.2rem;
+}
+
 /* Diagrams have a white card background; give them some breathing room. */
 .md-typeset img[src$=".svg"] {
   display: block;

@@ -1,6 +1,8 @@
 # Examples
 
-Three examples share one bus definition, `examples/config/baton_user_config.h`: master
+Three examples share one bus definition, `examples/config/baton_user_config.h` (the
+[Baton Inspector](inspector.md) bus definition `tools/baton_inspector/examples/example_bus.json`
+describes the same bus): master
 0x01, slaves 0x11 and 0x12, the state `NODE_STATUS` (uptime in seconds) and the events
 `CMD_SET_OUTPUT` and `OUTPUT_REPORT`.
 

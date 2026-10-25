@@ -34,6 +34,12 @@ jobs:
       - name: Test
         run: ctest --test-dir "build/BATON[UnitTests]" --output-on-failure
 
+      - name: Bus simulation, 100 seeds, ASan + UBSan
+        run: |
+          cmake --preset "BATON[Sanitize]" -B "build/BATON[Sanitize]"
+          cmake --build "build/BATON[Sanitize]" --target baton_sim
+          sh tests/run_seeds.sh "build/BATON[Sanitize]" 100
+
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
