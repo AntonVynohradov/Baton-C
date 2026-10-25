@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baton__config_8h" kind="file" language="C++">
+    <compoundname>baton_config.h</compoundname>
+    <includes local="yes">baton_user_config.h</includes>
+    <includedby refid="baton_8h" local="yes">baton.h</includedby>
+    <includedby refid="baton__node_8h" local="yes">inc/baton_node.h</includedby>
+    <includedby refid="baton__protocol_8h" local="yes">inc/baton_protocol.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/baton_config.h</label>
+        <link refid="baton__config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>baton_user_config.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>baton.h</label>
+        <link refid="baton_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/baton_config.h</label>
+        <link refid="baton__config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/baton_link.h</label>
+        <link refid="baton__link_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/baton_protocol.h</label>
+        <link refid="baton__protocol_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="user-defined">
+      <header>Defines and macros</header>
+      <member refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" kind="define"><name>BATON_MAX_NODES</name></member>
+      <member refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" kind="define"><name>BATON_MAX_PAYLOAD</name></member>
+      <member refid="group__baton__config_1ga4aff6201a1db6da6d4f01e0902e24662" kind="define"><name>BATON_MAX_MSGS_PER_FRAME</name></member>
+      <member refid="group__baton__config_1gaa74471c86e5a7dbbe460983d74d53319" kind="define"><name>BATON_QUEUE_HIGH_SIZE</name></member>
+      <member refid="group__baton__config_1ga62bb4b6203994c62ecbcf85c30cf4ac0" kind="define"><name>BATON_QUEUE_NORMAL_SIZE</name></member>
+      <member refid="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" kind="define"><name>BATON_RX_BUF_SIZE</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Baton build-time configuration: sizes and the application message lists. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Project: Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART Author: Anton Vynohradov Email: <ulink url="mailto:avynohradov@systemfromscratch.com">avynohradov@systemfromscratch.com</ulink></para>
+<para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
+</simplesect>
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+<para>SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;baton_user_config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_MAX_NODES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_MAX_NODES<sp/>8U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_MAX_PAYLOAD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_MAX_PAYLOAD<sp/>64U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_MAX_MSGS_PER_FRAME</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="group__baton__config_1ga4aff6201a1db6da6d4f01e0902e24662" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_MAX_MSGS_PER_FRAME<sp/>16U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_QUEUE_HIGH_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="group__baton__config_1gaa74471c86e5a7dbbe460983d74d53319" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_QUEUE_HIGH_SIZE<sp/>256U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_QUEUE_NORMAL_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="group__baton__config_1ga62bb4b6203994c62ecbcf85c30cf4ac0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_QUEUE_NORMAL_SIZE<sp/>512U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_RX_BUF_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_RX_BUF_SIZE<sp/>128U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_STATE_LIST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;baton_user_config.h<sp/>must<sp/>define<sp/>BATON_STATE_LIST(X)&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_EVENT_LIST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;baton_user_config.h<sp/>must<sp/>define<sp/>BATON_EVENT_LIST(X)&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_MAX_NODES<sp/>&lt;<sp/>2U)<sp/>||<sp/>(BATON_MAX_NODES<sp/>&gt;<sp/>32U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_MAX_NODES<sp/>must<sp/>be<sp/>in<sp/>the<sp/>range<sp/>2..32&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_MAX_PAYLOAD<sp/>&lt;<sp/>16U)<sp/>||<sp/>(BATON_MAX_PAYLOAD<sp/>&gt;<sp/>250U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_MAX_PAYLOAD<sp/>must<sp/>be<sp/>in<sp/>the<sp/>range<sp/>16..250&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_MAX_MSGS_PER_FRAME<sp/>&lt;<sp/>1U)<sp/>||<sp/>(BATON_MAX_MSGS_PER_FRAME<sp/>&gt;<sp/>64U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_MAX_MSGS_PER_FRAME<sp/>must<sp/>be<sp/>in<sp/>the<sp/>range<sp/>1..64&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_QUEUE_HIGH_SIZE<sp/>&lt;<sp/>64U)<sp/>||<sp/>(BATON_QUEUE_HIGH_SIZE<sp/>&gt;<sp/>65532U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_QUEUE_HIGH_SIZE<sp/>must<sp/>be<sp/>in<sp/>the<sp/>range<sp/>64..65532&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_QUEUE_NORMAL_SIZE<sp/>&lt;<sp/>64U)<sp/>||<sp/>(BATON_QUEUE_NORMAL_SIZE<sp/>&gt;<sp/>65532U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_QUEUE_NORMAL_SIZE<sp/>must<sp/>be<sp/>in<sp/>the<sp/>range<sp/>64..65532&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(BATON_RX_BUF_SIZE<sp/>&lt;<sp/>16U)<sp/>||<sp/>(BATON_RX_BUF_SIZE<sp/>&gt;<sp/>4096U)<sp/>\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>||<sp/>((BATON_RX_BUF_SIZE<sp/>&amp;<sp/>(BATON_RX_BUF_SIZE<sp/>-<sp/>1U))<sp/>!=<sp/>0U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;BATON_RX_BUF_SIZE<sp/>must<sp/>be<sp/>a<sp/>power<sp/>of<sp/>two<sp/>in<sp/>the<sp/>range<sp/>16..4096&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BATON_CONFIG_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/baton_config.h"/>
+  </compounddef>
+</doxygen>

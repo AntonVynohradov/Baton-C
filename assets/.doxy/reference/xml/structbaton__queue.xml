@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__queue" kind="struct" language="C++" prot="public">
+    <compoundname>baton_queue</compoundname>
+    <includes refid="baton__queue_8h" local="no">baton_queue.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__queue_1afedec6290df139eef02db3af39bc453e" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* baton_queue::memory</definition>
+        <argsstring></argsstring>
+        <name>memory</name>
+        <qualifiedname>baton_queue::memory</qualifiedname>
+        <briefdescription>
+<para>Record storage, provided by the owner. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="90" column="13" bodyfile="inc/baton_queue.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__queue_1ad06bc1bee0012456ba01870d763faf23" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>baton_queue::size</qualifiedname>
+        <briefdescription>
+<para>Usable bytes, multiple of 4. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="91" column="14" bodyfile="inc/baton_queue.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__queue_1ab5778f5cfa9cc38511fc37a712665769" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <qualifiedname>baton_queue::head</qualifiedname>
+        <briefdescription>
+<para>Oldest record (consumer). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="92" column="14" bodyfile="inc/baton_queue.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <qualifiedname>baton_queue::tail</qualifiedname>
+        <briefdescription>
+<para>Next free byte (producer). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="93" column="14" bodyfile="inc/baton_queue.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Queue state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_queue.h" line="88" column="1" bodyfile="inc/baton_queue.h" bodystart="89" bodyend="94"/>
+    <listofallmembers>
+      <member refid="structbaton__queue_1ab5778f5cfa9cc38511fc37a712665769" prot="public" virt="non-virtual"><scope>baton_queue</scope><name>head</name></member>
+      <member refid="structbaton__queue_1afedec6290df139eef02db3af39bc453e" prot="public" virt="non-virtual"><scope>baton_queue</scope><name>memory</name></member>
+      <member refid="structbaton__queue_1ad06bc1bee0012456ba01870d763faf23" prot="public" virt="non-virtual"><scope>baton_queue</scope><name>size</name></member>
+      <member refid="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" prot="public" virt="non-virtual"><scope>baton_queue</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

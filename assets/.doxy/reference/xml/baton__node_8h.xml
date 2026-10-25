@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baton__node_8h" kind="file" language="C++">
+    <compoundname>baton_node.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes refid="baton__config_8h" local="yes">baton_config.h</includes>
+    <includes refid="baton__defs_8h" local="yes">baton_defs.h</includes>
+    <includes refid="baton__link_8h" local="yes">baton_link.h</includes>
+    <includes refid="baton__queue_8h" local="yes">baton_queue.h</includes>
+    <includedby refid="baton_8h" local="yes">baton.h</includedby>
+    <includedby refid="baton__node_8c" local="yes">src/baton_node.c</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>baton_config.h</label>
+        <link refid="baton__config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>baton_defs.h</label>
+        <link refid="baton__defs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>baton_link.h</label>
+        <link refid="baton__link_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>baton_protocol.h</label>
+        <link refid="baton__protocol_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>baton_queue.h</label>
+        <link refid="baton__queue_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>baton_user_config.h</label>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="8">
+        <label>stddef.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>baton.h</label>
+        <link refid="baton_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structbaton__node__config" prot="public">baton_node_config</innerclass>
+    <innerclass refid="structbaton__stats" prot="public">baton_stats</innerclass>
+    <innerclass refid="structbaton__channel" prot="public">baton_channel</innerclass>
+    <innerclass refid="structbaton__node" prot="public">baton_node</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Return codes</header>
+      <member refid="group__baton__node_1ga271c298010ea6741c08c74b6a67ce8ec" kind="define"><name>BATON_OK</name></member>
+      <member refid="group__baton__node_1ga8acfe75a06405810024a02de2294d897" kind="define"><name>BATON_ERR_PARAM</name></member>
+      <member refid="group__baton__node_1ga0b8cc8cce45194f38c01e9063e6e19d0" kind="define"><name>BATON_ERR_NOT_INIT</name></member>
+      <member refid="group__baton__node_1ga956b3d27aaba33d9052b0ce038cd7de6" kind="define"><name>BATON_ERR_MSG_ID</name></member>
+      <member refid="group__baton__node_1gaff1f5682778c12f843bfeb77cffe7a4c" kind="define"><name>BATON_ERR_LEN</name></member>
+      <member refid="group__baton__node_1ga6ea3d813964c22898f5ed353ab867ebf" kind="define"><name>BATON_ERR_ADDR</name></member>
+      <member refid="group__baton__node_1ga3049ed7097e68cfb98b361fcd161977f" kind="define"><name>BATON_ERR_FULL</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Roles and priorities</header>
+      <member refid="group__baton__node_1ga9a5d2dc7290a78704b247f4076b3f4cb" kind="define"><name>BATON_ROLE_MASTER</name></member>
+      <member refid="group__baton__node_1ga924436716a4118c2ee94d0ac4e4e88d8" kind="define"><name>BATON_ROLE_SLAVE</name></member>
+      <member refid="group__baton__node_1ga8aa85dbc3ae6ef700e2469751e506e5c" kind="define"><name>BATON_PRIO_NORMAL</name></member>
+      <member refid="group__baton__node_1ga4bd2d74c4117e6148d1fd08d47bec32d" kind="define"><name>BATON_PRIO_HIGH</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Derived sizes</header>
+      <member refid="group__baton__node_1ga37e639c9fb57195aea79d43e4bb9a62e" kind="define"><name>BATON_MASK_BYTES</name></member>
+      <member refid="group__baton__node_1ga3a86d6ea4af2d392ee3b0e3780320196" kind="define"><name>BATON_POLL_PREFIX</name></member>
+      <member refid="group__baton__node_1gac270abd5b10f338970743117d2e95979" kind="define"><name>BATON_RESP_PREFIX</name></member>
+      <member refid="group__baton__node_1gaa8a710aac7664384e79bf984a0eaf579" kind="define"><name>BATON_MAX_MSG_LEN</name></member>
+      <member refid="group__baton__node_1ga31fd7bbc001e4383db1dc2eebaa1e56b" kind="define"><name>BATON_DEAD_STREAK</name></member>
+      <member refid="group__baton__node_1ga9d0a2bba399f2e775adff000a11c315b" kind="define"><name>BATON_DEAD_POLL_DIV</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Message identifiers generated from the application message lists</header>
+      <description><para>For every <computeroutput>X(NAME, ID, MAX_LEN)</computeroutput> the library defines <computeroutput>BATON_MSG_&lt;NAME&gt;</computeroutput> (the id) and <computeroutput>BATON_MSG_&lt;NAME&gt;_MAX_LEN</computeroutput>. </para>
+</description>
+      <member refid="group__baton__node_1ga17e42c191225cedf30adc5941690fdef" kind="define"><name>BATON_STATE_COUNT</name></member>
+      <member refid="group__baton__node_1ga161d41c40054717b85b36454132c5421" kind="define"><name>BATON_EVENT_COUNT</name></member>
+      <member refid="group__baton__node_1gaa4819f1d5faf0f04f4f5508b08ea5ea1" kind="define"><name>BATON_STATE_DATA_SIZE</name></member>
+      <member refid="group__baton__node_1ga3e6ec149163a3d4b4621566b3652e8ed" kind="enum"><name>baton_msg_id</name></member>
+      <member refid="group__baton__node_1ga9eff2df503d77a43c07a15a5093f467c" kind="enum"><name>baton_msg_max_len</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Type definitions</header>
+      <member refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kind="typedef"><name>baton_critical_fn</name></member>
+      <member refid="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" kind="typedef"><name>baton_message_fn</name></member>
+      <member refid="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" kind="typedef"><name>baton_drop_fn</name></member>
+      <member refid="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" kind="typedef"><name>baton_poll_done_fn</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <member refid="group__baton__node_1ga97ee9e4ac3ab2acf286a664b0e0c97ef" kind="function"><name>baton_node_default_config</name></member>
+      <member refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kind="function"><name>baton_node_init</name></member>
+      <member refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kind="function"><name>baton_node_process</name></member>
+      <member refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kind="function"><name>baton_node_send</name></member>
+      <member refid="group__baton__node_1ga67e9a7b575f73fb8a120ac21d20d34ea" kind="function"><name>baton_node_publish</name></member>
+      <member refid="group__baton__node_1gaef7ec0ea2f65edec2b84cd8d1ba4a952" kind="function"><name>baton_node_rx_isr</name></member>
+      <member refid="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" kind="function"><name>baton_node_tx_done_isr</name></member>
+      <member refid="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" kind="function"><name>baton_node_get_stats</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Baton node: master/slave bus schedule, reliable events, state mailboxes. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Project: Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART Author: Anton Vynohradov Email: <ulink url="mailto:avynohradov@systemfromscratch.com">avynohradov@systemfromscratch.com</ulink></para>
+<para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
+</simplesect>
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+<para>SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_NODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_NODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__config_8h" kindref="compound">baton_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__defs_8h" kindref="compound">baton_defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__link_8h" kindref="compound">baton_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__queue_8h" kindref="compound">baton_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="group__baton__node_1ga271c298010ea6741c08c74b6a67ce8ec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_OK<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="group__baton__node_1ga8acfe75a06405810024a02de2294d897" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_PARAM<sp/>(-1)<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="group__baton__node_1ga0b8cc8cce45194f38c01e9063e6e19d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_NOT_INIT<sp/>(-2)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="group__baton__node_1ga956b3d27aaba33d9052b0ce038cd7de6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_MSG_ID<sp/>(-3)<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="group__baton__node_1gaff1f5682778c12f843bfeb77cffe7a4c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_LEN<sp/>(-4)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="group__baton__node_1ga6ea3d813964c22898f5ed353ab867ebf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_ADDR<sp/>(-5)<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="group__baton__node_1ga3049ed7097e68cfb98b361fcd161977f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ERR_FULL<sp/>(-6)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="group__baton__node_1ga9a5d2dc7290a78704b247f4076b3f4cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ROLE_MASTER<sp/>0U<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="group__baton__node_1ga924436716a4118c2ee94d0ac4e4e88d8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ROLE_SLAVE<sp/>1U<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="group__baton__node_1ga8aa85dbc3ae6ef700e2469751e506e5c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_PRIO_NORMAL<sp/>0U<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="group__baton__node_1ga4bd2d74c4117e6148d1fd08d47bec32d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_PRIO_HIGH<sp/>1U<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112" refid="group__baton__node_1ga37e639c9fb57195aea79d43e4bb9a62e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_MASK_BYTES<sp/>((BATON_MAX_NODES<sp/>+<sp/>7U)<sp/>/<sp/>8U)</highlight></codeline>
+<codeline lineno="114" refid="group__baton__node_1ga3a86d6ea4af2d392ee3b0e3780320196" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_POLL_PREFIX<sp/>1U</highlight></codeline>
+<codeline lineno="116" refid="group__baton__node_1gac270abd5b10f338970743117d2e95979" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_RESP_PREFIX<sp/>(1U<sp/>+<sp/>BATON_MASK_BYTES)</highlight></codeline>
+<codeline lineno="118" refid="group__baton__node_1gaa8a710aac7664384e79bf984a0eaf579" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_MAX_MSG_LEN<sp/>(BATON_MAX_PAYLOAD<sp/>-<sp/>BATON_RESP_PREFIX<sp/>-<sp/>BATON_TLV_HEADER_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="group__baton__node_1ga31fd7bbc001e4383db1dc2eebaa1e56b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_DEAD_STREAK<sp/>3U</highlight></codeline>
+<codeline lineno="123" refid="group__baton__node_1ga9d0a2bba399f2e775adff000a11c315b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_DEAD_POLL_DIV<sp/>4U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Deviation<sp/>DEV-04<sp/>(Rule<sp/>20.10):<sp/>token<sp/>pasting<sp/>builds<sp/>the<sp/>public<sp/>names<sp/>from<sp/>the<sp/>lists.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>cppcheck-suppress<sp/>misra-c2012-20.10<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_X_MSG_ENUM_(name,<sp/>id,<sp/>max_length)<sp/>BATON_MSG_##name<sp/>=<sp/>(id),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>cppcheck-suppress<sp/>misra-c2012-20.10<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_X_MSG_SIZE_(name,<sp/>id,<sp/>max_length)<sp/>BATON_MSG_##name##_MAX_LEN<sp/>=<sp/>(max_length),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_X_COUNT_(name,<sp/>id,<sp/>max_length)<sp/>+1U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_X_STATE_SIZE_(name,<sp/>id,<sp/>max_length)<sp/>+(uint32_t)<sp/>(max_length)</highlight></codeline>
+<codeline lineno="145" refid="group__baton__node_1ga3e6ec149163a3d4b4621566b3652e8ed" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga3e6ec149163a3d4b4621566b3652e8ed" kindref="member">baton_msg_id</ref></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>BATON_STATE_LIST(BATON_X_MSG_ENUM_)<sp/>BATON_EVENT_LIST(BATON_X_MSG_ENUM_)<sp/>BATON_MSG_INVALID_<sp/>=</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x100</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="group__baton__node_1ga9eff2df503d77a43c07a15a5093f467c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga9eff2df503d77a43c07a15a5093f467c" kindref="member">baton_msg_max_len</ref></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>BATON_STATE_LIST(BATON_X_MSG_SIZE_)<sp/>BATON_EVENT_LIST(BATON_X_MSG_SIZE_)<sp/>BATON_MSG_SIZE_DUMMY_<sp/>=</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="group__baton__node_1ga17e42c191225cedf30adc5941690fdef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_STATE_COUNT<sp/>(0U<sp/>BATON_STATE_LIST(BATON_X_COUNT_))</highlight></codeline>
+<codeline lineno="161" refid="group__baton__node_1ga161d41c40054717b85b36454132c5421" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_EVENT_COUNT<sp/>(0U<sp/>BATON_EVENT_LIST(BATON_X_COUNT_))</highlight></codeline>
+<codeline lineno="163" refid="group__baton__node_1gaa4819f1d5faf0f04f4f5508b08ea5ea1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_STATE_DATA_SIZE<sp/>(1U<sp/>BATON_STATE_LIST(BATON_X_STATE_SIZE_))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kindref="member">baton_critical_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" kindref="member">baton_message_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context,<sp/>uint8_t<sp/>src,<sp/>uint8_t<sp/>msg_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>length);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" kindref="member">baton_drop_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context,<sp/>uint8_t<sp/>msg_id,<sp/>uint8_t<sp/>dst,<sp/>uint32_t<sp/>missed_nodes);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" kindref="member">baton_poll_done_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context,<sp/>uint8_t<sp/>slave,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>responded,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>nack_nodes);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="structbaton__node__config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref></highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Topology<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="structbaton__node__config_1af10d51afb55547fe2b7eeead767a7278" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1af10d51afb55547fe2b7eeead767a7278" kindref="member">role</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208" refid="structbaton__node__config_1a2fce796fa3f9eee7623cf1c53f8929d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1a2fce796fa3f9eee7623cf1c53f8929d0" kindref="member">own_address</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209" refid="structbaton__node__config_1a11b835f3746773f27412ed04c9c75731" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1a11b835f3746773f27412ed04c9c75731" kindref="member">master_address</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210" refid="structbaton__node__config_1a33205443ea010f523eba3be3eaac2c38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/><ref refid="structbaton__node__config_1a33205443ea010f523eba3be3eaac2c38" kindref="member">slave_addresses</ref>;<sp/></highlight></codeline>
+<codeline lineno="211" refid="structbaton__node__config_1aea86f4ba5387ff57f3c81b895ed6719c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1aea86f4ba5387ff57f3c81b895ed6719c" kindref="member">slave_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Timing<sp/>(milliseconds<sp/>unless<sp/>stated)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="structbaton__node__config_1ab128d14e0c78e623b058a6880af3642d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node__config_1ab128d14e0c78e623b058a6880af3642d" kindref="member">baudrate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="215" refid="structbaton__node__config_1a6fd8f61bcd58f01149242e1af19f98b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__node__config_1a6fd8f61bcd58f01149242e1af19f98b4" kindref="member">slot_time_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="216" refid="structbaton__node__config_1a5c535331553b99406df7e4f8cc5b0fd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__node__config_1a5c535331553b99406df7e4f8cc5b0fd5" kindref="member">ack_timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217" refid="structbaton__node__config_1a3de3ac701ce8edbf32ab15164e09a08a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1a3de3ac701ce8edbf32ab15164e09a08a" kindref="member">max_retries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218" refid="structbaton__node__config_1a93dcde0d55dc91f403453fb4eeece742" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1a93dcde0d55dc91f403453fb4eeece742" kindref="member">tx_gap_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219" refid="structbaton__node__config_1aeb146c69373542f51c345a3989187ba0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node__config_1aeb146c69373542f51c345a3989187ba0" kindref="member">inter_byte_timeout_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="220" refid="structbaton__node__config_1af712d246601b240d5b103219e534a364" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__node__config_1af712d246601b240d5b103219e534a364" kindref="member">cycle_period_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="221" refid="structbaton__node__config_1ac9e0bbc2afea917ca03ecc8542e072da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node__config_1ac9e0bbc2afea917ca03ecc8542e072da" kindref="member">event_ttl_ms</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>UART<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="structbaton__node__config_1a4b34389f0717745b7829d0d2d0f14982" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__node__config_1a4b34389f0717745b7829d0d2d0f14982" kindref="member">rx_echo</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="226" refid="structbaton__node__config_1a31ae75d2d9e1f10bd3747ef52a63bb19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref><sp/><ref refid="structbaton__node__config_1a31ae75d2d9e1f10bd3747ef52a63bb19" kindref="member">write</ref>;<sp/></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Critical<sp/>section<sp/>(optional,<sp/>both<sp/>or<sp/>neither)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="structbaton__node__config_1affa00a0dac93a50c4f46dd7f7437ec60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kindref="member">baton_critical_fn</ref><sp/><ref refid="structbaton__node__config_1affa00a0dac93a50c4f46dd7f7437ec60" kindref="member">enter_critical</ref>;<sp/></highlight></codeline>
+<codeline lineno="230" refid="structbaton__node__config_1a6661ce125aafb96e0cecd1056a250075" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kindref="member">baton_critical_fn</ref><sp/><ref refid="structbaton__node__config_1a6661ce125aafb96e0cecd1056a250075" kindref="member">exit_critical</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Application<sp/>callbacks<sp/>(optional,<sp/>called<sp/>from<sp/>baton_node_process())<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="structbaton__node__config_1a864dc2489ba25a5f2a195375c0c8da9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" kindref="member">baton_message_fn</ref><sp/><ref refid="structbaton__node__config_1a864dc2489ba25a5f2a195375c0c8da9c" kindref="member">on_message</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="234" refid="structbaton__node__config_1a06972f3688a9c795debf98274a8ced62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" kindref="member">baton_drop_fn</ref><sp/><ref refid="structbaton__node__config_1a06972f3688a9c795debf98274a8ced62" kindref="member">on_drop</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="235" refid="structbaton__node__config_1aa40cde682b890436e59796913a345131" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" kindref="member">baton_poll_done_fn</ref><sp/><ref refid="structbaton__node__config_1aa40cde682b890436e59796913a345131" kindref="member">on_poll_done</ref>;<sp/></highlight></codeline>
+<codeline lineno="237" refid="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" kindref="member">context</ref>;<sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="structbaton__stats" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__stats" kindref="compound">baton_stats</ref></highlight></codeline>
+<codeline lineno="242"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="243" refid="structbaton__stats_1af7e179afb70e9a9969ec1a96ac2b5480" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1af7e179afb70e9a9969ec1a96ac2b5480" kindref="member">tx_frames</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244" refid="structbaton__stats_1a4eac221331ad2c62661d0674be55173c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a4eac221331ad2c62661d0674be55173c" kindref="member">rx_frames</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245" refid="structbaton__stats_1a6252d53637906da275132cb54cc97a15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a6252d53637906da275132cb54cc97a15" kindref="member">crc_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="246" refid="structbaton__stats_1a067cd289b7057fbe9a714e394f09b08d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a067cd289b7057fbe9a714e394f09b08d" kindref="member">rx_timeouts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="247" refid="structbaton__stats_1a888aea3029d61fa53d405ffb5a9e8964" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a888aea3029d61fa53d405ffb5a9e8964" kindref="member">rx_overflows</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="248" refid="structbaton__stats_1a337f2896677b9ac9217fb193347fdba9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a337f2896677b9ac9217fb193347fdba9" kindref="member">collisions</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="249" refid="structbaton__stats_1a126aaa216649daa50d32dd75de45493a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a126aaa216649daa50d32dd75de45493a" kindref="member">tx_timeouts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="250" refid="structbaton__stats_1ab0f6aace2f12ad8998d17b8dca708bc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1ab0f6aace2f12ad8998d17b8dca708bc8" kindref="member">ack_timeouts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251" refid="structbaton__stats_1adab06a8667575828782db2921eba82b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1adab06a8667575828782db2921eba82b2" kindref="member">retries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="252" refid="structbaton__stats_1aeb9cdff1df8c593411a890641a4a7288" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1aeb9cdff1df8c593411a890641a4a7288" kindref="member">resp_timeouts</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="253" refid="structbaton__stats_1a2234c5eee6ba28582cc8e06714ff22e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a2234c5eee6ba28582cc8e06714ff22e3" kindref="member">duplicates</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254" refid="structbaton__stats_1a6ccf22e40447727e90bf57cb23cf8dcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a6ccf22e40447727e90bf57cb23cf8dcd" kindref="member">bad_messages</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="255" refid="structbaton__stats_1a5628d78039092c1b2247329c6775340d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a5628d78039092c1b2247329c6775340d" kindref="member">events_dropped</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="256" refid="structbaton__stats_1a80eab55d63427f3b9037025cb9b3461a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__stats_1a80eab55d63427f3b9037025cb9b3461a" kindref="member">queue_full</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="257" refid="structbaton__stats_1a1e4fb08a769b3a2e7025235dc4e27755" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__stats_1a1e4fb08a769b3a2e7025235dc4e27755" kindref="member">queue_high_used</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="258" refid="structbaton__stats_1a3ec0afab443d2acdf7363a5807d80ecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__stats_1a3ec0afab443d2acdf7363a5807d80ecb" kindref="member">queue_normal_used</ref>;<sp/></highlight></codeline>
+<codeline lineno="259"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="structbaton__channel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__channel" kindref="compound">baton_channel</ref></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264" refid="structbaton__channel_1a9aad3dab5c2fea1a0a7dc7bdb95d6185" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__channel_1a9aad3dab5c2fea1a0a7dc7bdb95d6185" kindref="member">inflight</ref>[<ref refid="group__baton__config_1ga4aff6201a1db6da6d4f01e0902e24662" kindref="member">BATON_MAX_MSGS_PER_FRAME</ref>];<sp/></highlight></codeline>
+<codeline lineno="265" refid="structbaton__channel_1a44e0264aa5e436e59b1a7757de200d62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__channel_1a44e0264aa5e436e59b1a7757de200d62" kindref="member">inflight_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="266" refid="structbaton__channel_1a648c450a50cafddea204140a28395ac9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__channel_1a648c450a50cafddea204140a28395ac9" kindref="member">tx_seq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="267" refid="structbaton__channel_1a88b322b34b7b04f513ec0a39f95682f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__channel_1a88b322b34b7b04f513ec0a39f95682f6" kindref="member">tx_first</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="268" refid="structbaton__channel_1a75cf884e47626dc0f3a6457f9d0e0c2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__channel_1a75cf884e47626dc0f3a6457f9d0e0c2c" kindref="member">rx_seq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="269" refid="structbaton__channel_1a6a9c654c4497142d48cf275769ccb204" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__channel_1a6a9c654c4497142d48cf275769ccb204" kindref="member">rx_valid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="270" refid="structbaton__channel_1a7e2b0d3e61261046cd9f53ed3aa32743" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__channel_1a7e2b0d3e61261046cd9f53ed3aa32743" kindref="member">rx_last_first</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="271" refid="structbaton__channel_1a1b26267aef45dec278dc5faa0f7b6f4e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__channel_1a1b26267aef45dec278dc5faa0f7b6f4e" kindref="member">resp_seq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="272" refid="structbaton__channel_1ae85c670136d17b7af139a8c25c23c062" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__channel_1ae85c670136d17b7af139a8c25c23c062" kindref="member">resp_valid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="273" refid="structbaton__channel_1a830012dd19f4258a1ef50abbaee323c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__channel_1a830012dd19f4258a1ef50abbaee323c1" kindref="member">fail_streak</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="274"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="structbaton__node" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__node" kindref="compound">baton_node</ref></highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279" refid="structbaton__node_1ab0f4fd8dbe70cd0e1d44f8e533d63458" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref><sp/><ref refid="structbaton__node_1ab0f4fd8dbe70cd0e1d44f8e533d63458" kindref="member">config</ref>;<sp/></highlight></codeline>
+<codeline lineno="280" refid="structbaton__node_1a9dd5e232de1009d00e3221a29527926d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link" kindref="compound">baton_link</ref><sp/><ref refid="structbaton__node_1a9dd5e232de1009d00e3221a29527926d" kindref="member">link</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281" refid="structbaton__node_1a616bd12c9da032f3dd5bb5bf78ff4433" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__node_1a616bd12c9da032f3dd5bb5bf78ff4433" kindref="member">initialized</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="283" refid="structbaton__node_1adcf3ecd428436a0adc6215e898b67a43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1adcf3ecd428436a0adc6215e898b67a43" kindref="member">node_address</ref>[<ref refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" kindref="member">BATON_MAX_NODES</ref>];<sp/></highlight></codeline>
+<codeline lineno="284" refid="structbaton__node_1a1b660c2f01a9106cefc0063613336eca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a1b660c2f01a9106cefc0063613336eca" kindref="member">node_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="285" refid="structbaton__node_1afb786697042eac131b18762d990664ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1afb786697042eac131b18762d990664ec" kindref="member">self_index</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="286" refid="structbaton__node_1a30b0bc77e47c39009da44b3e02e953a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a30b0bc77e47c39009da44b3e02e953a2" kindref="member">others_mask</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="288" refid="structbaton__node_1ad5d20d02924f648be3d34ebb5b611fde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1ad5d20d02924f648be3d34ebb5b611fde" kindref="member">tx_frame</ref>[<ref refid="group__baton__protocol_1ga097cb3d5b22b8c0201c97381bcb33fb5" kindref="member">BATON_FRAME_MAX</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="289" refid="structbaton__node_1af3dcd19513ce909d087fa8583784b6fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1af3dcd19513ce909d087fa8583784b6fb" kindref="member">ack_frame</ref>[<ref refid="group__baton__defs_1ga8028af598ef983658c79bb2ab7d2727c" kindref="member">BATON_FRAME_OVERHEAD</ref>];<sp/></highlight></codeline>
+<codeline lineno="291" refid="structbaton__node_1af9e3933395aeaab44a44a04c370989f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__queue" kindref="compound">baton_queue</ref><sp/><ref refid="structbaton__node_1af9e3933395aeaab44a44a04c370989f7" kindref="member">queue</ref>[2];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="292" refid="structbaton__node_1a63fb2f4979c7fc0510f381aaa2702ef1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a63fb2f4979c7fc0510f381aaa2702ef1" kindref="member">queue_high_memory</ref>[<ref refid="group__baton__config_1gaa74471c86e5a7dbbe460983d74d53319" kindref="member">BATON_QUEUE_HIGH_SIZE</ref>];<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="293" refid="structbaton__node_1ac4cbcfa1e02372ddabc2b31ef4d6f152" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1ac4cbcfa1e02372ddabc2b31ef4d6f152" kindref="member">queue_normal_memory</ref>[<ref refid="group__baton__config_1ga62bb4b6203994c62ecbcf85c30cf4ac0" kindref="member">BATON_QUEUE_NORMAL_SIZE</ref>];<sp/></highlight></codeline>
+<codeline lineno="295" refid="structbaton__node_1a090967171c41fea5802bb4052019855a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a090967171c41fea5802bb4052019855a" kindref="member">state_data</ref>[<ref refid="group__baton__node_1gaa4819f1d5faf0f04f4f5508b08ea5ea1" kindref="member">BATON_STATE_DATA_SIZE</ref>];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="296" refid="structbaton__node_1afd1297567becf6532de3182cb0b2e448" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1afd1297567becf6532de3182cb0b2e448" kindref="member">state_length</ref>[<ref refid="group__baton__node_1ga17e42c191225cedf30adc5941690fdef" kindref="member">BATON_STATE_COUNT</ref><sp/>+<sp/>1U];<sp/></highlight></codeline>
+<codeline lineno="297" refid="structbaton__node_1a1f435baf0c1a6941874e4ff3b9b5d0ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a1f435baf0c1a6941874e4ff3b9b5d0ae" kindref="member">state_dirty</ref>[<ref refid="group__baton__node_1ga17e42c191225cedf30adc5941690fdef" kindref="member">BATON_STATE_COUNT</ref><sp/>+<sp/>1U];<sp/></highlight></codeline>
+<codeline lineno="299" refid="structbaton__node_1a11c7e0c5212608e069edf449d39ec29f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__channel" kindref="compound">baton_channel</ref><sp/><ref refid="structbaton__node_1a11c7e0c5212608e069edf449d39ec29f" kindref="member">channel</ref>[<ref refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" kindref="member">BATON_MAX_NODES</ref>];<sp/></highlight></codeline>
+<codeline lineno="301" refid="structbaton__node_1a58f98545129b6ee64badf5f5fd32bd90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a58f98545129b6ee64badf5f5fd32bd90" kindref="member">link_state</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="302" refid="structbaton__node_1a399b4dcdcbd6116278f2394dfc714647" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a399b4dcdcbd6116278f2394dfc714647" kindref="member">link_timer</ref>;<sp/></highlight></codeline>
+<codeline lineno="304" refid="structbaton__node_1a52f6fc1533c0a7579265b9c47511bfab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a52f6fc1533c0a7579265b9c47511bfab" kindref="member">slot_start</ref>;<sp/></highlight></codeline>
+<codeline lineno="305" refid="structbaton__node_1abe130ed3fd4854afb78f1567cd4f766d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1abe130ed3fd4854afb78f1567cd4f766d" kindref="member">slot_peer</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306" refid="structbaton__node_1a3d826295e9aa777dd4228526ef64dd73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a3d826295e9aa777dd4228526ef64dd73" kindref="member">slot_k</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structbaton__node_1a138730accf151e0c453f5f3581f40aa1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a138730accf151e0c453f5f3581f40aa1" kindref="member">slot_rr</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308" refid="structbaton__node_1a4958a6451869f995b0f22535eee98a07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a4958a6451869f995b0f22535eee98a07" kindref="member">slot_pass</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309" refid="structbaton__node_1ab29dd54cad4d30fecf7844628cfe5510" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1ab29dd54cad4d30fecf7844628cfe5510" kindref="member">retries</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="310" refid="structbaton__node_1a06d345dec758d58f519fa877b80212d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a06d345dec758d58f519fa877b80212d6" kindref="member">slot_nack</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="311" refid="structbaton__node_1a685af113ac7a1350232b23bf8c040d86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a685af113ac7a1350232b23bf8c040d86" kindref="member">poll_seq</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="313" refid="structbaton__node_1a99d693c8f5b968c3919e2548bbc05a2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__node_1a99d693c8f5b968c3919e2548bbc05a2f" kindref="member">current</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="314" refid="structbaton__node_1a3206cbb2521b8778c9a41c4a496aa340" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1a3206cbb2521b8778c9a41c4a496aa340" kindref="member">cycle_start</ref>;<sp/></highlight></codeline>
+<codeline lineno="315" refid="structbaton__node_1ab3b91a4751e30dcb6c535ea3d7c2c7ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1ab3b91a4751e30dcb6c535ea3d7c2c7ac" kindref="member">cycle_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="317" refid="structbaton__node_1abbc540406be77782d2a6772af0a94953" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1abbc540406be77782d2a6772af0a94953" kindref="member">now_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="318" refid="structbaton__node_1ad5629fda7b3cd1dffc536132e3571271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__node_1ad5629fda7b3cd1dffc536132e3571271" kindref="member">last_housekeep_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="319" refid="structbaton__node_1aceb1073fd80e850d733aa4cf134c1234" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__stats" kindref="compound">baton_stats</ref><sp/><ref refid="structbaton__node_1aceb1073fd80e850d733aa4cf134c1234" kindref="member">stats</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="320"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga97ee9e4ac3ab2acf286a664b0e0c97ef" kindref="member">baton_node_default_config</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref>*<sp/>config);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref>*<sp/>config,</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/>uint8_t<sp/>dst,<sp/>uint8_t<sp/>msg_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data,</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>length,<sp/>uint8_t<sp/>priority);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga67e9a7b575f73fb8a120ac21d20d34ea" kindref="member">baton_node_publish</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/>uint8_t<sp/>msg_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data,<sp/>uint8_t<sp/>length);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1gaef7ec0ea2f65edec2b84cd8d1ba4a952" kindref="member">baton_node_rx_isr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" kindref="member">baton_node_tx_done_isr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" kindref="member">baton_node_get_stats</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__node" kindref="compound">baton_node</ref>*<sp/>node,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__stats" kindref="compound">baton_stats</ref>*<sp/>stats);</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BATON_NODE_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/baton_node.h"/>
+  </compounddef>
+</doxygen>

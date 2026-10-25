@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__link" kind="group">
+    <compoundname>baton_link</compoundname>
+    <title>Link</title>
+    <innerclass refid="structbaton__link__config" prot="public">baton_link_config</innerclass>
+    <innerclass refid="structbaton__link__counters" prot="public">baton_link_counters</innerclass>
+    <innerclass refid="structbaton__link" prot="public">baton_link</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Type definitions</header>
+      <memberdef kind="typedef" id="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" prot="public" static="no">
+        <type>int(*</type>
+        <definition>typedef int(* baton_write_fn) (void *context, const uint8_t *data, size_t length)</definition>
+        <argsstring>)(void *context, const uint8_t *data, size_t length)</argsstring>
+        <name>baton_write_fn</name>
+        <briefdescription>
+<para>Start a non-blocking transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The buffer stays valid and unchanged until the link reports BATON_LINK_TX_DONE. The UART driver sends the bytes in the background (interrupt or DMA).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of <ref refid="structbaton__link__config_1a4bd8655cacf38739a1bc4094956ebdab" kindref="member">baton_link_config::context</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Complete frame, SYNC to CRC. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes in <computeroutput>data</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 when the transmission was started, a negative value otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="97" column="9" bodyfile="inc/baton_link.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <memberdef kind="function" id="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_link_init</definition>
+        <argsstring>(struct baton_link *link, const struct baton_link_config *config, uint32_t now_ms)</argsstring>
+        <name>baton_link_init</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Initialize a link and reset its parser, ring and counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state to initialize. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration copied into the link. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link ready. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_PARSE_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NULL argument, no write function, zero baud rate or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="157" column="5" bodyfile="src/baton_link.c" bodystart="162" bodyend="180" declfile="inc/baton_link.h" declline="157" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga21f8be705e91f8892fcb23d367a75868" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_link_rx_isr</definition>
+        <argsstring>(struct baton_link *link, uint8_t byte)</argsstring>
+        <name>baton_link_rx_isr</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Store one received byte. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Call from the UART receive interrupt.</para>
+<para>A byte that does not fit into the ring is counted and dropped. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Received byte. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="166" column="6" bodyfile="src/baton_link.c" bodystart="182" bodyend="202" declfile="inc/baton_link.h" declline="166" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1gaed0ee43249f7dd43698788d5d8a790d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_link_tx_done_isr</definition>
+        <argsstring>(struct baton_link *link)</argsstring>
+        <name>baton_link_tx_done_isr</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+<para>Signal the end of a transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Call from the UART TX-complete interrupt.</para>
+<para>Needed only when <ref refid="structbaton__link__config_1a06d2ad7d063ba3e25f6c9ee737842b88" kindref="member">baton_link_config::rx_echo</ref> is false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="173" column="6" bodyfile="src/baton_link.c" bodystart="204" bodyend="210" declfile="inc/baton_link.h" declline="173" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga2a7717b47dc3b05d936a853a5d56089f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_link_receive</definition>
+        <argsstring>(struct baton_link *link, uint32_t now_ms)</argsstring>
+        <name>baton_link_receive</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Process received bytes until something happens. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Echo bytes of the own transmission are compared and consumed; the other bytes go to the parser. Call again after every event until it returns BATON_LINK_NONE.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>BATON_LINK_FRAME</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A valid frame is available through <ref refid="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" kindref="member">baton_link_frame()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_LINK_TX_DONE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The echo of the own frame is complete. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_LINK_NONE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring is empty (or <computeroutput>link</computeroutput> is NULL). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="188" column="5" bodyfile="src/baton_link.c" bodystart="212" bodyend="247" declfile="inc/baton_link.h" declline="188" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga7040f3856fae6ada0de698e7734244ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_link_transmit</definition>
+        <argsstring>(struct baton_link *link, uint32_t now_ms)</argsstring>
+        <name>baton_link_transmit</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Start a requested transmission when the bus is silent; supervise a running one. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>BATON_LINK_TX_DONE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transmission finished, failed to start or timed out. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_LINK_NONE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nothing to report (or <computeroutput>link</computeroutput> is NULL). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="197" column="5" bodyfile="src/baton_link.c" bodystart="249" bodyend="285" declfile="inc/baton_link.h" declline="197" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga5aa5e371ad80fb07ba40e6d2dab73438" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_link_send</definition>
+        <argsstring>(struct baton_link *link, const uint8_t *data, size_t length)</argsstring>
+        <name>baton_link_send</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Request the transmission of a complete frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The frame is sent by <ref refid="group__baton__link_1ga7040f3856fae6ada0de698e7734244ed" kindref="member">baton_link_transmit()</ref> after the bus has been silent for tx_gap_ms. The buffer must stay valid until the link reports BATON_LINK_TX_DONE. A new request replaces a pending one.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Complete frame, SYNC to CRC. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes (1..BATON_FRAME_MAX). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request stored. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_PARSE_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NULL argument or invalid length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="212" column="5" bodyfile="src/baton_link.c" bodystart="287" bodyend="300" declfile="inc/baton_link.h" declline="212" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga4bf3e074fb952e0ffce23f00012aeea4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_link_cancel</definition>
+        <argsstring>(struct baton_link *link)</argsstring>
+        <name>baton_link_cancel</name>
+        <param>
+          <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+<para>Drop a requested transmission that has not started yet. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="218" column="6" bodyfile="src/baton_link.c" bodystart="302" bodyend="308" declfile="inc/baton_link.h" declline="218" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const struct <ref refid="structbaton__frame" kindref="compound">baton_frame</ref> *</type>
+        <definition>const struct baton_frame * baton_link_frame</definition>
+        <argsstring>(const struct baton_link *link)</argsstring>
+        <name>baton_link_frame</name>
+        <param>
+          <type>const struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+<para>Last frame reported by BATON_LINK_FRAME. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Frame, valid until the next call of <ref refid="group__baton__link_1ga2a7717b47dc3b05d936a853a5d56089f" kindref="member">baton_link_receive()</ref>; NULL when <computeroutput>link</computeroutput> is NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="225" column="25" bodyfile="src/baton_link.c" bodystart="310" bodyend="320" declfile="inc/baton_link.h" declline="225" declcolumn="25"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga064693f533020857a588f2d5e43e23b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool baton_link_rx_busy</definition>
+        <argsstring>(const struct baton_link *link, uint32_t now_ms)</argsstring>
+        <name>baton_link_rx_busy</name>
+        <param>
+          <type>const struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Whether a frame is being received right now. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true when the parser is inside a frame and the inter-byte timeout has not expired. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="233" column="6" bodyfile="src/baton_link.c" bodystart="322" bodyend="334" declfile="inc/baton_link.h" declline="233" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__link_1ga70bae16a39e814a87f07f9cacb80e1a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_frame_ms</definition>
+        <argsstring>(const struct baton_link *link, uint32_t bytes)</argsstring>
+        <name>baton_link_frame_ms</name>
+        <param>
+          <type>const struct <ref refid="structbaton__link" kindref="compound">baton_link</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+<para>Duration of <computeroutput>bytes</computeroutput> bytes on the wire (10 bits per byte), rounded up. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Link state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Milliseconds; 0 when <computeroutput>link</computeroutput> is NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="241" column="10" bodyfile="src/baton_link.c" bodystart="336" bodyend="346" declfile="inc/baton_link.h" declline="241" declcolumn="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Link events</header>
+      <memberdef kind="define" id="group__baton__link_1ga40cab1dc3fa7037a20e2071b6638d9fd" prot="public" static="no">
+        <name>BATON_LINK_NONE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Nothing happened; the receive ring is empty or the transmitter has nothing to report. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="74" column="9" bodyfile="inc/baton_link.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__link_1ga20080688ed133f13027671b8ad52581f" prot="public" static="no">
+        <name>BATON_LINK_FRAME</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>A valid frame was received; read it with <ref refid="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" kindref="member">baton_link_frame()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="76" column="9" bodyfile="inc/baton_link.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__link_1gaf10e4c399d7b5bcbdfa1ce11d1eb3a0f" prot="public" static="no">
+        <name>BATON_LINK_TX_DONE</name>
+        <initializer>2</initializer>
+        <briefdescription>
+<para>The frame passed to <ref refid="group__baton__link_1ga5aa5e371ad80fb07ba40e6d2dab73438" kindref="member">baton_link_send()</ref> was transmitted, failed or timed out. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="78" column="9" bodyfile="inc/baton_link.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Byte-level half-duplex link between the UART and the node layer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The link owns the receive ring (filled from the UART interrupt), a parser with an inter-byte timeout and a transmitter that waits for a silent bus, checks the echo of its own bytes on a single-wire UART and detects a missing end of transmission. It reports what happened as events; the node layer (<ref refid="group__baton__node" kindref="compound">Node</ref>) uses it, applications normally do not call it directly.</para>
+<para>The library never reads a clock: every function that needs the time takes <computeroutput>now_ms</computeroutput>, a monotonic millisecond counter that may wrap.</para>
+<para><simplesect kind="par"><title>Public interface includes:</title><para><itemizedlist>
+<listitem><para>Lifecycle: <ref refid="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" kindref="member">baton_link_init</ref>. </para>
+</listitem>
+<listitem><para>Interrupt entry points: <ref refid="group__baton__link_1ga21f8be705e91f8892fcb23d367a75868" kindref="member">baton_link_rx_isr</ref>, <ref refid="group__baton__link_1gaed0ee43249f7dd43698788d5d8a790d5" kindref="member">baton_link_tx_done_isr</ref>. </para>
+</listitem>
+<listitem><para>Processing: <ref refid="group__baton__link_1ga2a7717b47dc3b05d936a853a5d56089f" kindref="member">baton_link_receive</ref>, <ref refid="group__baton__link_1ga7040f3856fae6ada0de698e7734244ed" kindref="member">baton_link_transmit</ref>, <ref refid="group__baton__link_1ga5aa5e371ad80fb07ba40e6d2dab73438" kindref="member">baton_link_send</ref>, <ref refid="group__baton__link_1ga4bf3e074fb952e0ffce23f00012aeea4" kindref="member">baton_link_cancel</ref>. </para>
+</listitem>
+<listitem><para>Queries: <ref refid="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" kindref="member">baton_link_frame</ref>, <ref refid="group__baton__link_1ga064693f533020857a588f2d5e43e23b7" kindref="member">baton_link_rx_busy</ref>, <ref refid="group__baton__link_1ga70bae16a39e814a87f07f9cacb80e1a3" kindref="member">baton_link_frame_ms</ref>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

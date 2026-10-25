@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_bfccd401955b95cf8c75461437045ac0" kind="dir">
+    <compoundname>inc</compoundname>
+    <innerfile refid="baton__config_8h">baton_config.h</innerfile>
+    <innerfile refid="baton__defs_8h">baton_defs.h</innerfile>
+    <innerfile refid="baton__link_8h">baton_link.h</innerfile>
+    <innerfile refid="baton__node_8h">baton_node.h</innerfile>
+    <innerfile refid="baton__protocol_8h">baton_protocol.h</innerfile>
+    <innerfile refid="baton__queue_8h">baton_queue.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/"/>
+  </compounddef>
+</doxygen>

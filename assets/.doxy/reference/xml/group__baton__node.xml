@@ -1,0 +1,869 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__node" kind="group">
+    <compoundname>baton_node</compoundname>
+    <title>Node</title>
+    <innerclass refid="structbaton__node__config" prot="public">baton_node_config</innerclass>
+    <innerclass refid="structbaton__stats" prot="public">baton_stats</innerclass>
+    <innerclass refid="structbaton__channel" prot="public">baton_channel</innerclass>
+    <innerclass refid="structbaton__node" prot="public">baton_node</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Message identifiers generated from the application message lists</header>
+      <description><para>For every <computeroutput>X(NAME, ID, MAX_LEN)</computeroutput> the library defines <computeroutput>BATON_MSG_&lt;NAME&gt;</computeroutput> (the id) and <computeroutput>BATON_MSG_&lt;NAME&gt;_MAX_LEN</computeroutput>. </para>
+</description>
+      <memberdef kind="enum" id="group__baton__node_1ga3e6ec149163a3d4b4621566b3652e8ed" prot="public" static="no" strong="no">
+        <type></type>
+        <name>baton_msg_id</name>
+        <enumvalue id="group__baton__node_1gga9eff2df503d77a43c07a15a5093f467ca7ef482bc08624860beeae5d994964029" prot="public">
+          <name>BATON_STATE_LIST</name>
+          <initializer>=(BATON_X_MSG_ENUM_) BATON_EVENT_LIST(BATON_X_MSG_ENUM_) BATON_MSG_INVALID_ =
+        0x100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Message identifiers: BATON_MSG_&lt;NAME&gt;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="145" column="1" bodyfile="inc/baton_node.h" bodystart="146" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__baton__node_1ga9eff2df503d77a43c07a15a5093f467c" prot="public" static="no" strong="no">
+        <type></type>
+        <name>baton_msg_max_len</name>
+        <enumvalue id="group__baton__node_1gga9eff2df503d77a43c07a15a5093f467ca7ef482bc08624860beeae5d994964029" prot="public">
+          <name>BATON_STATE_LIST</name>
+          <initializer>=(BATON_X_MSG_ENUM_) BATON_EVENT_LIST(BATON_X_MSG_ENUM_) BATON_MSG_INVALID_ =
+        0x100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Maximum data lengths: BATON_MSG_&lt;NAME&gt;_MAX_LEN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="152" column="1" bodyfile="inc/baton_node.h" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga17e42c191225cedf30adc5941690fdef" prot="public" static="no">
+        <name>BATON_STATE_COUNT</name>
+        <initializer>(0U BATON_STATE_LIST(BATON_X_COUNT_))</initializer>
+        <briefdescription>
+<para>Number of STATE messages. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="159" column="9" bodyfile="inc/baton_node.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga161d41c40054717b85b36454132c5421" prot="public" static="no">
+        <name>BATON_EVENT_COUNT</name>
+        <initializer>(0U BATON_EVENT_LIST(BATON_X_COUNT_))</initializer>
+        <briefdescription>
+<para>Number of EVENT messages. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="161" column="9" bodyfile="inc/baton_node.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1gaa4819f1d5faf0f04f4f5508b08ea5ea1" prot="public" static="no">
+        <name>BATON_STATE_DATA_SIZE</name>
+        <initializer>(1U BATON_STATE_LIST(BATON_X_STATE_SIZE_))</initializer>
+        <briefdescription>
+<para>Bytes of the state mailboxes (one spare byte keeps the array non-empty). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="163" column="9" bodyfile="inc/baton_node.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Type definitions</header>
+      <memberdef kind="typedef" id="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* baton_critical_fn) (void *context)</definition>
+        <argsstring>)(void *context)</argsstring>
+        <name>baton_critical_fn</name>
+        <briefdescription>
+<para>Enter or leave the critical section shared with interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="171" column="9" bodyfile="inc/baton_node.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* baton_message_fn) (void *context, uint8_t src, uint8_t msg_id, const uint8_t *data, uint8_t length)</definition>
+        <argsstring>)(void *context, uint8_t src, uint8_t msg_id, const uint8_t *data, uint8_t length)</argsstring>
+        <name>baton_message_fn</name>
+        <briefdescription>
+<para>A message (state or event) was received. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Called from <ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process()</ref>. <computeroutput>data</computeroutput> is valid only during the call. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="177" column="9" bodyfile="inc/baton_node.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* baton_drop_fn) (void *context, uint8_t msg_id, uint8_t dst, uint32_t missed_nodes)</definition>
+        <argsstring>)(void *context, uint8_t msg_id, uint8_t dst, uint32_t missed_nodes)</argsstring>
+        <name>baton_drop_fn</name>
+        <briefdescription>
+<para>An event was not delivered within event_ttl_ms. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of <ref refid="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" kindref="member">baton_node_config::context</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address given to <ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>missed_nodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node mask of the nodes that did not acknowledge it (a node may still have received it when only its acknowledgement was lost). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="188" column="9" bodyfile="inc/baton_node.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* baton_poll_done_fn) (void *context, uint8_t slave, bool responded, uint32_t nack_nodes)</definition>
+        <argsstring>)(void *context, uint8_t slave, bool responded, uint32_t nack_nodes)</argsstring>
+        <name>baton_poll_done_fn</name>
+        <briefdescription>
+<para>Master only: one poll slot finished. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of <ref refid="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" kindref="member">baton_node_config::context</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>slave</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the polled slave. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>responded</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The slave answered with a RESP. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nack_nodes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node mask of the nodes that did not acknowledge DATA from that slave. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="197" column="9" bodyfile="inc/baton_node.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <memberdef kind="function" id="group__baton__node_1ga97ee9e4ac3ab2acf286a664b0e0c97ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_node_default_config</definition>
+        <argsstring>(struct baton_node_config *config)</argsstring>
+        <name>baton_node_default_config</name>
+        <param>
+          <type>struct <ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Fill <computeroutput>config</computeroutput> with defaults for 9600 bit/s. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Topology, write function and callbacks must still be set. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration to fill; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="332" column="6" bodyfile="src/baton_node.c" bodystart="1337" bodyend="1353" declfile="inc/baton_node.h" declline="332" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_node_init</definition>
+        <argsstring>(struct baton_node *node, const struct baton_node_config *config, uint32_t now_ms)</argsstring>
+        <name>baton_node_init</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Validate the configuration and start the node. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Can be called again to restart. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration copied into the node. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>BATON_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node ready. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_ERR_PARAM</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NULL argument, inconsistent topology, duplicate message ids, a timing that does not allow one maximum-size exchange per slot, or an event that does not fit into a queue. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="344" column="5" bodyfile="src/baton_node.c" bodystart="1355" bodyend="1404" declfile="inc/baton_node.h" declline="344" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_node_process</definition>
+        <argsstring>(struct baton_node *node, uint32_t now_ms)</argsstring>
+        <name>baton_node_process</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>now_ms</declname>
+        </param>
+        <briefdescription>
+<para>Run the protocol. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Call often (every 1 ms is recommended). Never blocks. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state; ignored when NULL or not initialized. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>now_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="352" column="6" bodyfile="src/baton_node.c" bodystart="1406" bodyend="1445" declfile="inc/baton_node.h" declline="352" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_node_send</definition>
+        <argsstring>(struct baton_node *node, uint8_t dst, uint8_t msg_id, const void *data, uint8_t length, uint8_t priority)</argsstring>
+        <name>baton_node_send</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>msg_id</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+<para>Queue an event for reliable delivery. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The data is copied.</para>
+<para>The TTL of the event starts at the time of the last <ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process()</ref> call.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node address or BATON_ADDR_BROADCAST. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EVENT message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data bytes, or NULL when <computeroutput>length</computeroutput> is zero. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of data bytes (at most the MAX_LEN of the message). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BATON_PRIO_NORMAL or BATON_PRIO_HIGH. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>BATON_OK or BATON_ERR_* (see the return codes). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="368" column="5" bodyfile="src/baton_node.c" bodystart="1447" bodyend="1532" declfile="inc/baton_node.h" declline="368" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1ga67e9a7b575f73fb8a120ac21d20d34ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_node_publish</definition>
+        <argsstring>(struct baton_node *node, uint8_t msg_id, const void *data, uint8_t length)</argsstring>
+        <name>baton_node_publish</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>msg_id</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Update a state value; the latest value is delivered to every other node. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>STATE message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data bytes, or NULL when <computeroutput>length</computeroutput> is zero. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of data bytes (at most the MAX_LEN of the message). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>BATON_OK or BATON_ERR_* (see the return codes). Never fails for lack of space. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="379" column="5" bodyfile="src/baton_node.c" bodystart="1534" bodyend="1568" declfile="inc/baton_node.h" declline="379" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1gaef7ec0ea2f65edec2b84cd8d1ba4a952" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_node_rx_isr</definition>
+        <argsstring>(struct baton_node *node, uint8_t byte)</argsstring>
+        <name>baton_node_rx_isr</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Store one received byte. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Call from the UART receive interrupt. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Received byte. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="386" column="6" bodyfile="src/baton_node.c" bodystart="1570" bodyend="1576" declfile="inc/baton_node.h" declline="386" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_node_tx_done_isr</definition>
+        <argsstring>(struct baton_node *node)</argsstring>
+        <name>baton_node_tx_done_isr</name>
+        <param>
+          <type>struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Signal the end of a transmission (only needed when rx_echo is false). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="392" column="6" bodyfile="src/baton_node.c" bodystart="1578" bodyend="1584" declfile="inc/baton_node.h" declline="392" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_node_get_stats</definition>
+        <argsstring>(const struct baton_node *node, struct baton_stats *stats)</argsstring>
+        <name>baton_node_get_stats</name>
+        <param>
+          <type>const struct <ref refid="structbaton__node" kindref="compound">baton_node</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structbaton__stats" kindref="compound">baton_stats</ref> *</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+<para>Copy the diagnostic counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Node state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stats</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination; nothing is written when an argument is NULL. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="399" column="6" bodyfile="src/baton_node.c" bodystart="1586" bodyend="1603" declfile="inc/baton_node.h" declline="399" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Return codes</header>
+      <memberdef kind="define" id="group__baton__node_1ga271c298010ea6741c08c74b6a67ce8ec" prot="public" static="no">
+        <name>BATON_OK</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="87" column="9" bodyfile="inc/baton_node.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga8acfe75a06405810024a02de2294d897" prot="public" static="no">
+        <name>BATON_ERR_PARAM</name>
+        <initializer>(-1)</initializer>
+        <briefdescription>
+<para>Invalid argument or configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="88" column="9" bodyfile="inc/baton_node.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga0b8cc8cce45194f38c01e9063e6e19d0" prot="public" static="no">
+        <name>BATON_ERR_NOT_INIT</name>
+        <initializer>(-2)</initializer>
+        <briefdescription>
+<para><ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init()</ref> was not called or failed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="89" column="9" bodyfile="inc/baton_node.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga956b3d27aaba33d9052b0ce038cd7de6" prot="public" static="no">
+        <name>BATON_ERR_MSG_ID</name>
+        <initializer>(-3)</initializer>
+        <briefdescription>
+<para>Unknown message id, or wrong class (state vs event). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="90" column="9" bodyfile="inc/baton_node.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1gaff1f5682778c12f843bfeb77cffe7a4c" prot="public" static="no">
+        <name>BATON_ERR_LEN</name>
+        <initializer>(-4)</initializer>
+        <briefdescription>
+<para>Data longer than the maximum length of the message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="91" column="9" bodyfile="inc/baton_node.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga6ea3d813964c22898f5ed353ab867ebf" prot="public" static="no">
+        <name>BATON_ERR_ADDR</name>
+        <initializer>(-5)</initializer>
+        <briefdescription>
+<para>Unknown destination or own address. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="92" column="9" bodyfile="inc/baton_node.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga3049ed7097e68cfb98b361fcd161977f" prot="public" static="no">
+        <name>BATON_ERR_FULL</name>
+        <initializer>(-6)</initializer>
+        <briefdescription>
+<para>Event queue has no room; try again later. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="93" column="9" bodyfile="inc/baton_node.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Roles and priorities</header>
+      <memberdef kind="define" id="group__baton__node_1ga9a5d2dc7290a78704b247f4076b3f4cb" prot="public" static="no">
+        <name>BATON_ROLE_MASTER</name>
+        <initializer>0U</initializer>
+        <briefdescription>
+<para>The node that polls the slaves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="100" column="9" bodyfile="inc/baton_node.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga924436716a4118c2ee94d0ac4e4e88d8" prot="public" static="no">
+        <name>BATON_ROLE_SLAVE</name>
+        <initializer>1U</initializer>
+        <briefdescription>
+<para>A node that transmits only when polled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="101" column="9" bodyfile="inc/baton_node.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga8aa85dbc3ae6ef700e2469751e506e5c" prot="public" static="no">
+        <name>BATON_PRIO_NORMAL</name>
+        <initializer>0U</initializer>
+        <briefdescription>
+<para>NORMAL event queue. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="103" column="9" bodyfile="inc/baton_node.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga4bd2d74c4117e6148d1fd08d47bec32d" prot="public" static="no">
+        <name>BATON_PRIO_HIGH</name>
+        <initializer>1U</initializer>
+        <briefdescription>
+<para>HIGH event queue, packed before NORMAL events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="104" column="9" bodyfile="inc/baton_node.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Derived sizes</header>
+      <memberdef kind="define" id="group__baton__node_1ga37e639c9fb57195aea79d43e4bb9a62e" prot="public" static="no">
+        <name>BATON_MASK_BYTES</name>
+        <initializer>((<ref refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" kindref="member">BATON_MAX_NODES</ref> + 7U) / 8U)</initializer>
+        <briefdescription>
+<para>Bytes of a node mask inside a RESP. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="112" column="9" bodyfile="inc/baton_node.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga3a86d6ea4af2d392ee3b0e3780320196" prot="public" static="no">
+        <name>BATON_POLL_PREFIX</name>
+        <initializer>1U</initializer>
+        <briefdescription>
+<para>POLL payload prefix: ACKB. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="114" column="9" bodyfile="inc/baton_node.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1gac270abd5b10f338970743117d2e95979" prot="public" static="no">
+        <name>BATON_RESP_PREFIX</name>
+        <initializer>(1U + <ref refid="group__baton__node_1ga37e639c9fb57195aea79d43e4bb9a62e" kindref="member">BATON_MASK_BYTES</ref>)</initializer>
+        <briefdescription>
+<para>RESP payload prefix: ACKB and the NACK node mask. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="116" column="9" bodyfile="inc/baton_node.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1gaa8a710aac7664384e79bf984a0eaf579" prot="public" static="no">
+        <name>BATON_MAX_MSG_LEN</name>
+        <initializer>(<ref refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" kindref="member">BATON_MAX_PAYLOAD</ref> - <ref refid="group__baton__node_1gac270abd5b10f338970743117d2e95979" kindref="member">BATON_RESP_PREFIX</ref> - <ref refid="group__baton__defs_1ga3039e71e2550831f85a8cbfd144b080e" kindref="member">BATON_TLV_HEADER_SIZE</ref>)</initializer>
+        <briefdescription>
+<para>Largest MAX_LEN of a message: one message must fit into any frame type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="118" column="9" bodyfile="inc/baton_node.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga31fd7bbc001e4383db1dc2eebaa1e56b" prot="public" static="no">
+        <name>BATON_DEAD_STREAK</name>
+        <initializer>3U</initializer>
+        <briefdescription>
+<para>A node failing this many times in a row is treated as unreachable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="121" column="9" bodyfile="inc/baton_node.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__node_1ga9d0a2bba399f2e775adff000a11c315b" prot="public" static="no">
+        <name>BATON_DEAD_POLL_DIV</name>
+        <initializer>4U</initializer>
+        <briefdescription>
+<para>The master polls an unreachable slave only every BATON_DEAD_POLL_DIV-th cycle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="123" column="9" bodyfile="inc/baton_node.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>One bus node (master or slave) on top of the <ref refid="group__baton__link" kindref="compound">Link</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The master passes the baton (POLL) to the slaves in a fixed order; only the polled slave transmits, for at most slot_time_ms, so the bus never has collisions. Messages are of two classes, defined by the application message lists in <computeroutput>baton_user_config.h</computeroutput>: <itemizedlist>
+<listitem><para>EVENT: queued (HIGH or NORMAL priority), acknowledged, retransmitted, delivered exactly once and in order per (source, destination, priority), dropped after event_ttl_ms with an on_drop report; </para>
+</listitem>
+<listitem><para>STATE: a mailbox per state; the latest value is delivered to every other node, intermediate values may be skipped, it can never overflow.</para>
+</listitem>
+</itemizedlist>
+Threading model: <ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init()</ref>, <ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process()</ref> and <ref refid="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" kindref="member">baton_node_get_stats()</ref> run in one context (main loop or one RTOS task). <ref refid="group__baton__node_1gaef7ec0ea2f65edec2b84cd8d1ba4a952" kindref="member">baton_node_rx_isr()</ref> and <ref refid="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" kindref="member">baton_node_tx_done_isr()</ref> are called from the UART interrupts. <ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref> and <ref refid="group__baton__node_1ga67e9a7b575f73fb8a120ac21d20d34ea" kindref="member">baton_node_publish()</ref> may be called from any context only when enter_critical and exit_critical are configured.</para>
+<para>All memory is inside struct <ref refid="structbaton__node" kindref="compound">baton_node</ref>, owned by the caller. No function blocks, allocates memory or reads a clock.</para>
+<para><simplesect kind="par"><title>Public interface includes:</title><para><itemizedlist>
+<listitem><para>Lifecycle: <ref refid="group__baton__node_1ga97ee9e4ac3ab2acf286a664b0e0c97ef" kindref="member">baton_node_default_config</ref>, <ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init</ref>. </para>
+</listitem>
+<listitem><para>Processing: <ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process</ref>. </para>
+</listitem>
+<listitem><para>Messages: <ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send</ref>, <ref refid="group__baton__node_1ga67e9a7b575f73fb8a120ac21d20d34ea" kindref="member">baton_node_publish</ref>. </para>
+</listitem>
+<listitem><para>Interrupt entry points: <ref refid="group__baton__node_1gaef7ec0ea2f65edec2b84cd8d1ba4a952" kindref="member">baton_node_rx_isr</ref>, <ref refid="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" kindref="member">baton_node_tx_done_isr</ref>. </para>
+</listitem>
+<listitem><para>Diagnostics: <ref refid="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" kindref="member">baton_node_get_stats</ref>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

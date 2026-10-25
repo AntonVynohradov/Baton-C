@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__channel" kind="struct" language="C++" prot="public">
+    <compoundname>baton_channel</compoundname>
+    <includes refid="baton__node_8h" local="no">baton_node.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__channel_1a9aad3dab5c2fea1a0a7dc7bdb95d6185" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_channel::inflight[BATON_MAX_MSGS_PER_FRAME]</definition>
+        <argsstring>[BATON_MAX_MSGS_PER_FRAME]</argsstring>
+        <name>inflight</name>
+        <qualifiedname>baton_channel::inflight</qualifiedname>
+        <briefdescription>
+<para>Messages of the unacknowledged frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="264" column="14" bodyfile="inc/baton_node.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a44e0264aa5e436e59b1a7757de200d62" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_channel::inflight_count</definition>
+        <argsstring></argsstring>
+        <name>inflight_count</name>
+        <qualifiedname>baton_channel::inflight_count</qualifiedname>
+        <briefdescription>
+<para><blockquote><para><zwj/>0: the last frame with content is not acknowledged yet. </para>
+</blockquote></para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="265" column="13" bodyfile="inc/baton_node.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a648c450a50cafddea204140a28395ac9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_channel::tx_seq</definition>
+        <argsstring></argsstring>
+        <name>tx_seq</name>
+        <qualifiedname>baton_channel::tx_seq</qualifiedname>
+        <briefdescription>
+<para>Sequence number of the next or outstanding frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="266" column="13" bodyfile="inc/baton_node.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a88b322b34b7b04f513ec0a39f95682f6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_channel::tx_first</definition>
+        <argsstring></argsstring>
+        <name>tx_first</name>
+        <qualifiedname>baton_channel::tx_first</qualifiedname>
+        <briefdescription>
+<para>FIRST flag until the first acknowledgement after init. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="267" column="10" bodyfile="inc/baton_node.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a75cf884e47626dc0f3a6457f9d0e0c2c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_channel::rx_seq</definition>
+        <argsstring></argsstring>
+        <name>rx_seq</name>
+        <qualifiedname>baton_channel::rx_seq</qualifiedname>
+        <briefdescription>
+<para>Sequence number of the last delivered frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="268" column="13" bodyfile="inc/baton_node.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a6a9c654c4497142d48cf275769ccb204" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_channel::rx_valid</definition>
+        <argsstring></argsstring>
+        <name>rx_valid</name>
+        <qualifiedname>baton_channel::rx_valid</qualifiedname>
+        <briefdescription>
+<para>rx_seq is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="269" column="10" bodyfile="inc/baton_node.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a7e2b0d3e61261046cd9f53ed3aa32743" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_channel::rx_last_first</definition>
+        <argsstring></argsstring>
+        <name>rx_last_first</name>
+        <qualifiedname>baton_channel::rx_last_first</qualifiedname>
+        <briefdescription>
+<para>The last delivered frame had the FIRST flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="270" column="10" bodyfile="inc/baton_node.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a1b26267aef45dec278dc5faa0f7b6f4e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_channel::resp_seq</definition>
+        <argsstring></argsstring>
+        <name>resp_seq</name>
+        <qualifiedname>baton_channel::resp_seq</qualifiedname>
+        <briefdescription>
+<para>Master: sequence number of the last RESP with content. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="271" column="13" bodyfile="inc/baton_node.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1ae85c670136d17b7af139a8c25c23c062" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_channel::resp_valid</definition>
+        <argsstring></argsstring>
+        <name>resp_valid</name>
+        <qualifiedname>baton_channel::resp_valid</qualifiedname>
+        <briefdescription>
+<para>Master: resp_seq is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="272" column="10" bodyfile="inc/baton_node.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__channel_1a830012dd19f4258a1ef50abbaee323c1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_channel::fail_streak</definition>
+        <argsstring></argsstring>
+        <name>fail_streak</name>
+        <qualifiedname>baton_channel::fail_streak</qualifiedname>
+        <briefdescription>
+<para>Consecutive failures (slave: ACK, master: RESP). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="273" column="13" bodyfile="inc/baton_node.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stop-and-wait state of the channel to one peer, both directions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Private. </para>
+    </detaileddescription>
+    <location file="inc/baton_node.h" line="262" column="1" bodyfile="inc/baton_node.h" bodystart="263" bodyend="274"/>
+    <listofallmembers>
+      <member refid="structbaton__channel_1a830012dd19f4258a1ef50abbaee323c1" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>fail_streak</name></member>
+      <member refid="structbaton__channel_1a9aad3dab5c2fea1a0a7dc7bdb95d6185" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>inflight</name></member>
+      <member refid="structbaton__channel_1a44e0264aa5e436e59b1a7757de200d62" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>inflight_count</name></member>
+      <member refid="structbaton__channel_1a1b26267aef45dec278dc5faa0f7b6f4e" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>resp_seq</name></member>
+      <member refid="structbaton__channel_1ae85c670136d17b7af139a8c25c23c062" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>resp_valid</name></member>
+      <member refid="structbaton__channel_1a7e2b0d3e61261046cd9f53ed3aa32743" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>rx_last_first</name></member>
+      <member refid="structbaton__channel_1a75cf884e47626dc0f3a6457f9d0e0c2c" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>rx_seq</name></member>
+      <member refid="structbaton__channel_1a6a9c654c4497142d48cf275769ccb204" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>rx_valid</name></member>
+      <member refid="structbaton__channel_1a88b322b34b7b04f513ec0a39f95682f6" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>tx_first</name></member>
+      <member refid="structbaton__channel_1a648c450a50cafddea204140a28395ac9" prot="public" virt="non-virtual"><scope>baton_channel</scope><name>tx_seq</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

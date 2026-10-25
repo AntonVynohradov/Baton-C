@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__node__config" kind="struct" language="C++" prot="public">
+    <compoundname>baton_node_config</compoundname>
+    <includes refid="baton__node_8h" local="no">baton_node.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__node__config_1af10d51afb55547fe2b7eeead767a7278" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::role</definition>
+        <argsstring></argsstring>
+        <name>role</name>
+        <qualifiedname>baton_node_config::role</qualifiedname>
+        <briefdescription>
+<para>BATON_ROLE_MASTER or BATON_ROLE_SLAVE. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="207" column="13" bodyfile="inc/baton_node.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a2fce796fa3f9eee7623cf1c53f8929d0" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::own_address</definition>
+        <argsstring></argsstring>
+        <name>own_address</name>
+        <qualifiedname>baton_node_config::own_address</qualifiedname>
+        <briefdescription>
+<para>Address of this node (master: master_address). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="208" column="13" bodyfile="inc/baton_node.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a11b835f3746773f27412ed04c9c75731" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::master_address</definition>
+        <argsstring></argsstring>
+        <name>master_address</name>
+        <qualifiedname>baton_node_config::master_address</qualifiedname>
+        <briefdescription>
+<para>Address of the master. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="209" column="13" bodyfile="inc/baton_node.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a33205443ea010f523eba3be3eaac2c38" prot="public" static="no" mutable="no">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t* baton_node_config::slave_addresses</definition>
+        <argsstring></argsstring>
+        <name>slave_addresses</name>
+        <qualifiedname>baton_node_config::slave_addresses</qualifiedname>
+        <briefdescription>
+<para>Slaves in polling order, identical on every node. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="210" column="19" bodyfile="inc/baton_node.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1aea86f4ba5387ff57f3c81b895ed6719c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::slave_count</definition>
+        <argsstring></argsstring>
+        <name>slave_count</name>
+        <qualifiedname>baton_node_config::slave_count</qualifiedname>
+        <briefdescription>
+<para>1..BATON_MAX_NODES - 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="211" column="13" bodyfile="inc/baton_node.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1ab128d14e0c78e623b058a6880af3642d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node_config::baudrate</definition>
+        <argsstring></argsstring>
+        <name>baudrate</name>
+        <qualifiedname>baton_node_config::baudrate</qualifiedname>
+        <briefdescription>
+<para>Bit rate, used to compute frame durations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="214" column="14" bodyfile="inc/baton_node.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a6fd8f61bcd58f01149242e1af19f98b4" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_node_config::slot_time_ms</definition>
+        <argsstring></argsstring>
+        <name>slot_time_ms</name>
+        <qualifiedname>baton_node_config::slot_time_ms</qualifiedname>
+        <briefdescription>
+<para>Longest time a slave owns the bus after a POLL. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="215" column="14" bodyfile="inc/baton_node.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a5c535331553b99406df7e4f8cc5b0fd5" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_node_config::ack_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>ack_timeout_ms</name>
+        <qualifiedname>baton_node_config::ack_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Wait for an ACK after a DATA frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="216" column="14" bodyfile="inc/baton_node.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a3de3ac701ce8edbf32ab15164e09a08a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::max_retries</definition>
+        <argsstring></argsstring>
+        <name>max_retries</name>
+        <qualifiedname>baton_node_config::max_retries</qualifiedname>
+        <briefdescription>
+<para>DATA retransmissions per slot (0 = none). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="217" column="13" bodyfile="inc/baton_node.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a93dcde0d55dc91f403453fb4eeece742" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::tx_gap_ms</definition>
+        <argsstring></argsstring>
+        <name>tx_gap_ms</name>
+        <qualifiedname>baton_node_config::tx_gap_ms</qualifiedname>
+        <briefdescription>
+<para>Bus silence required before transmitting. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="218" column="13" bodyfile="inc/baton_node.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1aeb146c69373542f51c345a3989187ba0" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node_config::inter_byte_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>inter_byte_timeout_ms</name>
+        <qualifiedname>baton_node_config::inter_byte_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Silence that aborts a partially received frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="219" column="13" bodyfile="inc/baton_node.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1af712d246601b240d5b103219e534a364" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_node_config::cycle_period_ms</definition>
+        <argsstring></argsstring>
+        <name>cycle_period_ms</name>
+        <qualifiedname>baton_node_config::cycle_period_ms</qualifiedname>
+        <briefdescription>
+<para>Master: shortest time between cycle starts (0 = back to back). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="220" column="14" bodyfile="inc/baton_node.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1ac9e0bbc2afea917ca03ecc8542e072da" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node_config::event_ttl_ms</definition>
+        <argsstring></argsstring>
+        <name>event_ttl_ms</name>
+        <qualifiedname>baton_node_config::event_ttl_ms</qualifiedname>
+        <briefdescription>
+<para>An undelivered event is dropped after this (0 = never). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="221" column="14" bodyfile="inc/baton_node.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a4b34389f0717745b7829d0d2d0f14982" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_node_config::rx_echo</definition>
+        <argsstring></argsstring>
+        <name>rx_echo</name>
+        <qualifiedname>baton_node_config::rx_echo</qualifiedname>
+        <briefdescription>
+<para>true: the UART receives its own bytes (single wire); false: call <ref refid="group__baton__node_1ga633fade7c0d3118f38e1dae7258b52ae" kindref="member">baton_node_tx_done_isr()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="224" column="10" bodyfile="inc/baton_node.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a31ae75d2d9e1f10bd3747ef52a63bb19" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref></type>
+        <definition>baton_write_fn baton_node_config::write</definition>
+        <argsstring></argsstring>
+        <name>write</name>
+        <qualifiedname>baton_node_config::write</qualifiedname>
+        <briefdescription>
+<para>Starts a non-blocking transmission (required). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="226" column="20" bodyfile="inc/baton_node.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1affa00a0dac93a50c4f46dd7f7437ec60" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kindref="member">baton_critical_fn</ref></type>
+        <definition>baton_critical_fn baton_node_config::enter_critical</definition>
+        <argsstring></argsstring>
+        <name>enter_critical</name>
+        <qualifiedname>baton_node_config::enter_critical</qualifiedname>
+        <briefdescription>
+<para>Disable the UART interrupt (or all interrupts). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="229" column="23" bodyfile="inc/baton_node.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a6661ce125aafb96e0cecd1056a250075" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__node_1ga5e3ab82594ca182daef8fc0b3c9f91fb" kindref="member">baton_critical_fn</ref></type>
+        <definition>baton_critical_fn baton_node_config::exit_critical</definition>
+        <argsstring></argsstring>
+        <name>exit_critical</name>
+        <qualifiedname>baton_node_config::exit_critical</qualifiedname>
+        <briefdescription>
+<para>Restore it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="230" column="23" bodyfile="inc/baton_node.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a864dc2489ba25a5f2a195375c0c8da9c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__node_1ga979c7d1e500eb91408dfc8926ad07b6b" kindref="member">baton_message_fn</ref></type>
+        <definition>baton_message_fn baton_node_config::on_message</definition>
+        <argsstring></argsstring>
+        <name>on_message</name>
+        <qualifiedname>baton_node_config::on_message</qualifiedname>
+        <briefdescription>
+<para>A message was received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="233" column="22" bodyfile="inc/baton_node.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a06972f3688a9c795debf98274a8ced62" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__node_1gaf7dad9851dd1dd74606c96ead0d1ebfc" kindref="member">baton_drop_fn</ref></type>
+        <definition>baton_drop_fn baton_node_config::on_drop</definition>
+        <argsstring></argsstring>
+        <name>on_drop</name>
+        <qualifiedname>baton_node_config::on_drop</qualifiedname>
+        <briefdescription>
+<para>An event expired. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="234" column="19" bodyfile="inc/baton_node.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1aa40cde682b890436e59796913a345131" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__node_1ga8f0ad100babf97cb6de114c41b78d70b" kindref="member">baton_poll_done_fn</ref></type>
+        <definition>baton_poll_done_fn baton_node_config::on_poll_done</definition>
+        <argsstring></argsstring>
+        <name>on_poll_done</name>
+        <qualifiedname>baton_node_config::on_poll_done</qualifiedname>
+        <briefdescription>
+<para>Master: a slot finished. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="235" column="24" bodyfile="inc/baton_node.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* baton_node_config::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <qualifiedname>baton_node_config::context</qualifiedname>
+        <briefdescription>
+<para>Passed to every hook and callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="237" column="10" bodyfile="inc/baton_node.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Node configuration passed to <ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init</ref>; copied. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Node mask convention: bit 0 = master, bit i (i &gt;= 1) = slave_addresses[i - 1]. </para>
+    </detaileddescription>
+    <location file="inc/baton_node.h" line="204" column="1" bodyfile="inc/baton_node.h" bodystart="205" bodyend="238"/>
+    <listofallmembers>
+      <member refid="structbaton__node__config_1a5c535331553b99406df7e4f8cc5b0fd5" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>ack_timeout_ms</name></member>
+      <member refid="structbaton__node__config_1ab128d14e0c78e623b058a6880af3642d" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>baudrate</name></member>
+      <member refid="structbaton__node__config_1a9e7ec162cb819f4d96ee37fded9f8d5c" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>context</name></member>
+      <member refid="structbaton__node__config_1af712d246601b240d5b103219e534a364" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>cycle_period_ms</name></member>
+      <member refid="structbaton__node__config_1affa00a0dac93a50c4f46dd7f7437ec60" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>enter_critical</name></member>
+      <member refid="structbaton__node__config_1ac9e0bbc2afea917ca03ecc8542e072da" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>event_ttl_ms</name></member>
+      <member refid="structbaton__node__config_1a6661ce125aafb96e0cecd1056a250075" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>exit_critical</name></member>
+      <member refid="structbaton__node__config_1aeb146c69373542f51c345a3989187ba0" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>inter_byte_timeout_ms</name></member>
+      <member refid="structbaton__node__config_1a11b835f3746773f27412ed04c9c75731" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>master_address</name></member>
+      <member refid="structbaton__node__config_1a3de3ac701ce8edbf32ab15164e09a08a" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>max_retries</name></member>
+      <member refid="structbaton__node__config_1a06972f3688a9c795debf98274a8ced62" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>on_drop</name></member>
+      <member refid="structbaton__node__config_1a864dc2489ba25a5f2a195375c0c8da9c" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>on_message</name></member>
+      <member refid="structbaton__node__config_1aa40cde682b890436e59796913a345131" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>on_poll_done</name></member>
+      <member refid="structbaton__node__config_1a2fce796fa3f9eee7623cf1c53f8929d0" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>own_address</name></member>
+      <member refid="structbaton__node__config_1af10d51afb55547fe2b7eeead767a7278" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>role</name></member>
+      <member refid="structbaton__node__config_1a4b34389f0717745b7829d0d2d0f14982" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>rx_echo</name></member>
+      <member refid="structbaton__node__config_1a33205443ea010f523eba3be3eaac2c38" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>slave_addresses</name></member>
+      <member refid="structbaton__node__config_1aea86f4ba5387ff57f3c81b895ed6719c" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>slave_count</name></member>
+      <member refid="structbaton__node__config_1a6fd8f61bcd58f01149242e1af19f98b4" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>slot_time_ms</name></member>
+      <member refid="structbaton__node__config_1a93dcde0d55dc91f403453fb4eeece742" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>tx_gap_ms</name></member>
+      <member refid="structbaton__node__config_1a31ae75d2d9e1f10bd3747ef52a63bb19" prot="public" virt="non-virtual"><scope>baton_node_config</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

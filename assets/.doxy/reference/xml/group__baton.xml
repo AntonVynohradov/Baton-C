@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton" kind="group">
+    <compoundname>baton</compoundname>
+    <title>Baton API</title>
+    <innergroup refid="group__baton__config">Configuration</innergroup>
+    <innergroup refid="group__baton__defs">Definitions</innergroup>
+    <innergroup refid="group__baton__link">Link</innergroup>
+    <innergroup refid="group__baton__node">Node</innergroup>
+    <innergroup refid="group__baton__protocol">Codec</innergroup>
+    <innergroup refid="group__baton__queue">Event queue</innergroup>
+    <sectiondef kind="user-defined">
+      <header>Library version</header>
+      <description><para>Normally injected by cmake/version.cmake from the Git tag; the values below apply to builds that do not use CMake. </para>
+</description>
+      <memberdef kind="define" id="group__baton_1ga092c176d85f77fc4ccffe33fac6b0fe8" prot="public" static="no">
+        <name>BATON_VERSION_MAJOR</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="baton.h" line="64" column="9" bodyfile="baton.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton_1gaeffa4980e036038de883d16d51701b50" prot="public" static="no">
+        <name>BATON_VERSION_MINOR</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="baton.h" line="68" column="9" bodyfile="baton.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton_1gade46c0f2912d90c745f0d2626e6da7cd" prot="public" static="no">
+        <name>BATON_VERSION_PATCH</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="baton.h" line="72" column="9" bodyfile="baton.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton_1ga3b0f891d8585635427e22961a6e3af55" prot="public" static="no">
+        <name>BATON_VERSION</name>
+        <initializer>&quot;1.0.0&quot;</initializer>
+        <briefdescription>
+<para>Version string &quot;MAJOR.MINOR.PATCH&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="baton.h" line="77" column="9" bodyfile="baton.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Public API of the Baton bus library. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module groups the public interface and its supporting submodules: <ref refid="group__baton__config" kindref="compound">Configuration</ref>, <ref refid="group__baton__defs" kindref="compound">Definitions</ref>, <ref refid="group__baton__protocol" kindref="compound">Codec</ref>, <ref refid="group__baton__link" kindref="compound">Link</ref>, <ref refid="group__baton__queue" kindref="compound">Event queue</ref> and <ref refid="group__baton__node" kindref="compound">Node</ref>.</para>
+<para>Include this single header to use the library: <itemizedlist>
+<listitem><para><ref refid="baton__config_8h" kindref="compound">baton_config.h</ref> build-time sizes and the application message lists </para>
+</listitem>
+<listitem><para><ref refid="baton__defs_8h" kindref="compound">baton_defs.h</ref> frame layout, frame types, control-byte and byte-order helpers </para>
+</listitem>
+<listitem><para><ref refid="baton__protocol_8h" kindref="compound">baton_protocol.h</ref> CRC-16, incremental parser, encoder </para>
+</listitem>
+<listitem><para><ref refid="baton__link_8h" kindref="compound">baton_link.h</ref> half-duplex link: receive ring, parser timeout, transmitter </para>
+</listitem>
+<listitem><para><ref refid="baton__queue_8h" kindref="compound">baton_queue.h</ref> event queue (used by the node) </para>
+</listitem>
+<listitem><para><ref refid="baton__node_8h" kindref="compound">baton_node.h</ref> master/slave node: events, states, schedule </para>
+</listitem>
+</itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

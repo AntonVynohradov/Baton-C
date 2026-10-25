@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__link__counters" kind="struct" language="C++" prot="public">
+    <compoundname>baton_link_counters</compoundname>
+    <includes refid="baton__link_8h" local="no">baton_link.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__link__counters_1a48de6bde85895b362fdf8602ad9a54bb" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::tx_frames</definition>
+        <argsstring></argsstring>
+        <name>tx_frames</name>
+        <qualifiedname>baton_link_counters::tx_frames</qualifiedname>
+        <briefdescription>
+<para>Transmissions started. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="113" column="14" bodyfile="inc/baton_link.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__counters_1abd5d4e97f876f16fdb15893513d3f02a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::rx_frames</definition>
+        <argsstring></argsstring>
+        <name>rx_frames</name>
+        <qualifiedname>baton_link_counters::rx_frames</qualifiedname>
+        <briefdescription>
+<para>Valid frames received (any destination). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="114" column="14" bodyfile="inc/baton_link.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__counters_1ac6c458c56f357e71d80407a4e535480e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::crc_errors</definition>
+        <argsstring></argsstring>
+        <name>crc_errors</name>
+        <qualifiedname>baton_link_counters::crc_errors</qualifiedname>
+        <briefdescription>
+<para>Frames rejected: CRC mismatch or invalid LEN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="115" column="14" bodyfile="inc/baton_link.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__counters_1a0ca6d23d1703d5376261671d06f2bf67" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::rx_timeouts</definition>
+        <argsstring></argsstring>
+        <name>rx_timeouts</name>
+        <qualifiedname>baton_link_counters::rx_timeouts</qualifiedname>
+        <briefdescription>
+<para>Frames aborted by the inter-byte timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="116" column="14" bodyfile="inc/baton_link.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__counters_1a67c12906e215964c9c628b2c32b1be3a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::collisions</definition>
+        <argsstring></argsstring>
+        <name>collisions</name>
+        <qualifiedname>baton_link_counters::collisions</qualifiedname>
+        <briefdescription>
+<para>Transmissions whose echo did not match. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="117" column="14" bodyfile="inc/baton_link.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__counters_1ad04f0a5fe97994d57556fbe848394a58" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_counters::tx_timeouts</definition>
+        <argsstring></argsstring>
+        <name>tx_timeouts</name>
+        <qualifiedname>baton_link_counters::tx_timeouts</qualifiedname>
+        <briefdescription>
+<para>Transmissions that failed to start or did not finish in time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="118" column="14" bodyfile="inc/baton_link.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Link diagnostic counters. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_link.h" line="111" column="1" bodyfile="inc/baton_link.h" bodystart="112" bodyend="119"/>
+    <listofallmembers>
+      <member refid="structbaton__link__counters_1a67c12906e215964c9c628b2c32b1be3a" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>collisions</name></member>
+      <member refid="structbaton__link__counters_1ac6c458c56f357e71d80407a4e535480e" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>crc_errors</name></member>
+      <member refid="structbaton__link__counters_1abd5d4e97f876f16fdb15893513d3f02a" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>rx_frames</name></member>
+      <member refid="structbaton__link__counters_1a0ca6d23d1703d5376261671d06f2bf67" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>rx_timeouts</name></member>
+      <member refid="structbaton__link__counters_1a48de6bde85895b362fdf8602ad9a54bb" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>tx_frames</name></member>
+      <member refid="structbaton__link__counters_1ad04f0a5fe97994d57556fbe848394a58" prot="public" virt="non-virtual"><scope>baton_link_counters</scope><name>tx_timeouts</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

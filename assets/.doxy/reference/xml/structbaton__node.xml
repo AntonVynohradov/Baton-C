@@ -1,0 +1,599 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__node" kind="struct" language="C++" prot="public">
+    <compoundname>baton_node</compoundname>
+    <includes refid="baton__node_8h" local="no">baton_node.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__node_1ab0f4fd8dbe70cd0e1d44f8e533d63458" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__node__config" kindref="compound">baton_node_config</ref></type>
+        <definition>struct baton_node_config baton_node::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>baton_node::config</qualifiedname>
+        <briefdescription>
+<para>Copy of the configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="279" column="28" bodyfile="inc/baton_node.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a9dd5e232de1009d00e3221a29527926d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__link" kindref="compound">baton_link</ref></type>
+        <definition>struct baton_link baton_node::link</definition>
+        <argsstring></argsstring>
+        <name>link</name>
+        <qualifiedname>baton_node::link</qualifiedname>
+        <briefdescription>
+<para>Byte-level link. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="280" column="21" bodyfile="inc/baton_node.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a616bd12c9da032f3dd5bb5bf78ff4433" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_node::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>baton_node::initialized</qualifiedname>
+        <briefdescription>
+<para><ref refid="group__baton__node_1ga18e20ce4a3dc9bbee85f7f556d1dd92d" kindref="member">baton_node_init()</ref> succeeded. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="281" column="10" bodyfile="inc/baton_node.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1adcf3ecd428436a0adc6215e898b67a43" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::node_address[BATON_MAX_NODES]</definition>
+        <argsstring>[BATON_MAX_NODES]</argsstring>
+        <name>node_address</name>
+        <qualifiedname>baton_node::node_address</qualifiedname>
+        <briefdescription>
+<para>Index 0 = master, 1..n = slaves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="283" column="13" bodyfile="inc/baton_node.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a1b660c2f01a9106cefc0063613336eca" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::node_count</definition>
+        <argsstring></argsstring>
+        <name>node_count</name>
+        <qualifiedname>baton_node::node_count</qualifiedname>
+        <briefdescription>
+<para>Master + slaves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="284" column="13" bodyfile="inc/baton_node.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1afb786697042eac131b18762d990664ec" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::self_index</definition>
+        <argsstring></argsstring>
+        <name>self_index</name>
+        <qualifiedname>baton_node::self_index</qualifiedname>
+        <briefdescription>
+<para>Index of this node. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="285" column="13" bodyfile="inc/baton_node.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a30b0bc77e47c39009da44b3e02e953a2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::others_mask</definition>
+        <argsstring></argsstring>
+        <name>others_mask</name>
+        <qualifiedname>baton_node::others_mask</qualifiedname>
+        <briefdescription>
+<para>Node mask of all other nodes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="286" column="14" bodyfile="inc/baton_node.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1ad5d20d02924f648be3d34ebb5b611fde" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::tx_frame[BATON_FRAME_MAX]</definition>
+        <argsstring>[BATON_FRAME_MAX]</argsstring>
+        <name>tx_frame</name>
+        <qualifiedname>baton_node::tx_frame</qualifiedname>
+        <briefdescription>
+<para>POLL, RESP or DATA being sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="288" column="13" bodyfile="inc/baton_node.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1af3dcd19513ce909d087fa8583784b6fb" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::ack_frame[BATON_FRAME_OVERHEAD]</definition>
+        <argsstring>[BATON_FRAME_OVERHEAD]</argsstring>
+        <name>ack_frame</name>
+        <qualifiedname>baton_node::ack_frame</qualifiedname>
+        <briefdescription>
+<para>ACK being sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="289" column="13" bodyfile="inc/baton_node.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1af9e3933395aeaab44a44a04c370989f7" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref></type>
+        <definition>struct baton_queue baton_node::queue[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>queue</name>
+        <qualifiedname>baton_node::queue</qualifiedname>
+        <briefdescription>
+<para>[HIGH], [NORMAL]. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="291" column="22" bodyfile="inc/baton_node.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a63fb2f4979c7fc0510f381aaa2702ef1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::queue_high_memory[BATON_QUEUE_HIGH_SIZE]</definition>
+        <argsstring>[BATON_QUEUE_HIGH_SIZE]</argsstring>
+        <name>queue_high_memory</name>
+        <qualifiedname>baton_node::queue_high_memory</qualifiedname>
+        <briefdescription>
+<para>HIGH queue storage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="292" column="13" bodyfile="inc/baton_node.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1ac4cbcfa1e02372ddabc2b31ef4d6f152" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::queue_normal_memory[BATON_QUEUE_NORMAL_SIZE]</definition>
+        <argsstring>[BATON_QUEUE_NORMAL_SIZE]</argsstring>
+        <name>queue_normal_memory</name>
+        <qualifiedname>baton_node::queue_normal_memory</qualifiedname>
+        <briefdescription>
+<para>NORMAL queue storage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="293" column="13" bodyfile="inc/baton_node.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a090967171c41fea5802bb4052019855a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::state_data[BATON_STATE_DATA_SIZE]</definition>
+        <argsstring>[BATON_STATE_DATA_SIZE]</argsstring>
+        <name>state_data</name>
+        <qualifiedname>baton_node::state_data</qualifiedname>
+        <briefdescription>
+<para>State mailboxes, in list order. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="295" column="13" bodyfile="inc/baton_node.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1afd1297567becf6532de3182cb0b2e448" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::state_length[BATON_STATE_COUNT+1U]</definition>
+        <argsstring>[BATON_STATE_COUNT+1U]</argsstring>
+        <name>state_length</name>
+        <qualifiedname>baton_node::state_length</qualifiedname>
+        <briefdescription>
+<para>Current length of each state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="296" column="13" bodyfile="inc/baton_node.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a1f435baf0c1a6941874e4ff3b9b5d0ae" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::state_dirty[BATON_STATE_COUNT+1U]</definition>
+        <argsstring>[BATON_STATE_COUNT+1U]</argsstring>
+        <name>state_dirty</name>
+        <qualifiedname>baton_node::state_dirty</qualifiedname>
+        <briefdescription>
+<para>Node mask: still to be sent to. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="297" column="14" bodyfile="inc/baton_node.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a11c7e0c5212608e069edf449d39ec29f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__channel" kindref="compound">baton_channel</ref></type>
+        <definition>struct baton_channel baton_node::channel[BATON_MAX_NODES]</definition>
+        <argsstring>[BATON_MAX_NODES]</argsstring>
+        <name>channel</name>
+        <qualifiedname>baton_node::channel</qualifiedname>
+        <briefdescription>
+<para>One channel per node index. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="299" column="24" bodyfile="inc/baton_node.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a58f98545129b6ee64badf5f5fd32bd90" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::link_state</definition>
+        <argsstring></argsstring>
+        <name>link_state</name>
+        <qualifiedname>baton_node::link_state</qualifiedname>
+        <briefdescription>
+<para>Master/slave state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="301" column="13" bodyfile="inc/baton_node.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a399b4dcdcbd6116278f2394dfc714647" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::link_timer</definition>
+        <argsstring></argsstring>
+        <name>link_timer</name>
+        <qualifiedname>baton_node::link_timer</qualifiedname>
+        <briefdescription>
+<para>Start of the current wait. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="302" column="14" bodyfile="inc/baton_node.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a52f6fc1533c0a7579265b9c47511bfab" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::slot_start</definition>
+        <argsstring></argsstring>
+        <name>slot_start</name>
+        <qualifiedname>baton_node::slot_start</qualifiedname>
+        <briefdescription>
+<para>Slave: time of the POLL that started the slot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="304" column="14" bodyfile="inc/baton_node.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1abe130ed3fd4854afb78f1567cd4f766d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::slot_peer</definition>
+        <argsstring></argsstring>
+        <name>slot_peer</name>
+        <qualifiedname>baton_node::slot_peer</qualifiedname>
+        <briefdescription>
+<para>Slave: node index being served. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="305" column="13" bodyfile="inc/baton_node.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a3d826295e9aa777dd4228526ef64dd73" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::slot_k</definition>
+        <argsstring></argsstring>
+        <name>slot_k</name>
+        <qualifiedname>baton_node::slot_k</qualifiedname>
+        <briefdescription>
+<para>Slave: iteration counter over the other slaves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="306" column="13" bodyfile="inc/baton_node.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a138730accf151e0c453f5f3581f40aa1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::slot_rr</definition>
+        <argsstring></argsstring>
+        <name>slot_rr</name>
+        <qualifiedname>baton_node::slot_rr</qualifiedname>
+        <briefdescription>
+<para>Slave: round-robin start, advanced every slot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="307" column="13" bodyfile="inc/baton_node.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a4958a6451869f995b0f22535eee98a07" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::slot_pass</definition>
+        <argsstring></argsstring>
+        <name>slot_pass</name>
+        <qualifiedname>baton_node::slot_pass</qualifiedname>
+        <briefdescription>
+<para>Slave: 0 = reachable peers, 1 = peers considered dead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="308" column="13" bodyfile="inc/baton_node.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1ab29dd54cad4d30fecf7844628cfe5510" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::retries</definition>
+        <argsstring></argsstring>
+        <name>retries</name>
+        <qualifiedname>baton_node::retries</qualifiedname>
+        <briefdescription>
+<para>Slave: retransmissions to slot_peer in this slot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="309" column="13" bodyfile="inc/baton_node.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a06d345dec758d58f519fa877b80212d6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::slot_nack</definition>
+        <argsstring></argsstring>
+        <name>slot_nack</name>
+        <qualifiedname>baton_node::slot_nack</qualifiedname>
+        <briefdescription>
+<para>Slave: peers that did not acknowledge in this slot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="310" column="14" bodyfile="inc/baton_node.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a685af113ac7a1350232b23bf8c040d86" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::poll_seq</definition>
+        <argsstring></argsstring>
+        <name>poll_seq</name>
+        <qualifiedname>baton_node::poll_seq</qualifiedname>
+        <briefdescription>
+<para>Slave: sequence number of the last POLL. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="311" column="13" bodyfile="inc/baton_node.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a99d693c8f5b968c3919e2548bbc05a2f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_node::current</definition>
+        <argsstring></argsstring>
+        <name>current</name>
+        <qualifiedname>baton_node::current</qualifiedname>
+        <briefdescription>
+<para>Master: index of the polled slave - 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="313" column="13" bodyfile="inc/baton_node.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1a3206cbb2521b8778c9a41c4a496aa340" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::cycle_start</definition>
+        <argsstring></argsstring>
+        <name>cycle_start</name>
+        <qualifiedname>baton_node::cycle_start</qualifiedname>
+        <briefdescription>
+<para>Master: start of the current cycle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="314" column="14" bodyfile="inc/baton_node.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1ab3b91a4751e30dcb6c535ea3d7c2c7ac" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::cycle_count</definition>
+        <argsstring></argsstring>
+        <name>cycle_count</name>
+        <qualifiedname>baton_node::cycle_count</qualifiedname>
+        <briefdescription>
+<para>Master: number of cycles started. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="315" column="14" bodyfile="inc/baton_node.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1abbc540406be77782d2a6772af0a94953" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::now_ms</definition>
+        <argsstring></argsstring>
+        <name>now_ms</name>
+        <qualifiedname>baton_node::now_ms</qualifiedname>
+        <briefdescription>
+<para>Time of the last <ref refid="group__baton__node_1gad7b84e4390f7657c5fa0833613ba58d3" kindref="member">baton_node_process()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="317" column="14" bodyfile="inc/baton_node.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1ad5629fda7b3cd1dffc536132e3571271" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_node::last_housekeep_ms</definition>
+        <argsstring></argsstring>
+        <name>last_housekeep_ms</name>
+        <qualifiedname>baton_node::last_housekeep_ms</qualifiedname>
+        <briefdescription>
+<para>Last TTL scan. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="318" column="14" bodyfile="inc/baton_node.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__node_1aceb1073fd80e850d733aa4cf134c1234" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__stats" kindref="compound">baton_stats</ref></type>
+        <definition>struct baton_stats baton_node::stats</definition>
+        <argsstring></argsstring>
+        <name>stats</name>
+        <qualifiedname>baton_node::stats</qualifiedname>
+        <briefdescription>
+<para>Node-level counters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="319" column="22" bodyfile="inc/baton_node.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Node state. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Treat the members as private; use the functions below. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="9">
+        <label>baton_channel</label>
+        <link refid="structbaton__channel"/>
+      </node>
+      <node id="6">
+        <label>baton_frame</label>
+        <link refid="structbaton__frame"/>
+      </node>
+      <node id="3">
+        <label>baton_link</label>
+        <link refid="structbaton__link"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>parser</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>counters</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>baton_link_config</label>
+        <link refid="structbaton__link__config"/>
+      </node>
+      <node id="7">
+        <label>baton_link_counters</label>
+        <link refid="structbaton__link__counters"/>
+      </node>
+      <node id="1">
+        <label>baton_node</label>
+        <link refid="structbaton__node"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>link</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>queue</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>channel</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>stats</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>baton_node_config</label>
+        <link refid="structbaton__node__config"/>
+      </node>
+      <node id="5">
+        <label>baton_parser</label>
+        <link refid="structbaton__parser"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>frame</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>baton_queue</label>
+        <link refid="structbaton__queue"/>
+      </node>
+      <node id="10">
+        <label>baton_stats</label>
+        <link refid="structbaton__stats"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/baton_node.h" line="277" column="1" bodyfile="inc/baton_node.h" bodystart="278" bodyend="320"/>
+    <listofallmembers>
+      <member refid="structbaton__node_1af3dcd19513ce909d087fa8583784b6fb" prot="public" virt="non-virtual"><scope>baton_node</scope><name>ack_frame</name></member>
+      <member refid="structbaton__node_1a11c7e0c5212608e069edf449d39ec29f" prot="public" virt="non-virtual"><scope>baton_node</scope><name>channel</name></member>
+      <member refid="structbaton__node_1ab0f4fd8dbe70cd0e1d44f8e533d63458" prot="public" virt="non-virtual"><scope>baton_node</scope><name>config</name></member>
+      <member refid="structbaton__node_1a99d693c8f5b968c3919e2548bbc05a2f" prot="public" virt="non-virtual"><scope>baton_node</scope><name>current</name></member>
+      <member refid="structbaton__node_1ab3b91a4751e30dcb6c535ea3d7c2c7ac" prot="public" virt="non-virtual"><scope>baton_node</scope><name>cycle_count</name></member>
+      <member refid="structbaton__node_1a3206cbb2521b8778c9a41c4a496aa340" prot="public" virt="non-virtual"><scope>baton_node</scope><name>cycle_start</name></member>
+      <member refid="structbaton__node_1a616bd12c9da032f3dd5bb5bf78ff4433" prot="public" virt="non-virtual"><scope>baton_node</scope><name>initialized</name></member>
+      <member refid="structbaton__node_1ad5629fda7b3cd1dffc536132e3571271" prot="public" virt="non-virtual"><scope>baton_node</scope><name>last_housekeep_ms</name></member>
+      <member refid="structbaton__node_1a9dd5e232de1009d00e3221a29527926d" prot="public" virt="non-virtual"><scope>baton_node</scope><name>link</name></member>
+      <member refid="structbaton__node_1a58f98545129b6ee64badf5f5fd32bd90" prot="public" virt="non-virtual"><scope>baton_node</scope><name>link_state</name></member>
+      <member refid="structbaton__node_1a399b4dcdcbd6116278f2394dfc714647" prot="public" virt="non-virtual"><scope>baton_node</scope><name>link_timer</name></member>
+      <member refid="structbaton__node_1adcf3ecd428436a0adc6215e898b67a43" prot="public" virt="non-virtual"><scope>baton_node</scope><name>node_address</name></member>
+      <member refid="structbaton__node_1a1b660c2f01a9106cefc0063613336eca" prot="public" virt="non-virtual"><scope>baton_node</scope><name>node_count</name></member>
+      <member refid="structbaton__node_1abbc540406be77782d2a6772af0a94953" prot="public" virt="non-virtual"><scope>baton_node</scope><name>now_ms</name></member>
+      <member refid="structbaton__node_1a30b0bc77e47c39009da44b3e02e953a2" prot="public" virt="non-virtual"><scope>baton_node</scope><name>others_mask</name></member>
+      <member refid="structbaton__node_1a685af113ac7a1350232b23bf8c040d86" prot="public" virt="non-virtual"><scope>baton_node</scope><name>poll_seq</name></member>
+      <member refid="structbaton__node_1af9e3933395aeaab44a44a04c370989f7" prot="public" virt="non-virtual"><scope>baton_node</scope><name>queue</name></member>
+      <member refid="structbaton__node_1a63fb2f4979c7fc0510f381aaa2702ef1" prot="public" virt="non-virtual"><scope>baton_node</scope><name>queue_high_memory</name></member>
+      <member refid="structbaton__node_1ac4cbcfa1e02372ddabc2b31ef4d6f152" prot="public" virt="non-virtual"><scope>baton_node</scope><name>queue_normal_memory</name></member>
+      <member refid="structbaton__node_1ab29dd54cad4d30fecf7844628cfe5510" prot="public" virt="non-virtual"><scope>baton_node</scope><name>retries</name></member>
+      <member refid="structbaton__node_1afb786697042eac131b18762d990664ec" prot="public" virt="non-virtual"><scope>baton_node</scope><name>self_index</name></member>
+      <member refid="structbaton__node_1a3d826295e9aa777dd4228526ef64dd73" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_k</name></member>
+      <member refid="structbaton__node_1a06d345dec758d58f519fa877b80212d6" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_nack</name></member>
+      <member refid="structbaton__node_1a4958a6451869f995b0f22535eee98a07" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_pass</name></member>
+      <member refid="structbaton__node_1abe130ed3fd4854afb78f1567cd4f766d" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_peer</name></member>
+      <member refid="structbaton__node_1a138730accf151e0c453f5f3581f40aa1" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_rr</name></member>
+      <member refid="structbaton__node_1a52f6fc1533c0a7579265b9c47511bfab" prot="public" virt="non-virtual"><scope>baton_node</scope><name>slot_start</name></member>
+      <member refid="structbaton__node_1a090967171c41fea5802bb4052019855a" prot="public" virt="non-virtual"><scope>baton_node</scope><name>state_data</name></member>
+      <member refid="structbaton__node_1a1f435baf0c1a6941874e4ff3b9b5d0ae" prot="public" virt="non-virtual"><scope>baton_node</scope><name>state_dirty</name></member>
+      <member refid="structbaton__node_1afd1297567becf6532de3182cb0b2e448" prot="public" virt="non-virtual"><scope>baton_node</scope><name>state_length</name></member>
+      <member refid="structbaton__node_1aceb1073fd80e850d733aa4cf134c1234" prot="public" virt="non-virtual"><scope>baton_node</scope><name>stats</name></member>
+      <member refid="structbaton__node_1ad5d20d02924f648be3d34ebb5b611fde" prot="public" virt="non-virtual"><scope>baton_node</scope><name>tx_frame</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

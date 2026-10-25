@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__frame" kind="struct" language="C++" prot="public">
+    <compoundname>baton_frame</compoundname>
+    <includes refid="baton__protocol_8h" local="no">baton_protocol.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__frame_1af96a84d45c07badc4b7ea3d07e97e627" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_frame::dst</definition>
+        <argsstring></argsstring>
+        <name>dst</name>
+        <qualifiedname>baton_frame::dst</qualifiedname>
+        <briefdescription>
+<para>Destination address. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="85" column="13" bodyfile="inc/baton_protocol.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__frame_1a2b2d3a095a2ab6e923acf30193ce820f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_frame::src</definition>
+        <argsstring></argsstring>
+        <name>src</name>
+        <qualifiedname>baton_frame::src</qualifiedname>
+        <briefdescription>
+<para>Source address. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="86" column="13" bodyfile="inc/baton_protocol.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__frame_1ae4d6df73582a5be666367ade3f076154" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_frame::ctrl</definition>
+        <argsstring></argsstring>
+        <name>ctrl</name>
+        <qualifiedname>baton_frame::ctrl</qualifiedname>
+        <briefdescription>
+<para>Control byte, see <ref refid="group__baton__defs_1ga67b52d864b7a367b9ffa30f375cbd8e8" kindref="member">baton_ctrl()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="87" column="13" bodyfile="inc/baton_protocol.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__frame_1a1a2e8bf0774839f4042f5aed46e2fca3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_frame::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>baton_frame::length</qualifiedname>
+        <briefdescription>
+<para>Number of valid bytes in payload. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="88" column="13" bodyfile="inc/baton_protocol.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__frame_1a13e1a3f3e54ddd5e532af26fd46f71a9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_frame::payload[BATON_MAX_PAYLOAD]</definition>
+        <argsstring>[BATON_MAX_PAYLOAD]</argsstring>
+        <name>payload</name>
+        <qualifiedname>baton_frame::payload</qualifiedname>
+        <briefdescription>
+<para>Payload bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="89" column="13" bodyfile="inc/baton_protocol.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>One decoded frame (header fields and payload, without SYNC and CRC). </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_protocol.h" line="83" column="1" bodyfile="inc/baton_protocol.h" bodystart="84" bodyend="90"/>
+    <listofallmembers>
+      <member refid="structbaton__frame_1ae4d6df73582a5be666367ade3f076154" prot="public" virt="non-virtual"><scope>baton_frame</scope><name>ctrl</name></member>
+      <member refid="structbaton__frame_1af96a84d45c07badc4b7ea3d07e97e627" prot="public" virt="non-virtual"><scope>baton_frame</scope><name>dst</name></member>
+      <member refid="structbaton__frame_1a1a2e8bf0774839f4042f5aed46e2fca3" prot="public" virt="non-virtual"><scope>baton_frame</scope><name>length</name></member>
+      <member refid="structbaton__frame_1a13e1a3f3e54ddd5e532af26fd46f71a9" prot="public" virt="non-virtual"><scope>baton_frame</scope><name>payload</name></member>
+      <member refid="structbaton__frame_1a2b2d3a095a2ab6e923acf30193ce820f" prot="public" virt="non-virtual"><scope>baton_frame</scope><name>src</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

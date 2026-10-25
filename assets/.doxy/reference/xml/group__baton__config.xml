@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__config" kind="group">
+    <compoundname>baton_config</compoundname>
+    <title>Configuration</title>
+    <sectiondef kind="user-defined">
+      <header>Defines and macros</header>
+      <memberdef kind="define" id="group__baton__config_1gac945ab04f822245f06d48e2212d60495" prot="public" static="no">
+        <name>BATON_MAX_NODES</name>
+        <initializer>8U</initializer>
+        <briefdescription>
+<para>Number of nodes on the bus including the master (2..32). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="74" column="9" bodyfile="inc/baton_config.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" prot="public" static="no">
+        <name>BATON_MAX_PAYLOAD</name>
+        <initializer>64U</initializer>
+        <briefdescription>
+<para>Largest frame payload in bytes (16..250). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>One message needs its length + 2. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="82" column="9" bodyfile="inc/baton_config.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__config_1ga4aff6201a1db6da6d4f01e0902e24662" prot="public" static="no">
+        <name>BATON_MAX_MSGS_PER_FRAME</name>
+        <initializer>16U</initializer>
+        <briefdescription>
+<para>Largest number of messages packed into one frame (1..64). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="90" column="9" bodyfile="inc/baton_config.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__config_1gaa74471c86e5a7dbbe460983d74d53319" prot="public" static="no">
+        <name>BATON_QUEUE_HIGH_SIZE</name>
+        <initializer>256U</initializer>
+        <briefdescription>
+<para>Size of the HIGH priority event queue in bytes (64..65532). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each queued event uses 16 + length bytes, rounded up to 4. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="99" column="9" bodyfile="inc/baton_config.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__config_1ga62bb4b6203994c62ecbcf85c30cf4ac0" prot="public" static="no">
+        <name>BATON_QUEUE_NORMAL_SIZE</name>
+        <initializer>512U</initializer>
+        <briefdescription>
+<para>Size of the NORMAL priority event queue in bytes (64..65532). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="107" column="9" bodyfile="inc/baton_config.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" prot="public" static="no">
+        <name>BATON_RX_BUF_SIZE</name>
+        <initializer>128U</initializer>
+        <briefdescription>
+<para>Receive ring buffer filled from the UART interrupt; power of two, 16..4096. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_config.h" line="115" column="9" bodyfile="inc/baton_config.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Build-time configuration for Baton. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The application provides <computeroutput>baton_user_config.h</computeroutput> on the include path (copy <computeroutput>config/baton_user_config_template.h</computeroutput>). It must define the two message lists BATON_STATE_LIST and BATON_EVENT_LIST and may override any size below; a size can also be set with a compiler definition (for example <computeroutput>-DBATON_MAX_NODES=4U</computeroutput>). Every node of a bus must be built with the same message lists.</para>
+<para><simplesect kind="par"><title>Configuration elements in this group:</title><para><itemizedlist>
+<listitem><para><ref refid="group__baton__config_1gac945ab04f822245f06d48e2212d60495" kindref="member">BATON_MAX_NODES</ref> : nodes on the bus including the master. </para>
+</listitem>
+<listitem><para><ref refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" kindref="member">BATON_MAX_PAYLOAD</ref> : largest frame payload. </para>
+</listitem>
+<listitem><para><ref refid="group__baton__config_1ga4aff6201a1db6da6d4f01e0902e24662" kindref="member">BATON_MAX_MSGS_PER_FRAME</ref> : messages packed into one frame. </para>
+</listitem>
+<listitem><para><ref refid="group__baton__config_1gaa74471c86e5a7dbbe460983d74d53319" kindref="member">BATON_QUEUE_HIGH_SIZE</ref>, <ref refid="group__baton__config_1ga62bb4b6203994c62ecbcf85c30cf4ac0" kindref="member">BATON_QUEUE_NORMAL_SIZE</ref> : event queues. </para>
+</listitem>
+<listitem><para><ref refid="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" kindref="member">BATON_RX_BUF_SIZE</ref> : receive ring filled from the UART interrupt. </para>
+</listitem>
+</itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

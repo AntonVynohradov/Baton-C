@@ -1,0 +1,2589 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Deterministic master/slave messaging over a single-wire UART in portable C for embedded systems: exactly-once events, latest-value states, no heap, no RTOS, MISRA C:2012, 100 % test coverage.">
+      
+      
+        <meta name="author" content="Anton Vynohradov">
+      
+      
+        <link rel="canonical" href="https://antonvynohradov.github.io/baton-c/api/">
+      
+      
+        <link rel="prev" href="../examples/">
+      
+      
+        <link rel="next" href="../reference/modules/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/brand/systemfromscratch-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>API Reference - Baton-C</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Baton-C" class="md-header__button md-logo" aria-label="Baton-C" data-md-component="logo">
+      
+  <img src="../assets/images/brand/systemfromscratch-logo-on-dark.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Baton-C
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AntonVynohradov/Baton-C" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AntonVynohradov/Baton-C
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../protocol/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Protocol
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../about/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Baton-C" class="md-nav__button md-logo" aria-label="Baton-C" data-md-component="logo">
+      
+  <img src="../assets/images/brand/systemfromscratch-logo-on-dark.png" alt="logo">
+
+    </a>
+    Baton-C
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AntonVynohradov/Baton-C" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AntonVynohradov/Baton-C
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using the Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extending/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extending the Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration macros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-constants-baton_defsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol constants (baton_defs.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles-priorities-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roles, priorities, limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Callback types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_node_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_node_config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_stats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_default_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_default_config()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_init()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_process()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_send" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_send()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_publish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_publish()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_rx_isr-baton_node_tx_done_isr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_rx_isr(), baton_node_tx_done_isr()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_get_stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_get_stats()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codec-baton_protocolh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codec (baton_protocol.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-baton_linkh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Link (baton_link.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-queue-baton_queueh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event queue (baton_queue.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Doxygen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Doxygen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/annotated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/macros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Macros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MISRA C:2012
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Author & Company
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration macros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-constants-baton_defsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol constants (baton_defs.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles-priorities-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roles, priorities, limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Callback types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_node_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_node_config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_stats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-baton_node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct baton_node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_default_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_default_config()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_init()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_process()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_send" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_send()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_publish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_publish()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_rx_isr-baton_node_tx_done_isr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_rx_isr(), baton_node_tx_done_isr()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baton_node_get_stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        baton_node_get_stats()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codec-baton_protocolh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codec (baton_protocol.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-baton_linkh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Link (baton_link.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-queue-baton_queueh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event queue (baton_queue.h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+<p>This chapter lists every public header, macro, type and function. Applications normally
+include <code>baton.h</code> and use the <a href="#node-api">node API</a>; the codec, the link and the queue
+are public for tools and tests. The generated Doxygen reference is in the <em>Doxygen</em>
+section of the website.</p>
+<h2 id="headers">Headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baton.h</code></td>
+<td>Umbrella: includes everything below; version macros</td>
+</tr>
+<tr>
+<td><code>inc/baton_config.h</code></td>
+<td>Sizes and range checks; includes the application's <code>baton_user_config.h</code></td>
+</tr>
+<tr>
+<td><code>inc/baton_defs.h</code></td>
+<td>Frame layout, frame types, ACKB, CTRL and byte-order helpers</td>
+</tr>
+<tr>
+<td><code>inc/baton_protocol.h</code></td>
+<td>CRC-16, parser, encoder</td>
+</tr>
+<tr>
+<td><code>inc/baton_link.h</code></td>
+<td>Half-duplex link</td>
+</tr>
+<tr>
+<td><code>inc/baton_queue.h</code></td>
+<td>Event queue</td>
+</tr>
+<tr>
+<td><code>inc/baton_node.h</code></td>
+<td>Node: roles, return codes, configuration, statistics, application API</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version">Version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_VERSION_MAJOR</code>, <code>BATON_VERSION_MINOR</code>, <code>BATON_VERSION_PATCH</code></td>
+<td><code>1</code>, <code>0</code>, <code>0</code></td>
+<td>From the Git tag through CMake; fallbacks in <code>baton.h</code></td>
+</tr>
+<tr>
+<td><code>BATON_VERSION</code></td>
+<td><code>"1.0.0"</code></td>
+<td>Version string</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration-macros">Configuration macros<a class="headerlink" href="#configuration-macros" title="Permanent link">&para;</a></h2>
+<p>See <a href="../configuration/#build-time-parameters">Configuration</a> for <code>BATON_MAX_NODES</code>,
+<code>BATON_MAX_PAYLOAD</code>, <code>BATON_MAX_MSGS_PER_FRAME</code>, <code>BATON_QUEUE_HIGH_SIZE</code>,
+<code>BATON_QUEUE_NORMAL_SIZE</code>, <code>BATON_RX_BUF_SIZE</code>, the message lists and the derived sizes.</p>
+<p>Generated from the lists: <code>BATON_MSG_&lt;NAME&gt;</code> (enum <code>baton_msg_id</code>),
+<code>BATON_MSG_&lt;NAME&gt;_MAX_LEN</code> (enum <code>baton_msg_max_len</code>), <code>BATON_STATE_COUNT</code>,
+<code>BATON_EVENT_COUNT</code>, <code>BATON_STATE_DATA_SIZE</code>.</p>
+<h2 id="protocol-constants-baton_defsh">Protocol constants (<code>baton_defs.h</code>)<a class="headerlink" href="#protocol-constants-baton_defsh" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_SYNC</code></td>
+<td><code>0xA5</code></td>
+<td>First byte of a frame</td>
+</tr>
+<tr>
+<td><code>BATON_HEADER_SIZE</code></td>
+<td>5</td>
+<td>SYNC, DST, SRC, CTRL, LEN</td>
+</tr>
+<tr>
+<td><code>BATON_CRC_SIZE</code></td>
+<td>2</td>
+<td>CRC bytes</td>
+</tr>
+<tr>
+<td><code>BATON_FRAME_OVERHEAD</code></td>
+<td>7</td>
+<td>Non-payload bytes</td>
+</tr>
+<tr>
+<td><code>BATON_ADDR_BROADCAST</code></td>
+<td><code>0xFF</code></td>
+<td>"Every other node" for <code>baton_node_send()</code></td>
+</tr>
+<tr>
+<td><code>BATON_FT_POLL</code>, <code>BATON_FT_RESP</code>, <code>BATON_FT_DATA</code>, <code>BATON_FT_ACK</code></td>
+<td>0, 1, 2, 3</td>
+<td>Frame types</td>
+</tr>
+<tr>
+<td><code>BATON_ACKB_VALID</code></td>
+<td><code>0x80</code></td>
+<td>Valid bit of ACKB</td>
+</tr>
+<tr>
+<td><code>BATON_SEQ_MASK</code></td>
+<td><code>0x0F</code></td>
+<td>Sequence number bits</td>
+</tr>
+<tr>
+<td><code>BATON_TLV_HEADER_SIZE</code></td>
+<td>2</td>
+<td>ID and LEN of a message</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uint8_t baton_ctrl(uint8_t type, bool first, uint8_t seq)</code></td>
+<td>Build a control byte</td>
+</tr>
+<tr>
+<td><code>uint8_t baton_ctrl_type(uint8_t ctrl)</code></td>
+<td>Frame type of a control byte</td>
+</tr>
+<tr>
+<td><code>bool baton_ctrl_first(uint8_t ctrl)</code></td>
+<td>FIRST flag</td>
+</tr>
+<tr>
+<td><code>uint8_t baton_ctrl_seq(uint8_t ctrl)</code></td>
+<td>Sequence number</td>
+</tr>
+<tr>
+<td><code>uint16_t baton_get_u16be(const uint8_t* data)</code></td>
+<td>Read big endian</td>
+</tr>
+<tr>
+<td><code>void baton_put_u16be(uint8_t* data, uint16_t value)</code></td>
+<td>Write big endian</td>
+</tr>
+<tr>
+<td><code>uint32_t baton_get_u32le(const uint8_t* data)</code></td>
+<td>Read little endian</td>
+</tr>
+<tr>
+<td><code>void baton_put_u32le(uint8_t* data, uint32_t value)</code></td>
+<td>Write little endian</td>
+</tr>
+</tbody>
+</table>
+<p>These are <code>static inline</code>; they do not check their pointer (like <code>memcpy()</code>).</p>
+<h2 id="node-api">Node API<a class="headerlink" href="#node-api" title="Permanent link">&para;</a></h2>
+<h3 id="return-codes">Return codes<a class="headerlink" href="#return-codes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_OK</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_PARAM</code></td>
+<td>−1</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_NOT_INIT</code></td>
+<td>−2</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_MSG_ID</code></td>
+<td>−3</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_LEN</code></td>
+<td>−4</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_ADDR</code></td>
+<td>−5</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_FULL</code></td>
+<td>−6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="roles-priorities-limits">Roles, priorities, limits<a class="headerlink" href="#roles-priorities-limits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_ROLE_MASTER</code>, <code>BATON_ROLE_SLAVE</code></td>
+<td>0, 1</td>
+<td><code>baton_node_config::role</code></td>
+</tr>
+<tr>
+<td><code>BATON_PRIO_NORMAL</code>, <code>BATON_PRIO_HIGH</code></td>
+<td>0, 1</td>
+<td>Queue of an event</td>
+</tr>
+<tr>
+<td><code>BATON_MASK_BYTES</code></td>
+<td><code>(BATON_MAX_NODES + 7) / 8</code></td>
+<td>NACK mask size</td>
+</tr>
+<tr>
+<td><code>BATON_POLL_PREFIX</code>, <code>BATON_RESP_PREFIX</code></td>
+<td>1, <code>1 + BATON_MASK_BYTES</code></td>
+<td>Payload prefixes</td>
+</tr>
+<tr>
+<td><code>BATON_MAX_MSG_LEN</code></td>
+<td><code>BATON_MAX_PAYLOAD − BATON_RESP_PREFIX − 2</code></td>
+<td>Largest message</td>
+</tr>
+<tr>
+<td><code>BATON_DEAD_STREAK</code></td>
+<td>3</td>
+<td>Failures before a node is treated as unreachable</td>
+</tr>
+<tr>
+<td><code>BATON_DEAD_POLL_DIV</code></td>
+<td>4</td>
+<td>An unreachable slave is polled every 4th cycle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="callback-types">Callback types<a class="headerlink" href="#callback-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Signature</th>
+<th>Called</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baton_write_fn</code></td>
+<td><code>int (*)(void* context, const uint8_t* data, size_t length)</code></td>
+<td>To start a transmission; return 0 or negative</td>
+</tr>
+<tr>
+<td><code>baton_critical_fn</code></td>
+<td><code>void (*)(void* context)</code></td>
+<td>Around the few instructions shared with interrupts</td>
+</tr>
+<tr>
+<td><code>baton_message_fn</code></td>
+<td><code>void (*)(void* context, uint8_t src, uint8_t msg_id, const uint8_t* data, uint8_t length)</code></td>
+<td>Once per received message; <code>data</code> valid only during the call</td>
+</tr>
+<tr>
+<td><code>baton_drop_fn</code></td>
+<td><code>void (*)(void* context, uint8_t msg_id, uint8_t dst, uint32_t missed_nodes)</code></td>
+<td>When an event expired</td>
+</tr>
+<tr>
+<td><code>baton_poll_done_fn</code></td>
+<td><code>void (*)(void* context, uint8_t slave, bool responded, uint32_t nack_nodes)</code></td>
+<td>Master: when a slot ended</td>
+</tr>
+</tbody>
+</table>
+<h3 id="struct-baton_node_config"><code>struct baton_node_config</code><a class="headerlink" href="#struct-baton_node_config" title="Permanent link">&para;</a></h3>
+<p>Described field by field in <a href="../usage/#set-up-a-node">Using the Library → Set up a node</a>.
+<code>baton_node_init()</code> copies it.</p>
+<h3 id="struct-baton_stats"><code>struct baton_stats</code><a class="headerlink" href="#struct-baton_stats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tx_frames</code></td>
+<td>Transmissions started</td>
+</tr>
+<tr>
+<td><code>rx_frames</code></td>
+<td>Valid frames seen on the bus, any destination</td>
+</tr>
+<tr>
+<td><code>crc_errors</code></td>
+<td>Frames rejected: CRC mismatch or invalid LEN</td>
+</tr>
+<tr>
+<td><code>rx_timeouts</code></td>
+<td>Frames aborted by the inter-byte timeout</td>
+</tr>
+<tr>
+<td><code>rx_overflows</code></td>
+<td>Bytes lost because the receive ring was full</td>
+</tr>
+<tr>
+<td><code>collisions</code></td>
+<td>Transmissions whose echo did not match</td>
+</tr>
+<tr>
+<td><code>tx_timeouts</code></td>
+<td>Transmissions that failed to start or did not end in time</td>
+</tr>
+<tr>
+<td><code>ack_timeouts</code></td>
+<td>Slave: DATA frames without ACK</td>
+</tr>
+<tr>
+<td><code>retries</code></td>
+<td>Slave: DATA retransmissions</td>
+</tr>
+<tr>
+<td><code>resp_timeouts</code></td>
+<td>Master: POLLs without RESP</td>
+</tr>
+<tr>
+<td><code>duplicates</code></td>
+<td>Retransmitted content filtered out</td>
+</tr>
+<tr>
+<td><code>bad_messages</code></td>
+<td>Unknown ids or bad lengths inside frames</td>
+</tr>
+<tr>
+<td><code>events_dropped</code></td>
+<td>Events removed by the TTL</td>
+</tr>
+<tr>
+<td><code>queue_full</code></td>
+<td>Events rejected by <code>baton_node_send()</code></td>
+</tr>
+<tr>
+<td><code>queue_high_used</code>, <code>queue_normal_used</code></td>
+<td>Bytes in use in each queue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="struct-baton_node"><code>struct baton_node</code><a class="headerlink" href="#struct-baton_node" title="Permanent link">&para;</a></h3>
+<p>The node state, owned by the caller (normally a <code>static</code> variable). Treat its members as
+private; their layout may change in a minor version.</p>
+<h3 id="baton_node_default_config"><code>baton_node_default_config()</code><a class="headerlink" href="#baton_node_default_config" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>void baton_node_default_config(struct baton_node_config* config);
+</code></pre></div>
+<p>Fills <code>config</code> with zeros and the defaults for 9600 bit/s (slave, slot 250 ms, ACK
+timeout 20 ms, 1 retry, gap 2 ms, inter-byte timeout 5 ms, TTL 5000 ms, echo on). NULL
+is ignored.</p>
+<h3 id="baton_node_init"><code>baton_node_init()</code><a class="headerlink" href="#baton_node_init" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>int baton_node_init(struct baton_node* node, const struct baton_node_config* config,
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                    uint32_t now_ms);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node</code></td>
+<td>Node state; cleared and initialized</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>Configuration; copied</td>
+</tr>
+<tr>
+<td><code>now_ms</code></td>
+<td>Current time</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_OK</code></td>
+<td>The node is running</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_PARAM</code></td>
+<td>NULL argument or invalid configuration; the node is not initialized</td>
+</tr>
+</tbody>
+</table>
+<h3 id="baton_node_process"><code>baton_node_process()</code><a class="headerlink" href="#baton_node_process" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>void baton_node_process(struct baton_node* node, uint32_t now_ms);
+</code></pre></div>
+<p>Runs the receive path, the transmitter, the state machine and the housekeeping (TTL,
+queue release). Call every millisecond from one context. Ignored for a NULL or
+uninitialized node.</p>
+<h3 id="baton_node_send"><code>baton_node_send()</code><a class="headerlink" href="#baton_node_send" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>int baton_node_send(struct baton_node* node, uint8_t dst, uint8_t msg_id, const void* data,
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                    uint8_t length, uint8_t priority);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dst</code></td>
+<td>Destination address or <code>BATON_ADDR_BROADCAST</code></td>
+</tr>
+<tr>
+<td><code>msg_id</code></td>
+<td>An EVENT id</td>
+</tr>
+<tr>
+<td><code>data</code>, <code>length</code></td>
+<td>Data, copied; <code>data</code> may be NULL when <code>length</code> is 0</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><code>BATON_PRIO_NORMAL</code> or <code>BATON_PRIO_HIGH</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BATON_OK</code></td>
+<td>Queued</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_NOT_INIT</code></td>
+<td>NULL or uninitialized node</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_PARAM</code></td>
+<td><code>data</code> NULL with <code>length</code> &gt; 0</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_MSG_ID</code></td>
+<td>Not an EVENT id</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_LEN</code></td>
+<td><code>length</code> above <code>MAX_LEN</code></td>
+</tr>
+<tr>
+<td><code>BATON_ERR_ADDR</code></td>
+<td>Unknown destination or the node itself</td>
+</tr>
+<tr>
+<td><code>BATON_ERR_FULL</code></td>
+<td>No room in the queue</td>
+</tr>
+</tbody>
+</table>
+<p>The TTL of the event starts at the time of the last <code>baton_node_process()</code> call.</p>
+<h3 id="baton_node_publish"><code>baton_node_publish()</code><a class="headerlink" href="#baton_node_publish" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>int baton_node_publish(struct baton_node* node, uint8_t msg_id, const void* data,
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                       uint8_t length);
+</code></pre></div>
+<p>Stores the new value of a STATE and marks it for every other node. Returns <code>BATON_OK</code>,
+<code>BATON_ERR_NOT_INIT</code>, <code>BATON_ERR_PARAM</code>, <code>BATON_ERR_MSG_ID</code> (not a STATE id) or
+<code>BATON_ERR_LEN</code>; never fails for lack of space.</p>
+<h3 id="baton_node_rx_isr-baton_node_tx_done_isr"><code>baton_node_rx_isr()</code>, <code>baton_node_tx_done_isr()</code><a class="headerlink" href="#baton_node_rx_isr-baton_node_tx_done_isr" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>void baton_node_rx_isr(struct baton_node* node, uint8_t byte);
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>void baton_node_tx_done_isr(struct baton_node* node);
+</code></pre></div>
+<p>Interrupt entry points: store a received byte (counted in <code>rx_overflows</code> when the ring
+is full); signal the end of a transmission when <code>rx_echo</code> is false. NULL is ignored.</p>
+<h3 id="baton_node_get_stats"><code>baton_node_get_stats()</code><a class="headerlink" href="#baton_node_get_stats" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>void baton_node_get_stats(const struct baton_node* node, struct baton_stats* stats);
+</code></pre></div>
+<p>Copies the counters; nothing is written when an argument is NULL.</p>
+<h2 id="codec-baton_protocolh">Codec (<code>baton_protocol.h</code>)<a class="headerlink" href="#codec-baton_protocolh" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uint16_t baton_crc16_update(uint16_t crc, uint8_t byte)</code></td>
+<td>Updated CRC register</td>
+</tr>
+<tr>
+<td><code>uint16_t baton_crc16(const uint8_t* data, size_t length)</code></td>
+<td>CRC of the buffer; <code>BATON_CRC_INIT</code> (0xFFFF) for NULL</td>
+</tr>
+<tr>
+<td><code>void baton_parser_init(struct baton_parser* parser)</code></td>
+<td>— (NULL ignored)</td>
+</tr>
+<tr>
+<td><code>int baton_parser_feed(struct baton_parser* parser, uint8_t byte)</code></td>
+<td>1 frame ready in <code>parser-&gt;frame</code>; 0 more bytes needed; <code>BATON_PARSE_ERROR</code> (−1) invalid LEN, CRC mismatch, corrupted state or NULL</td>
+</tr>
+<tr>
+<td><code>int baton_encode(uint8_t dst, uint8_t src, uint8_t ctrl, const uint8_t* payload, size_t payload_length, uint8_t* output, size_t output_capacity, size_t* output_length)</code></td>
+<td>0, or <code>BATON_PARSE_ERROR</code> for invalid input or too little capacity</td>
+</tr>
+</tbody>
+</table>
+<p><code>struct baton_frame</code> has <code>dst</code>, <code>src</code>, <code>ctrl</code>, <code>length</code> and <code>payload[BATON_MAX_PAYLOAD]</code>.
+<code>struct baton_parser</code> holds the frame being received, the CRC register, an index and the
+state (<code>BATON_PARSER_IDLE</code> between frames). <code>BATON_FRAME_MAX</code> is the largest frame.</p>
+<h2 id="link-baton_linkh">Link (<code>baton_link.h</code>)<a class="headerlink" href="#link-baton_linkh" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int baton_link_init(struct baton_link*, const struct baton_link_config*, uint32_t now_ms)</code></td>
+<td>0, or <code>BATON_PARSE_ERROR</code> for NULL, no write function, zero baud rate or timeout</td>
+</tr>
+<tr>
+<td><code>void baton_link_rx_isr(struct baton_link*, uint8_t byte)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>void baton_link_tx_done_isr(struct baton_link*)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>int baton_link_receive(struct baton_link*, uint32_t now_ms)</code></td>
+<td><code>BATON_LINK_FRAME</code>, <code>BATON_LINK_TX_DONE</code> (echo complete) or <code>BATON_LINK_NONE</code></td>
+</tr>
+<tr>
+<td><code>int baton_link_transmit(struct baton_link*, uint32_t now_ms)</code></td>
+<td><code>BATON_LINK_TX_DONE</code> or <code>BATON_LINK_NONE</code></td>
+</tr>
+<tr>
+<td><code>int baton_link_send(struct baton_link*, const uint8_t* data, size_t length)</code></td>
+<td>0, or <code>BATON_PARSE_ERROR</code></td>
+</tr>
+<tr>
+<td><code>void baton_link_cancel(struct baton_link*)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>const struct baton_frame* baton_link_frame(const struct baton_link*)</code></td>
+<td>Last frame reported</td>
+</tr>
+<tr>
+<td><code>bool baton_link_rx_busy(const struct baton_link*, uint32_t now_ms)</code></td>
+<td>A frame is being received</td>
+</tr>
+<tr>
+<td><code>uint32_t baton_link_frame_ms(const struct baton_link*, uint32_t bytes)</code></td>
+<td>Wire time of <code>bytes</code> in ms, rounded up</td>
+</tr>
+</tbody>
+</table>
+<p><code>struct baton_link_config</code>: <code>write</code>, <code>context</code>, <code>baudrate</code>, <code>tx_gap_ms</code>,
+<code>inter_byte_timeout_ms</code>, <code>rx_echo</code>. <code>struct baton_link_counters</code>: <code>tx_frames</code>,
+<code>rx_frames</code>, <code>crc_errors</code>, <code>rx_timeouts</code>, <code>collisions</code>, <code>tx_timeouts</code>.</p>
+<h2 id="event-queue-baton_queueh">Event queue (<code>baton_queue.h</code>)<a class="headerlink" href="#event-queue-baton_queueh" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baton_queue_init(queue, memory, size)</code></td>
+<td>Empty queue over <code>memory</code>; size rounded down to 4</td>
+</tr>
+<tr>
+<td><code>baton_queue_record_size(length)</code></td>
+<td>16 + length rounded up to 4</td>
+</tr>
+<tr>
+<td><code>baton_queue_alloc(queue, need, &amp;offset)</code></td>
+<td>Reserve a record at the tail (with the critical section held)</td>
+</tr>
+<tr>
+<td><code>baton_queue_first(queue, head, tail)</code>, <code>baton_queue_next(queue, offset, tail)</code></td>
+<td>Walk the records of a head/tail snapshot</td>
+</tr>
+<tr>
+<td><code>baton_queue_used(queue)</code></td>
+<td>Bytes in use</td>
+</tr>
+<tr>
+<td><code>baton_queue_read</code>, <code>baton_queue_write</code>, <code>baton_queue_set_masks</code>, <code>baton_queue_set_flags</code></td>
+<td>Access the serialized header (<code>struct baton_record</code>)</td>
+</tr>
+<tr>
+<td><code>baton_queue_data(queue, offset)</code></td>
+<td>Data bytes of a record</td>
+</tr>
+</tbody>
+</table>
+<p>Every queue function checks its pointers; offsets come from the queue itself.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../examples/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Examples">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Examples
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../reference/modules/" class="md-footer__link md-footer__link--next" aria-label="Next: Modules">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Modules
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Anton Vynohradov · <a href="https://systemfromscratch.com">SystemFromScratch®</a> · Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/AntonVynohradov" target="_blank" rel="noopener" title="Anton Vynohradov on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/vynohradov" target="_blank" rel="noopener" title="Anton Vynohradov on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://systemfromscratch.com" target="_blank" rel="noopener" title="SystemFromScratch®" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

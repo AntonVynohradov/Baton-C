@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__stats" kind="struct" language="C++" prot="public">
+    <compoundname>baton_stats</compoundname>
+    <includes refid="baton__node_8h" local="no">baton_node.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__stats_1af7e179afb70e9a9969ec1a96ac2b5480" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::tx_frames</definition>
+        <argsstring></argsstring>
+        <name>tx_frames</name>
+        <qualifiedname>baton_stats::tx_frames</qualifiedname>
+        <briefdescription>
+<para>Transmissions started. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="243" column="14" bodyfile="inc/baton_node.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a4eac221331ad2c62661d0674be55173c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::rx_frames</definition>
+        <argsstring></argsstring>
+        <name>rx_frames</name>
+        <qualifiedname>baton_stats::rx_frames</qualifiedname>
+        <briefdescription>
+<para>Valid frames seen on the bus (any destination). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="244" column="14" bodyfile="inc/baton_node.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a6252d53637906da275132cb54cc97a15" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::crc_errors</definition>
+        <argsstring></argsstring>
+        <name>crc_errors</name>
+        <qualifiedname>baton_stats::crc_errors</qualifiedname>
+        <briefdescription>
+<para>Frames rejected: CRC mismatch or invalid LEN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="245" column="14" bodyfile="inc/baton_node.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a067cd289b7057fbe9a714e394f09b08d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::rx_timeouts</definition>
+        <argsstring></argsstring>
+        <name>rx_timeouts</name>
+        <qualifiedname>baton_stats::rx_timeouts</qualifiedname>
+        <briefdescription>
+<para>Frames aborted by the inter-byte timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="246" column="14" bodyfile="inc/baton_node.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a888aea3029d61fa53d405ffb5a9e8964" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::rx_overflows</definition>
+        <argsstring></argsstring>
+        <name>rx_overflows</name>
+        <qualifiedname>baton_stats::rx_overflows</qualifiedname>
+        <briefdescription>
+<para>Bytes lost because the receive ring was full. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="247" column="14" bodyfile="inc/baton_node.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a337f2896677b9ac9217fb193347fdba9" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::collisions</definition>
+        <argsstring></argsstring>
+        <name>collisions</name>
+        <qualifiedname>baton_stats::collisions</qualifiedname>
+        <briefdescription>
+<para>Echo mismatch while transmitting. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="248" column="14" bodyfile="inc/baton_node.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a126aaa216649daa50d32dd75de45493a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::tx_timeouts</definition>
+        <argsstring></argsstring>
+        <name>tx_timeouts</name>
+        <qualifiedname>baton_stats::tx_timeouts</qualifiedname>
+        <briefdescription>
+<para>Transmissions that failed to start or did not finish. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="249" column="14" bodyfile="inc/baton_node.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1ab0f6aace2f12ad8998d17b8dca708bc8" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::ack_timeouts</definition>
+        <argsstring></argsstring>
+        <name>ack_timeouts</name>
+        <qualifiedname>baton_stats::ack_timeouts</qualifiedname>
+        <briefdescription>
+<para>Slave: no ACK for a DATA frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="250" column="14" bodyfile="inc/baton_node.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1adab06a8667575828782db2921eba82b2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::retries</definition>
+        <argsstring></argsstring>
+        <name>retries</name>
+        <qualifiedname>baton_stats::retries</qualifiedname>
+        <briefdescription>
+<para>Slave: DATA retransmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="251" column="14" bodyfile="inc/baton_node.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1aeb9cdff1df8c593411a890641a4a7288" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::resp_timeouts</definition>
+        <argsstring></argsstring>
+        <name>resp_timeouts</name>
+        <qualifiedname>baton_stats::resp_timeouts</qualifiedname>
+        <briefdescription>
+<para>Master: a slave did not answer a POLL. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="252" column="14" bodyfile="inc/baton_node.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a2234c5eee6ba28582cc8e06714ff22e3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::duplicates</definition>
+        <argsstring></argsstring>
+        <name>duplicates</name>
+        <qualifiedname>baton_stats::duplicates</qualifiedname>
+        <briefdescription>
+<para>Retransmitted content filtered out. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="253" column="14" bodyfile="inc/baton_node.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a6ccf22e40447727e90bf57cb23cf8dcd" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::bad_messages</definition>
+        <argsstring></argsstring>
+        <name>bad_messages</name>
+        <qualifiedname>baton_stats::bad_messages</qualifiedname>
+        <briefdescription>
+<para>Unknown id or bad length inside a frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="254" column="14" bodyfile="inc/baton_node.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a5628d78039092c1b2247329c6775340d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::events_dropped</definition>
+        <argsstring></argsstring>
+        <name>events_dropped</name>
+        <qualifiedname>baton_stats::events_dropped</qualifiedname>
+        <briefdescription>
+<para>Events dropped by the TTL. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="255" column="14" bodyfile="inc/baton_node.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a80eab55d63427f3b9037025cb9b3461a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_stats::queue_full</definition>
+        <argsstring></argsstring>
+        <name>queue_full</name>
+        <qualifiedname>baton_stats::queue_full</qualifiedname>
+        <briefdescription>
+<para><ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref> rejected for lack of space. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="256" column="14" bodyfile="inc/baton_node.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a1e4fb08a769b3a2e7025235dc4e27755" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_stats::queue_high_used</definition>
+        <argsstring></argsstring>
+        <name>queue_high_used</name>
+        <qualifiedname>baton_stats::queue_high_used</qualifiedname>
+        <briefdescription>
+<para>Bytes in use in the HIGH queue. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="257" column="14" bodyfile="inc/baton_node.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__stats_1a3ec0afab443d2acdf7363a5807d80ecb" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_stats::queue_normal_used</definition>
+        <argsstring></argsstring>
+        <name>queue_normal_used</name>
+        <qualifiedname>baton_stats::queue_normal_used</qualifiedname>
+        <briefdescription>
+<para>Bytes in use in the NORMAL queue. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_node.h" line="258" column="14" bodyfile="inc/baton_node.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Diagnostic counters, see <ref refid="group__baton__node_1gacd6ae37a251cfa6478d268bc4a1262a2" kindref="member">baton_node_get_stats()</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_node.h" line="241" column="1" bodyfile="inc/baton_node.h" bodystart="242" bodyend="259"/>
+    <listofallmembers>
+      <member refid="structbaton__stats_1ab0f6aace2f12ad8998d17b8dca708bc8" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>ack_timeouts</name></member>
+      <member refid="structbaton__stats_1a6ccf22e40447727e90bf57cb23cf8dcd" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>bad_messages</name></member>
+      <member refid="structbaton__stats_1a337f2896677b9ac9217fb193347fdba9" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>collisions</name></member>
+      <member refid="structbaton__stats_1a6252d53637906da275132cb54cc97a15" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>crc_errors</name></member>
+      <member refid="structbaton__stats_1a2234c5eee6ba28582cc8e06714ff22e3" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>duplicates</name></member>
+      <member refid="structbaton__stats_1a5628d78039092c1b2247329c6775340d" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>events_dropped</name></member>
+      <member refid="structbaton__stats_1a80eab55d63427f3b9037025cb9b3461a" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>queue_full</name></member>
+      <member refid="structbaton__stats_1a1e4fb08a769b3a2e7025235dc4e27755" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>queue_high_used</name></member>
+      <member refid="structbaton__stats_1a3ec0afab443d2acdf7363a5807d80ecb" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>queue_normal_used</name></member>
+      <member refid="structbaton__stats_1aeb9cdff1df8c593411a890641a4a7288" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>resp_timeouts</name></member>
+      <member refid="structbaton__stats_1adab06a8667575828782db2921eba82b2" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>retries</name></member>
+      <member refid="structbaton__stats_1a4eac221331ad2c62661d0674be55173c" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>rx_frames</name></member>
+      <member refid="structbaton__stats_1a888aea3029d61fa53d405ffb5a9e8964" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>rx_overflows</name></member>
+      <member refid="structbaton__stats_1a067cd289b7057fbe9a714e394f09b08d" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>rx_timeouts</name></member>
+      <member refid="structbaton__stats_1af7e179afb70e9a9969ec1a96ac2b5480" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>tx_frames</name></member>
+      <member refid="structbaton__stats_1a126aaa216649daa50d32dd75de45493a" prot="public" virt="non-virtual"><scope>baton_stats</scope><name>tx_timeouts</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

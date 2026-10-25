@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__queue" kind="group">
+    <compoundname>baton_queue</compoundname>
+    <title>Event queue</title>
+    <innerclass refid="structbaton__record" prot="public">baton_record</innerclass>
+    <innerclass refid="structbaton__queue" prot="public">baton_queue</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <memberdef kind="function" id="group__baton__queue_1ga8e23a48d54d8c9871188a9da6542bd28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_queue_init</definition>
+        <argsstring>(struct baton_queue *queue, uint8_t *memory, uint16_t size)</argsstring>
+        <name>baton_queue_init</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>memory</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Initialize an empty queue over <computeroutput>memory</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queue state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>memory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage of <computeroutput>size</computeroutput> bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage size; rounded down to a multiple of 4. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="107" column="6" bodyfile="src/baton_queue.c" bodystart="96" bodyend="105" declfile="inc/baton_queue.h" declline="107" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gaf3cb1668b434ec923e748fb71e90ac97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue_record_size</definition>
+        <argsstring>(uint8_t length)</argsstring>
+        <name>baton_queue_record_size</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Bytes a record with <computeroutput>length</computeroutput> data bytes occupies. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="110" column="10" bodyfile="src/baton_queue.c" bodystart="107" bodyend="110" declfile="inc/baton_queue.h" declline="110" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gaa41bcb2dcf676fb81c0342f2dae8f9a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool baton_queue_alloc</definition>
+        <argsstring>(struct baton_queue *queue, uint16_t need, uint16_t *offset)</argsstring>
+        <name>baton_queue_alloc</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>need</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>Reserve <computeroutput>need</computeroutput> bytes at the tail. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Call with the critical section held. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queue state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>need</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Record size from <ref refid="group__baton__queue_1gaf3cb1668b434ec923e748fb71e90ac97" kindref="member">baton_queue_record_size()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the record offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true when the space was reserved. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="119" column="6" bodyfile="src/baton_queue.c" bodystart="112" bodyend="166" declfile="inc/baton_queue.h" declline="119" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gaf7ac186ea405ff363037cfde8c1dfed6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue_first</definition>
+        <argsstring>(const struct baton_queue *queue, uint16_t head, uint16_t tail)</argsstring>
+        <name>baton_queue_first</name>
+        <param>
+          <type>const struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>tail</declname>
+        </param>
+        <briefdescription>
+<para>Offset of the first record for a head/tail snapshot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Offset of the first record, or <computeroutput>tail</computeroutput> when the queue is empty. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="125" column="10" bodyfile="src/baton_queue.c" bodystart="168" bodyend="178" declfile="inc/baton_queue.h" declline="125" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1ga0264e5a394f485454046d8eae4de5884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue_next</definition>
+        <argsstring>(const struct baton_queue *queue, uint16_t offset, uint16_t tail)</argsstring>
+        <name>baton_queue_next</name>
+        <param>
+          <type>const struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>tail</declname>
+        </param>
+        <briefdescription>
+<para>Offset of the record after the one at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Offset of the next record, or <computeroutput>tail</computeroutput> after the last one. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="131" column="10" bodyfile="src/baton_queue.c" bodystart="180" bodyend="192" declfile="inc/baton_queue.h" declline="131" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1ga3fbee7250fe4395a503ba104b9a0a747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_queue_used</definition>
+        <argsstring>(const struct baton_queue *queue)</argsstring>
+        <name>baton_queue_used</name>
+        <param>
+          <type>const struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <briefdescription>
+<para>Bytes currently in use. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="134" column="10" bodyfile="src/baton_queue.c" bodystart="194" bodyend="214" declfile="inc/baton_queue.h" declline="134" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gad43b41c4971b53d4f6ce4edbb946c584" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_queue_read</definition>
+        <argsstring>(const struct baton_queue *queue, uint16_t offset, struct baton_record *record)</argsstring>
+        <name>baton_queue_read</name>
+        <param>
+          <type>const struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structbaton__record" kindref="compound">baton_record</ref> *</type>
+          <declname>record</declname>
+        </param>
+        <briefdescription>
+<para>Read the header of the record at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="137" column="6" bodyfile="src/baton_queue.c" bodystart="216" bodyend="230" declfile="inc/baton_queue.h" declline="137" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1ga2807391a964dbed546612a32b6bda5fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_queue_write</definition>
+        <argsstring>(struct baton_queue *queue, uint16_t offset, const struct baton_record *record)</argsstring>
+        <name>baton_queue_write</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structbaton__record" kindref="compound">baton_record</ref> *</type>
+          <declname>record</declname>
+        </param>
+        <briefdescription>
+<para>Write the complete header of the record at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="141" column="6" bodyfile="src/baton_queue.c" bodystart="232" bodyend="247" declfile="inc/baton_queue.h" declline="141" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gab9c7d949aad20b4886fb65e0a0e400cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_queue_set_masks</definition>
+        <argsstring>(struct baton_queue *queue, uint16_t offset, uint32_t pending, uint32_t inflight)</argsstring>
+        <name>baton_queue_set_masks</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>pending</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>inflight</declname>
+        </param>
+        <briefdescription>
+<para>Update only the node masks of the record at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="145" column="6" bodyfile="src/baton_queue.c" bodystart="249" bodyend="257" declfile="inc/baton_queue.h" declline="145" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1gadd3bba2f0f84b78b0c5ec67b41648601" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_queue_set_flags</definition>
+        <argsstring>(struct baton_queue *queue, uint16_t offset, uint8_t flags)</argsstring>
+        <name>baton_queue_set_flags</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+<para>Update only the flags of the record at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="149" column="6" bodyfile="src/baton_queue.c" bodystart="259" bodyend="265" declfile="inc/baton_queue.h" declline="149" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__queue_1ga2b23f19873a9551ed9c87826a0883296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t *</type>
+        <definition>uint8_t * baton_queue_data</definition>
+        <argsstring>(struct baton_queue *queue, uint16_t offset)</argsstring>
+        <name>baton_queue_data</name>
+        <param>
+          <type>struct <ref refid="structbaton__queue" kindref="compound">baton_queue</ref> *</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>Data bytes of the record at <computeroutput>offset</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="152" column="9" bodyfile="src/baton_queue.c" bodystart="267" bodyend="277" declfile="inc/baton_queue.h" declline="152" declcolumn="9"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Record header</header>
+      <memberdef kind="define" id="group__baton__queue_1ga296d968615cb5fa02c13dffa744153bd" prot="public" static="no">
+        <name>BATON_REC_HEADER_SIZE</name>
+        <initializer>16U</initializer>
+        <briefdescription>
+<para>Serialized size of a record header in bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="69" column="9" bodyfile="inc/baton_queue.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" prot="public" static="no">
+        <name>BATON_REC_VALID</name>
+        <initializer>0x01U</initializer>
+        <briefdescription>
+<para>Record is complete and visible to the consumer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="71" column="9" bodyfile="inc/baton_queue.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__queue_1ga28e558c65222fc60e45e71942e025ce2" prot="public" static="no">
+        <name>BATON_REC_SKIP</name>
+        <initializer>0x02U</initializer>
+        <briefdescription>
+<para>Marker at the end of the buffer: continue at offset 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="73" column="9" bodyfile="inc/baton_queue.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Byte ring of variable-size event records, used by <ref refid="group__baton__node" kindref="compound">Node</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Layout rules: <itemizedlist>
+<listitem><para>A record is a 16-byte header (<ref refid="structbaton__record" kindref="compound">baton_record</ref>, serialized byte by byte) followed by the data, padded to a multiple of 4 bytes. </para>
+</listitem>
+<listitem><para>A record is never split at the end of the buffer. If it does not fit at the end, a SKIP marker is written there (when a header fits) and the record goes to offset 0. A reader that reaches an offset without room for a header, or a SKIP marker, continues at 0. </para>
+</listitem>
+<listitem><para>head == tail means empty; the producer resets both to 0 when the queue is empty, so the wrapped state never starts from a stale head. </para>
+</listitem>
+<listitem><para>Records are released only from the head.</para>
+</listitem>
+</itemizedlist>
+The producer (<ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref>) may run in an interrupt; it calls <ref refid="group__baton__queue_1gaa41bcb2dcf676fb81c0342f2dae8f9a2" kindref="member">baton_queue_alloc</ref> with the critical section held and publishes a record by setting <ref refid="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" kindref="member">BATON_REC_VALID</ref> last. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

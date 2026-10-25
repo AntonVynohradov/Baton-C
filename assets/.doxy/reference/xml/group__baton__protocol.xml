@@ -1,0 +1,391 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__protocol" kind="group">
+    <compoundname>baton_protocol</compoundname>
+    <title>Codec</title>
+    <innerclass refid="structbaton__frame" prot="public">baton_frame</innerclass>
+    <innerclass refid="structbaton__parser" prot="public">baton_parser</innerclass>
+    <sectiondef kind="user-defined">
+      <header>CRC and frame parsing</header>
+      <memberdef kind="function" id="group__baton__protocol_1gaee18f48e881edb6b3f3c77a5309133f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_crc16_update</definition>
+        <argsstring>(uint16_t crc, uint8_t byte)</argsstring>
+        <name>baton_crc16_update</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>crc</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Add one byte to a CRC-16/CCITT-FALSE register. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>crc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current register value (BATON_CRC_INIT before the first byte). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next byte. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Updated register value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="119" column="10" bodyfile="src/baton_protocol.c" bodystart="149" bodyend="166" declfile="inc/baton_protocol.h" declline="119" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__protocol_1gaea4c4ccc6e241cd204b7fb8560e1ef61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_crc16</definition>
+        <argsstring>(const uint8_t *data, size_t length)</argsstring>
+        <name>baton_crc16</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the CRC-16/CCITT-FALSE of a buffer (poly 0x1021, init 0xFFFF). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bytes covered by the CRC. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to process. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Calculated CRC; BATON_CRC_INIT when <computeroutput>data</computeroutput> is NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="128" column="10" bodyfile="src/baton_protocol.c" bodystart="168" bodyend="181" declfile="inc/baton_protocol.h" declline="128" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__protocol_1ga88c62f578e7f5ebff0bad72afc6e6d16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void baton_parser_init</definition>
+        <argsstring>(struct baton_parser *parser)</argsstring>
+        <name>baton_parser_init</name>
+        <param>
+          <type>struct <ref refid="structbaton__parser" kindref="compound">baton_parser</ref> *</type>
+          <declname>parser</declname>
+        </param>
+        <briefdescription>
+<para>Reset a parser before starting or restarting a byte stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parser</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parser state to initialize; NULL is ignored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="134" column="6" bodyfile="src/baton_protocol.c" bodystart="183" bodyend="191" declfile="inc/baton_protocol.h" declline="134" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__protocol_1gaecb5b1070c3f177d31da3419c1e784eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_parser_feed</definition>
+        <argsstring>(struct baton_parser *parser, uint8_t byte)</argsstring>
+        <name>baton_parser_feed</name>
+        <param>
+          <type>struct <ref refid="structbaton__parser" kindref="compound">baton_parser</ref> *</type>
+          <declname>parser</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Feed one byte to the incremental frame parser. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The parser waits for SYNC, reads the header, rejects a LEN above BATON_MAX_PAYLOAD as soon as it is read, then reads the payload and the CRC and validates it. After a valid or invalid frame it waits for the next SYNC. Bytes of a rejected frame are not re-scanned for SYNC; the inter-byte timeout of the link resynchronizes a broken stream.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parser</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parser state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next byte from the input stream. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A complete valid frame is available in <computeroutput>parser-&gt;frame</computeroutput> until the next call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>More bytes are required. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_PARSE_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NULL parser, LEN out of range, CRC mismatch or corrupted state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="151" column="5" bodyfile="src/baton_protocol.c" bodystart="193" bodyend="232" declfile="inc/baton_protocol.h" declline="151" declcolumn="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Frame encoding</header>
+      <memberdef kind="function" id="group__baton__protocol_1ga2bd21ca87b358bbc18150046075c9b7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int baton_encode</definition>
+        <argsstring>(uint8_t dst, uint8_t src, uint8_t ctrl, const uint8_t *payload, size_t payload_length, uint8_t *output, size_t output_capacity, size_t *output_length)</argsstring>
+        <name>baton_encode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>ctrl</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>payload_length</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>output_capacity</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>output_length</declname>
+        </param>
+        <briefdescription>
+<para>Encode one frame: SYNC, header, payload and CRC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>payload</computeroutput> may point to <computeroutput>&amp;output[BATON_HEADER_SIZE]</computeroutput>: a payload that was built in place is then not copied.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>src</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctrl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control byte, see <ref refid="group__baton__defs_1ga67b52d864b7a367b9ffa30f375cbd8e8" kindref="member">baton_ctrl()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload bytes, or NULL when <computeroutput>payload_length</computeroutput> is zero. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>payload_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of payload bytes (at most BATON_MAX_PAYLOAD). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination buffer for the complete frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_capacity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Capacity of <computeroutput>output</computeroutput> in bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the frame length on success. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frame encoded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BATON_PARSE_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invalid input or insufficient output capacity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="175" column="5" bodyfile="src/baton_protocol.c" bodystart="234" bodyend="260" declfile="inc/baton_protocol.h" declline="175" declcolumn="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Frame limits and errors</header>
+      <memberdef kind="define" id="group__baton__protocol_1ga097cb3d5b22b8c0201c97381bcb33fb5" prot="public" static="no">
+        <name>BATON_FRAME_MAX</name>
+        <initializer>(<ref refid="group__baton__defs_1ga8028af598ef983658c79bb2ab7d2727c" kindref="member">BATON_FRAME_OVERHEAD</ref> + <ref refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" kindref="member">BATON_MAX_PAYLOAD</ref>)</initializer>
+        <briefdescription>
+<para>Largest complete frame on the wire, SYNC to CRC. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="66" column="9" bodyfile="inc/baton_protocol.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__protocol_1gae08bfd89592db2e5282a22bf139d18eb" prot="public" static="no">
+        <name>BATON_CRC_INIT</name>
+        <initializer>0xFFFFU</initializer>
+        <briefdescription>
+<para>Initial value of the CRC-16/CCITT-FALSE register. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="69" column="9" bodyfile="inc/baton_protocol.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__protocol_1gae955f4e697df65ff37c8bd30ca4a3f8b" prot="public" static="no">
+        <name>BATON_PARSER_IDLE</name>
+        <initializer>0U</initializer>
+        <briefdescription>
+<para>Value of <ref refid="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" kindref="member">baton_parser::state</ref> while the parser waits for SYNC (between frames). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="72" column="9" bodyfile="inc/baton_protocol.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__protocol_1gad2135747797c5b2e127f4a6e2f9b0589" prot="public" static="no">
+        <name>BATON_PARSE_ERROR</name>
+        <initializer>(-1)</initializer>
+        <briefdescription>
+<para>Error returned for invalid input, malformed frames, or insufficient capacity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="75" column="9" bodyfile="inc/baton_protocol.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CRC-16, incremental stream parser and frame encoder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Pure functions over caller-owned buffers: no state outside the structures passed in, safe to use from several contexts on different structures.</para>
+<para><simplesect kind="par"><title>Public interface includes:</title><para><itemizedlist>
+<listitem><para>CRC: <ref refid="group__baton__protocol_1gaea4c4ccc6e241cd204b7fb8560e1ef61" kindref="member">baton_crc16</ref>, <ref refid="group__baton__protocol_1gaee18f48e881edb6b3f3c77a5309133f7" kindref="member">baton_crc16_update</ref>. </para>
+</listitem>
+<listitem><para>Parser: <ref refid="group__baton__protocol_1ga88c62f578e7f5ebff0bad72afc6e6d16" kindref="member">baton_parser_init</ref>, <ref refid="group__baton__protocol_1gaecb5b1070c3f177d31da3419c1e784eb" kindref="member">baton_parser_feed</ref>. </para>
+</listitem>
+<listitem><para>Encoder: <ref refid="group__baton__protocol_1ga2bd21ca87b358bbc18150046075c9b7e" kindref="member">baton_encode</ref>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

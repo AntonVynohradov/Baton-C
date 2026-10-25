@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baton__protocol_8h" kind="file" language="C++">
+    <compoundname>baton_protocol.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes refid="baton__config_8h" local="yes">baton_config.h</includes>
+    <includes refid="baton__defs_8h" local="yes">baton_defs.h</includes>
+    <includedby refid="baton_8h" local="yes">baton.h</includedby>
+    <includedby refid="baton__link_8h" local="yes">inc/baton_link.h</includedby>
+    <includedby refid="baton__protocol_8c" local="yes">src/baton_protocol.c</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>baton_config.h</label>
+        <link refid="baton__config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>baton_defs.h</label>
+        <link refid="baton__defs_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/baton_protocol.h</label>
+        <link refid="baton__protocol_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>baton_user_config.h</label>
+      </node>
+      <node id="7">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stddef.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>baton.h</label>
+        <link refid="baton_8h"/>
+      </node>
+      <node id="3">
+        <label>inc/baton_link.h</label>
+        <link refid="baton__link_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/baton_protocol.h</label>
+        <link refid="baton__protocol_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structbaton__frame" prot="public">baton_frame</innerclass>
+    <innerclass refid="structbaton__parser" prot="public">baton_parser</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Frame limits and errors</header>
+      <member refid="group__baton__protocol_1ga097cb3d5b22b8c0201c97381bcb33fb5" kind="define"><name>BATON_FRAME_MAX</name></member>
+      <member refid="group__baton__protocol_1gae08bfd89592db2e5282a22bf139d18eb" kind="define"><name>BATON_CRC_INIT</name></member>
+      <member refid="group__baton__protocol_1gae955f4e697df65ff37c8bd30ca4a3f8b" kind="define"><name>BATON_PARSER_IDLE</name></member>
+      <member refid="group__baton__protocol_1gad2135747797c5b2e127f4a6e2f9b0589" kind="define"><name>BATON_PARSE_ERROR</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>CRC and frame parsing</header>
+      <member refid="group__baton__protocol_1gaee18f48e881edb6b3f3c77a5309133f7" kind="function"><name>baton_crc16_update</name></member>
+      <member refid="group__baton__protocol_1gaea4c4ccc6e241cd204b7fb8560e1ef61" kind="function"><name>baton_crc16</name></member>
+      <member refid="group__baton__protocol_1ga88c62f578e7f5ebff0bad72afc6e6d16" kind="function"><name>baton_parser_init</name></member>
+      <member refid="group__baton__protocol_1gaecb5b1070c3f177d31da3419c1e784eb" kind="function"><name>baton_parser_feed</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Frame encoding</header>
+      <member refid="group__baton__protocol_1ga2bd21ca87b358bbc18150046075c9b7e" kind="function"><name>baton_encode</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Baton codec: CRC-16/CCITT-FALSE, incremental frame parser and frame encoder. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Project: Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART Author: Anton Vynohradov Email: <ulink url="mailto:avynohradov@systemfromscratch.com">avynohradov@systemfromscratch.com</ulink></para>
+<para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
+</simplesect>
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+<para>SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_PROTOCOL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_PROTOCOL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__config_8h" kindref="compound">baton_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__defs_8h" kindref="compound">baton_defs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="group__baton__protocol_1ga097cb3d5b22b8c0201c97381bcb33fb5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FRAME_MAX<sp/>(BATON_FRAME_OVERHEAD<sp/>+<sp/>BATON_MAX_PAYLOAD)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group__baton__protocol_1gae08bfd89592db2e5282a22bf139d18eb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_CRC_INIT<sp/>0xFFFFU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="group__baton__protocol_1gae955f4e697df65ff37c8bd30ca4a3f8b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_PARSER_IDLE<sp/>0U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="group__baton__protocol_1gad2135747797c5b2e127f4a6e2f9b0589" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_PARSE_ERROR<sp/>(-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="structbaton__frame" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__frame" kindref="compound">baton_frame</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85" refid="structbaton__frame_1af96a84d45c07badc4b7ea3d07e97e627" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__frame_1af96a84d45c07badc4b7ea3d07e97e627" kindref="member">dst</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86" refid="structbaton__frame_1a2b2d3a095a2ab6e923acf30193ce820f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__frame_1a2b2d3a095a2ab6e923acf30193ce820f" kindref="member">src</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87" refid="structbaton__frame_1ae4d6df73582a5be666367ade3f076154" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__frame_1ae4d6df73582a5be666367ade3f076154" kindref="member">ctrl</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88" refid="structbaton__frame_1a1a2e8bf0774839f4042f5aed46e2fca3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__frame_1a1a2e8bf0774839f4042f5aed46e2fca3" kindref="member">length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89" refid="structbaton__frame_1a13e1a3f3e54ddd5e532af26fd46f71a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__frame_1a13e1a3f3e54ddd5e532af26fd46f71a9" kindref="member">payload</ref>[<ref refid="group__baton__config_1gad90f1d88dfbd073c0d75b8e55b439d39" kindref="member">BATON_MAX_PAYLOAD</ref>];<sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="structbaton__parser" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__parser" kindref="compound">baton_parser</ref></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101" refid="structbaton__parser_1a8422d5af04ee80a0ee231f7a207d9215" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__frame" kindref="compound">baton_frame</ref><sp/><ref refid="structbaton__parser_1a8422d5af04ee80a0ee231f7a207d9215" kindref="member">frame</ref>;<sp/></highlight></codeline>
+<codeline lineno="102" refid="structbaton__parser_1a05994cc553d27ae2bc4d387dcafd4cf9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__parser_1a05994cc553d27ae2bc4d387dcafd4cf9" kindref="member">crc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103" refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" kindref="member">index</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104" refid="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" kindref="member">state</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__protocol_1gaee18f48e881edb6b3f3c77a5309133f7" kindref="member">baton_crc16_update</ref>(uint16_t<sp/>crc,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__protocol_1gaea4c4ccc6e241cd204b7fb8560e1ef61" kindref="member">baton_crc16</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structbaton__frame_1a1a2e8bf0774839f4042f5aed46e2fca3" kindref="member">length</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__protocol_1ga88c62f578e7f5ebff0bad72afc6e6d16" kindref="member">baton_parser_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__parser" kindref="compound">baton_parser</ref>*<sp/>parser);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__protocol_1gaecb5b1070c3f177d31da3419c1e784eb" kindref="member">baton_parser_feed</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__parser" kindref="compound">baton_parser</ref>*<sp/>parser,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__protocol_1ga2bd21ca87b358bbc18150046075c9b7e" kindref="member">baton_encode</ref>(uint8_t<sp/><ref refid="structbaton__frame_1af96a84d45c07badc4b7ea3d07e97e627" kindref="member">dst</ref>,<sp/>uint8_t<sp/><ref refid="structbaton__frame_1a2b2d3a095a2ab6e923acf30193ce820f" kindref="member">src</ref>,<sp/>uint8_t<sp/><ref refid="structbaton__frame_1ae4d6df73582a5be666367ade3f076154" kindref="member">ctrl</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/><ref refid="structbaton__frame_1a13e1a3f3e54ddd5e532af26fd46f71a9" kindref="member">payload</ref>,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>payload_length,<sp/>uint8_t*<sp/>output,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>output_capacity,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>output_length);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BATON_PROTOCOL_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/baton_protocol.h"/>
+  </compounddef>
+</doxygen>

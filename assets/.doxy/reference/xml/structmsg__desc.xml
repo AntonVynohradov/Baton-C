@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structmsg__desc" kind="struct" language="C++" prot="public">
+    <compoundname>msg_desc</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmsg__desc_1a0af2fda29847c7574032756e1690d97c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t msg_desc::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>msg_desc::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/baton_node.c" line="99" column="13" bodyfile="src/baton_node.c" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmsg__desc_1a037ad57052f25c143e5c3b8350570183" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t msg_desc::max_length</definition>
+        <argsstring></argsstring>
+        <name>max_length</name>
+        <qualifiedname>msg_desc::max_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/baton_node.c" line="100" column="13" bodyfile="src/baton_node.c" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Identifier and maximum length of one message. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/baton_node.c" line="97" column="1" bodyfile="src/baton_node.c" bodystart="98" bodyend="101"/>
+    <listofallmembers>
+      <member refid="structmsg__desc_1a0af2fda29847c7574032756e1690d97c" prot="public" virt="non-virtual"><scope>msg_desc</scope><name>id</name></member>
+      <member refid="structmsg__desc_1a037ad57052f25c143e5c3b8350570183" prot="public" virt="non-virtual"><scope>msg_desc</scope><name>max_length</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

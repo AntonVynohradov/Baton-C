@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__record" kind="struct" language="C++" prot="public">
+    <compoundname>baton_record</compoundname>
+    <includes refid="baton__queue_8h" local="no">baton_queue.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__record_1adc57e06bf6a046963a9fe6fe48aa251f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_record::pending</definition>
+        <argsstring></argsstring>
+        <name>pending</name>
+        <qualifiedname>baton_record::pending</qualifiedname>
+        <briefdescription>
+<para>Node mask: nodes that have not acknowledged the event. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="78" column="14" bodyfile="inc/baton_queue.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1a9b11ac8d935e4072a978c328c5da6d19" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_record::inflight</definition>
+        <argsstring></argsstring>
+        <name>inflight</name>
+        <qualifiedname>baton_record::inflight</qualifiedname>
+        <briefdescription>
+<para>Node mask: nodes with an unacknowledged frame containing it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="79" column="14" bodyfile="inc/baton_queue.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1aee5b7a61d8ce281b6a3627ef0b60053d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_record::stamp</definition>
+        <argsstring></argsstring>
+        <name>stamp</name>
+        <qualifiedname>baton_record::stamp</qualifiedname>
+        <briefdescription>
+<para>Time of <ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref> in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="80" column="14" bodyfile="inc/baton_queue.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1a1662a27311480b84bb50d73b6e62a664" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_record::msg_id</definition>
+        <argsstring></argsstring>
+        <name>msg_id</name>
+        <qualifiedname>baton_record::msg_id</qualifiedname>
+        <briefdescription>
+<para>Message identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="81" column="13" bodyfile="inc/baton_queue.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1a747b6d943de6f98891cb164fa5272557" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_record::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <qualifiedname>baton_record::length</qualifiedname>
+        <briefdescription>
+<para>Number of data bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="82" column="13" bodyfile="inc/baton_queue.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1a8809f716de33656409efad5785f5e0b8" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_record::dst</definition>
+        <argsstring></argsstring>
+        <name>dst</name>
+        <qualifiedname>baton_record::dst</qualifiedname>
+        <briefdescription>
+<para>Destination address given to <ref refid="group__baton__node_1ga3c8e0d35c10578eecc4089d0c979d9db" kindref="member">baton_node_send()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="83" column="13" bodyfile="inc/baton_queue.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__record_1a4e149b068214a8ee192fc50da1f0b9c6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_record::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <qualifiedname>baton_record::flags</qualifiedname>
+        <briefdescription>
+<para>BATON_REC_VALID, BATON_REC_SKIP. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_queue.h" line="84" column="13" bodyfile="inc/baton_queue.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Header of one event record. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_queue.h" line="76" column="1" bodyfile="inc/baton_queue.h" bodystart="77" bodyend="85"/>
+    <listofallmembers>
+      <member refid="structbaton__record_1a8809f716de33656409efad5785f5e0b8" prot="public" virt="non-virtual"><scope>baton_record</scope><name>dst</name></member>
+      <member refid="structbaton__record_1a4e149b068214a8ee192fc50da1f0b9c6" prot="public" virt="non-virtual"><scope>baton_record</scope><name>flags</name></member>
+      <member refid="structbaton__record_1a9b11ac8d935e4072a978c328c5da6d19" prot="public" virt="non-virtual"><scope>baton_record</scope><name>inflight</name></member>
+      <member refid="structbaton__record_1a747b6d943de6f98891cb164fa5272557" prot="public" virt="non-virtual"><scope>baton_record</scope><name>length</name></member>
+      <member refid="structbaton__record_1a1662a27311480b84bb50d73b6e62a664" prot="public" virt="non-virtual"><scope>baton_record</scope><name>msg_id</name></member>
+      <member refid="structbaton__record_1adc57e06bf6a046963a9fe6fe48aa251f" prot="public" virt="non-virtual"><scope>baton_record</scope><name>pending</name></member>
+      <member refid="structbaton__record_1aee5b7a61d8ce281b6a3627ef0b60053d" prot="public" virt="non-virtual"><scope>baton_record</scope><name>stamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

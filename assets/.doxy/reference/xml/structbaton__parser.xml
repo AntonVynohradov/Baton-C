@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__parser" kind="struct" language="C++" prot="public">
+    <compoundname>baton_parser</compoundname>
+    <includes refid="baton__protocol_8h" local="no">baton_protocol.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__parser_1a8422d5af04ee80a0ee231f7a207d9215" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__frame" kindref="compound">baton_frame</ref></type>
+        <definition>struct baton_frame baton_parser::frame</definition>
+        <argsstring></argsstring>
+        <name>frame</name>
+        <qualifiedname>baton_parser::frame</qualifiedname>
+        <briefdescription>
+<para>Frame being received; valid after feed returned 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="101" column="22" bodyfile="inc/baton_protocol.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__parser_1a05994cc553d27ae2bc4d387dcafd4cf9" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_parser::crc</definition>
+        <argsstring></argsstring>
+        <name>crc</name>
+        <qualifiedname>baton_parser::crc</qualifiedname>
+        <briefdescription>
+<para>Running CRC over DST..PAYLOAD. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="102" column="14" bodyfile="inc/baton_protocol.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_parser::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <qualifiedname>baton_parser::index</qualifiedname>
+        <briefdescription>
+<para>Bytes of the current field already received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="103" column="14" bodyfile="inc/baton_protocol.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_parser::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>baton_parser::state</qualifiedname>
+        <briefdescription>
+<para>Internal state; BATON_PARSER_IDLE between frames. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_protocol.h" line="104" column="13" bodyfile="inc/baton_protocol.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Incremental parser state for one byte stream. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The parser decodes directly into <ref refid="structbaton__parser_1a8422d5af04ee80a0ee231f7a207d9215" kindref="member">baton_parser::frame</ref>, so a decoded frame needs no second buffer. Keep one instance per input stream and initialize it before feeding bytes. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>baton_frame</label>
+        <link refid="structbaton__frame"/>
+      </node>
+      <node id="1">
+        <label>baton_parser</label>
+        <link refid="structbaton__parser"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>frame</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/baton_protocol.h" line="99" column="1" bodyfile="inc/baton_protocol.h" bodystart="100" bodyend="105"/>
+    <listofallmembers>
+      <member refid="structbaton__parser_1a05994cc553d27ae2bc4d387dcafd4cf9" prot="public" virt="non-virtual"><scope>baton_parser</scope><name>crc</name></member>
+      <member refid="structbaton__parser_1a8422d5af04ee80a0ee231f7a207d9215" prot="public" virt="non-virtual"><scope>baton_parser</scope><name>frame</name></member>
+      <member refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" prot="public" virt="non-virtual"><scope>baton_parser</scope><name>index</name></member>
+      <member refid="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" prot="public" virt="non-virtual"><scope>baton_parser</scope><name>state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

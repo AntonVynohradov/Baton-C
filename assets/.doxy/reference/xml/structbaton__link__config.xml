@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__link__config" kind="struct" language="C++" prot="public">
+    <compoundname>baton_link_config</compoundname>
+    <includes refid="baton__link_8h" local="no">baton_link.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__link__config_1a3a9b35c4ff1fd7117b44d61773bcc50c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref></type>
+        <definition>baton_write_fn baton_link_config::write</definition>
+        <argsstring></argsstring>
+        <name>write</name>
+        <qualifiedname>baton_link_config::write</qualifiedname>
+        <briefdescription>
+<para>Starts a transmission (required). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="102" column="20" bodyfile="inc/baton_link.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__config_1a4bd8655cacf38739a1bc4094956ebdab" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* baton_link_config::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <qualifiedname>baton_link_config::context</qualifiedname>
+        <briefdescription>
+<para>Passed to write. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="103" column="10" bodyfile="inc/baton_link.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__config_1aabec47eda44476c334627d2d8c661421" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link_config::baudrate</definition>
+        <argsstring></argsstring>
+        <name>baudrate</name>
+        <qualifiedname>baton_link_config::baudrate</qualifiedname>
+        <briefdescription>
+<para>Bit rate; frame durations assume 8N1 (10 bits per byte). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="104" column="14" bodyfile="inc/baton_link.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__config_1a5e766fcce94c204b7e0ddb6f68d5589c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_link_config::tx_gap_ms</definition>
+        <argsstring></argsstring>
+        <name>tx_gap_ms</name>
+        <qualifiedname>baton_link_config::tx_gap_ms</qualifiedname>
+        <briefdescription>
+<para>Bus silence required before transmitting. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="105" column="13" bodyfile="inc/baton_link.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__config_1a5e4c4d8f7de838dbea9dd7f61dc0f5e9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_link_config::inter_byte_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>inter_byte_timeout_ms</name>
+        <qualifiedname>baton_link_config::inter_byte_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Silence that aborts a partially received frame (&gt; 0). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="106" column="13" bodyfile="inc/baton_link.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link__config_1a06d2ad7d063ba3e25f6c9ee737842b88" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_link_config::rx_echo</definition>
+        <argsstring></argsstring>
+        <name>rx_echo</name>
+        <qualifiedname>baton_link_config::rx_echo</qualifiedname>
+        <briefdescription>
+<para>true: the UART receives its own bytes (single wire). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="107" column="10" bodyfile="inc/baton_link.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Link configuration passed to <ref refid="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" kindref="member">baton_link_init</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/baton_link.h" line="100" column="1" bodyfile="inc/baton_link.h" bodystart="101" bodyend="108"/>
+    <listofallmembers>
+      <member refid="structbaton__link__config_1aabec47eda44476c334627d2d8c661421" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>baudrate</name></member>
+      <member refid="structbaton__link__config_1a4bd8655cacf38739a1bc4094956ebdab" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>context</name></member>
+      <member refid="structbaton__link__config_1a5e4c4d8f7de838dbea9dd7f61dc0f5e9" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>inter_byte_timeout_ms</name></member>
+      <member refid="structbaton__link__config_1a06d2ad7d063ba3e25f6c9ee737842b88" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>rx_echo</name></member>
+      <member refid="structbaton__link__config_1a5e766fcce94c204b7e0ddb6f68d5589c" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>tx_gap_ms</name></member>
+      <member refid="structbaton__link__config_1a3a9b35c4ff1fd7117b44d61773bcc50c" prot="public" virt="non-virtual"><scope>baton_link_config</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

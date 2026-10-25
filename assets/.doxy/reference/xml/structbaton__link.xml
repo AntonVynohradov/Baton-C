@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structbaton__link" kind="struct" language="C++" prot="public">
+    <compoundname>baton_link</compoundname>
+    <includes refid="baton__link_8h" local="no">baton_link.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref></type>
+        <definition>struct baton_link_config baton_link::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>baton_link::config</qualifiedname>
+        <briefdescription>
+<para>Copy of the configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="124" column="28" bodyfile="inc/baton_link.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a95da526fc312d4587b462a526a08645f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__parser" kindref="compound">baton_parser</ref></type>
+        <definition>struct baton_parser baton_link::parser</definition>
+        <argsstring></argsstring>
+        <name>parser</name>
+        <qualifiedname>baton_link::parser</qualifiedname>
+        <briefdescription>
+<para>Receive stream parser. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="125" column="23" bodyfile="inc/baton_link.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structbaton__link__counters" kindref="compound">baton_link_counters</ref></type>
+        <definition>struct baton_link_counters baton_link::counters</definition>
+        <argsstring></argsstring>
+        <name>counters</name>
+        <qualifiedname>baton_link::counters</qualifiedname>
+        <briefdescription>
+<para>Diagnostic counters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="126" column="30" bodyfile="inc/baton_link.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" prot="public" static="no" mutable="no">
+        <type>volatile uint8_t</type>
+        <definition>volatile uint8_t baton_link::rx_buffer[BATON_RX_BUF_SIZE]</definition>
+        <argsstring>[BATON_RX_BUF_SIZE]</argsstring>
+        <name>rx_buffer</name>
+        <qualifiedname>baton_link::rx_buffer</qualifiedname>
+        <briefdescription>
+<para>Receive ring (interrupt producer). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="128" column="22" bodyfile="inc/baton_link.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" prot="public" static="no" mutable="no">
+        <type>volatile uint16_t</type>
+        <definition>volatile uint16_t baton_link::rx_head</definition>
+        <argsstring></argsstring>
+        <name>rx_head</name>
+        <qualifiedname>baton_link::rx_head</qualifiedname>
+        <briefdescription>
+<para>Next write position (interrupt). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="129" column="23" bodyfile="inc/baton_link.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" prot="public" static="no" mutable="no">
+        <type>volatile uint16_t</type>
+        <definition>volatile uint16_t baton_link::rx_tail</definition>
+        <argsstring></argsstring>
+        <name>rx_tail</name>
+        <qualifiedname>baton_link::rx_tail</qualifiedname>
+        <briefdescription>
+<para>Next read position (process). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="130" column="23" bodyfile="inc/baton_link.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" prot="public" static="no" mutable="no">
+        <type>volatile uint32_t</type>
+        <definition>volatile uint32_t baton_link::rx_overflows</definition>
+        <argsstring></argsstring>
+        <name>rx_overflows</name>
+        <qualifiedname>baton_link::rx_overflows</qualifiedname>
+        <briefdescription>
+<para>Bytes lost because the ring was full. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="131" column="23" bodyfile="inc/baton_link.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" prot="public" static="no" mutable="no">
+        <type>volatile bool</type>
+        <definition>volatile bool baton_link::tx_done_flag</definition>
+        <argsstring></argsstring>
+        <name>tx_done_flag</name>
+        <qualifiedname>baton_link::tx_done_flag</qualifiedname>
+        <briefdescription>
+<para>Set by <ref refid="group__baton__link_1gaed0ee43249f7dd43698788d5d8a790d5" kindref="member">baton_link_tx_done_isr()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="132" column="19" bodyfile="inc/baton_link.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" prot="public" static="no" mutable="no">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t* baton_link::tx_data</definition>
+        <argsstring></argsstring>
+        <name>tx_data</name>
+        <qualifiedname>baton_link::tx_data</qualifiedname>
+        <briefdescription>
+<para>Frame being transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="134" column="19" bodyfile="inc/baton_link.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_link::tx_length</definition>
+        <argsstring></argsstring>
+        <name>tx_length</name>
+        <qualifiedname>baton_link::tx_length</qualifiedname>
+        <briefdescription>
+<para>Length of tx_data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="135" column="14" bodyfile="inc/baton_link.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t baton_link::echo_index</definition>
+        <argsstring></argsstring>
+        <name>echo_index</name>
+        <qualifiedname>baton_link::echo_index</qualifiedname>
+        <briefdescription>
+<para>Echo bytes already compared. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="136" column="14" bodyfile="inc/baton_link.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1abe729fa9e29b3d9ae5d3e26c161572c7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool baton_link::echo_error</definition>
+        <argsstring></argsstring>
+        <name>echo_error</name>
+        <qualifiedname>baton_link::echo_error</qualifiedname>
+        <briefdescription>
+<para>An echo byte did not match. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="137" column="10" bodyfile="inc/baton_link.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a6d40627ca76fc253a47c8f2a55d7e41d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t baton_link::tx_state</definition>
+        <argsstring></argsstring>
+        <name>tx_state</name>
+        <qualifiedname>baton_link::tx_state</qualifiedname>
+        <briefdescription>
+<para>Idle, waiting for a silent bus, or busy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="138" column="13" bodyfile="inc/baton_link.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a3302675a23f42fb5d86dadbe8222443c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link::tx_start_ms</definition>
+        <argsstring></argsstring>
+        <name>tx_start_ms</name>
+        <qualifiedname>baton_link::tx_start_ms</qualifiedname>
+        <briefdescription>
+<para>Start of the current transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="139" column="14" bodyfile="inc/baton_link.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1a4f0dc86ca3c828e9dd1ada382d40494f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link::last_tx_end_ms</definition>
+        <argsstring></argsstring>
+        <name>last_tx_end_ms</name>
+        <qualifiedname>baton_link::last_tx_end_ms</qualifiedname>
+        <briefdescription>
+<para>End of the last transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="140" column="14" bodyfile="inc/baton_link.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t baton_link::last_rx_ms</definition>
+        <argsstring></argsstring>
+        <name>last_rx_ms</name>
+        <qualifiedname>baton_link::last_rx_ms</qualifiedname>
+        <briefdescription>
+<para>Last byte received from another node (fed to the parser). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_link.h" line="141" column="14" bodyfile="inc/baton_link.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Link state. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Treat the members as private; use the functions below. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>baton_frame</label>
+        <link refid="structbaton__frame"/>
+      </node>
+      <node id="1">
+        <label>baton_link</label>
+        <link refid="structbaton__link"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>parser</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>counters</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>baton_link_config</label>
+        <link refid="structbaton__link__config"/>
+      </node>
+      <node id="5">
+        <label>baton_link_counters</label>
+        <link refid="structbaton__link__counters"/>
+      </node>
+      <node id="3">
+        <label>baton_parser</label>
+        <link refid="structbaton__parser"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>frame</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/baton_link.h" line="122" column="1" bodyfile="inc/baton_link.h" bodystart="123" bodyend="142"/>
+    <listofallmembers>
+      <member refid="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" prot="public" virt="non-virtual"><scope>baton_link</scope><name>config</name></member>
+      <member refid="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" prot="public" virt="non-virtual"><scope>baton_link</scope><name>counters</name></member>
+      <member refid="structbaton__link_1abe729fa9e29b3d9ae5d3e26c161572c7" prot="public" virt="non-virtual"><scope>baton_link</scope><name>echo_error</name></member>
+      <member refid="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" prot="public" virt="non-virtual"><scope>baton_link</scope><name>echo_index</name></member>
+      <member refid="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" prot="public" virt="non-virtual"><scope>baton_link</scope><name>last_rx_ms</name></member>
+      <member refid="structbaton__link_1a4f0dc86ca3c828e9dd1ada382d40494f" prot="public" virt="non-virtual"><scope>baton_link</scope><name>last_tx_end_ms</name></member>
+      <member refid="structbaton__link_1a95da526fc312d4587b462a526a08645f" prot="public" virt="non-virtual"><scope>baton_link</scope><name>parser</name></member>
+      <member refid="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" prot="public" virt="non-virtual"><scope>baton_link</scope><name>rx_buffer</name></member>
+      <member refid="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" prot="public" virt="non-virtual"><scope>baton_link</scope><name>rx_head</name></member>
+      <member refid="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" prot="public" virt="non-virtual"><scope>baton_link</scope><name>rx_overflows</name></member>
+      <member refid="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" prot="public" virt="non-virtual"><scope>baton_link</scope><name>rx_tail</name></member>
+      <member refid="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" prot="public" virt="non-virtual"><scope>baton_link</scope><name>tx_data</name></member>
+      <member refid="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" prot="public" virt="non-virtual"><scope>baton_link</scope><name>tx_done_flag</name></member>
+      <member refid="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" prot="public" virt="non-virtual"><scope>baton_link</scope><name>tx_length</name></member>
+      <member refid="structbaton__link_1a3302675a23f42fb5d86dadbe8222443c" prot="public" virt="non-virtual"><scope>baton_link</scope><name>tx_start_ms</name></member>
+      <member refid="structbaton__link_1a6d40627ca76fc253a47c8f2a55d7e41d" prot="public" virt="non-virtual"><scope>baton_link</scope><name>tx_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

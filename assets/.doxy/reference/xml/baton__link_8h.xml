@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baton__link_8h" kind="file" language="C++">
+    <compoundname>baton_link.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes refid="baton__protocol_8h" local="yes">baton_protocol.h</includes>
+    <includedby refid="baton_8h" local="yes">baton.h</includedby>
+    <includedby refid="baton__node_8h" local="yes">inc/baton_node.h</includedby>
+    <includedby refid="baton__link_8c" local="yes">src/baton_link.c</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>baton_config.h</label>
+        <link refid="baton__config_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>baton_defs.h</label>
+        <link refid="baton__defs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/baton_link.h</label>
+        <link refid="baton__link_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>baton_protocol.h</label>
+        <link refid="baton__protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>baton_user_config.h</label>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>baton.h</label>
+        <link refid="baton_8h"/>
+      </node>
+      <node id="1">
+        <label>inc/baton_link.h</label>
+        <link refid="baton__link_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structbaton__link__config" prot="public">baton_link_config</innerclass>
+    <innerclass refid="structbaton__link__counters" prot="public">baton_link_counters</innerclass>
+    <innerclass refid="structbaton__link" prot="public">baton_link</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Link events</header>
+      <member refid="group__baton__link_1ga40cab1dc3fa7037a20e2071b6638d9fd" kind="define"><name>BATON_LINK_NONE</name></member>
+      <member refid="group__baton__link_1ga20080688ed133f13027671b8ad52581f" kind="define"><name>BATON_LINK_FRAME</name></member>
+      <member refid="group__baton__link_1gaf10e4c399d7b5bcbdfa1ce11d1eb3a0f" kind="define"><name>BATON_LINK_TX_DONE</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Type definitions</header>
+      <member refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kind="typedef"><name>baton_write_fn</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <member refid="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" kind="function"><name>baton_link_init</name></member>
+      <member refid="group__baton__link_1ga21f8be705e91f8892fcb23d367a75868" kind="function"><name>baton_link_rx_isr</name></member>
+      <member refid="group__baton__link_1gaed0ee43249f7dd43698788d5d8a790d5" kind="function"><name>baton_link_tx_done_isr</name></member>
+      <member refid="group__baton__link_1ga2a7717b47dc3b05d936a853a5d56089f" kind="function"><name>baton_link_receive</name></member>
+      <member refid="group__baton__link_1ga7040f3856fae6ada0de698e7734244ed" kind="function"><name>baton_link_transmit</name></member>
+      <member refid="group__baton__link_1ga5aa5e371ad80fb07ba40e6d2dab73438" kind="function"><name>baton_link_send</name></member>
+      <member refid="group__baton__link_1ga4bf3e074fb952e0ffce23f00012aeea4" kind="function"><name>baton_link_cancel</name></member>
+      <member refid="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" kind="function"><name>baton_link_frame</name></member>
+      <member refid="group__baton__link_1ga064693f533020857a588f2d5e43e23b7" kind="function"><name>baton_link_rx_busy</name></member>
+      <member refid="group__baton__link_1ga70bae16a39e814a87f07f9cacb80e1a3" kind="function"><name>baton_link_frame_ms</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Baton half-duplex link: receive ring, parser with timeout, transmitter. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Project: Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART Author: Anton Vynohradov Email: <ulink url="mailto:avynohradov@systemfromscratch.com">avynohradov@systemfromscratch.com</ulink></para>
+<para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
+</simplesect>
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+<para>SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_LINK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="baton__protocol_8h" kindref="compound">baton_protocol.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="group__baton__link_1ga40cab1dc3fa7037a20e2071b6638d9fd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_NONE<sp/>0</highlight></codeline>
+<codeline lineno="76" refid="group__baton__link_1ga20080688ed133f13027671b8ad52581f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_FRAME<sp/>1</highlight></codeline>
+<codeline lineno="78" refid="group__baton__link_1gaf10e4c399d7b5bcbdfa1ce11d1eb3a0f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_TX_DONE<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int<sp/>(*<ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="structbaton__link__config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102" refid="structbaton__link__config_1a3a9b35c4ff1fd7117b44d61773bcc50c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref><sp/><ref refid="structbaton__link__config_1a3a9b35c4ff1fd7117b44d61773bcc50c" kindref="member">write</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103" refid="structbaton__link__config_1a4bd8655cacf38739a1bc4094956ebdab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structbaton__link__config_1a4bd8655cacf38739a1bc4094956ebdab" kindref="member">context</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104" refid="structbaton__link__config_1aabec47eda44476c334627d2d8c661421" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__config_1aabec47eda44476c334627d2d8c661421" kindref="member">baudrate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105" refid="structbaton__link__config_1a5e766fcce94c204b7e0ddb6f68d5589c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__link__config_1a5e766fcce94c204b7e0ddb6f68d5589c" kindref="member">tx_gap_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106" refid="structbaton__link__config_1a5e4c4d8f7de838dbea9dd7f61dc0f5e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__link__config_1a5e4c4d8f7de838dbea9dd7f61dc0f5e9" kindref="member">inter_byte_timeout_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="107" refid="structbaton__link__config_1a06d2ad7d063ba3e25f6c9ee737842b88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__link__config_1a06d2ad7d063ba3e25f6c9ee737842b88" kindref="member">rx_echo</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="structbaton__link__counters" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__counters" kindref="compound">baton_link_counters</ref></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113" refid="structbaton__link__counters_1a48de6bde85895b362fdf8602ad9a54bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1a48de6bde85895b362fdf8602ad9a54bb" kindref="member">tx_frames</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114" refid="structbaton__link__counters_1abd5d4e97f876f16fdb15893513d3f02a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1abd5d4e97f876f16fdb15893513d3f02a" kindref="member">rx_frames</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structbaton__link__counters_1ac6c458c56f357e71d80407a4e535480e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1ac6c458c56f357e71d80407a4e535480e" kindref="member">crc_errors</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="116" refid="structbaton__link__counters_1a0ca6d23d1703d5376261671d06f2bf67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1a0ca6d23d1703d5376261671d06f2bf67" kindref="member">rx_timeouts</ref>;<sp/></highlight></codeline>
+<codeline lineno="117" refid="structbaton__link__counters_1a67c12906e215964c9c628b2c32b1be3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1a67c12906e215964c9c628b2c32b1be3a" kindref="member">collisions</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="118" refid="structbaton__link__counters_1ad04f0a5fe97994d57556fbe848394a58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link__counters_1ad04f0a5fe97994d57556fbe848394a58" kindref="member">tx_timeouts</ref>;<sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="structbaton__link" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link" kindref="compound">baton_link</ref></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124" refid="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref><sp/><ref refid="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" kindref="member">config</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125" refid="structbaton__link_1a95da526fc312d4587b462a526a08645f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__parser" kindref="compound">baton_parser</ref><sp/><ref refid="structbaton__link_1a95da526fc312d4587b462a526a08645f" kindref="member">parser</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="126" refid="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__counters" kindref="compound">baton_link_counters</ref><sp/><ref refid="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" kindref="member">counters</ref>;<sp/></highlight></codeline>
+<codeline lineno="128" refid="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" kindref="member">rx_buffer</ref>[<ref refid="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" kindref="member">BATON_RX_BUF_SIZE</ref>];<sp/></highlight></codeline>
+<codeline lineno="129" refid="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" kindref="member">rx_head</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130" refid="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" kindref="member">rx_tail</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131" refid="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" kindref="member">rx_overflows</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132" refid="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" kindref="member">tx_done_flag</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134" refid="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/><ref refid="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" kindref="member">tx_data</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="135" refid="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" kindref="member">tx_length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136" refid="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" kindref="member">echo_index</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137" refid="structbaton__link_1abe729fa9e29b3d9ae5d3e26c161572c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__link_1abe729fa9e29b3d9ae5d3e26c161572c7" kindref="member">echo_error</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="138" refid="structbaton__link_1a6d40627ca76fc253a47c8f2a55d7e41d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__link_1a6d40627ca76fc253a47c8f2a55d7e41d" kindref="member">tx_state</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="structbaton__link_1a3302675a23f42fb5d86dadbe8222443c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link_1a3302675a23f42fb5d86dadbe8222443c" kindref="member">tx_start_ms</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140" refid="structbaton__link_1a4f0dc86ca3c828e9dd1ada382d40494f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link_1a4f0dc86ca3c828e9dd1ada382d40494f" kindref="member">last_tx_end_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="141" refid="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" kindref="member">last_rx_ms</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" kindref="member">baton_link_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref>*<sp/>config,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga21f8be705e91f8892fcb23d367a75868" kindref="member">baton_link_rx_isr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1gaed0ee43249f7dd43698788d5d8a790d5" kindref="member">baton_link_tx_done_isr</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga2a7717b47dc3b05d936a853a5d56089f" kindref="member">baton_link_receive</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga7040f3856fae6ada0de698e7734244ed" kindref="member">baton_link_transmit</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga5aa5e371ad80fb07ba40e6d2dab73438" kindref="member">baton_link_send</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga4bf3e074fb952e0ffce23f00012aeea4" kindref="member">baton_link_cancel</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__frame" kindref="compound">baton_frame</ref>*<sp/><ref refid="group__baton__link_1gabe66a36ed0deb145a3770d9967d4c814" kindref="member">baton_link_frame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga064693f533020857a588f2d5e43e23b7" kindref="member">baton_link_rx_busy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint32_t<sp/>now_ms);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal">uint32_t<sp/><ref refid="group__baton__link_1ga70bae16a39e814a87f07f9cacb80e1a3" kindref="member">baton_link_frame_ms</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint32_t<sp/>bytes);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BATON_LINK_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/baton_link.h"/>
+  </compounddef>
+</doxygen>

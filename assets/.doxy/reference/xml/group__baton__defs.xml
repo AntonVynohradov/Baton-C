@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__baton__defs" kind="group">
+    <compoundname>baton_defs</compoundname>
+    <title>Definitions</title>
+    <sectiondef kind="user-defined">
+      <header>Control byte</header>
+      <memberdef kind="function" id="group__baton__defs_1ga67b52d864b7a367b9ffa30f375cbd8e8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t baton_ctrl</definition>
+        <argsstring>(uint8_t type, bool first, uint8_t seq)</argsstring>
+        <name>baton_ctrl</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>seq</declname>
+        </param>
+        <briefdescription>
+<para>Build a control byte. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frame type (BATON_FT_*), 0..3. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>first</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FIRST flag: set until the receiver acknowledged a frame after a restart. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sequence number, only bits 3..0 are used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Control byte. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="107" column="23" bodyfile="inc/baton_defs.h" bodystart="107" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1gaac08b9d4ac4fd191a5feffe41aeb5883" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t baton_ctrl_type</definition>
+        <argsstring>(uint8_t ctrl)</argsstring>
+        <name>baton_ctrl_type</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>ctrl</declname>
+        </param>
+        <briefdescription>
+<para>Frame type of a control byte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="116" column="23" bodyfile="inc/baton_defs.h" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1ga83a1d0ef6f72a208b99c7161e5127a11" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool baton_ctrl_first</definition>
+        <argsstring>(uint8_t ctrl)</argsstring>
+        <name>baton_ctrl_first</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>ctrl</declname>
+        </param>
+        <briefdescription>
+<para>FIRST flag of a control byte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="122" column="20" bodyfile="inc/baton_defs.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1gaaee89d19f61785baa80d0d0e56cd918f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t baton_ctrl_seq</definition>
+        <argsstring>(uint8_t ctrl)</argsstring>
+        <name>baton_ctrl_seq</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>ctrl</declname>
+        </param>
+        <briefdescription>
+<para>Sequence number of a control byte. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="128" column="23" bodyfile="inc/baton_defs.h" bodystart="128" bodyend="131"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Byte-order helpers</header>
+      <description><para>The CRC is transmitted big endian; node masks inside a RESP are little endian. </para>
+</description>
+      <memberdef kind="function" id="group__baton__defs_1gade2c5f17a0ca8bf4b948a5583bb90f34" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>static uint16_t baton_get_u16be</definition>
+        <argsstring>(const uint8_t *data)</argsstring>
+        <name>baton_get_u16be</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Read a big-endian 16-bit value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="143" column="24" bodyfile="inc/baton_defs.h" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1ga02b72b95843543bbe8810e15d31e24f7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void baton_put_u16be</definition>
+        <argsstring>(uint8_t *data, uint16_t value)</argsstring>
+        <name>baton_put_u16be</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write a 16-bit value in big-endian order. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="149" column="20" bodyfile="inc/baton_defs.h" bodystart="149" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1ga095deb3d04c5cca5cef7456f15315e42" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t baton_get_u32le</definition>
+        <argsstring>(const uint8_t *data)</argsstring>
+        <name>baton_get_u32le</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Read a little-endian 32-bit value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="156" column="24" bodyfile="inc/baton_defs.h" bodystart="156" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="group__baton__defs_1ga1d65152d551a6f0fc74b57046e049628" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void baton_put_u32le</definition>
+        <argsstring>(uint8_t *data, uint32_t value)</argsstring>
+        <name>baton_put_u32le</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Write a 32-bit value in little-endian order. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="163" column="20" bodyfile="inc/baton_defs.h" bodystart="163" bodyend="169"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Frame layout</header>
+      <memberdef kind="define" id="group__baton__defs_1gaddb3013e7602e9c97a7a7d73765c5bdf" prot="public" static="no">
+        <name>BATON_SYNC</name>
+        <initializer>0xA5U</initializer>
+        <briefdescription>
+<para>First byte of every frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="59" column="9" bodyfile="inc/baton_defs.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga914e10f046cc092625bf5b58bf176be7" prot="public" static="no">
+        <name>BATON_HEADER_SIZE</name>
+        <initializer>5U</initializer>
+        <briefdescription>
+<para>SYNC, DST, SRC, CTRL and LEN. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="61" column="9" bodyfile="inc/baton_defs.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga66b5bbbfd04302f1483cc440081eea60" prot="public" static="no">
+        <name>BATON_CRC_SIZE</name>
+        <initializer>2U</initializer>
+        <briefdescription>
+<para>CRC-16, transmitted high byte first. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="63" column="9" bodyfile="inc/baton_defs.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga8028af598ef983658c79bb2ab7d2727c" prot="public" static="no">
+        <name>BATON_FRAME_OVERHEAD</name>
+        <initializer>(<ref refid="group__baton__defs_1ga914e10f046cc092625bf5b58bf176be7" kindref="member">BATON_HEADER_SIZE</ref> + <ref refid="group__baton__defs_1ga66b5bbbfd04302f1483cc440081eea60" kindref="member">BATON_CRC_SIZE</ref>)</initializer>
+        <briefdescription>
+<para>Bytes of a frame that are not payload. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="65" column="9" bodyfile="inc/baton_defs.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga759a77ae553e95e674b2c14b77b12eec" prot="public" static="no">
+        <name>BATON_ADDR_BROADCAST</name>
+        <initializer>0xFFU</initializer>
+        <briefdescription>
+<para>Destination address meaning &quot;every other node on the bus&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="67" column="9" bodyfile="inc/baton_defs.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Frame types (CTRL bits 7..6)</header>
+      <memberdef kind="define" id="group__baton__defs_1ga8ca93e3aba68d0c6c7617f40872345e2" prot="public" static="no">
+        <name>BATON_FT_POLL</name>
+        <initializer>0U</initializer>
+        <briefdescription>
+<para>Master to slave: grants the bus for one slot, may carry messages. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="75" column="9" bodyfile="inc/baton_defs.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga7cd1b3d73d1698b03f24b2683bdbd695" prot="public" static="no">
+        <name>BATON_FT_RESP</name>
+        <initializer>1U</initializer>
+        <briefdescription>
+<para>Slave to master: ends the slot, may carry messages. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="77" column="9" bodyfile="inc/baton_defs.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1gabccc0b64993823cae11cf900dbd697db" prot="public" static="no">
+        <name>BATON_FT_DATA</name>
+        <initializer>2U</initializer>
+        <briefdescription>
+<para>Slave to slave: messages, acknowledged with ACK. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="79" column="9" bodyfile="inc/baton_defs.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga09dd91c60140cde7ed13b8a88fcf31f0" prot="public" static="no">
+        <name>BATON_FT_ACK</name>
+        <initializer>3U</initializer>
+        <briefdescription>
+<para>Slave to slave: acknowledges one DATA frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="81" column="9" bodyfile="inc/baton_defs.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Payload prefixes and message records</header>
+      <memberdef kind="define" id="group__baton__defs_1ga1f5b5c903fccbb6da7ae0419ffa239ff" prot="public" static="no">
+        <name>BATON_ACKB_VALID</name>
+        <initializer>0x80U</initializer>
+        <briefdescription>
+<para>ACKB byte: bit 7 = valid, bits 3..0 = acknowledged sequence number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="89" column="9" bodyfile="inc/baton_defs.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga458d5f5efb4b9720564f295a63571d1d" prot="public" static="no">
+        <name>BATON_SEQ_MASK</name>
+        <initializer>0x0FU</initializer>
+        <briefdescription>
+<para>Mask of the sequence number in CTRL and ACKB. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="91" column="9" bodyfile="inc/baton_defs.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__baton__defs_1ga3039e71e2550831f85a8cbfd144b080e" prot="public" static="no">
+        <name>BATON_TLV_HEADER_SIZE</name>
+        <initializer>2U</initializer>
+        <briefdescription>
+<para>One message inside a payload: id, length, data (TLV). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/baton_defs.h" line="93" column="9" bodyfile="inc/baton_defs.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Frame layout, frame types, payload prefixes and byte-order helpers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The wire format is described in <computeroutput>docs/protocol.md</computeroutput>: <computeroutput>SYNC | DST | SRC | CTRL | LEN | PAYLOAD[LEN] | CRC16 (big endian)</computeroutput>, CRC-16/CCITT-FALSE over DST..PAYLOAD, <computeroutput>CTRL = TYPE[7:6] | FIRST[5] | reserved[4] | SEQ[3:0]</computeroutput>. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

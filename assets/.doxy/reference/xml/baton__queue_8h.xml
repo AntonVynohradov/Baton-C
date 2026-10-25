@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="baton__queue_8h" kind="file" language="C++">
+    <compoundname>baton_queue.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="baton_8h" local="yes">baton.h</includedby>
+    <includedby refid="baton__node_8h" local="yes">inc/baton_node.h</includedby>
+    <includedby refid="baton__queue_8c" local="yes">src/baton_queue.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/baton_queue.h</label>
+        <link refid="baton__queue_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>baton.h</label>
+        <link refid="baton_8h"/>
+      </node>
+      <node id="3">
+        <label>inc/baton_node.h</label>
+        <link refid="baton__node_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/baton_queue.h</label>
+        <link refid="baton__queue_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structbaton__record" prot="public">baton_record</innerclass>
+    <innerclass refid="structbaton__queue" prot="public">baton_queue</innerclass>
+    <sectiondef kind="user-defined">
+      <header>Record header</header>
+      <member refid="group__baton__queue_1ga296d968615cb5fa02c13dffa744153bd" kind="define"><name>BATON_REC_HEADER_SIZE</name></member>
+      <member refid="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" kind="define"><name>BATON_REC_VALID</name></member>
+      <member refid="group__baton__queue_1ga28e558c65222fc60e45e71942e025ce2" kind="define"><name>BATON_REC_SKIP</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
+      <header>Public function declarations</header>
+      <member refid="group__baton__queue_1ga8e23a48d54d8c9871188a9da6542bd28" kind="function"><name>baton_queue_init</name></member>
+      <member refid="group__baton__queue_1gaf3cb1668b434ec923e748fb71e90ac97" kind="function"><name>baton_queue_record_size</name></member>
+      <member refid="group__baton__queue_1gaa41bcb2dcf676fb81c0342f2dae8f9a2" kind="function"><name>baton_queue_alloc</name></member>
+      <member refid="group__baton__queue_1gaf7ac186ea405ff363037cfde8c1dfed6" kind="function"><name>baton_queue_first</name></member>
+      <member refid="group__baton__queue_1ga0264e5a394f485454046d8eae4de5884" kind="function"><name>baton_queue_next</name></member>
+      <member refid="group__baton__queue_1ga3fbee7250fe4395a503ba104b9a0a747" kind="function"><name>baton_queue_used</name></member>
+      <member refid="group__baton__queue_1gad43b41c4971b53d4f6ce4edbb946c584" kind="function"><name>baton_queue_read</name></member>
+      <member refid="group__baton__queue_1ga2807391a964dbed546612a32b6bda5fa" kind="function"><name>baton_queue_write</name></member>
+      <member refid="group__baton__queue_1gab9c7d949aad20b4886fb65e0a0e400cc" kind="function"><name>baton_queue_set_masks</name></member>
+      <member refid="group__baton__queue_1gadd3bba2f0f84b78b0c5ec67b41648601" kind="function"><name>baton_queue_set_flags</name></member>
+      <member refid="group__baton__queue_1ga2b23f19873a9551ed9c87826a0883296" kind="function"><name>baton_queue_data</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Baton event queue: ring buffer of variable-size records. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Project: Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART Author: Anton Vynohradov Email: <ulink url="mailto:avynohradov@systemfromscratch.com">avynohradov@systemfromscratch.com</ulink></para>
+<para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
+</simplesect>
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
+</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+<para>SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_QUEUE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_QUEUE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group__baton__queue_1ga296d968615cb5fa02c13dffa744153bd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_HEADER_SIZE<sp/>16U</highlight></codeline>
+<codeline lineno="71" refid="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_VALID<sp/>0x01U</highlight></codeline>
+<codeline lineno="73" refid="group__baton__queue_1ga28e558c65222fc60e45e71942e025ce2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_SKIP<sp/>0x02U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="structbaton__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__record" kindref="compound">baton_record</ref></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78" refid="structbaton__record_1adc57e06bf6a046963a9fe6fe48aa251f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__record_1adc57e06bf6a046963a9fe6fe48aa251f" kindref="member">pending</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="79" refid="structbaton__record_1a9b11ac8d935e4072a978c328c5da6d19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__record_1a9b11ac8d935e4072a978c328c5da6d19" kindref="member">inflight</ref>;<sp/></highlight></codeline>
+<codeline lineno="80" refid="structbaton__record_1aee5b7a61d8ce281b6a3627ef0b60053d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__record_1aee5b7a61d8ce281b6a3627ef0b60053d" kindref="member">stamp</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81" refid="structbaton__record_1a1662a27311480b84bb50d73b6e62a664" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__record_1a1662a27311480b84bb50d73b6e62a664" kindref="member">msg_id</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82" refid="structbaton__record_1a747b6d943de6f98891cb164fa5272557" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__record_1a747b6d943de6f98891cb164fa5272557" kindref="member">length</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83" refid="structbaton__record_1a8809f716de33656409efad5785f5e0b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__record_1a8809f716de33656409efad5785f5e0b8" kindref="member">dst</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84" refid="structbaton__record_1a4e149b068214a8ee192fc50da1f0b9c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structbaton__record_1a4e149b068214a8ee192fc50da1f0b9c6" kindref="member">flags</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="structbaton__queue" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__queue" kindref="compound">baton_queue</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90" refid="structbaton__queue_1afedec6290df139eef02db3af39bc453e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/><ref refid="structbaton__queue_1afedec6290df139eef02db3af39bc453e" kindref="member">memory</ref>;<sp/></highlight></codeline>
+<codeline lineno="91" refid="structbaton__queue_1ad06bc1bee0012456ba01870d763faf23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__queue_1ad06bc1bee0012456ba01870d763faf23" kindref="member">size</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92" refid="structbaton__queue_1ab5778f5cfa9cc38511fc37a712665769" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__queue_1ab5778f5cfa9cc38511fc37a712665769" kindref="member">head</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93" refid="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" kindref="member">tail</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1ga8e23a48d54d8c9871188a9da6542bd28" kindref="member">baton_queue_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint8_t*<sp/>memory,<sp/>uint16_t<sp/>size);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__queue_1gaf3cb1668b434ec923e748fb71e90ac97" kindref="member">baton_queue_record_size</ref>(uint8_t<sp/>length);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1gaa41bcb2dcf676fb81c0342f2dae8f9a2" kindref="member">baton_queue_alloc</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>need,<sp/>uint16_t*<sp/>offset);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__queue_1gaf7ac186ea405ff363037cfde8c1dfed6" kindref="member">baton_queue_first</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>head,<sp/>uint16_t<sp/>tail);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__queue_1ga0264e5a394f485454046d8eae4de5884" kindref="member">baton_queue_next</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset,<sp/>uint16_t<sp/>tail);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__queue_1ga3fbee7250fe4395a503ba104b9a0a747" kindref="member">baton_queue_used</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1gad43b41c4971b53d4f6ce4edbb946c584" kindref="member">baton_queue_read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__record" kindref="compound">baton_record</ref>*<sp/>record);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1ga2807391a964dbed546612a32b6bda5fa" kindref="member">baton_queue_write</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__record" kindref="compound">baton_record</ref>*<sp/>record);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1gab9c7d949aad20b4886fb65e0a0e400cc" kindref="member">baton_queue_set_masks</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset,<sp/>uint32_t<sp/>pending,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>inflight);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1gadd3bba2f0f84b78b0c5ec67b41648601" kindref="member">baton_queue_set_flags</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset,<sp/>uint8_t<sp/>flags);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">uint8_t*<sp/><ref refid="group__baton__queue_1ga2b23f19873a9551ed9c87826a0883296" kindref="member">baton_queue_data</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>BATON_QUEUE_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/baton_queue.h"/>
+  </compounddef>
+</doxygen>
