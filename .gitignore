@@ -1,5 +1,5 @@
 #******************************************************************************
-# intercom: deterministic master/slave messaging over a single-wire UART
+# Baton-C: deterministic master/slave messaging over a single-wire UART
 #
 # Description: Files and directories ignored by Git.
 #*****************************************************************************
@@ -19,3 +19,17 @@ cmake-build-*/
 .idea/
 .vscode/*
 !.vscode/tasks.json
+
+# Documentation output (site, PDF built by CI into docs/downloads/)
+site/
+docs/downloads/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Coverage data
+*.gcda
+*.gcno

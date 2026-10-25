@@ -1,164 +1,139 @@
 {
-  // intercom tasks. Task menu: Ctrl+Shift+B (no default build task, so VS Code
-  // shows the list) or Terminal > Run Task...
-  // Works on Windows, Linux and macOS ("windows" blocks override the defaults).
+  // Baton-C tasks: build, tests, analysis and documentation.
+  // Task menu: Ctrl+Shift+B (no default build task, so VS Code shows the list).
+  // Python tasks use the project virtual environment in .venv.
   "version": "2.0.0",
   "options": {
     "cwd": "${workspaceFolder}"
   },
   "tasks": [
-    // ======================================================================
-    // Library build (CMakePresets.json)
-    // ======================================================================
     {
-      "label": "Library: Configure (Debug)",
-      "hide": true,
-      "type": "process",
-      "command": "cmake",
-      "args": ["--preset", "INTERCOM[Debug]"],
-      "problemMatcher": []
-    },
-    {
-      "label": "Library: Build (Debug)",
+      "label": "Build: Debug",
       "group": "build",
-      "detail": "Static library with debug information (template configuration)",
-      "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[Debug]"],
-      "dependsOn": ["Library: Configure (Debug)"],
-      "problemMatcher": {
-        "base": "$gcc",
-        "fileLocation": "absolute"
-      }
+      "detail": "Static library, Debug preset",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]'",
+      "problemMatcher": ["$gcc"]
     },
     {
-      "label": "Library: Configure (Release)",
-      "hide": true,
-      "type": "process",
-      "command": "cmake",
-      "args": ["--preset", "INTERCOM[Release]"],
-      "problemMatcher": []
-    },
-    {
-      "label": "Library: Build (Release)",
+      "label": "Build: Release",
       "group": "build",
-      "detail": "Size-optimized static library (libintercom.a, template configuration)",
-      "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[Release]"],
-      "dependsOn": ["Library: Configure (Release)"],
-      "problemMatcher": {
-        "base": "$gcc",
-        "fileLocation": "absolute"
-      }
+      "detail": "Static library, Release preset",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[Release]' && cmake --build 'build/BATON[Release]'",
+      "problemMatcher": ["$gcc"]
     },
     {
-      "label": "Library: Clean all builds",
+      "label": "Test: Unit tests + coverage",
       "group": "build",
-      "detail": "Remove the build folder of every preset",
-      "type": "process",
-      "command": "cmake",
-      "args": ["-E", "rm", "-rf", "build"],
-      "problemMatcher": []
-    },
-
-    // ======================================================================
-    // Simulation tests
-    // ======================================================================
-    {
-      "label": "Tests: Configure simulation tests",
-      "hide": true,
-      "type": "process",
-      "command": "cmake",
-      "args": ["--preset", "INTERCOM[SimTests]"],
-      "problemMatcher": []
+      "detail": "GoogleTest and the bus simulation; fails below 100 % line or branch coverage",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[UnitTests]' && cmake --build 'build/BATON[UnitTests]' --target coverage",
+      "problemMatcher": ["$gcc"]
     },
     {
-      "label": "Tests: Build simulation tests",
-      "hide": true,
-      "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[SimTests]"],
-      "dependsOn": ["Tests: Configure simulation tests"],
-      "problemMatcher": {
-        "base": "$gcc",
-        "fileLocation": "absolute"
-      }
-    },
-    {
-      "label": "Tests: Run simulation (default seed)",
+      "label": "Test: Simulation, 100 seeds",
       "group": "build",
-      "detail": "Bus simulator through CTest",
-      "type": "process",
-      "command": "ctest",
-      "args": ["--test-dir", "build/INTERCOM[SimTests]", "-L", "sim", "--output-on-failure"],
-      "dependsOn": ["Tests: Build simulation tests"],
-      "problemMatcher": []
+      "detail": "Bus simulation runner on 100 seeds",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[UnitTests]' && cmake --build 'build/BATON[UnitTests]' --target baton_sim && sh tests/run_seeds.sh 'build/BATON[UnitTests]' 100",
+      "problemMatcher": ["$gcc"]
     },
     {
-      "label": "Tests: Run simulation (many seeds)",
+      "label": "Test: Integration (pytest)",
       "group": "build",
-      "detail": "tests/run_seeds on N seeds, prints only failing ones",
-      "type": "process",
-      "command": "sh",
-      "args": ["tests/run_seeds.sh", "build/INTERCOM[SimTests]", "${input:seedCount}"],
-      "windows": {
-        "command": "powershell",
-        "args": [
-          "-NoProfile", "-ExecutionPolicy", "Bypass",
-          "-File", "tests/run_seeds.ps1",
-          "-BuildDir", "build/INTERCOM[SimTests]",
-          "-Count", "${input:seedCount}"
-        ]
-      },
-      "dependsOn": ["Tests: Build simulation tests"],
-      "problemMatcher": []
+      "detail": "Python twin and the C/Python cross-check",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[IntegrationTests]' && cmake --build 'build/BATON[IntegrationTests]' --target integration_tests",
+      "problemMatcher": ["$gcc"]
     },
-
-    // ======================================================================
-    // Static analysis (targets exist when the tools are installed)
-    // ======================================================================
     {
-      "label": "Analysis: Cppcheck",
+      "label": "Test: Examples",
       "group": "build",
-      "detail": "Target 'cppcheck-analyze' (report in build/INTERCOM[Debug]/cppcheck.txt)",
-      "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[Debug]", "--target", "cppcheck-analyze"],
-      "dependsOn": ["Library: Configure (Debug)"],
-      "problemMatcher": {
-        "base": "$gcc",
-        "fileLocation": "absolute"
-      }
+      "detail": "Build the examples and run the bare-metal simulation",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[Examples]' && cmake --build 'build/BATON[Examples]' && ctest --test-dir 'build/BATON[Examples]' -L example --output-on-failure",
+      "problemMatcher": ["$gcc"]
     },
     {
       "label": "Analysis: MISRA C:2012",
       "group": "build",
-      "detail": "Target 'misra-analyze' (report in build/INTERCOM[Debug]/misra.txt)",
-      "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[Debug]", "--target", "misra-analyze"],
-      "dependsOn": ["Library: Configure (Debug)"],
+      "detail": "Cppcheck MISRA addon; fails on any violation",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]' --target misra-analyze",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Analysis: Cppcheck",
+      "group": "build",
+      "detail": "Cppcheck, all checks",
+      "type": "shell",
+      "command": "cmake --preset 'BATON[Debug]' && cmake --build 'build/BATON[Debug]' --target cppcheck-analyze",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Docs: Check C snippets",
+      "group": "build",
+      "detail": "Compile every C snippet of docs/",
+      "type": "shell",
+      "command": "python tools/docs/check_snippets.py",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Python: Setup venv",
+      "group": "build",
+      "detail": "Create .venv and install requirements-dev.txt",
+      "type": "shell",
+      "command": "python3 -m venv .venv && .venv/bin/python -m pip install --upgrade -r requirements-dev.txt",
+      "windows": {
+        "command": "py -3 -m venv .venv; .venv\\Scripts\\python.exe -m pip install --upgrade -r requirements-dev.txt"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Analysis: CodeQL",
+      "label": "Docs: Serve on localhost",
       "group": "build",
-      "detail": "Target 'codeql-analyze' (SARIF in build/INTERCOM[Debug]/codeql-report.sarif)",
+      "detail": "mkdocs serve with live reload; opens the browser",
       "type": "process",
-      "command": "cmake",
-      "args": ["--build", "build/INTERCOM[Debug]", "--target", "codeql-analyze"],
-      "dependsOn": ["Library: Configure (Debug)"],
-      "problemMatcher": []
-    }
-  ],
-
-  "inputs": [
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": ["-m", "mkdocs", "serve", "--dev-addr", "127.0.0.1:8000", "--open"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mkdocs",
+        "pattern": { "regexp": "^(ERROR|WARNING)\\s+-\\s+(.*)$", "severity": 1, "message": 2 },
+        "background": { "activesBegin": true, "beginsPattern": "Building documentation", "endsPattern": "Serving on" }
+      }
+    },
     {
-      "id": "seedCount",
-      "type": "promptString",
-      "description": "Number of simulation seeds",
-      "default": "100"
+      "label": "Docs: Build site",
+      "group": "build",
+      "detail": "mkdocs build into site/",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": ["-m", "mkdocs", "build", "--clean"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Docs: Build PDF manual",
+      "group": "build",
+      "detail": "Print-ready A4 user manual into build/manual/; needs WeasyPrint and Pango",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": ["tools/docs/build_manual.py"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Docs: Generate diagrams",
+      "group": "build",
+      "detail": "Regenerate the SVG diagrams in docs/assets/images from tools/docs/diagrams.py",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": ["tools/docs/diagrams.py"],
+      "problemMatcher": []
     }
   ]
 }

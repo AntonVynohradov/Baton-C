@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
-# Run the simulation test with many seeds and report only failing ones.
+# Run the bus simulation (baton_sim) with many seeds and report only failing ones.
 # Usage: tests/run_seeds.sh [build_dir] [count]
-#   e.g. tests/run_seeds.sh "build/INTERCOM[SimTests]" 100
+#   e.g. tests/run_seeds.sh "build/BATON[UnitTests]" 100
 BUILD_DIR=${1:-build}
 COUNT=${2:-100}
 EXE=""
-for c in "$BUILD_DIR/intercom_sim_test" "$BUILD_DIR/intercom_sim_test.exe" "$BUILD_DIR/tests/intercom_sim_test" "$BUILD_DIR/tests/intercom_sim_test.exe"; do
+for c in "$BUILD_DIR/baton_sim" "$BUILD_DIR/baton_sim.exe" "$BUILD_DIR/tests/baton_sim" "$BUILD_DIR/tests/baton_sim.exe"; do
     if [ -x "$c" ]; then EXE="$c"; break; fi
 done
 if [ -z "$EXE" ]; then
-    echo "test executable not found in $BUILD_DIR (build with -DINTERCOM_BUILD_TESTS=ON)"
+    echo "test executable not found in $BUILD_DIR (build with -DBATON_UNIT_TESTS=ON, target baton_sim)"
     exit 2
 fi
 

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 760" width="830" height="760" role="img" aria-label="baton_parser_feed() algorithm">
+<title>baton_parser_feed() algorithm</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6472"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F8B9A"/></marker><marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E07A00"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker></defs>
+<rect x="0" y="0" width="830" height="760" rx="12" fill="#FFFFFF"/>
+<rect x="230" y="14" width="120" height="36" rx="18" fill="#0B2545" stroke="#0B2545" stroke-width="1.5"/>
+<text x="290" y="37" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">byte in</text>
+<line x1="290" y1="50" x2="290" y2="70" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polygon points="290,72.0 440.0,112 290,152.0 140.0,112" fill="#FFF7EC" stroke="#E07A00" stroke-width="1.5"/>
+<text x="290" y="109" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">waiting for SYNC:</text>
+<text x="290" y="125" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">byte == 0xA5?</text>
+<line x1="440" y1="112" x2="578" y2="112" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="450" y="104" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">no</text>
+<rect x="580" y="92" width="230" height="40" rx="20" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.5"/>
+<text x="695" y="117" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#5A6472" text-anchor="middle">return 0 (ignore the byte)</text>
+<line x1="290" y1="152" x2="290" y2="184" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="298" y="168" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">yes</text>
+<rect x="120" y="186" width="340" height="52" rx="8" fill="#F2F5FA" stroke="#1E5AA8" stroke-width="1.5"/>
+<text x="290" y="208" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">store DST, SRC, CTRL, LEN</text>
+<text x="290" y="228" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">CRC register updated byte by byte</text>
+<line x1="290" y1="238" x2="290" y2="266" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polygon points="290,268.0 440.0,308 290,348.0 140.0,308" fill="#FFF7EC" stroke="#E07A00" stroke-width="1.5"/>
+<text x="290" y="305" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">LEN ≤</text>
+<text x="290" y="321" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">BATON_MAX_PAYLOAD?</text>
+<line x1="440" y1="308" x2="578" y2="308" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="450" y="300" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">no</text>
+<rect x="580" y="288" width="230" height="40" rx="20" fill="#FFFFFF" stroke="#C62828" stroke-width="1.5"/>
+<text x="695" y="313" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828" text-anchor="middle">back to SYNC, return ERROR</text>
+<line x1="290" y1="348" x2="290" y2="380" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="298" y="364" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">yes</text>
+<rect x="120" y="382" width="340" height="52" rx="8" fill="#F2F5FA" stroke="#1E5AA8" stroke-width="1.5"/>
+<text x="290" y="404" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">store LEN payload bytes</text>
+<text x="290" y="424" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">return 0 after each one</text>
+<line x1="290" y1="434" x2="290" y2="462" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="120" y="464" width="340" height="44" rx="8" fill="#F2F5FA" stroke="#1E5AA8" stroke-width="1.5"/>
+<text x="290" y="491" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">read CRC high and low byte</text>
+<line x1="290" y1="508" x2="290" y2="536" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polygon points="290,538.0 440.0,578 290,618.0 140.0,578" fill="#FFF7EC" stroke="#E07A00" stroke-width="1.5"/>
+<text x="290" y="575" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">received CRC ==</text>
+<text x="290" y="591" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="normal" fill="#0B2545" text-anchor="middle">computed CRC?</text>
+<line x1="440" y1="578" x2="578" y2="578" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="450" y="570" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">no</text>
+<rect x="580" y="558" width="230" height="40" rx="20" fill="#FFFFFF" stroke="#C62828" stroke-width="1.5"/>
+<text x="695" y="583" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828" text-anchor="middle">back to SYNC, return ERROR</text>
+<line x1="290" y1="618" x2="290" y2="650" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="298" y="634" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">yes</text>
+<rect x="120" y="652" width="340" height="52" rx="8" fill="#EEF7EF" stroke="#2E7D32" stroke-width="1.5"/>
+<text x="290" y="674" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">frame complete in parser-&gt;frame</text>
+<text x="290" y="694" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">back to SYNC</text>
+<line x1="460" y1="678" x2="578" y2="678" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="580" y="658" width="230" height="40" rx="20" fill="#FFFFFF" stroke="#2E7D32" stroke-width="1.5"/>
+<text x="695" y="683" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#2E7D32" text-anchor="middle">return 1 (frame ready)</text>
+<text x="20" y="740" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">The link resets the parser when more than inter_byte_timeout_ms pass between two bytes of a frame.</text>
+</svg>

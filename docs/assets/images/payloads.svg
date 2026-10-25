@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-label="Payload of each frame type">
+<title>Payload of each frame type</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6472"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F8B9A"/></marker><marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E07A00"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" rx="12" fill="#FFFFFF"/>
+<text x="20" y="50" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">POLL</text>
+<text x="90" y="50" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">master → slave</text>
+<rect x="250" y="24" width="70" height="40" rx="5" fill="#F2F5FA" stroke="#E07A00" stroke-width="2"/>
+<text x="285.0" y="49" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#E07A00" text-anchor="middle">ACKB</text>
+<rect x="326" y="24" width="520" height="40" rx="5" fill="#F2F5FA" stroke="#5A6472" stroke-width="2"/>
+<text x="586.0" y="49" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#5A6472" text-anchor="middle">TLV messages for the slave</text>
+<text x="20" y="106" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">RESP</text>
+<text x="90" y="106" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">slave → master</text>
+<rect x="250" y="80" width="70" height="40" rx="5" fill="#F2F5FA" stroke="#E07A00" stroke-width="2"/>
+<text x="285.0" y="105" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#E07A00" text-anchor="middle">ACKB</text>
+<rect x="326" y="80" width="120" height="40" rx="5" fill="#F2F5FA" stroke="#C62828" stroke-width="2"/>
+<text x="386.0" y="105" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828" text-anchor="middle">NACK mask</text>
+<rect x="452" y="80" width="400" height="40" rx="5" fill="#F2F5FA" stroke="#5A6472" stroke-width="2"/>
+<text x="652.0" y="105" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#5A6472" text-anchor="middle">TLV messages for the master</text>
+<text x="20" y="162" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">DATA</text>
+<text x="90" y="162" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">slave → slave</text>
+<rect x="250" y="136" width="590" height="40" rx="5" fill="#F2F5FA" stroke="#5A6472" stroke-width="2"/>
+<text x="545.0" y="161" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#5A6472" text-anchor="middle">TLV messages for the peer</text>
+<text x="20" y="218" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">ACK</text>
+<text x="90" y="218" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">slave → slave</text>
+<rect x="250" y="192" width="590" height="40" rx="5" fill="#FFFFFF" stroke="#C9D3E0" stroke-width="2"/>
+<text x="545.0" y="217" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13" font-weight="bold" fill="#5A6472" text-anchor="middle">no payload: SEQ in CTRL is the acknowledged number</text>
+<text x="20" y="268" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">TLV message</text>
+<text x="285.0" y="274" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="bold" fill="#0F8B9A" text-anchor="middle">ID</text>
+<rect x="250.0" y="286" width="70.0" height="40" rx="4" fill="#0F8B9A" stroke="#FFFFFF" stroke-width="2"/>
+<text x="285.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ID</text>
+<text x="361.0" y="274" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="bold" fill="#1E5AA8" text-anchor="middle">LEN</text>
+<rect x="326.0" y="286" width="70.0" height="40" rx="4" fill="#1E5AA8" stroke="#FFFFFF" stroke-width="2"/>
+<text x="361.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">LEN</text>
+<text x="522.0" y="274" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="bold" fill="#5A6472" text-anchor="middle">DATA</text>
+<rect x="402.0" y="286" width="80.0" height="40" rx="4" fill="#5A6472" stroke="#FFFFFF" stroke-width="2"/>
+<text x="442.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">D0</text>
+<rect x="482.0" y="286" width="80.0" height="40" rx="4" fill="#5A6472" stroke="#FFFFFF" stroke-width="2"/>
+<text x="522.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">…</text>
+<rect x="562.0" y="286" width="80.0" height="40" rx="4" fill="#5A6472" stroke="#FFFFFF" stroke-width="2"/>
+<text x="602.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Dlen-1</text>
+<text x="744.0" y="274" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="15" font-weight="bold" fill="#C9D3E0" text-anchor="middle">next message</text>
+<rect x="648.0" y="286" width="64.0" height="40" rx="4" fill="#C9D3E0" stroke="#FFFFFF" stroke-width="2"/>
+<text x="680.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ID</text>
+<rect x="712.0" y="286" width="64.0" height="40" rx="4" fill="#C9D3E0" stroke="#FFFFFF" stroke-width="2"/>
+<text x="744.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">LEN</text>
+<rect x="776.0" y="286" width="64.0" height="40" rx="4" fill="#C9D3E0" stroke="#FFFFFF" stroke-width="2"/>
+<text x="808.0" y="311.0" font-family="'JetBrains Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">…</text>
+<text x="250" y="352" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">ACKB: bit 7 valid, bits 3 … 0 acknowledged SEQ · NACK: one bit per node index that did not acknowledge DATA in the slot</text>
+<text x="250" y="374" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="start">Every ID and LEN is checked against the message lists of baton_user_config.h</text>
+</svg>

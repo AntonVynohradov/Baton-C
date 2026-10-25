@@ -8,34 +8,50 @@
             "binaryDir": "${sourceDir}/build/${presetName}"
         },
         {
-            "name": "INTERCOM[Debug]",
+            "name": "BATON[Debug]",
             "inherits": "default",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "INTERCOM[Release]",
+            "name": "BATON[Release]",
             "inherits": "default",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
-            "name": "INTERCOM[SimTests]",
+            "name": "BATON[UnitTests]",
             "inherits": "default",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "INTERCOM_BUILD_TESTS": "ON"
+                "BATON_UNIT_TESTS": "ON"
             }
         },
         {
-            "name": "INTERCOM[SimTestsSanitize]",
+            "name": "BATON[IntegrationTests]",
             "inherits": "default",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "INTERCOM_BUILD_TESTS": "ON",
-                "INTERCOM_SANITIZERS": "ON"
+                "BATON_INTEGRATION_TESTS": "ON"
+            }
+        },
+        {
+            "name": "BATON[Examples]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BATON_EXAMPLES": "ON"
+            }
+        },
+        {
+            "name": "BATON[Sanitize]",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BATON_UNIT_TESTS": "ON",
+                "BATON_SANITIZERS": "ON"
             }
         }
     ]

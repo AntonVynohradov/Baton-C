@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-label="One poll slot">
+<title>One poll slot</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6472"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F8B9A"/></marker><marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E07A00"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker></defs>
+<rect x="0" y="0" width="960" height="560" rx="12" fill="#FFFFFF"/>
+<rect x="15" y="16" width="190" height="40" rx="8" fill="#0B2545" stroke="#0B2545" stroke-width="1.5"/>
+<text x="110" y="41" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Master 0x01</text>
+<line x1="110" y1="56" x2="110" y2="540" stroke="#C9D3E0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<rect x="255" y="16" width="190" height="40" rx="8" fill="#1E5AA8" stroke="#1E5AA8" stroke-width="1.5"/>
+<text x="350" y="41" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Slave 0x11 (polled)</text>
+<line x1="350" y1="56" x2="350" y2="540" stroke="#C9D3E0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<rect x="495" y="16" width="190" height="40" rx="8" fill="#0F8B9A" stroke="#0F8B9A" stroke-width="1.5"/>
+<text x="590" y="41" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Slave 0x12</text>
+<line x1="590" y1="56" x2="590" y2="540" stroke="#C9D3E0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<rect x="735" y="16" width="190" height="40" rx="8" fill="#0F8B9A" stroke="#0F8B9A" stroke-width="1.5"/>
+<text x="830" y="41" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Slave 0x13</text>
+<line x1="830" y1="56" x2="830" y2="540" stroke="#C9D3E0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<line x1="110" y1="92" x2="348" y2="92" stroke="#E07A00" stroke-width="2.2" marker-end="url(#arrow-orange)"/>
+<text x="229.0" y="84" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#E07A00" text-anchor="middle">POLL seq=m [ACKB] [TLV for 0x11]</text>
+<rect x="352" y="100" width="8" height="400" rx="2" fill="#E7EEF8" stroke="#1E5AA8" stroke-width="1.5"/>
+<text x="370" y="120" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1E5AA8" text-anchor="start">slot: at most slot_time_ms</text>
+<line x1="356" y1="160" x2="588" y2="160" stroke="#1E5AA8" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="472.0" y="152" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#1E5AA8" text-anchor="middle">DATA seq=x [TLV]</text>
+<line x1="588" y1="200" x2="356" y2="200" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#arrow-green)" stroke-dasharray="6 4"/>
+<text x="472.0" y="192" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">ACK seq=x</text>
+<line x1="356" y1="260" x2="828" y2="260" stroke="#1E5AA8" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="592.0" y="252" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#1E5AA8" text-anchor="middle">DATA seq=y [TLV]</text>
+<text x="840" y="290" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#C62828" text-anchor="end">no ACK (ack_timeout_ms)</text>
+<line x1="356" y1="330" x2="828" y2="330" stroke="#1E5AA8" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="592.0" y="322" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#1E5AA8" text-anchor="middle">DATA seq=y again (same content)</text>
+<line x1="828" y1="370" x2="356" y2="370" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#arrow-green)" stroke-dasharray="6 4"/>
+<text x="592.0" y="362" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">ACK seq=y</text>
+<line x1="356" y1="440" x2="112" y2="440" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+<text x="234.0" y="432" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">RESP seq=r [ACKB=m] [NACK=0] [TLV for master]</text>
+<text x="110" y="480" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#E07A00" text-anchor="middle">next POLL → 0x12</text>
+<text x="480" y="532" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12.5" font-weight="normal" fill="#5A6472" text-anchor="middle">A DATA frame is started only if the ACK and a maximum-size RESP still fit into the slot.</text>
+</svg>

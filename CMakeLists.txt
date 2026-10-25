@@ -1,18 +1,22 @@
 ################################################################################
-# intercom: deterministic master/slave messaging over a single-wire UART
+# Baton-C: Deterministic Master/Slave Messaging over a Single-Wire UART
 #
-# Project:     intercom - C99 static library for half-duplex UART buses
+# Project:     Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART
 # Description: Top-level CMake file: compiler settings, library, tests and
 #              static analysis targets.
 #
 # Author:      Anton Vynohradov
+# Email:       avynohradov@systemfromscratch.com
+# License:     Apache License 2.0
 # Copyright:   (c) 2026 Anton Vynohradov
 #
 # References:
 #   - Protocol description: docs/protocol.md
+#   - MISRA C:2012 Guidelines for the use of the C language in critical systems
 #   - CMake Documentation: https://cmake.org/documentation/
 #
 # Last Updated: October 2026
+# SPDX-License-Identifier: Apache-2.0
 #
 ################################################################################
 
@@ -31,7 +35,7 @@ list(APPEND CMAKE_MODULE_PATH
 # PROJECT CONFIGURATION
 # ==============================================================================
 
-project(INTERCOM
+project(BATON
     DESCRIPTION "Deterministic master/slave messaging over a single-wire UART"
     LANGUAGES C
     )
@@ -44,49 +48,66 @@ endif()
 # COMPILER FLAGS & OPTIONS
 # ==============================================================================
 
-# The library is plain C99 (no extensions), see CLAUDE.md / docs
-set(CMAKE_C_STANDARD 99)
+# C11 is the newest language revision covered by MISRA C:2012 (Amendment 2)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
 # Compiler warning flags
-if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wpedantic -Wconversion -g")
-    set(CMAKE_C_FLAGS_RELEASE "-Wall -Wextra -Wpedantic -Wconversion -Os -DNDEBUG")
-endif()
+set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wpedantic -Wconversion -g")
+set(CMAKE_C_FLAGS_RELEASE "-Wall -Wextra -Wpedantic -Wconversion -O2 -DNDEBUG")
 
 # ==============================================================================
 # LIBRARY/EXECUTABLE TARGETS
 # ==============================================================================
 
-# Simulation tests are optional and can be enabled with a CMake option
-option(INTERCOM_BUILD_TESTS "Enable intercom host simulation tests" OFF)
-option(INTERCOM_SANITIZERS "Build the simulation tests with ASan/UBSan (GCC/Clang, not MinGW)" OFF)
+# Unit and integration tests are optional and can be enabled with CMake options
+option(BATON_UNIT_TESTS "Enable Baton unit tests (GoogleTest) and the bus simulation" OFF)
+option(BATON_INTEGRATION_TESTS "Enable Baton integration tests (pytest)" OFF)
+option(BATON_EXAMPLES "Build the host-buildable examples (bare metal simulation, serial port master)" OFF)
+option(BATON_SANITIZERS "Build the bus simulation runner with ASan/UBSan (GCC/Clang, not MinGW)" OFF)
 
-# Folder that contains IntercomConfig.h. When this repository is built on its
-# own (not as a submodule), fall back to the test configuration or to a copy of
-# the template, so the library can be built and analysed without a project.
-if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR AND NOT INTERCOM_CONFIG_DIR)
-    if(INTERCOM_BUILD_TESTS)
-        set(INTERCOM_CONFIG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests/config")
+# Folder with baton_user_config.h. When this repository is built on its own (not
+# included by an application), use the test configuration for the tests and the
+# analysis, the example configuration for the examples, or a copy of the template.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR AND NOT BATON_CONFIG_DIR)
+    if(BATON_UNIT_TESTS OR BATON_INTEGRATION_TESTS)
+        set(BATON_CONFIG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests/config")
+    elseif(BATON_EXAMPLES)
+        set(BATON_CONFIG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/examples/config")
     else()
-        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config/IntercomConfig_template.h
-                       ${CMAKE_BINARY_DIR}/config/IntercomConfig.h COPYONLY)
-        set(INTERCOM_CONFIG_DIR "${CMAKE_BINARY_DIR}/config")
+        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config/baton_user_config_template.h
+                       ${CMAKE_BINARY_DIR}/config/baton_user_config.h COPYONLY)
+        set(BATON_CONFIG_DIR "${CMAKE_BINARY_DIR}/config")
     endif()
-    message(STATUS "intercom: using IntercomConfig.h from ${INTERCOM_CONFIG_DIR}")
+    message(STATUS "Baton: using baton_user_config.h from ${BATON_CONFIG_DIR}")
 endif()
 
-# The static library target is defined in intercom.cmake
-include(intercom)
+# The static library target is defined in baton.cmake
+include(baton)
 
 # ==============================================================================
-# SIMULATION TESTS
+# UNIT TESTS
 # ==============================================================================
 
-if(INTERCOM_BUILD_TESTS)
-    # Bus simulator executable, CTest registration and the 'sim_tests' target
-    include(sim_tests)
+if(BATON_UNIT_TESTS)
+    # GTest integration, test discovery, the coverage target and the bus simulation runner
+    include(unit_tests)
+endif()
+
+# ==============================================================================
+# INTEGRATION TESTS
+# ==============================================================================
+
+if(BATON_INTEGRATION_TESTS)
+    # Python codec tests and the C/Python cross-check, run through CTest
+    include(integration_tests)
+endif()
+
+if(BATON_EXAMPLES)
+    # The bare-metal example runs against a simulated bus as a CTest test
+    enable_testing()
+    add_subdirectory(examples)
 endif()
 
 # ==============================================================================
@@ -119,17 +140,18 @@ if(CPPCHECK_EXECUTABLE)
                 --inconclusive
                 --verbose
                 --quiet
-                --std=c99
+                --std=c11
                 --force
                 --template=gcc
                 --suppress=missingIncludeSystem
                 --suppress=unusedFunction   # public library API is called by integrators, not by the library
-                -I ${CMAKE_SOURCE_DIR}/include
-                -I ${CMAKE_SOURCE_DIR}/src
-                -I ${INTERCOM_CONFIG_DIR}
+                --suppress=checkersReport
+                -I ${CMAKE_SOURCE_DIR}
+                -I ${CMAKE_SOURCE_DIR}/inc
+                -I ${CMAKE_SOURCE_DIR}/tests/config
                 ${CPPCHECK_EXCLUDES}
                 --output-file=${CMAKE_BINARY_DIR}/cppcheck.txt
-                ${CMAKE_SOURCE_DIR}
+                ${CMAKE_SOURCE_DIR}/src
         COMMAND ${CMAKE_COMMAND} -E cat ${CMAKE_BINARY_DIR}/cppcheck.txt
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         COMMENT "Running Cppcheck static analysis..."
@@ -140,28 +162,31 @@ if(CPPCHECK_EXECUTABLE)
     # Runs the addon directly on Cppcheck dump files (see cmake/misra_check.cmake),
     # because not every Cppcheck package can locate and launch its addons. Rule
     # texts are licensed by MISRA and are not shipped with Cppcheck; pass them with
-    # -DINTERCOM_MISRA_RULE_TEXTS=<file> to get readable messages instead of rule numbers.
+    # -DBATON_MISRA_RULE_TEXTS=<file> to get readable messages instead of rule numbers.
 
-    set(INTERCOM_MISRA_RULE_TEXTS "" CACHE FILEPATH "Optional MISRA C:2012 rule texts file for Cppcheck")
+    set(BATON_MISRA_RULE_TEXTS "" CACHE FILEPATH "Optional MISRA C:2012 rule texts file for Cppcheck")
+    option(BATON_MISRA_FAIL_ON_VIOLATION "Make 'misra-analyze' fail when the report has violations" ON)
 
     get_filename_component(CPPCHECK_BIN_DIR ${CPPCHECK_EXECUTABLE} DIRECTORY)
-    find_file(INTERCOM_MISRA_SCRIPT misra.py
+    find_file(BATON_MISRA_SCRIPT misra.py
         PATHS ${CPPCHECK_BIN_DIR}/addons
               ${CPPCHECK_BIN_DIR}/../share/cppcheck/addons
               /usr/share/cppcheck/addons
               /usr/local/share/cppcheck/addons
+              /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/cppcheck/addons   # Debian/Ubuntu packages
         NO_DEFAULT_PATH)
     find_package(Python3 QUIET COMPONENTS Interpreter)
 
-    if(INTERCOM_MISRA_SCRIPT AND Python3_Interpreter_FOUND)
+    if(BATON_MISRA_SCRIPT AND Python3_Interpreter_FOUND)
         add_custom_target(misra-analyze
             COMMAND ${CMAKE_COMMAND}
                     -DCPPCHECK=${CPPCHECK_EXECUTABLE}
                     -DPYTHON=${Python3_EXECUTABLE}
-                    -DMISRA_SCRIPT=${INTERCOM_MISRA_SCRIPT}
-                    -DRULE_TEXTS=${INTERCOM_MISRA_RULE_TEXTS}
+                    -DMISRA_SCRIPT=${BATON_MISRA_SCRIPT}
+                    -DRULE_TEXTS=${BATON_MISRA_RULE_TEXTS}
+                    -DFAIL_ON_VIOLATION=${BATON_MISRA_FAIL_ON_VIOLATION}
                     -DSOURCE_DIR=${CMAKE_SOURCE_DIR}
-                    -DCONFIG_DIR=${INTERCOM_CONFIG_DIR}
+                    -DCONFIG_DIR=${CMAKE_SOURCE_DIR}/tests/config
                     -DOUTPUT=${CMAKE_BINARY_DIR}/misra.txt
                     -P ${CMAKE_SOURCE_DIR}/cmake/misra_check.cmake
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -183,15 +208,15 @@ endif()
 find_program(CODEQL_EXECUTABLE codeql)
 if(CODEQL_EXECUTABLE)
 
-    # Note: This target intentionally builds only the core library; the
-    # simulation tests are excluded to keep the analysis focused.
+    # Note: This target intentionally builds only the core library; examples and
+    # tests are excluded to keep the analysis focused.
 
     if(WIN32)
         set(CODEQL_BUILD_SCRIPT "${CMAKE_BINARY_DIR}/codeql_build.cmd")
-        file(WRITE "${CODEQL_BUILD_SCRIPT}" "\"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --target intercom\r\n")
+        file(WRITE "${CODEQL_BUILD_SCRIPT}" "\"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --target baton\r\n")
         set(CODEQL_BUILD_COMMAND "${CODEQL_BUILD_SCRIPT}")
     else()
-        set(CODEQL_BUILD_COMMAND "${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target intercom")
+        set(CODEQL_BUILD_COMMAND "${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target baton")
     endif()
 
     add_custom_target(codeql-analyze
@@ -221,4 +246,4 @@ endif()
 # INSTALLATION
 # ==============================================================================
 
-# install(TARGETS intercom ...)
+# install(TARGETS baton ...)

@@ -1,3 +1,4 @@
-# Paths (relative to the repository root) excluded from 'cppcheck-analyze'
 build
 tests
+examples
+tools

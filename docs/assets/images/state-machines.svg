@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-label="Slave and master state machines">
+<title>Slave and master state machines</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5A6472"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F8B9A"/></marker><marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E07A00"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker></defs>
+<rect x="0" y="0" width="960" height="560" rx="12" fill="#FFFFFF"/>
+<text x="20" y="30" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">Slave</text>
+<rect x="55.0" y="118" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#0B2545" stroke-width="2"/>
+<text x="130" y="145" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">IDLE</text>
+<rect x="345.0" y="48" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#1E5AA8" stroke-width="2"/>
+<text x="420" y="75" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1E5AA8" text-anchor="middle">DATA_TX</text>
+<rect x="645.0" y="48" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#1E5AA8" stroke-width="2"/>
+<text x="720" y="75" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1E5AA8" text-anchor="middle">WAIT_ACK</text>
+<rect x="345.0" y="188" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#2E7D32" stroke-width="2"/>
+<text x="420" y="215" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">RESP_TX</text>
+<rect x="55.0" y="308" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#0F8B9A" stroke-width="2"/>
+<text x="130" y="335" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0F8B9A" text-anchor="middle">ACK_TX</text>
+<line x1="205" y1="128" x2="343" y2="80" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="262" y="86" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">POLL, data to send</text>
+<line x1="205" y1="152" x2="343" y2="202" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="300" y="152" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="start">POLL, nothing to send</text>
+<line x1="495" y1="64" x2="643" y2="64" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="569" y="56" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">sent</text>
+<path d="M700,92 C680,130 470,130 440,94" stroke="#5A6472" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<text x="570" y="140" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">ACK and more data / timeout: retry</text>
+<path d="M760,92 L760,210 L497,210" stroke="#5A6472" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<text x="770" y="160" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="start">nothing left,</text>
+<text x="770" y="176" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="start">no budget or no retry</text>
+<path d="M420,232 L420,270 L175,270 L175,164" stroke="#5A6472" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<text x="300" y="264" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">sent</text>
+<line x1="90" y1="162" x2="90" y2="306" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="82" y="240" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="end">DATA to me</text>
+<line x1="130" y1="306" x2="130" y2="164" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="138" y="300" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="start">sent</text>
+<line x1="20" y1="380" x2="940" y2="380" stroke="#C9D3E0" stroke-width="1.6"/>
+<text x="20" y="410" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="16" font-weight="bold" fill="#0B2545" text-anchor="start">Master</text>
+<rect x="65.0" y="458" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#0B2545" stroke-width="2"/>
+<text x="140" y="485" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#0B2545" text-anchor="middle">IDLE</text>
+<rect x="345.0" y="458" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#E07A00" stroke-width="2"/>
+<text x="420" y="485" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#E07A00" text-anchor="middle">POLL_TX</text>
+<rect x="625.0" y="458" width="150" height="44" rx="22" fill="#F2F5FA" stroke="#2E7D32" stroke-width="2"/>
+<text x="700" y="485" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#2E7D32" text-anchor="middle">WAIT_RESP</text>
+<line x1="215" y1="480" x2="343" y2="480" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="279" y="470" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">next slave</text>
+<line x1="495" y1="480" x2="623" y2="480" stroke="#5A6472" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="559" y="470" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">sent</text>
+<path d="M700,502 C700,548 160,548 140,502" stroke="#5A6472" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<text x="420" y="524" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">RESP or timeout: on_poll_done</text>
+<text x="140" y="446" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">end of cycle: wait cycle_period_ms</text>
+<text x="700" y="446" font-family="Inter, 'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="12" font-weight="normal" fill="#5A6472" text-anchor="middle">unreachable slaves: every 4th cycle</text>
+</svg>

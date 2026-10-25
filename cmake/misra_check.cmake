@@ -1,12 +1,14 @@
 ################################################################################
-# intercom: deterministic master/slave messaging over a single-wire UART
+# Baton-C: Deterministic Master/Slave Messaging over a Single-Wire UART
 #
-# Project:     intercom - C99 static library for half-duplex UART buses
+# Project:     Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART
 # Description: Script (cmake -P) behind the 'misra-analyze' target: dumps the
 #              library sources with Cppcheck, runs the MISRA C:2012 addon on the
 #              dumps, writes the report and removes the dump files.
 #
 # Author:      Anton Vynohradov
+# Email:       avynohradov@systemfromscratch.com
+# License:     Apache License 2.0
 # Copyright:   (c) 2026 Anton Vynohradov
 #
 # References:
@@ -15,9 +17,10 @@
 #   - CMake Documentation: https://cmake.org/documentation/
 #
 # Last Updated: October 2026
+# SPDX-License-Identifier: Apache-2.0
 #
-# Inputs (-D): CPPCHECK, PYTHON, MISRA_SCRIPT, SOURCE_DIR, CONFIG_DIR, OUTPUT,
-#              RULE_TEXTS (optional)
+# Inputs (-D): CPPCHECK, PYTHON, MISRA_SCRIPT, SOURCE_DIR, CONFIG_DIR, OUTPUT, RULE_TEXTS (optional),
+#              FAIL_ON_VIOLATION (optional, ON makes any violation a build error)
 #
 ################################################################################
 
@@ -35,11 +38,12 @@ file(GLOB MISRA_SOURCES ${SOURCE_DIR}/src/*.c)
 execute_process(
     COMMAND ${CPPCHECK}
             --dump
+            --inline-suppr          # deviations are marked in the code, see docs/misra.md
             --quiet
-            --std=c99
+            --std=c11
             --suppress=missingIncludeSystem
-            -I ${SOURCE_DIR}/include
-            -I ${SOURCE_DIR}/src
+            -I ${SOURCE_DIR}
+            -I ${SOURCE_DIR}/inc
             -I ${CONFIG_DIR}
             ${MISRA_SOURCES}
     RESULT_VARIABLE MISRA_DUMP_RESULT
@@ -86,3 +90,7 @@ message("${MISRA_REPORT}${MISRA_STDOUT}")
 string(REGEX MATCHALL "\\[misra-c2012-[0-9.]+\\]" MISRA_VIOLATIONS "${MISRA_REPORT}")
 list(LENGTH MISRA_VIOLATIONS MISRA_VIOLATION_COUNT)
 message(STATUS "MISRA C:2012 violations: ${MISRA_VIOLATION_COUNT} (report: ${OUTPUT})")
+
+if(FAIL_ON_VIOLATION AND MISRA_VIOLATION_COUNT GREATER 0)
+    message(FATAL_ERROR "MISRA C:2012 violations found; fix them or record a deviation in docs/misra.md")
+endif()

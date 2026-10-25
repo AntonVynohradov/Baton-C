@@ -1,24 +1,23 @@
-# Run the simulation test with many seeds and report only failing ones.
+# Run the bus simulation (baton_sim) with many seeds and report only failing ones.
 # Usage: .\tests\run_seeds.ps1 [-BuildDir build] [-Count 100]
-#   e.g. .\tests\run_seeds.ps1 -BuildDir "build/INTERCOM[SimTests]" -Count 100
-un_seeds.ps1 -BuildDir "build/INTERCOM[SimTests]" -Count 100
+#   e.g. .\tests\run_seeds.ps1 -BuildDir "build/BATON[UnitTests]" -Count 100
 param(
     [string]$BuildDir = "build",
     [int]$Count = 100
 )
 
 $candidates = @(
-    (Join-Path $BuildDir "intercom_sim_test.exe"),
-    (Join-Path $BuildDir "Debug/intercom_sim_test.exe"),
-    (Join-Path $BuildDir "Release/intercom_sim_test.exe"),
-    (Join-Path $BuildDir "tests/intercom_sim_test.exe"),
-    (Join-Path $BuildDir "tests/Debug/intercom_sim_test.exe"),
-    (Join-Path $BuildDir "tests/Release/intercom_sim_test.exe"),
-    (Join-Path $BuildDir "tests/intercom_sim_test")
+    (Join-Path $BuildDir "baton_sim.exe"),
+    (Join-Path $BuildDir "Debug/baton_sim.exe"),
+    (Join-Path $BuildDir "Release/baton_sim.exe"),
+    (Join-Path $BuildDir "tests/baton_sim.exe"),
+    (Join-Path $BuildDir "tests/Debug/baton_sim.exe"),
+    (Join-Path $BuildDir "tests/Release/baton_sim.exe"),
+    (Join-Path $BuildDir "tests/baton_sim")
 )
 $exe = $candidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 if (-not $exe) {
-    Write-Host "test executable not found in $BuildDir (build with -DINTERCOM_BUILD_TESTS=ON)"
+    Write-Host "test executable not found in $BuildDir (build with -DBATON_UNIT_TESTS=ON, target baton_sim)"
     exit 2
 }
 

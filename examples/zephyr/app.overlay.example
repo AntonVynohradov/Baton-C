@@ -1,0 +1,17 @@
+/*
+ * Copy to boards/<board>.overlay and point baton,uart at the UART wired to the
+ * single-wire bus. Do not use the console UART.
+ */
+/ {
+	chosen {
+		baton,uart = &uart1;
+	};
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <9600>;
+	/* single wire: TX and RX on one pin, for example
+	 * single-wire; (STM32) or an open-drain TX tied to RX
+	 */
+};

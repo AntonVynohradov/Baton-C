@@ -1,0 +1,64 @@
+name: Code Formatting Check
+
+on:
+  pull_request:
+    branches:
+      - development
+      - main
+
+jobs:
+  format-check:
+    name: Verify Code Formatting
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      contents: read
+      checks: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Verify clang-format version
+        run: clang-format --version
+
+      - name: Check C/C++ files formatting
+        id: format-check
+        run: |
+          echo "Checking code formatting with clang-format..."
+          FILES=$(find . -path ./build -prune -o -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" \) -print 2>/dev/null || true)
+
+          if [ -z "$FILES" ]; then
+            echo "No C/C++ files found"
+            exit 0
+          fi
+
+          NEEDS_FORMATTING=false
+
+          for file in $FILES; do
+            clang-format "$file" > "${file}.formatted"
+
+            if ! diff -q "$file" "${file}.formatted" > /dev/null; then
+              NEEDS_FORMATTING=true
+              echo "❌ File needs formatting: $file"
+            else
+              echo "✅ File is properly formatted: $file"
+            fi
+
+            rm "${file}.formatted"
+          done
+
+          if [ "$NEEDS_FORMATTING" = true ]; then
+            echo "formatting_needed=true" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "formatting_needed=false" >> $GITHUB_OUTPUT
+            echo "✅ All files are properly formatted!"
+          fi

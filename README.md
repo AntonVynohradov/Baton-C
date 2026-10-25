@@ -1,47 +1,236 @@
-# intercom
+<p align="center">
+  <a href="https://antonvynohradov.github.io/baton-c/"><b>Documentation</b></a> ·
+  <a href="https://antonvynohradov.github.io/baton-c/downloads/Baton-C_User_Manual.pdf"><b>PDF user manual</b></a> ·
+  <a href="https://github.com/AntonVynohradov/Baton-C/releases"><b>Releases</b></a> ·
+  <a href="CHANGELOG.md"><b>Changelog</b></a>
+</p>
 
-Deterministic master/slave message exchange over a single-wire UART (half-duplex, e.g. 9600 bit/s) for embedded systems.
+# Baton-C: Deterministic Master/Slave Messaging over a Single-Wire UART
 
-- The master polls the slaves one by one (POLL), and the polled slave is the only transmitter on the bus for a bounded time. There are no collisions and no arbitration.
-- During its slot a slave sends data to other slaves (DATA + ACK) and finally answers the master (RESP).
-- **Events** (EVENT) are delivered exactly once, in order, with ACK and retry. **States** (STATE) work like a mailbox: the latest value always arrives.
-- The library never blocks, does not use `malloc`, and allocates all memory statically. It takes about 6.6 KB of code and about 1.7 KB of RAM in the default configuration (Cortex-M3, `-Os`).
-- The application includes a single header: `Intercom.h`, plus your own `IntercomConfig.h`.
+[![Build Static Library](https://github.com/AntonVynohradov/Baton-C/actions/workflows/build-static-lib.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/build-static-lib.yml)
+[![Google Unit Tests](https://github.com/AntonVynohradov/Baton-C/actions/workflows/google-unit-tests.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/google-unit-tests.yml)
+[![Static Analysis](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml)
+[![Documentation](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml)
+
+## Overview
+
+Baton-C is a C11 library for messaging between a few microcontrollers on one shared UART
+line (single-wire half duplex, open-drain or RS-485). The master passes a token — the
+*baton* — to each slave in turn, so only one node transmits at a time: no collisions and
+a worst-case cycle computed from the configuration. On top of this schedule it delivers
+**events** exactly once and in order, and **states** whose latest value always arrives.
+It does not depend on hardware, an operating system, a clock or a heap, and it is
+developed for embedded systems that must comply with **MISRA C:2012**.
+
+### Project Status
+
+🚧 **Prepared for release 1.0.0** — see [CHANGELOG.md](CHANGELOG.md).
+
+The library, its unit tests (100 % of lines and branches of `src/`), the bus simulation,
+the Python twin with the C/Python cross-check, the examples and the documentation are
+complete. The Cppcheck MISRA C:2012 addon reports no violations; the deviations are
+documented in [docs/misra.md](docs/misra.md). **It has not yet been tested on hardware**
+— see [Hardware bring-up](docs/integration.md#hardware-bring-up).
+
+---
+
+## About the Baton bus protocol
+
+The protocol is specified in [docs/protocol.md](docs/protocol.md):
+
+```text
+SYNC | DST | SRC | CTRL | LEN | PAYLOAD[LEN] | CRC16 (big endian)
+0xA5                    TYPE|FIRST|SEQ          CRC-16/CCITT-FALSE over DST..PAYLOAD
+```
+
+- **POLL** (master → slave) grants the bus for one slot and carries the master's messages.
+- **DATA** / **ACK** (slave → slave) carry messages inside the slot, acknowledged frame by frame.
+- **RESP** (slave → master) ends the slot, acknowledges the POLL and reports the nodes
+  that did not answer.
+- Several messages share one frame (TLV) and one acknowledgement; retransmissions keep
+  their sequence number, duplicates are filtered, undeliverable events are reported.
+
+## Objectives
+
+### 🎯 Primary goals
+
+- **Determinism:** one transmitter at a time, bounded slot and cycle, no function blocks.
+- **Embedded-first:** C11, no heap, no RTOS, no global state, no clock reads; 1696 B of RAM
+  per node and 280 B of worst-case stack on Cortex-M4 with the default sizes.
+- **Reliability:** exactly-once in-order events, latest-value states, CRC-16, retries,
+  unreachable nodes isolated, every loss reported.
+- **Testing:** GoogleTest with 100 % line and branch coverage enforced, a bus simulation
+  with noise and dead nodes on 100 seeds with ASan/UBSan, a Python twin of the codec.
+- **MISRA C:2012:** 0 violations, deviation register, Cppcheck and CodeQL in CI.
+- **Documentation:** website and PDF manual from the same sources, measured numbers only.
+
+## Roadmap
+
+- [x] Codec, link, event queue, node layer with master and slave state machines
+- [x] Unit tests, bus simulation, Python twin, examples, documentation, CI
+- [ ] Bring-up on hardware (STM32 single-wire UART, RS-485)
+- [ ] Compile and run the Zephyr example on a board
+- [ ] Test on 8/16-bit MCUs (AVR, MSP430): warnings, atomicity of the 32-bit state masks
+- [ ] Simulation scenario: a node restarting during operation (FIRST flag)
+- [ ] v2: broadcast DATA with slotted acknowledgements; optional periodic state refresh
+
+## Building & Usage
+
+### Prerequisites
+
+- C11 compiler, CMake 3.20+
+- Optional: GoogleTest and gcovr (unit tests), Python 3 with pytest (integration tests),
+  Cppcheck (MISRA), clang-format, the packages of `requirements-dev.txt` and Doxygen
+  (documentation)
+
+### Build with presets
+
+```bash
+cmake --preset "BATON[Debug]"            && cmake --build "build/BATON[Debug]"
+cmake --preset "BATON[UnitTests]"        && cmake --build "build/BATON[UnitTests]" --target coverage
+cmake --preset "BATON[IntegrationTests]" && cmake --build "build/BATON[IntegrationTests]" --target integration_tests
+cmake --preset "BATON[Examples]"         && cmake --build "build/BATON[Examples]" && ctest --test-dir "build/BATON[Examples]" -L example
+cmake --build "build/BATON[Debug]" --target misra-analyze
+tests/run_seeds.sh "build/BATON[UnitTests]" 100      # bus simulation on 100 seeds
+```
+
+### Configuration options
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `BATON_CONFIG_DIR` | — | Folder with the application's `baton_user_config.h` |
+| `BATON_UNIT_TESTS` | `OFF` | GoogleTest, `coverage` target, simulation runner |
+| `BATON_INTEGRATION_TESTS` | `OFF` | pytest through CTest |
+| `BATON_EXAMPLES` | `OFF` | Host examples |
+| `BATON_SANITIZERS` | `OFF` | ASan/UBSan for the simulation runner |
+| `BATON_COVERAGE_MIN` | `100` | Coverage gate in percent |
+| `BATON_MISRA_FAIL_ON_VIOLATION` | `ON` | `misra-analyze` fails on a violation |
+
+### Using the library in another CMake project
+
+```cmake
+set(BATON_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/config)   # your baton_user_config.h
+include(lib/Baton-C/baton.cmake)
+target_link_libraries(app PRIVATE baton)
+```
+
+Copy `config/baton_user_config_template.h` as `baton_user_config.h` and define the message
+lists — the same on every node of the bus.
+
+### Quick start
 
 ```c
-IntercomCfg cfg;
-Intercom_GetDefaultCfg(&cfg);
-cfg.role = INTERCOM_ROLE_SLAVE;  cfg.ownAddr = 0x11;  /* ... */
-Intercom_Init(&cfg);
+#include "baton.h"
 
-for (;;) {
-    Intercom_Process();                       /* non-blocking, call every ≤1 ms */
-    Intercom_Send(0x12, INTERCOM_MSG_CMD_START, &cmd, sizeof cmd, INTERCOM_PRIO_HIGH);
+static const uint8_t slaves[] = {0x11U, 0x12U};
+static struct baton_node node;
+
+static int uart_write(void* context, const uint8_t* data, size_t length)
+{
+    (void) context;
+    return board_uart_write(data, length); /* start a non-blocking transmission */
+}
+
+void uart_rx_irq_handler(uint8_t byte)
+{
+    baton_node_rx_isr(&node, byte);
+}
+
+int main(void)
+{
+    struct baton_node_config config;
+
+    baton_node_default_config(&config);
+    config.own_address = 0x11U;
+    config.master_address = 0x01U;
+    config.slave_addresses = slaves;
+    config.slave_count = 2U;
+    config.write = uart_write;
+    (void) baton_node_init(&node, &config, board_millis());
+    for (;;)
+    {
+        baton_node_process(&node, board_millis());
+    }
 }
 ```
 
+## Project Structure
+
+```text
+Baton-C/
+├── baton.h                  umbrella header, version
+├── inc/                     baton_config.h, baton_defs.h, baton_protocol.h, baton_link.h,
+│                            baton_queue.h, baton_node.h
+├── src/                     baton_protocol.c, baton_link.c, baton_queue.c, baton_node.c
+├── config/                  baton_user_config_template.h (copy into the application)
+├── tests/
+│   ├── unit/                GoogleTest
+│   ├── sim/                 bus simulation (unit tests and the baton_sim runner)
+│   ├── integration/         pytest + Python twin (baton/protocol.py)
+│   ├── config/              configuration of the tests and of the analysis
+│   └── run_seeds.sh|.ps1    simulation on many seeds
+├── examples/                bare_metal, host_serial, zephyr, shared config
+├── tools/docs/              diagrams, PDF manual, stack analysis, snippet check
+├── docs/                    MkDocs sources
+├── cmake/                   version, unit_tests, integration_tests, misra_check
+├── .github/workflows/       CI
+├── baton.cmake              library target
+└── CMakeLists.txt, CMakePresets.json, mkdocs.yml
+```
+
+## Tools
+
+| Tool | Purpose |
+| --- | --- |
+| `tools/docs/diagrams.py` | Generates the SVG diagrams of the documentation |
+| `tools/docs/build_manual.py` | Builds the PDF user manual |
+| `tools/docs/stack_usage.py` | Worst-case stack per function from GCC call graphs |
+| `tools/docs/check_snippets.py` | Compiles every C snippet of the documentation |
+
 ## Documentation
 
-Start with [docs/index.md](docs/index.md):
+- Website: <https://antonvynohradov.github.io/baton-c/>
+- PDF user manual: published with the website and attached to every release
 
-- [Getting started](docs/getting-started.md): adding as a submodule, configuration, first node
-- [Protocol](docs/protocol.md): frames, slots, ACK, sequencing, time budget
-- [Architecture](docs/architecture.md): layers, queues, state machines
-- [Configuration](docs/configuration.md): `IntercomConfig.h` and `IntercomCfg`
-- [API](docs/api.md): functions and callbacks
-- [Porting](docs/porting.md): STM32 single-wire, RS-485, RTOS
-- [Testing](docs/testing.md): bus simulator
-
-## Layout
-
+```bash
+python -m pip install -r requirements-dev.txt
+mkdocs serve                             # live preview
+python tools/docs/build_manual.py        # PDF into build/manual/
 ```
-include/Intercom.h                 public API (the only header for the application)
-config/IntercomConfig_template.h   configuration template, copy it into your project
-src/                               implementation (private headers)
-tests/                             bus simulator + tests (host)
-docs/                              documentation
-CMakeLists.txt, CMakePresets.json  top-level build: presets, tests, static analysis targets
-intercom.cmake                     library target (can be include()d by an application)
-cmake/                             version from Git tag, simulation tests, MISRA check
-CLAUDE.md, .claude/skills/         context and skills for Claude Code
-```
+
+## Author
+
+**Anton Vynohradov** — Embedded Systems Engineer · Founder of SystemFromScratch®
+
+- Website: [systemfromscratch.com](https://systemfromscratch.com)
+- GitHub: [github.com/AntonVynohradov](https://github.com/AntonVynohradov)
+- LinkedIn: [linkedin.com/in/vynohradov](https://www.linkedin.com/in/vynohradov)
+- E-mail: [avynohradov@systemfromscratch.com](mailto:avynohradov@systemfromscratch.com)
+
+## Releases & Versioning
+
+The project follows [Semantic Versioning](https://semver.org/). The version comes from the
+`vX.Y.Z` Git tag (`cmake/version.cmake`), with fallbacks in `baton.h`. A tag starts the
+*Release* workflow: version check, every quality gate, the static library package, the
+MISRA report and the PDF manual as release assets.
+
+## Contributing
+
+Issues and pull requests are welcome. A change must keep 100 % line and branch coverage,
+0 MISRA violations (or a recorded deviation), pass the simulation on 100 seeds and
+`clang-format`, and update the documentation and `CHANGELOG.md`. See
+[Extending the Library](docs/extending.md#contributing-to-the-library).
+
+## License
+
+Copyright © 2026 Anton Vynohradov. Licensed under the [Apache License 2.0](LICENSE).
+
+SystemFromScratch® is a registered trademark. The Apache License 2.0 grants no rights to use
+the SystemFromScratch® name or logo; they may not be used to endorse or promote products
+derived from Baton-C without prior written permission.
+
+## References
+
+- [Baton bus protocol](docs/protocol.md)
+- [MISRA C:2012](https://www.misra.org.uk/)
+- [CRC-16/CCITT-FALSE, catalogue of parametrised CRC algorithms](https://reveng.sourceforge.io/crc-catalogue/16.htm)

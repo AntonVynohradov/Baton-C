@@ -1,142 +1,170 @@
-# Architecture
+# How It Works
+
+This chapter explains how Baton-C is built: the layers and what each one owns, how
+bytes travel through them, how events and states are stored and packed, the state
+machines, the memory model, error handling, threading, and the design decisions behind
+them.
 
 ## Layers
 
-```mermaid
-flowchart TB
-    APP["Application<br/>Intercom_Send / Intercom_Publish / onMessage"]
-    subgraph LIB[intercom]
-        Q["EVENT queues<br/>HIGH + NORMAL"]
-        MB["STATE mailboxes"]
-        PK["TLV packing<br/>+ stop-and-wait channels"]
-        LL["Link layer<br/>master / slave FSM"]
-        FR["Framer: parser + CRC"]
-        TX["Transmitter: gap, echo, timeout"]
-        RX["RX ring buffer"]
-    end
-    UART["UART ISR / driver"]
-    APP --> Q
-    APP --> MB
-    Q --> PK
-    MB --> PK
-    PK --> LL
-    LL --> TX --> UART
-    UART --> RX --> FR --> LL
-    LL -->|onMessage| APP
-```
+![Baton-C architecture](assets/images/architecture.svg)
 
-| File | Responsibility |
-| --- | --- |
-| `include/Intercom.h` | Public API, types generated from the message list |
-| `src/Intercom.c` | Thin layer over a single static instance |
-| `src/ic_core.c` | Parser, transmitter, link layer, packing, deduplication, TTL |
-| `src/ic_queue.c` | Ring buffer of variable-length records |
-| `src/ic_crc.c` | Table-less CRC-16/CCITT |
-| `src/ic_internal.h` | Private structures (`ic_t`), protocol constants, configuration checks |
+| Layer | Files | Contents |
+| --- | --- | --- |
+| Configuration | `inc/baton_config.h`, application `baton_user_config.h` | Sizes (each `#ifndef`-guarded and range-checked with `#error`) and the two message lists |
+| Definitions | `inc/baton_defs.h` | Frame layout, frame types, ACKB bits, `static inline` CTRL and byte-order helpers. No state |
+| Codec | `inc/baton_protocol.h`, `src/baton_protocol.c` | CRC-16, the incremental parser, the encoder. Pure functions over caller buffers |
+| Link | `inc/baton_link.h`, `src/baton_link.c` | Receive ring (interrupt producer), parser with inter-byte timeout, transmitter: bus gap, echo check, timeout. Reports events to the node |
+| Event queue | `inc/baton_queue.h`, `src/baton_queue.c` | Ring of variable-size records with a serialized 16-byte header |
+| Node | `inc/baton_node.h`, `src/baton_node.c` | Master and slave state machines, channels, TLV packing, duplicate filter, TTL, the application API |
+| Umbrella | `baton.h` | Includes everything; version fallbacks |
 
-The internal implementation operates on an `ic_t` instance. This lets the tests run several nodes in one process, and multiple buses could be supported in the future. The public API uses a single static instance.
+Each layer depends only on the ones below it. The application normally uses only the
+eight `baton_node_*` functions; the codec is public so that tools (a bus monitor, a test
+generator) can use it alone.
 
-## Calling context
+## Data flow
 
-| Function | Context |
-| --- | --- |
-| `Intercom_Process` | Main loop or a single RTOS task, every ≤ 1 ms |
-| `Intercom_RxByteIsr` | UART RX interrupt; only writes to the ring buffer (SPSC, lock-free) |
-| `Intercom_TxDoneIsr` | TX-complete interrupt; sets a flag |
-| `Intercom_Send` / `Intercom_Publish` | Any context if `enterCritical`/`exitCritical` are given; otherwise the same as `Process` |
-| `on*` callbacks | Always from inside `Intercom_Process` |
+![Receive and transmit data flow](assets/images/data-flow.svg)
 
-Critical sections cover only a few instructions: reserving space in a queue, moving `head`/`tail`, and copying a state value. Event data is copied outside the critical section.
+**Receive.** The UART interrupt calls `baton_node_rx_isr()`, which only writes the byte
+into the ring of the link (single producer, single consumer, no lock). In
+`baton_node_process()` the link drains the ring: bytes of the node's own transmission
+are compared with what was sent (echo), every other byte goes to the parser. A complete
+valid frame is reported to the node, which dispatches it by type, filters
+retransmissions and calls `on_message` once per message.
 
-## Event queues (EVENT)
+**Transmit.** `baton_node_send()` copies an event into a queue and returns. When the node
+may transmit — a slave in its slot, the master at the start of a slot — it packs
+messages for one peer into the payload area of its transmit buffer, `baton_encode()`
+adds the header and the CRC in place, and the link calls the write function once the
+bus has been silent for `tx_gap_ms`. The transmission ends with the last echo byte
+(`rx_echo`) or `baton_node_tx_done_isr()`.
 
-There are two queues: HIGH and NORMAL. Each is a static byte buffer holding variable-length records:
+## The parser
 
-```
-+-----------------------------+-------------------+
-| ic_rec_t (16 B)             | data[len] (to 4)  |
-| pending | inflight | stamp  |                   |
-| msgId | len | dst | flags   |                   |
-+-----------------------------+-------------------+
-```
+The parser is described byte by byte in [Protocol → Parser behavior](protocol.md#parser-behavior).
+It decodes into its own `struct baton_frame`, so no second frame buffer exists, and it
+computes the CRC while the bytes arrive. The link adds the inter-byte timeout: when more
+than `inter_byte_timeout_ms` pass inside a frame, the parser is reset and `rx_timeouts`
+counts it.
 
-- **Copy-in.** `Intercom_Send()` copies the data into the queue and returns immediately. The sending module does not have to keep a buffer.
-- **No record splitting.** If a record does not fit at the end of the buffer, a SKIP marker is written there and the record goes to the beginning. Record data is always contiguous.
-- **`pending`** is the mask of nodes that have not yet acknowledged the record. A broadcast sets the bits of all other nodes.
-- **`inflight`** is the mask of nodes to which the record was sent in an unacknowledged frame.
-- **Release from the head only.** A record is released when `pending == 0` and `inflight == 0`. This way references held by channels always stay valid.
-- **Peek/commit.** Packing does not remove a record from the queue. Only the acknowledgement does, and a retransmission needs no copy.
-- **TTL.** Every 10 ms, records older than `eventTtlMs` are removed and reported through `onDrop`.
+## The encoder
 
-An unreachable recipient can hold a record at the head of the queue for at most `eventTtlMs`. The queue size should cover the traffic produced during that time.
+`baton_encode()` writes SYNC, the header, the payload and the CRC into a caller buffer
+after checking the capacity. When the payload already sits at
+`&output[BATON_HEADER_SIZE]` — the node packs it there — nothing is copied.
 
-## State mailboxes (STATE)
+## Event queues
 
-Each state has a static `maxLen` buffer, a length and a `dirty` mask:
+There are two queues, HIGH and NORMAL. Each is a byte array inside `struct baton_node`
+holding variable-size records: a 16-byte header — pending mask, inflight mask, time
+stamp, id, length, destination, flags, serialized byte by byte (no pointer casts) — and
+the data, padded to 4 bytes.
 
-- `Intercom_Publish()` overwrites the value and sets `dirty` for all other nodes. It never returns "full".
-- Packing copies the *current* value and clears the recipient's bit. Intermediate values may be skipped, but the last one always arrives.
-- States are delivered with ACK, just like events. If the frame is not acknowledged, the state goes back for retransmission.
+- **Copy in.** `baton_node_send()` copies the data and returns at once; the caller keeps
+  no buffer.
+- **No split records.** A record that does not fit at the end of the array goes to the
+  start; a SKIP marker is left at the end if a header fits there. Data is always
+  contiguous.
+- **pending** is the node mask still to acknowledge the event; a broadcast sets every
+  other node. **inflight** is the node mask with an unacknowledged frame containing it;
+  it is always a subset of pending.
+- **Release from the head only**, when pending is empty. References held by channels
+  therefore stay valid.
+- **Peek and commit.** Packing does not remove a record; the acknowledgement does, and a
+  retransmission needs no copy.
+- **TTL.** Every 10 ms records older than `event_ttl_ms` are removed and reported through
+  `on_drop`.
 
-## Packing a frame for a recipient
+An unreachable destination can hold a record at the head of a queue for at most
+`event_ttl_ms`; size the queues for the traffic of that time.
 
-1. If the channel has an unacknowledged frame, the frame is rebuilt from the same message list with the same `SEQ`.
-2. Otherwise it is filled in order with:
-   - HIGH events for the recipient, in FIFO order, up to the first one that does not fit,
-   - NORMAL events on the same basis,
-   - changed states.
-3. The frame length limit comes from the slot budget ([Protocol](protocol.md#time-budget)) and from `INTERCOM_MAX_MSGS_PER_FRAME`.
+## State mailboxes
+
+Each state has a buffer of its `MAX_LEN`, a current length and a dirty node mask.
+`baton_node_publish()` overwrites the value and marks every other node — it never fails
+for lack of space. Packing copies the *current* value and clears the destination's bit;
+if the frame is not acknowledged, the retransmission carries the latest value again.
+Intermediate values may be skipped; the last one always arrives.
+
+## Packing a frame
+
+1. If the channel to the peer has an unacknowledged frame, the same messages are packed
+   again with the same SEQ. A state that grew and no longer fits is removed from it and
+   sent later.
+2. Otherwise the frame is filled with the peer's HIGH events in FIFO order up to the
+   first that does not fit, then NORMAL events the same way, then its dirty states.
+3. The limits are the remaining slot budget ([Protocol → Time budget](protocol.md#time-budget)),
+   the room of the frame type and `BATON_MAX_MSGS_PER_FRAME`.
 
 ## State machines
 
-### Slave
+![Slave and master state machines](assets/images/state-machines.svg)
 
-```mermaid
-stateDiagram-v2
-    [*] --> IDLE
-    IDLE --> DATA_TX: POLL to me (slot start)
-    IDLE --> RESP_TX: POLL, nothing to send
-    IDLE --> ACK_TX: DATA to me
-    ACK_TX --> IDLE: ACK sent
-    DATA_TX --> WAIT_ACK: frame sent
-    WAIT_ACK --> DATA_TX: ACK → more data / timeout → retry
-    WAIT_ACK --> RESP_TX: no data or budget left
-    RESP_TX --> IDLE: RESP sent
-```
+The slave serves its peers in two passes per slot: first the reachable ones in
+round-robin order, then the ones with three or more failures in a row, once each and
+without retry. A peer that failed in the slot is in the NACK mask and is not served again
+in that slot.
 
-Recipients in a slot are served in two passes. The first covers reachable nodes in round-robin order, the second covers nodes considered unreachable (≥ 3 failures), with a single attempt and no retry.
+The transmitter of the link has three states: idle, waiting for a silent bus, and busy.
+Busy ends with the full echo (`rx_echo`) or the TX-done interrupt; a timeout of
+`F(length) + tx_gap_ms + 5` ms is the safety net (`tx_timeouts`). An echo mismatch is
+counted in `collisions`.
 
-### Master
+## Memory model
 
-```mermaid
-stateDiagram-v2
-    [*] --> IDLE
-    IDLE --> POLL_TX: next slave (skips unreachable ones except every 4th cycle)
-    POLL_TX --> WAIT_RESP: POLL sent
-    WAIT_RESP --> IDLE: RESP / timeout → onPollDone
-    IDLE --> IDLE: end of cycle, wait cyclePeriodMs
-```
+All state lives in one caller-owned `struct baton_node`; the library has no global
+variables (only `static const` tables). Its size is fixed at build time by
+`baton_user_config.h` — see [Configuration → Memory footprint](configuration.md#memory-footprint).
+No function allocates memory, recurses or uses variable-length arrays, so the stack is
+fixed: see [Configuration → Stack usage](configuration.md#stack-usage).
 
-### Transmitter
+## Error handling
 
-`IDLE → WAIT_GAP → BUSY → IDLE`
+| Situation | What happens | Visible as |
+| --- | --- | --- |
+| Invalid argument | The function returns an error code and changes nothing | `BATON_ERR_*`, `BATON_PARSE_ERROR` |
+| Inconsistent configuration | `baton_node_init()` fails; the node stays uninitialized | `BATON_ERR_PARAM` |
+| Event queue full | `baton_node_send()` fails; nothing is queued | `BATON_ERR_FULL`, `queue_full` |
+| CRC mismatch, LEN too large | Frame dropped | `crc_errors` |
+| Gap inside a frame | Frame dropped, parser reset | `rx_timeouts` |
+| Receive ring full | Byte dropped | `rx_overflows` |
+| Echo differs from the sent bytes | Transmission completes, counted | `collisions` |
+| Write fails or no end of transmission | Treated as sent, counted | `tx_timeouts` |
+| No ACK | Retry, then NACK in the RESP | `ack_timeouts`, `retries` |
+| No RESP | Next slave | `resp_timeouts`, `on_poll_done(responded = false)` |
+| Retransmitted content | Acknowledged, not delivered | `duplicates` |
+| Unknown or too long message | Skipped | `bad_messages` |
+| Event older than `event_ttl_ms` | Removed | `events_dropped`, `on_drop` |
 
-- `WAIT_GAP` waits for `txGapMs` of silence and for the end of any frame being received.
-- `BUSY` ends when the full echo comes back (`rxEcho = true`) or `Intercom_TxDoneIsr()` is signalled.
-- Safety net: a timeout of `F(len) + txGapMs + 5` ms.
-- An echo mismatch is counted in `collisions`.
+## Threading and reentrancy
 
-## Memory
+| Function | Context |
+| --- | --- |
+| `baton_node_process()`, `baton_node_init()`, `baton_node_get_stats()` | One context: the main loop or one RTOS task |
+| `baton_node_rx_isr()` | UART receive interrupt; writes only the ring |
+| `baton_node_tx_done_isr()` | UART TX-complete interrupt; sets a flag |
+| `baton_node_send()`, `baton_node_publish()` | Any context **if** `enter_critical`/`exit_critical` are set; otherwise the context of `baton_node_process()` |
+| `on_message`, `on_drop`, `on_poll_done` | Always inside `baton_node_process()`; they may call `baton_node_send()` and `baton_node_publish()` |
 
-All memory is allocated statically in `ic_t`:
+Critical sections are a few instructions long: reserving queue space, moving head and
+tail, copying a state value. Event data is copied outside them. The codec functions are
+reentrant on different structures. Several buses need several `struct baton_node`
+instances; they do not share anything.
 
-```
-RAM ≈ INTERCOM_RX_BUF_SIZE
-    + INTERCOM_QUEUE_HIGH_SIZE + INTERCOM_QUEUE_NORMAL_SIZE
-    + 2 × (7 + INTERCOM_MAX_PAYLOAD) + 7          (TX frame + parser buffer + ACK)
-    + INTERCOM_MAX_NODES × (2 × INTERCOM_MAX_MSGS_PER_FRAME + 10)
-    + Σ state maxLen + 5 × number of states
-    + ~270 B (state variables, counters, configuration)
-```
+## Design decisions
 
-For the configuration template (8 nodes, payload 64, queues 256 + 512, RX 128) this gives **1668 B of RAM** and about **6.6 KB of flash** (Cortex-M3, `-Os`).
+| Decision | Reason |
+| --- | --- |
+| POLL as a token (the baton) | Determinism without arbitration: no collisions, a bounded cycle computed from the configuration |
+| Two message classes | Events need exactly-once, in-order delivery; states need "latest value wins" and must never overflow |
+| Several messages per frame (TLV), one ACK per frame | At 9600 bit/s the 7-byte overhead and the turnaround dominate; packing removes most of it |
+| Traffic with the master has no separate ACK | Slave → master content is acknowledged by the ACKB of the next POLL, master → slave content by the ACKB of the RESP in the same slot |
+| Stop-and-wait per channel, 4-bit SEQ and FIRST | Simple, exactly-once with one outstanding frame; FIRST survives a restart of the sender |
+| Retransmission rebuilt from queue references | No per-frame copy in RAM |
+| Only RESP frames with content are acknowledged | An empty RESP shared the SEQ of the next one and confirmed it in advance; the bus simulation found this, the fix is permanent |
+| Unreachable nodes served last, polled every 4th cycle | A dead node cannot eat the slot or the cycle of the healthy ones |
+| `on_drop` reports the nodes that did not acknowledge | No silent loss: the application knows what may be missing |
+| Explicit `now_ms`, no clock reads | Portable, testable with simulated time |
+| No broadcast frame with slotted ACKs | It would be more efficient with many receivers but much more complex; kept for a future major version |

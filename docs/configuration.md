@@ -1,107 +1,123 @@
 # Configuration
 
-The configuration has two parts:
+This chapter lists the build-time parameters with their ranges, the derived sizes, the
+measured memory footprint, code size and stack usage, how to measure them again, and the
+CMake options. The runtime parameters are described in
+[Using the Library → Set up a node](usage.md#set-up-a-node).
 
-| Where | What | When |
-| --- | --- | --- |
-| `IntercomConfig.h` | Buffer sizes and the message list | Compile time (static memory) |
-| `IntercomCfg` | Role, addresses, timings, hardware, callbacks | `Intercom_Init()` |
+## Build-time parameters
 
-## IntercomConfig.h
+The application defines them in `baton_user_config.h` (or with `-D` compiler options);
+`inc/baton_config.h` provides the defaults and rejects values out of range with `#error`.
 
-Copy this file from `config/IntercomConfig_template.h` into your project. The library and the application must see the same file.
-
-### Sizes
-
-| Macro | Range | Template | Description |
+| Macro | Default | Range | Meaning |
 | --- | --- | --- | --- |
-| `INTERCOM_MAX_NODES` | 2..32 | 8 | Nodes on the bus including the master |
-| `INTERCOM_MAX_PAYLOAD` | 16..250 | 64 | Maximum frame payload. Larger means less overhead but a longer minimum slot |
-| `INTERCOM_MAX_MSGS_PER_FRAME` | 1..64 | 16 | Maximum number of messages per frame; each costs 2 B of RAM per node |
-| `INTERCOM_QUEUE_HIGH_SIZE` | 64..65532 | 256 | HIGH event queue in bytes |
-| `INTERCOM_QUEUE_NORMAL_SIZE` | 64..65532 | 512 | NORMAL event queue in bytes |
-| `INTERCOM_RX_BUF_SIZE` | power of 2, 16..4096 | 128 | RX buffer between the ISR and `Process` |
+| `BATON_MAX_NODES` | 8 | 2..32 | Nodes on the bus including the master |
+| `BATON_MAX_PAYLOAD` | 64 | 16..250 | Largest frame payload in bytes |
+| `BATON_MAX_MSGS_PER_FRAME` | 16 | 1..64 | Messages packed into one frame |
+| `BATON_QUEUE_HIGH_SIZE` | 256 | 64..65532 | HIGH event queue in bytes |
+| `BATON_QUEUE_NORMAL_SIZE` | 512 | 64..65532 | NORMAL event queue in bytes |
+| `BATON_RX_BUF_SIZE` | 128 | 16..4096, power of two | Receive ring filled by the interrupt |
+| `BATON_STATE_LIST(X)` | — | required | STATE messages `X(NAME, ID, MAX_LEN)` |
+| `BATON_EVENT_LIST(X)` | — | required | EVENT messages `X(NAME, ID, MAX_LEN)` |
 
-Out-of-range values cause a compile error (`#error`).
+## Derived sizes
 
-**Queue size.** An event takes `16 + len` bytes rounded up to a multiple of 4. A queue should hold the events produced during `eventTtlMs` (when a recipient is unreachable) and while waiting for the node's own slot.
+| Macro | Value | Meaning |
+| --- | --- | --- |
+| `BATON_FRAME_MAX` | `7 + BATON_MAX_PAYLOAD` | Largest frame on the wire |
+| `BATON_MASK_BYTES` | `(BATON_MAX_NODES + 7) / 8` | NACK mask in a RESP |
+| `BATON_RESP_PREFIX` | `1 + BATON_MASK_BYTES` | ACKB and NACK |
+| `BATON_MAX_MSG_LEN` | `BATON_MAX_PAYLOAD − BATON_RESP_PREFIX − 2` | Largest `MAX_LEN` of a message |
+| `BATON_STATE_COUNT`, `BATON_EVENT_COUNT` | from the lists | Number of messages |
+| `BATON_STATE_DATA_SIZE` | `1 + Σ MAX_LEN` of the states | State mailboxes |
 
-**RX buffer.** It must hold the bytes arriving between calls to `Intercom_Process()`. At 9600 bit/s that is about 1 byte per ms, so 128 B is enough for gaps up to ~100 ms. Overflows are counted in `rxOverflows`.
+Sizing hints: an event occupies `16 + MAX(len rounded up to 4)` bytes of its queue until
+every destination acknowledged it, at most for `event_ttl_ms`. The receive ring must hold
+the bytes that arrive between two calls of `baton_node_process()` plus the echo of a
+maximum frame (`BATON_FRAME_MAX`).
 
-### Message list
+## Memory footprint
 
-```c
-#define INTERCOM_STATE_LIST(X)      \
-    X(NAME, ID, MAX_LEN)            \
-    ...
-#define INTERCOM_EVENT_LIST(X)      \
-    X(NAME, ID, MAX_LEN)            \
-    ...
+All memory of a node is the caller's `struct baton_node`; the library has no global or
+static variables except constant tables. Measured with `sizeof` for Arm Cortex-M4
+(`arm-none-eabi-gcc` 15.2.1):
+
+| Configuration | `struct baton_node` | of which queues | of which link (ring, parser, counters) |
+| --- | --- | --- | --- |
+| Template (8 nodes, payload 64, 16 msgs, queues 256 + 512, ring 128) | 1696 B | 768 B | 280 B |
+| Unit tests (as template, ring 256) | 1824 B | 768 B | 408 B |
+| Examples (4 nodes, payload 64, 8 msgs, queues 128 + 256, ring 128) | 1068 B | 384 B | 280 B |
+
+Approximately: `BATON_RX_BUF_SIZE + BATON_QUEUE_HIGH_SIZE + BATON_QUEUE_NORMAL_SIZE +
+2 × BATON_FRAME_MAX + 7 + BATON_MAX_NODES × (2 × BATON_MAX_MSGS_PER_FRAME + 10) +
+state mailboxes + about 300 B` of configuration copy, counters and state variables.
+
+## Code size
+
+Library code (`text`) for Cortex-M4 Thumb-2, compiled with the configuration template,
+`-ffunction-sections`, without the C library functions `memcpy`, `memset` and `memmove`
+that the library calls:
+
+| File | `-Os` | `-O0` |
+| --- | ---: | ---: |
+| `baton_protocol.c` | 932 B | 1070 B |
+| `baton_link.c` | 602 B | 1376 B |
+| `baton_queue.c` | 456 B | 1194 B |
+| `baton_node.c` | 4630 B | 9094 B |
+| **Total** | **6620 B** | **12734 B** |
+
+The library has no initialized or zero-initialized data of its own (`data` and `bss` are 0).
+
+## Stack usage
+
+Worst-case stack of the entry points, from GCC `-fstack-usage -fcallgraph-info=su`,
+following every direct call. Not included: the application functions the library calls
+through pointers (`write`, `enter_critical`, `exit_critical`, `on_message`, `on_drop`,
+`on_poll_done`) — add their own stack to the figure of the function that calls them —
+and `memcpy`/`memset`/`memmove`.
+
+| Function | Cortex-M4 `-Os` | Cortex-M4 `-O0` | x86-64 `-O2` |
+| --- | ---: | ---: | ---: |
+| `baton_node_process()` | 280 B | 400 B | 752 B |
+| `baton_node_init()` | 80 B | 160 B | 216 B |
+| `baton_node_send()` | 80 B | 112 B | 136 B |
+| `baton_node_publish()` | 24 B | 64 B | 80 B |
+| `baton_node_get_stats()` | 24 B | 56 B | 72 B |
+| `baton_node_rx_isr()` | 8 B | 40 B | 16 B |
+| `baton_node_tx_done_isr()` | 0 B | 32 B | 16 B |
+| `baton_parser_feed()` | 24 B | 72 B | 16 B |
+| `baton_encode()` | 48 B | 80 B | 80 B |
+
+Toolchains: Arm GNU Toolchain 15.2.Rel1 (`arm-none-eabi-gcc` 15.2.1,
+`-mcpu=cortex-m4 -mthumb`), MinGW-w64 GCC 14.2.0 (x86-64 Windows ABI, which reserves
+32 bytes of shadow space per call).
+
+Worst-case chains:
+
+- `baton_node_process()` (`-Os`): process → slave slot step → DATA frame → pack →
+  state copy → TLV emit, on the reception of a POLL.
+- `baton_node_process()` (`-O0`): process → frame dispatch → POLL handler → slot step →
+  RESP → pack → retransmission → state copy → TLV emit.
+
+An interrupt that calls `baton_node_rx_isr()` adds 8 B (Cortex-M4 `-Os`) to the stack of
+whatever it interrupts.
+
+### How to measure again
+
+```bash
+mkdir -p build/stack
+for f in src/*.c; do
+  arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -Os -std=c11 -fstack-usage -fcallgraph-info=su \
+    -I. -Iinc -I<folder of baton_user_config.h> -c "$f" -o "build/stack/$(basename "$f" .c).o" \
+    -dumpdir build/stack/
+done
+python tools/docs/stack_usage.py build/stack
+arm-none-eabi-size build/stack/*.o
 ```
 
-| Parameter | Requirement |
-| --- | --- |
-| `NAME` | A C identifier. Generates `INTERCOM_MSG_NAME` and `INTERCOM_MSG_NAME_MAX_LEN` |
-| `ID` | 0..255, unique across both lists (checked in `Intercom_Init`), the same on all nodes |
-| `MAX_LEN` | 1..`INTERCOM_MAX_PAYLOAD − 3 − (INTERCOM_MAX_NODES+7)/8`; 1..60 for the template (checked at compile time) |
+Measure again after any change in `src/` that may change a frame, and update this page.
 
-- **STATE**: a periodic or current value (measurement, status, setpoint). It is a mailbox, cannot overflow, and the latest value arrives.
-- **EVENT**: a command, an alarm, an operation acknowledgement. It goes into a queue and is delivered exactly once and in order.
+## CMake options
 
-Either list may be empty (`#define INTERCOM_STATE_LIST(X)`).
-
-**Shared payload types.** You can define the structures carried in messages in the same file. Use fixed-width types and a fixed layout, because nodes may have different architectures: byte order, alignment. Check `sizeof(T) <= INTERCOM_MSG_NAME_MAX_LEN`, e.g.:
-
-```c
-_Static_assert(sizeof(IntercomCmdStart) <= INTERCOM_MSG_CMD_START_MAX_LEN, "CMD_START too big");
-```
-
-## IntercomCfg
-
-`Intercom_GetDefaultCfg()` sets the default values. The topology and hardware functions must be filled in by you.
-
-### Topology
-
-| Field | Description |
-| --- | --- |
-| `role` | `INTERCOM_ROLE_MASTER` or `INTERCOM_ROLE_SLAVE` |
-| `ownAddr` | This node's address. Master: equal to `masterAddr`; slave: one of `slaveAddrs` |
-| `masterAddr` | The master's address |
-| `slaveAddrs`, `slaveCount` | List of slaves in polling order, **identical on every node**. 1..`INTERCOM_MAX_NODES−1` entries; addresses unique and different from `0xFF` |
-
-Node index in masks (`missedNodes`, `nackNodes`): 0 = master, i = `slaveAddrs[i−1]`.
-
-### Timings
-
-| Field | Default | Description |
-| --- | --- | --- |
-| `baudrate` | 9600 | Used only to compute frame times; you configure the UART yourself |
-| `slotTimeMs` | 250 | How long a slave owns the bus after a POLL. Minimum: [Protocol](protocol.md#minimum-slot-checked-in-intercom_init) |
-| `ackTimeoutMs` | 20 | Wait for ACK after DATA. Must be > `F(7) + txGapMs` |
-| `maxRetries` | 1 | DATA retransmissions within one slot. Unacknowledged content waits for the next slot |
-| `txGapMs` | 2 | Silence before transmitting (turnaround) |
-| `interByteTimeoutMs` | 5 | A gap that aborts the frame being received (≈ 5 bytes at 9600) |
-| `cyclePeriodMs` | 0 | Master: minimum interval between cycle starts; 0 = back-to-back cycles |
-| `eventTtlMs` | 5000 | After this time an undelivered event goes to `onDrop`; 0 = never |
-
-**Choosing values for other baud rates.** Frame times scale as `1/baud`. At 115200 bit/s a 71 B frame takes ~7 ms, so e.g. `slotTimeMs = 40`, `ackTimeoutMs = 5`, `txGapMs = 1`, `interByteTimeoutMs = 2` are enough. Time resolution is 1 ms, so do not go below 1 ms gaps.
-
-### UART and hardware
-
-| Field | Required | Description |
-| --- | --- | --- |
-| `rxEcho` | – | `true`: the UART receives its own bytes (single-wire). `false`: no echo, call `Intercom_TxDoneIsr()` |
-| `getTimeMs` | yes | Monotonic ms counter (`HAL_GetTick`). Must be ISR-safe if `Send`/`Publish` are called from interrupts |
-| `uartStartTx` | yes | Starts a non-blocking transmission (IT/DMA). The buffer stays valid until TX ends. Returns `false` when the UART is busy |
-| `enterCritical`, `exitCritical` | both or neither | Needed when `Send`/`Publish` are called from a context other than `Process` |
-| `ctx` | – | Passed to all functions and callbacks |
-
-### Callbacks
-
-| Field | Description |
-| --- | --- |
-| `onMessage(src, id, data, len, ctx)` | A received message (state or event); `data` is valid only during the call |
-| `onDrop(id, dst, missedNodes, ctx)` | An event not acknowledged within `eventTtlMs` by the nodes in the mask |
-| `onPollDone(slave, responded, nackNodes, ctx)` | Master only: end of a slave's slot |
-
-Callbacks are called from `Intercom_Process()`. They may call `Intercom_Send`/`Intercom_Publish`, but not `Intercom_Process` or `Intercom_Init`.
+See [Getting Started → Build with presets](guide.md#build-with-presets).
