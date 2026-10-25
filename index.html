@@ -12,7 +12,7 @@
         <meta name="author" content="Anton Vynohradov">
       
       
-        <link rel="canonical" href="https://antonvynohradov.github.io/baton-c/">
+        <link rel="canonical" href="https://antonvynohradov.github.io/Baton-C/">
       
       
       
@@ -148,6 +148,11 @@
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <a href="downloads/Baton-C_User_Manual.pdf" class="md-header__button md-icon" title="Download PDF user manual" aria-label="Download PDF user manual" download>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-9.5 8.5c0 .8-.7 1.5-1.5 1.5H7v2H5.5V9H8c.8 0 1.5.7 1.5 1.5zm5 2c0 .8-.7 1.5-1.5 1.5h-2.5V9H13c.8 0 1.5.7 1.5 1.5zm4-3H17v1h1.5V13H17v2h-1.5V9h3zm-6.5 0h1v3h-1zm-5 0h1v1H7z"/></svg>
+      </a>
     
     
     
@@ -433,11 +438,11 @@
   <h3>Working examples</h3>
   <p>A bare-metal slave that runs as a test on a simulated bus, a PC serial master and a Zephyr slave.</p>
   <ul class="sfs-tags"><li>Bare metal</li><li>Zephyr</li><li>Host</li></ul>
-</a><a class="sfs-card sfs-card--link" href="guide/">
+</a><a class="sfs-card sfs-card--link" href="inspector/">
   <div class="sfs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4M6 13l3-3 3 2 4-5"/></svg></div>
-  <h3>Bus simulation</h3>
-  <p>Up to 7 nodes on a simulated wire at the real byte time, with noise and a dead node, run on 100 seeds.</p>
-  <ul class="sfs-tags"><li>GoogleTest</li><li>Seeds</li></ul>
+  <h3>Baton Inspector</h3>
+  <p>A GUI and Python API: master, monitor or simulation, live sequence diagram with timing, timing rules, field decoding and session logs for automated tests.</p>
+  <ul class="sfs-tags"><li>GUI</li><li>pytest</li><li>JSON Lines</li></ul>
 </a><a class="sfs-card sfs-card--link" href="protocol/">
   <div class="sfs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg></div>
   <h3>Complete documentation</h3>
@@ -565,12 +570,16 @@ complete programs for bare metal, Zephyr and a PC serial port.</p>
 <td><a href="integration/">Integration Guide</a></td>
 </tr>
 <tr>
+<td>Watch, measure or test a bus</td>
+<td><a href="inspector/">Baton Inspector</a></td>
+</tr>
+<tr>
 <td>Look up a function</td>
 <td><a href="api/">API Reference</a></td>
 </tr>
 <tr>
 <td>Read everything offline or print it</td>
-<td><a href="https://antonvynohradov.github.io/baton-c/downloads/Baton-C_User_Manual.pdf">PDF user manual</a></td>
+<td><a href="https://antonvynohradov.github.io/Baton-C/downloads/Baton-C_User_Manual.pdf">PDF user manual</a></td>
 </tr>
 </tbody>
 </table>

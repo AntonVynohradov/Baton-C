@@ -12,13 +12,13 @@
         <meta name="author" content="Anton Vynohradov">
       
       
-        <link rel="canonical" href="https://antonvynohradov.github.io/baton-c/examples/">
+        <link rel="canonical" href="https://antonvynohradov.github.io/Baton-C/examples/">
       
       
         <link rel="prev" href="../integration/">
       
       
-        <link rel="next" href="../api/">
+        <link rel="next" href="../inspector/">
       
       
         
@@ -150,6 +150,11 @@
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <a href="../downloads/Baton-C_User_Manual.pdf" class="md-header__button md-icon" title="Download PDF user manual" aria-label="Download PDF user manual" download>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-9.5 8.5c0 .8-.7 1.5-1.5 1.5H7v2H5.5V9H8c.8 0 1.5.7 1.5 1.5zm5 2c0 .8-.7 1.5-1.5 1.5h-2.5V9H13c.8 0 1.5.7 1.5 1.5zm4-3H17v1h1.5V13H17v2h-1.5V9h3zm-6.5 0h1v3h-1zm-5 0h1v1H7z"/></svg>
+      </a>
     
     
     
@@ -860,6 +865,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baton Inspector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1402,7 +1435,9 @@
 
 
 <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
-<p>Three examples share one bus definition, <code>examples/config/baton_user_config.h</code>: master
+<p>Three examples share one bus definition, <code>examples/config/baton_user_config.h</code> (the
+<a href="../inspector/">Baton Inspector</a> bus definition <code>tools/baton_inspector/examples/example_bus.json</code>
+describes the same bus): master
 0x01, slaves 0x11 and 0x12, the state <code>NODE_STATUS</code> (uptime in seconds) and the events
 <code>CMD_SET_OUTPUT</code> and <code>OUTPUT_REPORT</code>.</p>
 <table>
@@ -1641,13 +1676,13 @@ a starting point.</p>
         
         
           
-          <a href="../api/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference">
+          <a href="../inspector/" class="md-footer__link md-footer__link--next" aria-label="Next: Baton Inspector">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                API Reference
+                Baton Inspector
               </div>
             </div>
             <div class="md-footer__button md-icon">

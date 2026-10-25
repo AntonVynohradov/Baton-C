@@ -1,319 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/LICENSE/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/LICENSE/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/about/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/about/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/api/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/api/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/architecture/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/architecture/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/changelog/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/changelog/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/configuration/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/configuration/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/examples/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/examples/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/extending/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/extending/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/guide/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/guide/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/integration/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/inspector/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/misra/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/integration/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/overview/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/misra/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/protocol/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/overview/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/usage/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/protocol/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/annotated/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/usage/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/files/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/annotated/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structmsg__desc/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/files/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structmsg__desc/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__config/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__defs/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__config/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__link/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__defs/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__link/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__link/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__link__config/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__link/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__link__counters/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__link__config/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__node/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__link__counters/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__channel/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__node/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__node/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__channel/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__node__config/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__node/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__stats/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__node__config/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__protocol/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__stats/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__frame/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__protocol/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__parser/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__frame/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/group__baton__queue/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__parser/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__queue/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/group__baton__queue/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/structbaton__record/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__queue/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/structbaton__record/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/dir_bfccd401955b95cf8c75461437045ac0/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__config_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/dir_bfccd401955b95cf8c75461437045ac0/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__config_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__config_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__defs_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__config_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__defs_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__defs_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__link_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__defs_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__link_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__link_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__node_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__link_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__node_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__node_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__protocol_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__node_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__protocol_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__protocol_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__queue_8h/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__protocol_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__queue_8h_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__queue_8h/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/dir_68267d1309a1af8e8297ef4c3efbcdba/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__queue_8h_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__link_8c/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/dir_68267d1309a1af8e8297ef4c3efbcdba/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__link_8c_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__link_8c/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__node_8c/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__link_8c_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__node_8c_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__node_8c/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__protocol_8c/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__node_8c_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__protocol_8c_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__protocol_8c/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__queue_8c/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__protocol_8c_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/baton__queue_8c_source/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__queue_8c/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespaces/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/baton__queue_8c_source/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/classes/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespaces/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/hierarchy/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/classes/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/modules/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/hierarchy/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/pages/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/modules/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/class_members/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/pages/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/class_member_functions/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/class_members/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/class_member_variables/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/class_member_functions/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/class_member_typedefs/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/class_member_variables/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/class_member_enums/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/class_member_typedefs/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespace_members/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/class_member_enums/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespace_member_functions/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespace_members/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespace_member_variables/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespace_member_functions/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespace_member_typedefs/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespace_member_variables/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/namespace_member_enums/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespace_member_typedefs/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/functions/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/namespace_member_enums/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/macros/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/functions/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/variables/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/macros/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://antonvynohradov.github.io/baton-c/reference/links/</loc>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/variables/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://antonvynohradov.github.io/Baton-C/reference/links/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
 </urlset>

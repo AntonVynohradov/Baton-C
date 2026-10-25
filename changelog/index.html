@@ -12,7 +12,7 @@
         <meta name="author" content="Anton Vynohradov">
       
       
-        <link rel="canonical" href="https://antonvynohradov.github.io/baton-c/changelog/">
+        <link rel="canonical" href="https://antonvynohradov.github.io/Baton-C/changelog/">
       
       
         <link rel="prev" href="../misra/">
@@ -150,6 +150,11 @@
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <a href="../downloads/Baton-C_User_Manual.pdf" class="md-header__button md-icon" title="Download PDF user manual" aria-label="Download PDF user manual" download>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-9.5 8.5c0 .8-.7 1.5-1.5 1.5H7v2H5.5V9H8c.8 0 1.5.7 1.5 1.5zm5 2c0 .8-.7 1.5-1.5 1.5h-2.5V9H13c.8 0 1.5.7 1.5 1.5zm4-3H17v1h1.5V13H17v2h-1.5V9h3zm-6.5 0h1v3h-1zm-5 0h1v1H7z"/></svg>
+      </a>
     
     
     
@@ -775,6 +780,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baton Inspector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1173,7 +1206,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unreleased">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-2026-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0.0 - 2026-10-25
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0 - 2026-10-25">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1380,7 +1424,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unreleased">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-2026-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0.0 - 2026-10-25
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0 - 2026-10-25">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1443,8 +1498,9 @@
 <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a> and the project uses
 <a href="https://semver.org/">Semantic Versioning</a>: the public API in <code>baton.h</code> and
 <code>inc/</code> and the wire format stay compatible within a major version.</p>
-<h2 id="unreleased"><a href="https://github.com/AntonVynohradov/Baton-C/commits/main">Unreleased</a><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
-<p>First public version, prepared for the release 1.0.0. Baton-C continues the internal
+<h2 id="unreleased"><a href="https://github.com/AntonVynohradov/Baton-C/compare/v1.0.0...HEAD">Unreleased</a><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="100-2026-10-25"><a href="https://github.com/AntonVynohradov/Baton-C/releases/tag/v1.0.0">1.0.0</a> - 2026-10-25<a class="headerlink" href="#100-2026-10-25" title="Permanent link">&para;</a></h2>
+<p>First public release. Baton-C continues the internal
 <code>intercom</code> library (C99, single static instance, <code>Intercom_*</code> API) under a new name,
 API and repository layout; the wire format and the delivery rules are unchanged.</p>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
@@ -1466,6 +1522,11 @@ API and repository layout; the wire format and the delivery rules are unchanged.
   measured memory, code size and stack, API reference, MISRA C:2012 page, and a printable
   PDF user manual; generated diagrams (<code>tools/docs/diagrams.py</code>) and a stack analysis
   script (<code>tools/docs/stack_usage.py</code>).</li>
+<li>Baton Inspector (<code>tools/baton_inspector</code>): diagnostic GUI (PySide6) and headless Python API
+  for automated tests. Master, passive monitor and simulation modes on the real library
+  (native bridge built per <code>baton_user_config.h</code>), live UML sequence diagram with frame
+  timing, slot/ACK/cycle measurement and timing and bus-usage rules, JSON field layouts,
+  JSON Lines session logs, live feed for watching a test from the GUI, example pytest suite.</li>
 <li>CI workflows: build, unit tests with the coverage gate, integration tests, static
   analysis (Cppcheck, MISRA, CodeQL), format check, static library, documentation, SBOM
   and release.</li>
