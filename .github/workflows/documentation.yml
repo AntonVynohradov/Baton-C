@@ -35,18 +35,7 @@ jobs:
       - name: Build PDF manual
         run: |
           # Published with the site as /downloads/Baton-C_User_Manual.pdf
-          python tools/docs/build_manual.py --output docs/downloads/Baton-C_User_Manual.pdf
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.GH_PAGES_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-      - name: Switch remote to SSH
-        run: |
-          git remote set-url origin git@github.com:${{ github.repository }}.git
+          python tools/docs/build_manual.py --output docs/downloads/Baton-C_User_Manual.pdf      
 
       - name: Configure git
         run: |
