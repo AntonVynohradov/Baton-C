@@ -1,0 +1,11 @@
+# Copyright (c) 2026 Anton Vynohradov
+# SPDX-License-Identifier: Apache-2.0
+
+config BATON_TEST_SEED
+	int "Seed of the line noise generator"
+	default 625341585
+	help
+	  Seed of the xorshift generator that corrupts bytes on the wire.
+	  Every seed gives a different, reproducible noise pattern.
+
+source "Kconfig.zephyr"

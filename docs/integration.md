@@ -9,7 +9,9 @@ The library does not touch hardware. An integration has three parts:
 3. **Processing and application:** one context calls `baton_node_process()` every
    millisecond with the current time; the callbacks run there.
 
-Complete, buildable programs for each pattern are described in [Examples](examples.md).
+Complete, buildable programs for each pattern are described in [Examples](examples.md). On
+Zephyr, the [Zephyr module](zephyr.md) does all three parts; the application only describes
+the node in devicetree.
 
 ## The physical layer
 

@@ -27,6 +27,7 @@ nav:
   - Protocol: protocol.md
   - Integration:
       - Integration Guide: integration.md
+      - Zephyr Module: zephyr.md
       - Examples: examples.md
       - Baton Inspector: inspector.md
   - Reference:

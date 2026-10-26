@@ -1,0 +1,64 @@
+# Baton-C Zephyr module
+#
+# Copyright (c) 2026 Anton Vynohradov
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig BATON
+	bool "Baton-C deterministic single-wire UART bus"
+	default y
+	depends on DT_HAS_SYSTEMFROMSCRATCH_BATON_ENABLED
+	depends on SERIAL && SERIAL_SUPPORT_INTERRUPT
+	select UART_INTERRUPT_DRIVEN
+	select GPIO if $(dt_compat_any_has_prop,systemfromscratch,baton,de-gpios)
+	help
+	  Master/slave messaging over one shared half-duplex UART line: the
+	  master passes a token to each slave in turn, events are delivered
+	  exactly once and in order, states deliver their latest value. One
+	  node is created for every enabled "systemfromscratch,baton"
+	  devicetree node. See https://antonvynohradov.github.io/Baton-C/
+
+if BATON
+
+config BATON_USER_CONFIG_DIR
+	string "Folder with baton_user_config.h"
+	default "baton"
+	help
+	  Folder that contains the application's baton_user_config.h (message
+	  lists and buffer sizes, identical on every node of the bus). A
+	  relative path is relative to the application source directory.
+
+config BATON_INIT_PRIORITY
+	int "Initialization priority"
+	default 80
+	help
+	  Device initialization priority (POST_KERNEL). Must be after the UART
+	  and, when de-gpios is used, the GPIO controller.
+
+config BATON_THREAD_STACK_SIZE
+	int "Protocol thread stack size"
+	default 1024
+	help
+	  Stack of the protocol thread of each node. It runs
+	  baton_node_process() and the application callbacks.
+
+config BATON_THREAD_PRIORITY
+	int "Protocol thread priority"
+	default 5
+	help
+	  Priority of the protocol thread of each node. The thread sleeps
+	  between steps, so a high priority costs little CPU and keeps the
+	  bus timing tight.
+
+config BATON_PROCESS_PERIOD_MS
+	int "Longest time between two protocol steps (ms)"
+	default 1
+	range 1 10
+	help
+	  The protocol thread also wakes up on every received byte and on
+	  every send or publish. 1 ms is the period the library recommends.
+
+module = BATON
+module-str = baton
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # BATON

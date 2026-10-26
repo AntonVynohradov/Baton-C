@@ -1,0 +1,57 @@
+/*
+ * Copyright (c) 2026 Anton Vynohradov
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Three Baton nodes in one image: master 0x01 and slaves 0x11, 0x12, each on
+ * its own emulated UART. The test joins the UARTs into one wire.
+ */
+
+/ {
+	bus_uart0: uart-emul-0 {
+		compatible = "zephyr,uart-emul";
+		status = "okay";
+		current-speed = <115200>;
+
+		master: baton {
+			compatible = "systemfromscratch,baton";
+			role = "master";
+			address = <0x01>;
+			master-address = <0x01>;
+			slave-addresses = [11 12];
+			slot-time-ms = <50>;
+			event-ttl-ms = <1500>;
+		};
+	};
+
+	bus_uart1: uart-emul-1 {
+		compatible = "zephyr,uart-emul";
+		status = "okay";
+		current-speed = <115200>;
+
+		slave_a: baton {
+			compatible = "systemfromscratch,baton";
+			role = "slave";
+			address = <0x11>;
+			master-address = <0x01>;
+			slave-addresses = [11 12];
+			slot-time-ms = <50>;
+			event-ttl-ms = <1500>;
+		};
+	};
+
+	bus_uart2: uart-emul-2 {
+		compatible = "zephyr,uart-emul";
+		status = "okay";
+		current-speed = <115200>;
+
+		slave_b: baton {
+			compatible = "systemfromscratch,baton";
+			role = "slave";
+			address = <0x12>;
+			master-address = <0x01>;
+			slave-addresses = [11 12];
+			slot-time-ms = <50>;
+			event-ttl-ms = <1500>;
+		};
+	};
+};

@@ -7,7 +7,8 @@ description: Integrate the Baton-C library into an application on a specific MCU
 
 Port code goes into the **application project**, not into the library repository (usually
 a Git submodule). The library stays free of hardware dependencies. Reference material:
-`docs/integration.md`, `docs/usage.md`, `examples/bare_metal`, `examples/zephyr`.
+`docs/integration.md`, `docs/usage.md`, `examples/bare_metal`; on Zephyr use the module
+(`docs/zephyr.md`, `zephyr/samples/baton_node`) instead of writing glue.
 
 ## 1. Clarify with the user
 

@@ -18,6 +18,7 @@
 [![Static Analysis](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/static-analysis.yml)
 [![Build and Deploy Documentation](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/documentation.yml)
 [![Baton Inspector](https://github.com/AntonVynohradov/Baton-C/actions/workflows/baton-inspector.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/baton-inspector.yml)
+[![Zephyr Module](https://github.com/AntonVynohradov/Baton-C/actions/workflows/zephyr-module.yml/badge.svg)](https://github.com/AntonVynohradov/Baton-C/actions/workflows/zephyr-module.yml)
 
 ## Overview
 
@@ -77,7 +78,8 @@ SYNC | DST | SRC | CTRL | LEN | PAYLOAD[LEN] | CRC16 (big endian)
 - [x] Unit tests, bus simulation, Python twin, examples, documentation, CI
 - [x] Baton Inspector: diagnostic GUI and Python API for automated tests
 - [ ] Bring-up on hardware (STM32 single-wire UART, RS-485)
-- [ ] Compile and run the Zephyr example on a board
+- [x] Zephyr module: devicetree binding, Kconfig, sample, three-node bus test on `native_sim` in CI
+- [ ] Run the Zephyr module on a board (Microchip M2S010 MKR Kit)
 - [ ] Test on 8/16-bit MCUs (AVR, MSP430): warnings, atomicity of the 32-bit state masks
 - [ ] Simulation scenario: a node restarting during operation (FIRST flag)
 - [ ] v2: broadcast DATA with slotted acknowledgements; optional periodic state refresh
@@ -124,6 +126,35 @@ target_link_libraries(app PRIVATE baton)
 
 Copy `config/baton_user_config_template.h` as `baton_user_config.h` and define the message
 lists — the same on every node of the bus.
+
+### Using the library with Zephyr
+
+Baton-C is a Zephyr module: add it to the west manifest and describe the node in
+devicetree; the module owns the UART interrupts and the protocol thread.
+
+```yaml
+# west.yml of the application
+    - name: baton-c
+      url: https://github.com/AntonVynohradov/Baton-C
+      revision: v1.1.0
+      path: modules/lib/baton-c
+```
+
+```dts
+&uart1 {
+	status = "okay";
+	current-speed = <9600>;
+	baton0: baton {
+		compatible = "systemfromscratch,baton";
+		role = "slave";
+		address = <0x12>;
+		master-address = <0x01>;
+		slave-addresses = [11 12];
+	};
+};
+```
+
+See [docs/zephyr.md](docs/zephyr.md) for the API, the options and the `native_sim` bus test.
 
 ### Quick Start Example
 
@@ -177,7 +208,8 @@ Baton-C/
 │   ├── integration/         pytest + Python twin (baton/protocol.py)
 │   ├── config/              configuration of the tests and of the analysis
 │   └── run_seeds.sh|.ps1    simulation on many seeds
-├── examples/                bare_metal, host_serial, zephyr, shared config
+├── examples/                bare_metal, host_serial, shared config
+├── zephyr/                  Zephyr module: glue, devicetree binding, sample, native_sim bus test
 ├── tools/
 │   ├── baton_inspector/     Baton Inspector: GUI, Python test API, native bridge, tests
 │   └── docs/                diagrams, PDF manual, stack analysis, snippet check

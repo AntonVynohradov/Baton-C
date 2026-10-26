@@ -1,0 +1,3 @@
+# Vendor prefixes used by the Baton-C Zephyr module.
+# SPDX-License-Identifier: Apache-2.0
+systemfromscratch	SystemFromScratch

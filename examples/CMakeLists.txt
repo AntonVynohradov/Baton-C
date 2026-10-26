@@ -4,7 +4,8 @@
 # Project:     Baton-C - Deterministic Master/Slave Messaging over a Single-Wire UART
 # Description: Host-buildable examples: the bare-metal slave on a simulated bus
 #              (a self-checking CTest test) and the serial port master.
-#              The Zephyr example is built with west, see examples/zephyr.
+#              The Zephyr example is the sample of the Zephyr module, built
+#              with west: zephyr/samples/baton_node.
 #
 # Author:      Anton Vynohradov
 # Email:       avynohradov@systemfromscratch.com

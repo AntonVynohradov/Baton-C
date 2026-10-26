@@ -25,7 +25,8 @@ layouts, UART drivers, threads and interrupt setup belong to the applications.
 | Python | `tests/integration/baton/protocol.py` | Standard library only; must stay byte-identical to the C codec |
 | Simulation | `tests/sim/` | Bus simulator: unit-test scenarios and the `baton_sim` multi-seed runner |
 | Build | `CMakeLists.txt`, `baton.cmake`, `cmake/`, `CMakePresets.json` | Library target in `baton.cmake`; tests and analysis in `cmake/` |
-| Examples | `examples/bare_metal`, `examples/host_serial`, `examples/zephyr` | Not library code; built with `BATON_EXAMPLES=ON` (Zephyr with `west`) |
+| Examples | `examples/bare_metal`, `examples/host_serial` | Not library code; built with `BATON_EXAMPLES=ON` |
+| Zephyr module | `zephyr/` | Module glue, devicetree binding, sample and `native_sim` bus test; built with `west twister` |
 | Tools | `tools/baton_inspector` | Baton Inspector GUI and Python test API; its native bridge links the library |
 
 ## Hard rules

@@ -10,7 +10,7 @@ describes the same bus): master
 | --- | --- | --- | --- |
 | [Bare metal](#bare-metal) | Slave 0x11 | Any MCU; runs on a PC against a simulated board | Yes, as a self-checking test |
 | [Host serial master](#host-serial-master) | Master 0x01 | Linux, macOS, Windows | Built |
-| [Zephyr](#zephyr) | Slave 0x12 | Any Zephyr board | No — needs a Zephyr workspace; not compiled in this repository |
+| [Zephyr](#zephyr) | Slave 0x12 (or master) | Any Zephyr board with an interrupt-driven UART | Yes, with twister (Zephyr Module workflow) |
 
 ```bash
 cmake --preset "BATON[Examples]"
@@ -91,22 +91,19 @@ an adapter it reports `cannot open <port>`.
 
 ## Zephyr
 
+The Zephyr example is the sample of the [Zephyr module](zephyr.md):
+
 | File | Content |
 | --- | --- |
-| `examples/zephyr/src/main.c` | Slave 0x12: UART interrupt driver, one protocol thread |
-| `examples/zephyr/CMakeLists.txt` | Includes `baton.cmake`, links `zephyr_interface` |
-| `examples/zephyr/prj.conf` | Serial, interrupt-driven UART, no heap |
-| `examples/zephyr/app.overlay.example` | The chosen node `baton,uart` |
+| `zephyr/samples/baton_node/src/main.c` | Slave: applies `CMD_SET_OUTPUT` to `led0`, answers with `OUTPUT_REPORT`, publishes the uptime; master: toggles an output of every slave once a second |
+| `zephyr/samples/baton_node/boards/m2s010_mkr_kit_m2s010.overlay` | Slave 0x12 on MSS UART1 of the Microchip M2S010 MKR Kit |
+| `zephyr/samples/baton_node/prj.conf` | The shared message lists, a 1 ms tick, no heap |
 
 ```bash
-west build -b <board> examples/zephyr -- -DDTC_OVERLAY_FILE=<board>.overlay
+west build -b m2s010_mkr_kit/m2s010 zephyr/samples/baton_node
 ```
 
-The UART interrupt passes received bytes to `baton_node_rx_isr()` and feeds the transmit
-FIFO from the buffer of the write function; the transmission ends with the echo of the
-last byte (`rx_echo`). A thread calls `baton_node_process()` every millisecond and
-publishes the uptime. `enter_critical` and `exit_critical` use `irq_lock()` so that other
-threads may send events. Disable the console and logging on the bus UART.
+The role, the address and the topology come from devicetree; the UART interrupts, the
+critical section and the protocol thread are in the module. For another board, add a
+`boards/<board>.overlay` with the `systemfromscratch,baton` node under the bus UART.
 
-This example is not compiled in this repository (no Zephyr workspace in CI); treat it as
-a starting point.

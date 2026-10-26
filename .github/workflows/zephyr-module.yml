@@ -1,0 +1,56 @@
+################################################################################
+# Baton-C: Deterministic Master/Slave Messaging over a Single-Wire UART
+#
+# Description: Builds and tests the Zephyr module with twister: the
+#              three-node bus test on native_sim (five noise seeds) and the
+#              baton_node sample for the Microchip M2S010 MKR Kit.
+#
+# SPDX-License-Identifier: Apache-2.0
+################################################################################
+
+name: Zephyr Module
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  twister:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: baton-c
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Zephyr
+        uses: zephyrproject-rtos/action-zephyr-setup@v1
+        with:
+          app-path: baton-c
+          manifest-file-name: zephyr/west.yml
+          toolchains: arm-zephyr-eabi
+
+      - name: Twister
+        run: >
+          west twister -T baton-c/zephyr
+          -p native_sim/native/64 -p m2s010_mkr_kit/m2s010
+          --inline-logs -v --outdir twister-out
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: twister-report
+          path: |
+            twister-out/twister.json
+            twister-out/twister_report.xml
