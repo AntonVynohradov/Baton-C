@@ -1,0 +1,15 @@
+sample:
+  name: Baton-C node
+  description: Baton-C slave (or master) on a single-wire UART bus
+common:
+  tags:
+    - baton
+    - serial
+  filter: dt_compat_enabled("systemfromscratch,baton")
+tests:
+  sample.baton.node:
+    build_only: true
+    platform_allow:
+      - m2s010_mkr_kit/m2s010
+    integration_platforms:
+      - m2s010_mkr_kit/m2s010

@@ -1,0 +1,24 @@
+common:
+  tags:
+    - baton
+    - serial
+  platform_allow:
+    - native_sim
+    - native_sim/native/64
+  integration_platforms:
+    - native_sim
+tests:
+  baton.bus: {}
+  # Same suite, other line noise patterns.
+  baton.bus.seed_7:
+    extra_configs:
+      - CONFIG_BATON_TEST_SEED=7
+  baton.bus.seed_42:
+    extra_configs:
+      - CONFIG_BATON_TEST_SEED=42
+  baton.bus.seed_1234:
+    extra_configs:
+      - CONFIG_BATON_TEST_SEED=1234
+  baton.bus.seed_31337:
+    extra_configs:
+      - CONFIG_BATON_TEST_SEED=31337

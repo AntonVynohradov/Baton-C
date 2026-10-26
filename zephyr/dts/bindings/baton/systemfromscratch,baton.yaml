@@ -1,0 +1,95 @@
+# Copyright (c) 2026 Anton Vynohradov
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Baton-C node on a half-duplex UART bus (single wire, open drain or RS-485).
+
+  The master passes a token (the baton) to every slave in turn, so only one
+  node transmits at a time. The node is a child of the UART it uses; the bit
+  rate is the current-speed of that UART. The UART must receive its own bytes
+  (single-wire mode, open-drain TX tied to RX, or an RS-485 transceiver with
+  the receiver always enabled): the echo ends every transmission and detects
+  collisions.
+
+  Example (slave 0x12 on a bus with master 0x01 and slaves 0x11, 0x12):
+
+    &uart1 {
+        status = "okay";
+        current-speed = <9600>;
+
+        baton0: baton {
+            compatible = "systemfromscratch,baton";
+            role = "slave";
+            address = <0x12>;
+            master-address = <0x01>;
+            slave-addresses = [11 12];
+        };
+    };
+
+  The topology (master-address and slave-addresses) and the message lists in
+  baton_user_config.h must be identical on every node of the bus.
+
+compatible: "systemfromscratch,baton"
+
+include: base.yaml
+
+on-bus: uart
+
+properties:
+  role:
+    type: string
+    required: true
+    enum:
+      - "master"
+      - "slave"
+    description: Role of this node. The order matches BATON_ROLE_MASTER/SLAVE.
+
+  address:
+    type: int
+    required: true
+    description: Bus address of this node (1..254). A master uses master-address.
+
+  master-address:
+    type: int
+    required: true
+    description: Bus address of the master.
+
+  slave-addresses:
+    type: uint8-array
+    required: true
+    description: Slave addresses in polling order, identical on every node.
+
+  de-gpios:
+    type: phandle-array
+    description: |
+      Optional RS-485 driver enable. Asserted when a frame starts and released
+      when the echo of its last byte is received, that is, when the last stop
+      bit has left the transceiver.
+
+  slot-time-ms:
+    type: int
+    description: Longest time a slave owns the bus after a POLL (library default if absent).
+
+  ack-timeout-ms:
+    type: int
+    description: Wait for an ACK after a DATA frame (library default if absent).
+
+  max-retries:
+    type: int
+    description: DATA retransmissions per slot (library default if absent).
+
+  tx-gap-ms:
+    type: int
+    description: Bus silence required before transmitting (library default if absent).
+
+  inter-byte-timeout-ms:
+    type: int
+    description: Silence that aborts a partially received frame (library default if absent).
+
+  cycle-period-ms:
+    type: int
+    description: Master only, shortest time between cycle starts (library default if absent).
+
+  event-ttl-ms:
+    type: int
+    description: An undelivered event is dropped after this time (library default if absent).

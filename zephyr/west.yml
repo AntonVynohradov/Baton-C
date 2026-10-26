@@ -1,0 +1,24 @@
+# West manifest for building and testing the Baton-C Zephyr module on its own
+# (CI and local development). Applications add Baton-C to their own manifest
+# instead, see docs/zephyr.md.
+#
+#   west init -l --mf zephyr/west.yml baton-c && west update -o=--depth=1 -n
+#
+# SPDX-License-Identifier: Apache-2.0
+
+manifest:
+  self:
+    path: baton-c
+
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      # m2s010_mkr_kit is part of Zephyr from 4.5; pin v4.5.0 once released.
+      revision: main
+      import:
+        name-allowlist:
+          - cmsis_6

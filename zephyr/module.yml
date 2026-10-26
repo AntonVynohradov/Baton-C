@@ -1,0 +1,14 @@
+# Baton-C as a Zephyr module: add this repository to a west manifest, enable
+# the devicetree node "systemfromscratch,baton" and CONFIG_BATON.
+# SPDX-License-Identifier: Apache-2.0
+
+name: baton-c
+build:
+  cmake: zephyr
+  kconfig: zephyr/Kconfig
+  settings:
+    dts_root: zephyr
+samples:
+  - zephyr/samples
+tests:
+  - zephyr/tests

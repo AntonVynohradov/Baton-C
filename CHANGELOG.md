@@ -7,6 +7,26 @@ All notable changes to Baton-C are listed here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Zephyr module (`zephyr/`): Baton-C is added to an application with one entry in its west
+  manifest. Every enabled devicetree node with compatible `systemfromscratch,baton`
+  (a child of its UART) becomes a device with its own UART interrupt handler,
+  `k_spinlock` critical section and protocol thread; optional RS-485 driver enable
+  (`de-gpios`). API in `baton_zephyr.h`: `baton_zephyr_start()`, `baton_zephyr_send()`,
+  `baton_zephyr_publish()`, `baton_zephyr_get_stats()`, returning negative errno codes.
+  Works with Zephyr 4.2 and later.
+- Zephyr sample `zephyr/samples/baton_node` (slave or master of the example bus) with an
+  overlay for the Microchip M2S010 MKR Kit.
+- Zephyr test `zephyr/tests/bus`: master and two slaves on emulated UARTs joined into one
+  wire in a `native_sim` image; exactly-once delivery, states, line noise, a disconnected
+  slave; five noise seeds.
+- CI workflow `zephyr-module.yml` (`west twister`) and documentation page `docs/zephyr.md`.
+
+### Removed
+
+- `examples/zephyr`, replaced by the module sample.
+
 ## [1.0.0] - 2026-10-25
 
 First public release. Baton-C continues the internal

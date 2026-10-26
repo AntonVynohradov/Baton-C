@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2026 Anton Vynohradov
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Slave 0x12 of the example bus on MSS UART1. The console stays on UART0.
+ * Wire MSS UART1 for one-wire operation in the Libero design: TX as an
+ * open-drain output tied to RX (with a pull-up), or TX/RX to an RS-485
+ * transceiver with the receiver always enabled.
+ */
+
+&uart1 {
+	status = "okay";
+	current-speed = <9600>;
+
+	baton0: baton {
+		compatible = "systemfromscratch,baton";
+		role = "slave";
+		address = <0x12>;
+		master-address = <0x01>;
+		slave-addresses = [11 12];
+	};
+};
