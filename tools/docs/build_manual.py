@@ -47,7 +47,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 AUTHOR = "Anton Vynohradov"
 COMPANY = "SystemFromScratch&reg;"
-EMAIL = "avynohradov@systemfromscratch.com"
+EMAIL = "contact@systemfromscratch.com"
 BRAND_LOGO = "assets/images/brand/systemfromscratch-logo-on-dark.png"
 
 # On Windows, WeasyPrint loads Pango from MSYS2 if the user did not say otherwise.

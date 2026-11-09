@@ -265,7 +265,7 @@ python tools/docs/build_manual.py        # PDF into build/manual/
 - Website: [systemfromscratch.com](https://systemfromscratch.com)
 - GitHub: [github.com/AntonVynohradov](https://github.com/AntonVynohradov)
 - LinkedIn: [linkedin.com/in/vynohradov](https://www.linkedin.com/in/vynohradov)
-- E-mail: [avynohradov@systemfromscratch.com](mailto:avynohradov@systemfromscratch.com)
+- E-mail: [contact@systemfromscratch.com](mailto:contact@systemfromscratch.com)
 
 ## Contributing
 

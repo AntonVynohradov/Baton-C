@@ -70,7 +70,7 @@ full test coverage, documented decisions — that the company applies to custome
 | Channel | Address |
 | --- | --- |
 | Website | [systemfromscratch.com](https://systemfromscratch.com) |
-| E-mail | [avynohradov@systemfromscratch.com](mailto:avynohradov@systemfromscratch.com) |
+| E-mail | [contact@systemfromscratch.com](mailto:contact@systemfromscratch.com) |
 | GitHub | [github.com/AntonVynohradov](https://github.com/AntonVynohradov) |
 | GitHub organization | [github.com/SystemFromScratch](https://github.com/SystemFromScratch) |
 | LinkedIn | [linkedin.com/in/vynohradov](https://www.linkedin.com/in/vynohradov) |
