@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://antonvynohradov.github.io/Baton-C/examples/">
       
       
-        <link rel="prev" href="../integration/">
+        <link rel="prev" href="../zephyr/">
       
       
         <link rel="next" href="../inspector/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/brand/systemfromscratch-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -761,6 +761,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../zephyr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zephyr Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1464,9 +1492,9 @@ describes the same bus): master
 </tr>
 <tr>
 <td><a href="#zephyr">Zephyr</a></td>
-<td>Slave 0x12</td>
-<td>Any Zephyr board</td>
-<td>No — needs a Zephyr workspace; not compiled in this repository</td>
+<td>Slave 0x12 (or master)</td>
+<td>Any Zephyr board with an interrupt-driven UART</td>
+<td>Yes, with twister (Zephyr Module workflow)</td>
 </tr>
 </tbody>
 </table>
@@ -1589,6 +1617,7 @@ bytes; without it, the end of <code>serial_write()</code> is taken as the end of
 (<code>baton_node_tx_done_isr()</code>). The example has not been run against hardware yet; without
 an adapter it reports <code>cannot open &lt;port&gt;</code>.</p>
 <h2 id="zephyr">Zephyr<a class="headerlink" href="#zephyr" title="Permanent link">&para;</a></h2>
+<p>The Zephyr example is the sample of the <a href="../zephyr/">Zephyr module</a>:</p>
 <table>
 <thead>
 <tr>
@@ -1598,32 +1627,24 @@ an adapter it reports <code>cannot open &lt;port&gt;</code>.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>examples/zephyr/src/main.c</code></td>
-<td>Slave 0x12: UART interrupt driver, one protocol thread</td>
+<td><code>zephyr/samples/baton_node/src/main.c</code></td>
+<td>Slave: applies <code>CMD_SET_OUTPUT</code> to <code>led0</code>, answers with <code>OUTPUT_REPORT</code>, publishes the uptime; master: toggles an output of every slave once a second</td>
 </tr>
 <tr>
-<td><code>examples/zephyr/CMakeLists.txt</code></td>
-<td>Includes <code>baton.cmake</code>, links <code>zephyr_interface</code></td>
+<td><code>zephyr/samples/baton_node/boards/m2s010_mkr_kit_m2s010.overlay</code></td>
+<td>Slave 0x12 on MSS UART1 of the Microchip M2S010 MKR Kit</td>
 </tr>
 <tr>
-<td><code>examples/zephyr/prj.conf</code></td>
-<td>Serial, interrupt-driven UART, no heap</td>
-</tr>
-<tr>
-<td><code>examples/zephyr/app.overlay.example</code></td>
-<td>The chosen node <code>baton,uart</code></td>
+<td><code>zephyr/samples/baton_node/prj.conf</code></td>
+<td>The shared message lists, a 1 ms tick, no heap</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>west<span class="w"> </span>build<span class="w"> </span>-b<span class="w"> </span>&lt;board&gt;<span class="w"> </span>examples/zephyr<span class="w"> </span>--<span class="w"> </span>-DDTC_OVERLAY_FILE<span class="o">=</span>&lt;board&gt;.overlay
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>west<span class="w"> </span>build<span class="w"> </span>-b<span class="w"> </span>m2s010_mkr_kit/m2s010<span class="w"> </span>zephyr/samples/baton_node
 </code></pre></div>
-<p>The UART interrupt passes received bytes to <code>baton_node_rx_isr()</code> and feeds the transmit
-FIFO from the buffer of the write function; the transmission ends with the echo of the
-last byte (<code>rx_echo</code>). A thread calls <code>baton_node_process()</code> every millisecond and
-publishes the uptime. <code>enter_critical</code> and <code>exit_critical</code> use <code>irq_lock()</code> so that other
-threads may send events. Disable the console and logging on the bus UART.</p>
-<p>This example is not compiled in this repository (no Zephyr workspace in CI); treat it as
-a starting point.</p>
+<p>The role, the address and the topology come from devicetree; the UART interrupts, the
+critical section and the protocol thread are in the module. For another board, add a
+<code>boards/&lt;board&gt;.overlay</code> with the <code>systemfromscratch,baton</code> node under the bus UART.</p>
 
 
 
@@ -1659,7 +1680,7 @@ a starting point.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Integration Guide">
+          <a href="../zephyr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Zephyr Module">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1669,7 +1690,7 @@ a starting point.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Integration Guide
+                Zephyr Module
               </div>
             </div>
           </a>
@@ -1750,7 +1771,7 @@ a starting point.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

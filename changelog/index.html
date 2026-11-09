@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/brand/systemfromscratch-logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -759,6 +759,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../zephyr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zephyr Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/" class="md-nav__link">
         
   
@@ -1206,6 +1234,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1221,7 +1277,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#added_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1424,6 +1480,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Removed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1439,7 +1523,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#added_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1499,11 +1583,31 @@
 <a href="https://semver.org/">Semantic Versioning</a>: the public API in <code>baton.h</code> and
 <code>inc/</code> and the wire format stay compatible within a major version.</p>
 <h2 id="unreleased"><a href="https://github.com/AntonVynohradov/Baton-C/compare/v1.0.0...HEAD">Unreleased</a><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Zephyr module (<code>zephyr/</code>): Baton-C is added to an application with one entry in its west
+  manifest. Every enabled devicetree node with compatible <code>systemfromscratch,baton</code>
+  (a child of its UART) becomes a device with its own UART interrupt handler,
+  <code>k_spinlock</code> critical section and protocol thread; optional RS-485 driver enable
+  (<code>de-gpios</code>). API in <code>baton_zephyr.h</code>: <code>baton_zephyr_start()</code>, <code>baton_zephyr_send()</code>,
+  <code>baton_zephyr_publish()</code>, <code>baton_zephyr_get_stats()</code>, returning negative errno codes.
+  Works with Zephyr 4.2 and later.</li>
+<li>Zephyr sample <code>zephyr/samples/baton_node</code> (slave or master of the example bus) with an
+  overlay for the Microchip M2S010 MKR Kit.</li>
+<li>Zephyr test <code>zephyr/tests/bus</code>: master and two slaves on emulated UARTs joined into one
+  wire in a <code>native_sim</code> image; exactly-once delivery, states, line noise, a disconnected
+  slave; five noise seeds.</li>
+<li>CI workflow <code>zephyr-module.yml</code> (<code>west twister</code>) and documentation page <code>docs/zephyr.md</code>.</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>examples/zephyr</code>, replaced by the module sample.</li>
+</ul>
 <h2 id="100-2026-10-25"><a href="https://github.com/AntonVynohradov/Baton-C/releases/tag/v1.0.0">1.0.0</a> - 2026-10-25<a class="headerlink" href="#100-2026-10-25" title="Permanent link">&para;</a></h2>
 <p>First public release. Baton-C continues the internal
 <code>intercom</code> library (C99, single static instance, <code>Intercom_*</code> API) under a new name,
 API and repository layout; the wire format and the delivery rules are unchanged.</p>
-<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Layered library: definitions (<code>baton_defs.h</code>), codec (<code>baton_protocol</code>: CRC-16/CCITT-FALSE,
   incremental parser, in-place encoder), half-duplex link (<code>baton_link</code>: receive ring,
@@ -1673,7 +1777,7 @@ API and repository layout; the wire format and the delivery rules are unchanged.
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
