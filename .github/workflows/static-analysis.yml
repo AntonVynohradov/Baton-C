@@ -13,7 +13,7 @@ on:
 jobs:
   cppcheck:
     name: Cppcheck Analysis
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,9 +35,12 @@ jobs:
             esac
             excludes+=("-i" "$trimmed_line")
           done < cppcheck-excludes.txt
+          # tests/config holds the configuration header of libraries that have one
+          includes=(-I . -I inc)
+          [ -d tests/config ] && includes+=(-I tests/config)
           cppcheck --enable=all --inconclusive --std=c11 --force \
             --suppress=missingIncludeSystem --suppress=unusedFunction \
-            -I . -I inc -I tests/config \
+            "${includes[@]}" \
             "${excludes[@]}" \
             --xml --xml-version=2 . 2> cppcheck-report/cppcheck.xml
           cppcheck-htmlreport --file=cppcheck-report/cppcheck.xml \
@@ -51,7 +54,7 @@ jobs:
 
   misra:
     name: MISRA C:2012 Analysis (Cppcheck addon)
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -75,7 +78,7 @@ jobs:
 
   codeql:
     name: CodeQL Analysis
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
     permissions:
       security-events: write
       contents: read
