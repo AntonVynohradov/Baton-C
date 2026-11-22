@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="baton__defs_8h" kind="file" language="C++">
     <compoundname>baton_defs.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -107,14 +107,18 @@
 <para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
 </simplesect>
 Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
-</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+</verbatim></para>
+<para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
 <para>SPDX-License-Identifier: Apache-2.0 </para>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"></codeline>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_DEFS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_DEFS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
@@ -123,21 +127,29 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="50"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="group__baton__defs_1gaddb3013e7602e9c97a7a7d73765c5bdf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_SYNC<sp/>0xA5U</highlight></codeline>
-<codeline lineno="61" refid="group__baton__defs_1ga914e10f046cc092625bf5b58bf176be7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_HEADER_SIZE<sp/>5U</highlight></codeline>
-<codeline lineno="63" refid="group__baton__defs_1ga66b5bbbfd04302f1483cc440081eea60" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_CRC_SIZE<sp/>2U</highlight></codeline>
-<codeline lineno="65" refid="group__baton__defs_1ga8028af598ef983658c79bb2ab7d2727c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FRAME_OVERHEAD<sp/>(BATON_HEADER_SIZE<sp/>+<sp/>BATON_CRC_SIZE)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="group__baton__defs_1gaddb3013e7602e9c97a7a7d73765c5bdf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_SYNC<sp/>0xA5U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="group__baton__defs_1ga914e10f046cc092625bf5b58bf176be7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_HEADER_SIZE<sp/>5U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="group__baton__defs_1ga66b5bbbfd04302f1483cc440081eea60" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_CRC_SIZE<sp/>2U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="group__baton__defs_1ga8028af598ef983658c79bb2ab7d2727c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FRAME_OVERHEAD<sp/>(BATON_HEADER_SIZE<sp/>+<sp/>BATON_CRC_SIZE)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67" refid="group__baton__defs_1ga759a77ae553e95e674b2c14b77b12eec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ADDR_BROADCAST<sp/>0xFFU</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="group__baton__defs_1ga8ca93e3aba68d0c6c7617f40872345e2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_POLL<sp/>0U</highlight></codeline>
-<codeline lineno="77" refid="group__baton__defs_1ga7cd1b3d73d1698b03f24b2683bdbd695" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_RESP<sp/>1U</highlight></codeline>
-<codeline lineno="79" refid="group__baton__defs_1gabccc0b64993823cae11cf900dbd697db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_DATA<sp/>2U</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="group__baton__defs_1ga8ca93e3aba68d0c6c7617f40872345e2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_POLL<sp/>0U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="group__baton__defs_1ga7cd1b3d73d1698b03f24b2683bdbd695" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_RESP<sp/>1U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="group__baton__defs_1gabccc0b64993823cae11cf900dbd697db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_DATA<sp/>2U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81" refid="group__baton__defs_1ga09dd91c60140cde7ed13b8a88fcf31f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_FT_ACK<sp/>3U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89" refid="group__baton__defs_1ga1f5b5c903fccbb6da7ae0419ffa239ff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ACKB_VALID<sp/>0x80U</highlight></codeline>
-<codeline lineno="91" refid="group__baton__defs_1ga458d5f5efb4b9720564f295a63571d1d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_SEQ_MASK<sp/>0x0FU</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="group__baton__defs_1ga1f5b5c903fccbb6da7ae0419ffa239ff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_ACKB_VALID<sp/>0x80U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="group__baton__defs_1ga458d5f5efb4b9720564f295a63571d1d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_SEQ_MASK<sp/>0x0FU</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93" refid="group__baton__defs_1ga3039e71e2550831f85a8cbfd144b080e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_TLV_HEADER_SIZE<sp/>2U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="107" refid="group__baton__defs_1ga67b52d864b7a367b9ffa30f375cbd8e8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="group__baton__defs_1ga67b52d864b7a367b9ffa30f375cbd8e8" kindref="member">baton_ctrl</ref>(uint8_t<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>first,<sp/>uint8_t<sp/>seq)</highlight></codeline>
 <codeline lineno="108"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>first_bit<sp/>=<sp/>first<sp/>?<sp/>0x20U<sp/>:<sp/>0x00U;</highlight></codeline>
@@ -161,6 +173,8 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint8_t)<sp/>(ctrl<sp/>&amp;<sp/><ref refid="group__baton__defs_1ga458d5f5efb4b9720564f295a63571d1d" kindref="member">BATON_SEQ_MASK</ref>);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143" refid="group__baton__defs_1gade2c5f17a0ca8bf4b948a5583bb90f34" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="group__baton__defs_1gade2c5f17a0ca8bf4b948a5583bb90f34" kindref="member">baton_get_u16be</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data)</highlight></codeline>
 <codeline lineno="144"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint16_t)<sp/>((uint16_t)<sp/>((uint16_t)<sp/>data[0]<sp/>&lt;&lt;<sp/>8U)<sp/>|<sp/>(uint16_t)<sp/>data[1]);</highlight></codeline>
@@ -186,6 +200,7 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>data[3]<sp/>=<sp/>(uint8_t)<sp/>(value<sp/>&gt;&gt;<sp/>24U);</highlight></codeline>
 <codeline lineno="169"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="174"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

@@ -96,6 +96,9 @@ _Public API of the Baton bus library._ [More...](#detailed-description)
 ## Detailed Description
 
 
+Public API of the Baton bus library.
+
+
 This module groups the public interface and its supporting submodules: [**Configuration**](group__baton__config.md), [**Definitions**](group__baton__defs.md), [**Codec**](group__baton__protocol.md), [**Link**](group__baton__link.md), [**Event queue**](group__baton__queue.md) and [**Node**](group__baton__node.md).
 
 

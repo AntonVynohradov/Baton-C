@@ -9,8 +9,11 @@
 
 ```C++
 
+
+
 #ifndef BATON_LINK_H
 #define BATON_LINK_H
+
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -23,9 +26,13 @@ extern "C"
 {
 #endif
 
+
+
 #define BATON_LINK_NONE 0
 #define BATON_LINK_FRAME 1
 #define BATON_LINK_TX_DONE 2
+
+
 
 typedef int (*baton_write_fn)(void* context, const uint8_t* data, size_t length);
 
@@ -54,11 +61,13 @@ struct baton_link
     struct baton_link_config config;     
     struct baton_parser parser;          
     struct baton_link_counters counters; 
+
     volatile uint8_t rx_buffer[BATON_RX_BUF_SIZE]; 
     volatile uint16_t rx_head;                     
     volatile uint16_t rx_tail;                     
     volatile uint32_t rx_overflows;                
     volatile bool tx_done_flag;                    
+
     const uint8_t* tx_data;  
     uint16_t tx_length;      
     uint16_t echo_index;     
@@ -68,6 +77,8 @@ struct baton_link
     uint32_t last_tx_end_ms; 
     uint32_t last_rx_ms;     
 };
+
+
 
 int baton_link_init(struct baton_link* link, const struct baton_link_config* config,
                     uint32_t now_ms);
@@ -89,6 +100,7 @@ const struct baton_frame* baton_link_frame(const struct baton_link* link);
 bool baton_link_rx_busy(const struct baton_link* link, uint32_t now_ms);
 
 uint32_t baton_link_frame_ms(const struct baton_link* link, uint32_t bytes);
+
 
 #ifdef __cplusplus
 }

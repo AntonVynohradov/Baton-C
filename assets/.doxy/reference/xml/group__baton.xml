@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="group__baton" kind="group">
     <compoundname>baton</compoundname>
     <title>Baton API</title>
@@ -63,6 +63,7 @@
 <para>Public API of the Baton bus library. </para>
     </briefdescription>
     <detaileddescription>
+<para>Public API of the Baton bus library.</para>
 <para>This module groups the public interface and its supporting submodules: <ref refid="group__baton__config" kindref="compound">Configuration</ref>, <ref refid="group__baton__defs" kindref="compound">Definitions</ref>, <ref refid="group__baton__protocol" kindref="compound">Codec</ref>, <ref refid="group__baton__link" kindref="compound">Link</ref>, <ref refid="group__baton__queue" kindref="compound">Event queue</ref> and <ref refid="group__baton__node" kindref="compound">Node</ref>.</para>
 <para>Include this single header to use the library: <itemizedlist>
 <listitem><para><ref refid="baton__config_8h" kindref="compound">baton_config.h</ref> build-time sizes and the application message lists </para>

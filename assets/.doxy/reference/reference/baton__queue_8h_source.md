@@ -9,8 +9,11 @@
 
 ```C++
 
+
+
 #ifndef BATON_QUEUE_H
 #define BATON_QUEUE_H
+
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -19,6 +22,8 @@
 extern "C"
 {
 #endif
+
+
 
 #define BATON_REC_HEADER_SIZE 16U
 #define BATON_REC_VALID 0x01U
@@ -42,6 +47,8 @@ struct baton_queue
     uint16_t head;   
     uint16_t tail;   
 };
+
+
 
 void baton_queue_init(struct baton_queue* queue, uint8_t* memory, uint16_t size);
 
@@ -67,6 +74,7 @@ void baton_queue_set_masks(struct baton_queue* queue, uint16_t offset, uint32_t 
 void baton_queue_set_flags(struct baton_queue* queue, uint16_t offset, uint8_t flags);
 
 uint8_t* baton_queue_data(struct baton_queue* queue, uint16_t offset);
+
 
 #ifdef __cplusplus
 }

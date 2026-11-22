@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="baton__queue_8h" kind="file" language="C++">
     <compoundname>baton_queue.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -73,14 +73,18 @@
 <para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
 </simplesect>
 Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
-</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+</verbatim></para>
+<para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
 <para>SPDX-License-Identifier: Apache-2.0 </para>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"></codeline>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_QUEUE_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_QUEUE_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
@@ -89,8 +93,10 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="60"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="group__baton__queue_1ga296d968615cb5fa02c13dffa744153bd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_HEADER_SIZE<sp/>16U</highlight></codeline>
-<codeline lineno="71" refid="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_VALID<sp/>0x01U</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group__baton__queue_1ga296d968615cb5fa02c13dffa744153bd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_HEADER_SIZE<sp/>16U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="group__baton__queue_1gaabe2eb8ef81cc13554d8428b675ef47d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_VALID<sp/>0x01U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73" refid="group__baton__queue_1ga28e558c65222fc60e45e71942e025ce2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_REC_SKIP<sp/>0x02U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76" refid="structbaton__record" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__record" kindref="compound">baton_record</ref></highlight></codeline>
@@ -112,6 +118,8 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="93" refid="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__queue_1ad4ed731d1ad7e4781cc0f898537d40d0" kindref="member">tail</ref>;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__baton__queue_1ga8e23a48d54d8c9871188a9da6542bd28" kindref="member">baton_queue_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint8_t*<sp/>memory,<sp/>uint16_t<sp/>size);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal">uint16_t<sp/><ref refid="group__baton__queue_1gaf3cb1668b434ec923e748fb71e90ac97" kindref="member">baton_queue_record_size</ref>(uint8_t<sp/>length);</highlight></codeline>
@@ -137,6 +145,7 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal">uint8_t*<sp/><ref refid="group__baton__queue_1ga2b23f19873a9551ed9c87826a0883296" kindref="member">baton_queue_data</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__queue" kindref="compound">baton_queue</ref>*<sp/>queue,<sp/>uint16_t<sp/>offset);</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

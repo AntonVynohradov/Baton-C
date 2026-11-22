@@ -216,7 +216,7 @@ int baton_encode (
 
 
 
-`payload` may point to `&output[BATON_HEADER_SIZE]`: a payload that was built in place is then not copied.
+`payload` may point to `&output[ BATON_HEADER_SIZE ]`: a payload that was built in place is then not copied.
 
 
 

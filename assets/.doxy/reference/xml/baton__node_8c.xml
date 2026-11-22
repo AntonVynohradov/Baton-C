@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="baton__node_8c" kind="file" language="C++">
     <compoundname>baton_node.c</compoundname>
     <includes local="no">stddef.h</includes>
@@ -1485,7 +1485,8 @@
 <codeline lineno="86"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Baton<sp/>message<sp/>does<sp/>not<sp/>fit<sp/>into<sp/>BATON_QUEUE_HIGH_SIZE&quot;);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>_Static_assert((BATON_REC_HEADER_SIZE<sp/>+<sp/>(((uint32_t)<sp/>(max_length)<sp/>+<sp/>3U)<sp/>&amp;<sp/>0xFFFCU))<sp/>\</highlight></codeline>
 <codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;<sp/>(BATON_QUEUE_NORMAL_SIZE<sp/>&amp;<sp/>0xFFFCU),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Baton<sp/>message<sp/>does<sp/>not<sp/>fit<sp/>into<sp/>BATON_QUEUE_NORMAL_SIZE&quot;);</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Baton<sp/>message<sp/>does<sp/>not<sp/>fit<sp/>into<sp/>BATON_QUEUE_NORMAL_SIZE&quot;);</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>==============================================================================</highlight></codeline>
 <codeline lineno="93"><highlight class="comment"><sp/>*<sp/>PRIVATE<sp/>TYPE<sp/>DEFINITIONS</highlight></codeline>
 <codeline lineno="94"><highlight class="comment"><sp/>*<sp/>=============================================================================*/</highlight><highlight class="normal"></highlight></codeline>

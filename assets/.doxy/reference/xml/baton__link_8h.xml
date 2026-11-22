@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="baton__link_8h" kind="file" language="C++">
     <compoundname>baton_link.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -115,14 +115,18 @@
 <para><simplesect kind="copyright"><para>Copyright (c) 2026 Anton Vynohradov @license Apache License 2.0</para>
 </simplesect>
 Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <verbatim>http://www.apache.org/licenses/LICENSE-2.0
-</verbatim> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+</verbatim></para>
+<para>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
 <para>SPDX-License-Identifier: Apache-2.0 </para>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"></codeline>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATON_LINK_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -134,10 +138,14 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="65"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="group__baton__link_1ga40cab1dc3fa7037a20e2071b6638d9fd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_NONE<sp/>0</highlight></codeline>
-<codeline lineno="76" refid="group__baton__link_1ga20080688ed133f13027671b8ad52581f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_FRAME<sp/>1</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="group__baton__link_1ga40cab1dc3fa7037a20e2071b6638d9fd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_NONE<sp/>0</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="group__baton__link_1ga20080688ed133f13027671b8ad52581f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_FRAME<sp/>1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78" refid="group__baton__link_1gaf10e4c399d7b5bcbdfa1ce11d1eb3a0f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATON_LINK_TX_DONE<sp/>2</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97" refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int<sp/>(*<ref refid="group__baton__link_1gaa057d511bbf7a572f5edf25627c4854f" kindref="member">baton_write_fn</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100" refid="structbaton__link__config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref></highlight></codeline>
@@ -165,11 +173,13 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="124" refid="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref><sp/><ref refid="structbaton__link_1a3d6457ef7d0f41b5b4b12284986c9e23" kindref="member">config</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="125" refid="structbaton__link_1a95da526fc312d4587b462a526a08645f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__parser" kindref="compound">baton_parser</ref><sp/><ref refid="structbaton__link_1a95da526fc312d4587b462a526a08645f" kindref="member">parser</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="126" refid="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbaton__link__counters" kindref="compound">baton_link_counters</ref><sp/><ref refid="structbaton__link_1ad25f806b96ee048a03dd48475f5e1823" kindref="member">counters</ref>;<sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
 <codeline lineno="128" refid="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="structbaton__link_1ac5f6e35376aa4478c3c03400d89dd72d" kindref="member">rx_buffer</ref>[<ref refid="group__baton__config_1ga4e72afa2275bb5636293fb8942969689" kindref="member">BATON_RX_BUF_SIZE</ref>];<sp/></highlight></codeline>
 <codeline lineno="129" refid="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="structbaton__link_1a5b114773b0ca9e063b7a9473a629c252" kindref="member">rx_head</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="130" refid="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="structbaton__link_1a4214a76fa767d7623383ba4b02879dce" kindref="member">rx_tail</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="131" refid="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="structbaton__link_1a6f2eb2fc13804c006fbf0b0f791e007d" kindref="member">rx_overflows</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="132" refid="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structbaton__link_1a3aa3e11d889f1c52561a0da5c560d6cf" kindref="member">tx_done_flag</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134" refid="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/><ref refid="structbaton__link_1a8326a2f15ea98a617ea78fed31fb0f0d" kindref="member">tx_data</ref>;<sp/><sp/></highlight></codeline>
 <codeline lineno="135" refid="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__link_1a7b6d6bd12a81cecdcea4c53a0875e757" kindref="member">tx_length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="136" refid="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structbaton__link_1ac01b638144d92e13d754a9f5e1c50254" kindref="member">echo_index</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -180,6 +190,8 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="141" refid="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbaton__link_1ac9dc17739f7cf34268a58f866d469b5c" kindref="member">last_rx_ms</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="142"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__baton__link_1ga1ed6b9b13ba6070349988dad2f13d536" kindref="member">baton_link_init</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link__config" kindref="compound">baton_link_config</ref>*<sp/>config,</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now_ms);</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
@@ -201,6 +213,7 @@ Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you ma
 <codeline lineno="234"><highlight class="normal"></highlight></codeline>
 <codeline lineno="241"><highlight class="normal">uint32_t<sp/><ref refid="group__baton__link_1ga70bae16a39e814a87f07f9cacb80e1a3" kindref="member">baton_link_frame_ms</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__link" kindref="compound">baton_link</ref>*<sp/>link,<sp/>uint32_t<sp/>bytes);</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
 <codeline lineno="245"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="246"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

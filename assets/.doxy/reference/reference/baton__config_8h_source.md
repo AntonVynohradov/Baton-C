@@ -9,10 +9,16 @@
 
 ```C++
 
+
+
+
 #ifndef BATON_CONFIG_H
 #define BATON_CONFIG_H
 
+
 #include "baton_user_config.h"
+
+
 
 #ifndef BATON_MAX_NODES
 #define BATON_MAX_NODES 8U
@@ -70,6 +76,7 @@
     || ((BATON_RX_BUF_SIZE & (BATON_RX_BUF_SIZE - 1U)) != 0U)
 #error "BATON_RX_BUF_SIZE must be a power of two in the range 16..4096"
 #endif
+
 
 #endif /* BATON_CONFIG_H */
 

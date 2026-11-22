@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="group__baton__protocol" kind="group">
     <compoundname>baton_protocol</compoundname>
     <title>Codec</title>
@@ -229,7 +229,7 @@
 <para>Encode one frame: SYNC, header, payload and CRC. </para>
         </briefdescription>
         <detaileddescription>
-<para><computeroutput>payload</computeroutput> may point to <computeroutput>&amp;output[BATON_HEADER_SIZE]</computeroutput>: a payload that was built in place is then not copied.</para>
+<para><computeroutput>payload</computeroutput> may point to <computeroutput>&amp;output[<ref refid="group__baton__defs_1ga914e10f046cc092625bf5b58bf176be7" kindref="member">BATON_HEADER_SIZE</ref>]</computeroutput>: a payload that was built in place is then not copied.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>dst</parametername>

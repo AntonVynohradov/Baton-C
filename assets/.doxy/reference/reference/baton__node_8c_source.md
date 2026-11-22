@@ -90,6 +90,7 @@
     _Static_assert((BATON_REC_HEADER_SIZE + (((uint32_t) (max_length) + 3U) & 0xFFFCU)) \
                        < (BATON_QUEUE_NORMAL_SIZE & 0xFFFCU),                           \
                    "Baton message does not fit into BATON_QUEUE_NORMAL_SIZE");
+
 /* ==============================================================================
  * PRIVATE TYPE DEFINITIONS
  * =============================================================================*/

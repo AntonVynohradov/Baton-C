@@ -9,8 +9,11 @@
 
 ```C++
 
+
+
 #ifndef BATON_DEFS_H
 #define BATON_DEFS_H
+
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -20,20 +23,28 @@ extern "C"
 {
 #endif
 
+
+
 #define BATON_SYNC 0xA5U
 #define BATON_HEADER_SIZE 5U
 #define BATON_CRC_SIZE 2U
 #define BATON_FRAME_OVERHEAD (BATON_HEADER_SIZE + BATON_CRC_SIZE)
 #define BATON_ADDR_BROADCAST 0xFFU
 
+
+
 #define BATON_FT_POLL 0U
 #define BATON_FT_RESP 1U
 #define BATON_FT_DATA 2U
 #define BATON_FT_ACK 3U
 
+
+
 #define BATON_ACKB_VALID 0x80U
 #define BATON_SEQ_MASK 0x0FU
 #define BATON_TLV_HEADER_SIZE 2U
+
+
 
 static inline uint8_t baton_ctrl(uint8_t type, bool first, uint8_t seq)
 {
@@ -57,6 +68,8 @@ static inline uint8_t baton_ctrl_seq(uint8_t ctrl)
 {
     return (uint8_t) (ctrl & BATON_SEQ_MASK);
 }
+
+
 
 static inline uint16_t baton_get_u16be(const uint8_t* data)
 {
@@ -82,6 +95,7 @@ static inline void baton_put_u32le(uint8_t* data, uint32_t value)
     data[2] = (uint8_t) ((value >> 16U) & 0xFFU);
     data[3] = (uint8_t) (value >> 24U);
 }
+
 
 #ifdef __cplusplus
 }

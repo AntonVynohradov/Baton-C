@@ -9,8 +9,11 @@
 
 ```C++
 
+
+
 #ifndef BATON_H
 #define BATON_H
+
 
 #include "baton_config.h"
 #include "baton_defs.h"
@@ -18,6 +21,8 @@
 #include "baton_link.h"
 #include "baton_queue.h"
 #include "baton_node.h"
+
+
 
 #ifndef BATON_VERSION_MAJOR
 #define BATON_VERSION_MAJOR 1
@@ -34,6 +39,7 @@
 #ifndef BATON_VERSION
 #define BATON_VERSION "1.0.0"
 #endif
+
 
 #endif /* BATON_H */
 

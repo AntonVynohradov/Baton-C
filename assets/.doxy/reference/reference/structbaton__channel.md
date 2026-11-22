@@ -38,9 +38,7 @@ _Stop-and-wait state of the channel to one peer, both directions._ [More...](#de
 | ---: | :--- |
 |  uint8\_t | [**fail\_streak**](#variable-fail_streak)  <br>_Consecutive failures (slave: ACK, master: RESP)._  |
 |  uint16\_t | [**inflight**](#variable-inflight)  <br>_Messages of the unacknowledged frame._  |
-|  uint8\_t | [**inflight\_count**](#variable-inflight_count)  <br>
-> 0: the last frame with content is not acknowledged yet. 
- |
+|  uint8\_t | [**inflight\_count**](#variable-inflight_count)  <br> |
 |  uint8\_t | [**resp\_seq**](#variable-resp_seq)  <br>_Master: sequence number of the last RESP with content._  |
 |  bool | [**resp\_valid**](#variable-resp_valid)  <br>_Master: resp\_seq is valid._  |
 |  bool | [**rx\_last\_first**](#variable-rx_last_first)  <br>_The last delivered frame had the FIRST flag._  |
@@ -134,15 +132,18 @@ uint16_t baton_channel::inflight[BATON_MAX_MSGS_PER_FRAME];
 
 ### variable inflight\_count 
 
-
-> 0: the last frame with content is not acknowledged yet. 
-
 ```C++
 uint8_t baton_channel::inflight_count;
 ```
 
 
 
+
+> 0: the last frame with content is not acknowledged yet. 
+
+
+
+        
 
 <hr>
 

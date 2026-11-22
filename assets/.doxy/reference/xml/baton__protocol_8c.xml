@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="baton__protocol_8c" kind="file" language="C++">
     <compoundname>baton_protocol.c</compoundname>
     <includes local="no">string.h</includes>
@@ -345,7 +345,7 @@
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>parse_crc_low(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structbaton__parser" kindref="compound">baton_parser</ref>*<sp/>parser,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="136"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>received<sp/>=<sp/>(uint16_t)<sp/>((uint16_t)<sp/>(parser-&gt;<ref refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" kindref="member">index</ref><sp/>&lt;&lt;<sp/>8U)<sp/>|<sp/>(uint16_t)<sp/>byte);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>received<sp/>=<sp/>(uint16_t)<sp/>((uint16_t)<sp/>(parser-&gt;<ref refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" kindref="member">index</ref><sp/>&lt;&lt;<sp/>8U)<sp/>|<sp/>(uint16_t)<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>parser-&gt;<ref refid="structbaton__parser_1a14bb4561f39a23ba73d9c64140568e95" kindref="member">state</ref><sp/>=<sp/>PARSE_SYNC;</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>parser-&gt;<ref refid="structbaton__parser_1adcc1cd5774827714d355710f247a03b6" kindref="member">index</ref><sp/>=<sp/>0U;</highlight></codeline>
