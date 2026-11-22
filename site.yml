@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SystemFromScratch/SystemFromScratch.github.io/main/tools/site.schema.json
+#
+# Card of this repository on https://systemfromscratch.com/projects.html
+# The website reads this file from the tag of the latest release, so a change
+# made here appears on the website with the next release.
+# Version, Stable/Pre-release and the release link come from GitHub Releases;
+# featured, home page section and card order are set by the website.
+# Format: docs/library-integration.md in SystemFromScratch/SystemFromScratch.github.io
+
+title: "Baton-C"
+
+summary: >-
+  Deterministic master/slave messaging for several MCUs on one shared UART line
+  (single-wire half duplex or RS-485): no collisions, a bounded cycle, exactly-once
+  in-order events.
+
+# Shown on the Projects page only (max. 8).
+features:
+  - "Token passing: one transmitter at a time, worst-case cycle computed from the configuration"
+  - "Exactly-once, in-order events and latest-value states; CRC-16, retries, every loss reported"
+  - "Bus simulation with line noise and dead nodes on 100 seeds under ASan/UBSan"
+  - "Zephyr module, bare-metal and host examples; Baton Inspector GUI and Python test API"
+
+# Up to three measured numbers.
+highlights:
+  - { value: "1.7 KB", label: "RAM per node" }
+  - { value: "280 B", label: "worst-case stack" }
+  - { value: "0", label: "MISRA violations" }
+
+# Filters on the Projects page.
+categories: ["Libraries", "RTOS"]
+
+tags: ["C11", "UART", "RS-485", "Zephyr", "MISRA C:2012", "Apache-2.0"]
+
+# Built-in illustration: robot, container, can, chip, bus, stepper, scope,
+# halfbridge, servo, planner. Or a photo from this repository instead:
+# image: docs/assets/card.webp
+art: bus
+
+links:
+  docs: https://antonvynohradov.github.io/Baton-C/
+  manual: https://antonvynohradov.github.io/Baton-C/downloads/Baton-C_User_Manual.pdf
+  article: https://systemfromscratch-articles.github.io/Baton-C-One-wire-many-MCUs-no-lost-messages/
